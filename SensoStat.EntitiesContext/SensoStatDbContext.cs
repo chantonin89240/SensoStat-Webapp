@@ -1,6 +1,6 @@
 ﻿namespace SensoStat.EntitiesContext
 {
-    public class Class1
+    public class SensoStatDbContext
     {
 
     }
