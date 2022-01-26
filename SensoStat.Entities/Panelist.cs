@@ -10,17 +10,17 @@
         [Required]
         public string CodePanelist { get; set; }
 
-        public List<Publication> Publication { get; set; }
+        public List<Publication> Publications { get; set; }
 
-        public List<Response> Response { get; set; }
+        public List<Response> Responses { get; set; }
 
-        public List<Presentation> Presentation { get; set; }
+        public List<Presentation> Presentations { get; set; }
 
         public Panelist()
         {
-            this.Publication = new List<Publication>();
-            this.Response = new List<Response>();
-            this.Presentation = new List<Presentation>();
+            this.Publications = new List<Publication>();
+            this.Responses = new List<Response>();
+            this.Presentations = new List<Presentation>();
         }
 
         public Panelist(int id, string codePanelist) : this()

@@ -1,12 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SensoStat.Entities.Factory
+﻿namespace SensoStat.Entities.Factory
 {
-    internal class PanelistFactory
+    using Bogus;
+
+    public class PanelistFactory
     {
+        public static Faker<Panelist> GeneratePanelist()
+        {
+            var PanelistId = 0;
+            var CreatePanelistFactory = new Faker<Panelist>()
+                .StrictMode(true)
+                .RuleFor(p => p.Id, f => PanelistId++)
+                .RuleFor(p => p.CodePanelist, f => f.Random.String(4))
+                .RuleFor(p => p.Publications, PublicationFactory.GeneratePublication().Generate(4))
+                .RuleFor(p => p.Responses, ResponseFactory.GenerateResponse().Generate(10))
+                .RuleFor(p => p.Presentations, PresentationFactory.GeneratePresentation().Generate(4));
+
+            return CreatePanelistFactory;
+        }
     }
 }

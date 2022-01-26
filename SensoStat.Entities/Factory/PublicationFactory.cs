@@ -1,12 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SensoStat.Entities.Factory
+﻿namespace SensoStat.Entities.Factory
 {
-    internal class PublicationFactory
+    using Bogus;
+
+    public class PublicationFactory
     {
+        public static Faker<Publication> GeneratePublication()
+        {
+            var CreatePublicationFactory = new Faker<Publication>()
+                .StrictMode(true)
+                .RuleFor(p => p.Url, f => f.Internet.Url())
+                .RuleFor(p => p.DateStart, f => f.Date.Recent())
+                .RuleFor(p => p.DateEnd, f => f.Date.Future())
+                .RuleFor(p => p.Session, SessionFactory.GenerateSession().Generate())
+                .RuleFor(p => p.Panelist, PanelistFactory.GeneratePanelist().Generate());
+
+            return CreatePublicationFactory;
+        }
     }
 }
