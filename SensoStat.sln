@@ -23,17 +23,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SensoStat", "SensoStat\Sens
 EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "sensostat.pwa", "SensoStat.PWA\sensostat.pwa.esproj", "{6A142F85-17C9-4C1E-8B50-D5D3EAE469C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SensoStat.EntitiesContext", "SensoStat.EntitiesContext\SensoStat.EntitiesContext.csproj", "{6470A779-7513-40B2-8A71-A10B748B04C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SensoStat.EntitiesContext", "SensoStat.EntitiesContext\SensoStat.EntitiesContext.csproj", "{6470A779-7513-40B2-8A71-A10B748B04C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SensoStat.Entities", "SensoStat.Entities\SensoStat.Entities.csproj", "{42D427AD-165E-46F9-9EA9-D2D00713825B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SensoStat.Entities", "SensoStat.Entities\SensoStat.Entities.csproj", "{42D427AD-165E-46F9-9EA9-D2D00713825B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SensoStat.EntitiesTests", "SensoStat.EntitiesTests\SensoStat.EntitiesTests.csproj", "{D976B150-9DDF-44E2-91C0-AAE6A105003E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SensoStat.EntitiesTests", "SensoStat.EntitiesTests\SensoStat.EntitiesTests.csproj", "{D976B150-9DDF-44E2-91C0-AAE6A105003E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SensoStat.Repository", "SensoStat.Repository\SensoStat.Repository.csproj", "{C34C4CBF-750B-4FE5-B680-5D8D75ABF4E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SensoStat.Repository", "SensoStat.Repository\SensoStat.Repository.csproj", "{C34C4CBF-750B-4FE5-B680-5D8D75ABF4E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SensoStat.Repository.Contracts", "SensoStat.Repository.Contracts\SensoStat.Repository.Contracts.csproj", "{026F89D0-D754-43B4-9781-F6121A88912B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SensoStat.Repository.Contracts", "SensoStat.Repository.Contracts\SensoStat.Repository.Contracts.csproj", "{026F89D0-D754-43B4-9781-F6121A88912B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SensoStat.Services", "SensoStat.Services\SensoStat.Services.csproj", "{46F95B77-2284-4565-A19A-A6D2B31835FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SensoStat.Services", "SensoStat.Services\SensoStat.Services.csproj", "{46F95B77-2284-4565-A19A-A6D2B31835FC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
