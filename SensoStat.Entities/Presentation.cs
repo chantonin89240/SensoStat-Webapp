@@ -8,19 +8,23 @@
         [Required]
         public int Rank { get; set; }
 
-        public List<Panelist> Panelists { get; set; }
+        public Panelist Panelist { get; set; }
 
-        public List<Product> Products { get; set; }
+        public int IdPanelist { get; set; }
 
-        public Presentation()
-        {
-            this.Panelists = new List<Panelist>();
-            this.Products = new List<Product>();
-        }
+        public Product Product { get; set; }
 
-        public Presentation(int rank) : this()
+        public int IdProduct { get; set; }
+
+        public Presentation() { }
+
+        public Presentation(int rank, Panelist panelist, Product product) : this()
         {
             this.Rank = rank;
+            this.Panelist = panelist;
+            this.IdPanelist = panelist.Id;
+            this.Product = product;
+            this.IdProduct = product.Id;
         }
     }
 }

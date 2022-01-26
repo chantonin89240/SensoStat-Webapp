@@ -28,8 +28,11 @@
             this.CommentResponse = commentResponse;
             this.DateResponse = dateResponse;
             this.Instruction = intruction;
+            this.IdInstruction = intruction.Id;
             this.Product = product;
+            this.IdProduct = product.Id;
             this.Panelist = panelist;
+            this.IdPanelist = panelist.Id;
         }
     }
 }

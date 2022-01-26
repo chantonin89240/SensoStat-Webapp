@@ -3,7 +3,7 @@
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
-    public  class Instruction
+    public class Instruction
     {
         public int Id { get; set; }
 
@@ -17,7 +17,12 @@
 
         public int IdSession { get; set; }
 
-        public Instruction(){}
+        public List<Response> Responses { get; set; }
+
+        public Instruction()
+        {
+            this.Responses = new List<Response>();
+        }
 
         public Instruction(int id, string libelle, int chronology, Session session)
         {

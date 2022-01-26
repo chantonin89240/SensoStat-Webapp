@@ -21,18 +21,19 @@
 
         public Person Person { get; set; }
 
-        public List<Product> Product { get; set; }
+        public int IdPerson { get; set; }
 
-        public List<Instruction> Instruction { get; set; }
+        public List<Product> Products { get; set; }
 
-        public List<Publication> Publication { get; set; }
+        public List<Instruction> Instructions { get; set; }
 
+        public List<Publication> Publications { get; set; }
 
         public Session()
         {
-            this.Product = new List<Product>();
-            this.Instruction = new List<Instruction>();
-            this.Publication = new List<Publication>();
+            this.Products = new List<Product>();
+            this.Instructions = new List<Instruction>();
+            this.Publications = new List<Publication>();
         }
 
         public Session(int id, string name, string etat, DateTime dateCreate, DateTime dateUpdate, DateTime dateClose, Person person) : this()
@@ -44,6 +45,7 @@
             this.DateUpdate = dateUpdate;
             this.DateClose = dateClose;
             this.Person = person;
+            this.IdPerson = person.Id;
         }
     }
 }
