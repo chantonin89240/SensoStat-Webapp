@@ -16,8 +16,17 @@
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
             services.AddEndpointsApiExplorer();
+
             services.AddSwaggerGen();
+
+            string connectionBdd = this.Configuration.GetConnectionString("SensoStatDbContext");
+
+            services.AddDbContext<SensoStatDbContext>(options =>
+            {
+                options.UseSqlServer(connectionBdd);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -29,6 +38,24 @@
                 app.UseSwaggerUI();
             }
 
+
+            using (var scope = app.ApplicationServices.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+                try
+                {
+                    var context = services.GetRequiredService<SensoStatDbContext>();
+
+                    context.Database.EnsureDeleted();
+                    context.Database.EnsureCreated();
+
+                    SeedData.Initialize(services);
+
+                }
+                catch (Exception ex)
+                {
+                }
+            }
             app.UseHttpsRedirection();
 
             app.UseRouting();

@@ -26,89 +26,108 @@
             {
                 entity.ToTable("Instruction");
 
+                entity.HasKey(e => e.Id);
+
                 entity.HasOne(i => i.Session)
                     .WithMany(s => s.Instructions)
-                    .HasConstraintName("fk_Instruction_Session");
+                    .HasForeignKey(i => i.IdSession);
             });
 
             modelBuilder.Entity<Panelist>(entity =>
             {
                 entity.ToTable("Panelist");
+
+                entity.HasKey(e => e.Id);
             });
 
             modelBuilder.Entity<Person>(entity =>
             {
                 entity.ToTable("Person");
 
+                entity.HasKey(e => e.Id);
+
                 entity.HasOne(p => p.Role)
                     .WithMany(r => r.Persons)
-                    .HasConstraintName("fk_Person_Role");
+                    .HasForeignKey(p => p.IdRole);
             });
 
             modelBuilder.Entity<Presentation>(entity =>
             {
                 entity.ToTable("Presentation");
 
+                entity.HasKey(e => new { e.IdPanelist, e.IdProduct });
+
                 entity.HasOne(p => p.Product)
                     .WithMany(p => p.Presentations)
-                    .HasConstraintName("fk_Presentation_Product");
+                    .HasForeignKey(p => p.IdProduct);
 
                 entity.HasOne(p => p.Panelist)
                     .WithMany(p => p.Presentations)
-                    .HasConstraintName("fk_Presentation_Panelist");
+                    .HasForeignKey(p => p.IdPanelist);
             });
 
             modelBuilder.Entity<Product>(entity =>
             {
                 entity.ToTable("Product");
 
+                entity.HasKey(e => e.Id);
+
                 entity.HasOne(p => p.Session)
                     .WithMany(s => s.Products)
-                    .HasConstraintName("fk_Product_Session");
+                    .HasForeignKey(p => p.IdSession);
             });
 
             modelBuilder.Entity<Publication>(entity =>
             {
                 entity.ToTable("Publication");
 
+                entity.HasKey(e => new { e.IdSession, e.IdPaneslist });
+
                 entity.HasOne(p => p.Session)
                     .WithMany(s => s.Publications)
-                    .HasConstraintName("fk_Publication_Session");
+                    .HasForeignKey(p => p.IdSession);
 
                 entity.HasOne(p => p.Panelist)
                    .WithMany(s => s.Publications)
-                   .HasConstraintName("fk_Publication_Panelist");
+                   .HasForeignKey(p => p.IdPaneslist);
             });
 
             modelBuilder.Entity<Response>(entity =>
             {
                 entity.ToTable("Response");
 
+                entity.HasKey(e => new { e.IdProduct, e.IdInstruction, e.IdPanelist });
+
                 entity.HasOne(r => r.Instruction)
                     .WithMany(i => i.Responses)
-                    .HasConstraintName("fk_Response_Instruction");
+                    .HasForeignKey(r => r.IdInstruction);
 
                 entity.HasOne(r => r.Product)
                    .WithMany(p => p.Responses)
-                   .HasConstraintName("fk_Response_Product");
+                   .HasForeignKey(r => r.IdProduct)
+                   .OnDelete(DeleteBehavior.NoAction);
 
                 entity.HasOne(r => r.Panelist)
                    .WithMany(p => p.Responses)
-                   .HasConstraintName("fk_Response_Panelist");
+                   .HasForeignKey(r => r.IdPanelist);
             });
 
             modelBuilder.Entity<Role>(entity =>
             {
                 entity.ToTable("Role");
+
+                entity.HasKey(e => e.Id);
             });
 
             modelBuilder.Entity<Session>(entity =>
             {
                 entity.ToTable("Session");
 
+                entity.HasKey(e => e.Id);
+
                 entity.HasOne(s => s.Person)
                     .WithMany(p => p.Sessions)
-                    .HasConstraintName("fk_Session_Person");
+                    .HasForeignKey(s => s.IdPerson);
             });
         }
     }

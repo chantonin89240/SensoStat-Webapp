@@ -4,17 +4,16 @@
 
     public class RoleFactory
     {
-        public static Faker<Role> GenerateRole()
+        public static IEnumerable<Role> GenerateRole()
         {
-            var TypeRole = new[] { "SuperAdmin", "Admin", "Stagiaire" };
-            var RoleId = 0;
-            var CreateRoleFactory = new Faker<Role>()
-                .StrictMode(true)
-                .RuleFor(r => r.Id, f => RoleId++)
-                .RuleFor(r => r.Libelle, f => f.PickRandom(TypeRole))
-                .RuleFor(r => r.Persons, PersonFactory.GeneratePerson().Generate(6));
+            List<Role> roles = new List<Role>()
+            {
+                new Role() { Id = 1, Libelle = "SuperAdmin" },
+                new Role() { Id = 1, Libelle = "Admin" },
+                new Role() { Id = 1, Libelle = "Stagiaire" },
+            };
 
-            return CreateRoleFactory;
+            return roles;
         }
     }
 }

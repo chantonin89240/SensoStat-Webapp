@@ -8,9 +8,7 @@
         {
             var CreatePresentationFactory = new Faker<Presentation>()
                 .StrictMode(true)
-                .RuleFor(p => p.Rank, f => f.Random.Int(5))
-                .RuleFor(p => p.Panelist, PanelistFactory.GeneratePanelist().Generate())
-                .RuleFor(p => p.Product, ProductFactory.GenerateProduct().Generate());
+                .RuleFor(p => p.Rank, f => f.Random.Int(5));
 
             return CreatePresentationFactory;
         }

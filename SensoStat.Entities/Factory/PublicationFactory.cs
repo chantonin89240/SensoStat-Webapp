@@ -10,9 +10,7 @@
                 .StrictMode(true)
                 .RuleFor(p => p.Url, f => f.Internet.Url())
                 .RuleFor(p => p.DateStart, f => f.Date.Recent())
-                .RuleFor(p => p.DateEnd, f => f.Date.Future())
-                .RuleFor(p => p.Session, SessionFactory.GenerateSession().Generate())
-                .RuleFor(p => p.Panelist, PanelistFactory.GeneratePanelist().Generate());
+                .RuleFor(p => p.DateEnd, f => f.Date.Future());
 
             return CreatePublicationFactory;
         }

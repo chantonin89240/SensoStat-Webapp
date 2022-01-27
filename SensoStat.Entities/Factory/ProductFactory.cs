@@ -10,10 +10,7 @@
             var CreateProductFactory = new Faker<Product>()
                 .StrictMode(true)
                 .RuleFor(p => p.Id, f => ProductId++)
-                .RuleFor(p => p.CodeProduct, f => f.Random.Int(4))
-                .RuleFor(p => p.Session, SessionFactory.GenerateSession().Generate())
-                .RuleFor(p => p.Responses, ResponseFactory.GenerateResponse().Generate(10))
-                .RuleFor(p => p.Presentations, PresentationFactory.GeneratePresentation().Generate(8));
+                .RuleFor(p => p.CodeProduct, f => f.Random.Int(4));
 
             return CreateProductFactory;
         }

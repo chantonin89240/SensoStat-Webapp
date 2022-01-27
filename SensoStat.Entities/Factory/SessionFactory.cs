@@ -15,11 +15,7 @@
                 .RuleFor(p => p.Etat, f => f.PickRandom(TypeEtat))
                 .RuleFor(p => p.DateCreate, f => f.Date.Recent())
                 .RuleFor(p => p.DateUpdate, f => f.Date.Recent())
-                .RuleFor(p => p.DateClose, f => f.Date.Future())
-                .RuleFor(p => p.Person, PersonFactory.GeneratePerson().Generate())
-                .RuleFor(p => p.Products, ProductFactory.GenerateProduct().Generate(3))
-                .RuleFor(p => p.Instructions, InstructionFactory.GenerateInstruction().Generate(8))
-                .RuleFor(p => p.Publications, PublicationFactory.GeneratePublication().Generate(30));
+                .RuleFor(p => p.DateClose, f => f.Date.Future());
 
             return CreateSessionFactory;
         }

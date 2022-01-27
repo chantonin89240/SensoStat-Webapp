@@ -9,10 +9,7 @@
             var CreateResponseFactory = new Faker<Response>()
                 .StrictMode(true)
                 .RuleFor(p => p.CommentResponse, f => f.Lorem.Paragraph())
-                .RuleFor(p => p.DateResponse, f => f.Date.Recent())
-                .RuleFor(p => p.Instruction, InstructionFactory.GenerateInstruction().Generate())
-                .RuleFor(p => p.Product, ProductFactory.GenerateProduct().Generate())
-                .RuleFor(p => p.Panelist, PanelistFactory.GeneratePanelist().Generate());
+                .RuleFor(p => p.DateResponse, f => f.Date.Recent());
 
             return CreateResponseFactory;
         }
