@@ -2,6 +2,7 @@
 {
     using Microsoft.EntityFrameworkCore;
     using SensoStat.EntitiesContext;
+
     public class Startup
     {
         public IConfiguration Configuration { get; }
@@ -28,9 +29,9 @@
                 app.UseSwaggerUI();
             }
 
-            app.UseRouting();
-
             app.UseHttpsRedirection();
+
+            app.UseRouting();
 
             app.UseAuthorization();
 
