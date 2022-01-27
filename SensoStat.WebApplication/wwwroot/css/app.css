@@ -1,1 +1,6 @@
-﻿
+﻿textarea#note {
+	box-sizing:border-box;
+	display:block;
+	max-width:100%;
+
+}

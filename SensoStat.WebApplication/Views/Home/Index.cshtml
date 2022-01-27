@@ -5,7 +5,8 @@
 }
 
 <div class="p-5">
-   <form class="" method="post" asp-controller="session" asp-action="index">
+  <div class="row"> 
+    <form class="col-6 offset-3" method="post" asp-controller="session" asp-action="index">
       <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Identifiant</label>
         <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -14,6 +15,8 @@
         <label for="exampleInputPassword1" class="form-label">Mot de passe</label>
         <input type="password" class="form-control" id="exampleInputPassword1">
       </div>
-      <button type="submit" class="btn btn-primary">Se connecter</button>
+      <button type="submit" class="btn btn-warning">Se connecter</button>
     </form>
+  </div>
+   
 </div>
