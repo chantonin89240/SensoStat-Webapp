@@ -2,6 +2,6 @@
 {
     public class ImportPlanSessionViewModel
     {
-        public List<string>? Instruction { get; set; }
+        public byte[] Instruction { get; set; }
     }
 }
