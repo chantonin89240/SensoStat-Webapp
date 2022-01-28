@@ -1,6 +1,8 @@
 ﻿namespace SensoStat.WebApplication
 {
     using SensoStat.WebApplication.Filters;
+    using SensoStat.WebApplication.Services;
+    using SensoStat.WebApplication.Services.Contracts;
 
     public class Startup
     {
@@ -21,6 +23,8 @@
 
             services.AddRazorPages()
                 .AddRazorRuntimeCompilation();
+
+            services.AddScoped<ISessionService, SessionService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

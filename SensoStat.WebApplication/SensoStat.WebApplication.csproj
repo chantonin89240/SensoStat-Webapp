@@ -19,4 +19,9 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SensoStat.WebApplication.Services.Contracts\SensoStat.WebApplication.Services.Contracts.csproj" />
+    <ProjectReference Include="..\SensoStat.WebApplication.Services\SensoStat.WebApplication.Services.csproj" />
+  </ItemGroup>
+
 </Project>
