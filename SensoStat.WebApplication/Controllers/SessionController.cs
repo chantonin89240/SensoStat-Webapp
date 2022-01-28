@@ -1,9 +1,12 @@
 ﻿namespace SensoStat.WebApplication.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Http;
     using SensoStat.WebApplication.ViewModels;
     using System.IO;
-    using System;
+    using CsvHelper;
+    using System.Globalization;
+
 
     public class SessionController : Controller
     {
@@ -20,61 +23,68 @@
             return this.View();
         }
 
+        public IActionResult Archive()
+        {
+            return this.View();
+        }
+
+        [HttpPost]
+        public IActionResult Archive(int id)
+        {
+            return this.View();
+        }
+
+
         public IActionResult Create()
         {
             return this.View();
         }
-        
-        // Probleme droit d'acces fichier
-        // Alternative Upload le fichier sur le server -> risque sécurité
-        public void LoadCSV(string filePath)
-        {
-            var reader = new StreamReader(System.IO.File.OpenRead(filePath));
-            List<string> listA = new List<string>();
-            List<string> listB = new List<string>();
-            while (!reader.EndOfStream)
-            {
-                var line = reader.ReadLine();
-                var values = line.Split(';');
 
-                listA.Add(values[0]);
-                listB.Add(values[1]);
-                foreach (var coloumn1 in listA)
-                {
-                    Console.WriteLine(coloumn1);
-                }
-                foreach (var coloumn2 in listA)
-                {
-                    Console.WriteLine(coloumn2);
-                }
-            }
+        [HttpPost]
+        public IActionResult Create(SessionViewModel session)
+        {
+            
+            return this.View();
         }
 
-        public async Task<IActionResult> OnPostUploadAsync()
+        public IActionResult Edit(int id)
         {
-            using (var memoryStream = new MemoryStream())
+            return this.View();
+        }
+
+        [HttpPost]
+        public IActionResult Edit(SessionViewModel session)
+        {
+            return this.View();
+        }
+
+        public IActionResult Delete()
+        {
+            return this.View();
+        }
+
+        [HttpPost]
+        public IActionResult Delete(SessionViewModel session)
+        {
+            return this.View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> LoadFile(IFormFile file)
+        {
+            using(var fileStream = file.OpenReadStream())
+            using (var reader = new StreamReader(fileStream))
+            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
             {
-                await FileUpload.FormFile.CopyToAsync(memoryStream);
-
-                // Upload the file if less than 2 MB
-                if (memoryStream.Length < 2097152)
-                {
-                    var file = new ImportPlanSessionViewModel()
-                    {
-                        Instruction = memoryStream.ToArray()
-                    };
-
-                    // _dbContext.File.Add(file);
-
-                    // await _dbContext.SaveChangesAsync();
-                }
-                else
-                {
-                    ModelState.AddModelError("File", "The file is too large.");
-                }
+                var records = csv.GetRecords<dynamic>();
             }
+            return RedirectToAction("create");
+        }
 
-            return View();
+        [HttpPost]
+        public async Task<IActionResult> CloneSession(int id)
+        {
+            return RedirectToAction("create");
         }
     }
 }

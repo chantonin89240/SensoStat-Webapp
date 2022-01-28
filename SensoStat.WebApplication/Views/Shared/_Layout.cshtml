@@ -28,9 +28,9 @@
 				<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 					<ul class="navbar-nav ms-auto me-0 mb-2 mb-lg-0">
 						<li class="nav-item ms-auto me-0">
-							<a class="nav-link" aria-current="page" asp-area="" asp-controller="Home" asp-action="Index"  asp-route-pageNumber="1">
-								<i class="fas fa-home"></i>
-								<span >Accueil</span>
+							<a class="nav-link" aria-current="page" asp-area="" asp-controller="account" asp-action="createuser">
+								<i class="fas fa-users me-1"></i>
+								<span>Créer un compte</span>
 							</a>
 						</li>
 						<li class="nav-item dropdown ms-auto me-0">
@@ -39,13 +39,13 @@
 								<span >Administration</span>
 							</a>
 							<ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-								<li><a class="dropdown-item" asp-area="administration" asp-controller="Artiste" asp-action="Index"><i class="fas fa-users me-1"></i>Séances</a></li>
-								<li><a class="dropdown-item" asp-area="administration" asp-controller="commentaire" asp-action="Index"><i class="fas fa-comments me-1"></i>Publication</a></li>
-								<li><a class="dropdown-item" asp-area="administration" asp-controller="Dashboard" asp-action="Index"><i class="fas fa-tachometer-alt me-1"></i>Tableau de bord</a></li>
+								<li><a class="dropdown-item"  asp-controller="session" asp-action="index"><i class="fas fa-tasks me-1"></i></i>Séances</a></li>
+								<li><a class="dropdown-item"  asp-controller="session" asp-action="archive"><i class="fas fa-archive me-1"></i></i>Archive</a></li>
+								<li><a class="dropdown-item" asp-controller="session" asp-action="export"><i class="fas fa-download me-1"></i></i>Exporter</a></li>
 							</ul>
 						</li>
 						<li class="nav-item ms-auto me-0">
-							<a class="nav-link" asp-area="" asp-controller="Contact" asp-action="Contact">
+							<a class="nav-link" asp-area="" asp-controller="" asp-action="">
 								<i class="far fa-user-circle fa-2x"></i>
 							</a>
 						</li>
@@ -56,7 +56,7 @@
 		
 		<!-- Conteneur principal -->
 		<!-- Template Bootstrap 5 -->
-		<div class="container-fluid mb-5 p-4 bg-light h-auto" style="min-height: 700px;">
+		<div class="container-fluid mb-5 p-4 bg-light h-auto" style="min-height: 960px;">
 			@RenderBody()
 		</div>
 

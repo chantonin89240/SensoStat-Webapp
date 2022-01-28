@@ -1,4 +1,4 @@
-﻿@*
+@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
@@ -6,7 +6,7 @@
 }
 
 <div class="p-3">
-	<h2>Créer une nouvelle séance</h2>
+	<h2>Éditer une séance</h2>
 	<hr />
 	<div class="row">
 		<div class="col-10">
@@ -92,24 +92,24 @@
         <h5 class="modal-title" id="exampleModalLabel">Veuillez sélectionner un fichier de plan de présentation</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-		<form enctype="multipart/form-data" method="post">
-		<div class="modal-body">
-				<dl>
-					<dt>
-						<label ></label>
-					</dt>
-					<dd>
-						<input name="file" type="file">
-						@* <span asp-validation-for="FileUpload.FormFile"></span> *@
-					</dd>
-				</dl>	
-			
-		</div>
-		<div class="modal-footer">
-			<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-			<input class="btn btn-primary" asp-controller="session" asp-action="LoadFile" type="submit" value="Importer" />
-		</div>
+      <div class="modal-body">
+        <form enctype="multipart/form-data" method="post">
+			<dl>
+				<dt>
+					<label ></label>
+				</dt>
+				<dd>
+					<input name="file" type="file">
+					@* <span asp-validation-for="FileUpload.FormFile"></span> *@
+				</dd>
+			</dl>
+			<input class="btn btn-primary" asp-controller="session" asp-action="LoadFile" type="submit" value="Importer" /> 
 		</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+        <button type="submit" class="btn btn-primary">Importer</button>
+      </div>
     </div>
   </div>
 </div>
