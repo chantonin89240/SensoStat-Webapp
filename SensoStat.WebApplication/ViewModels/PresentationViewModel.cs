@@ -4,14 +4,17 @@ namespace SensoStat.WebApplication.ViewModels
     public class PresentationViewModel
     {
         [Required]
-        public int IdPanelist { get; set; }
+        public string IdPanelist { get; set; }
 
         [Required]
-        public int IdProduct { get; set; }
+        public int IdProduct1 { get; set; }
 
         [Required]
-        public int Rank { get; set; }
+        public int IdProduct2 { get; set; }
+        [Required]
+        public int IdProduct3 { get; set; }
+        // [Required]
+        // public int Rank { get; set; }
 
-        public FileUpload? FileUpload { get; set; }
     }
 }
