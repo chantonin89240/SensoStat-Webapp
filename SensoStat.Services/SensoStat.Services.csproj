@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SensoStat.Repository.Contracts\SensoStat.Repository.Contracts.csproj" />
+    <ProjectReference Include="..\SensoStat.Services.Contracts\SensoStat.Services.Contracts.csproj" />
   </ItemGroup>
 
 </Project>

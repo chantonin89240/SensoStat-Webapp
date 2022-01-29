@@ -12,11 +12,11 @@
         /// </summary>
         /// <param name="url"></param>
         /// <returns>Réponse du serveur</returns>
-        public static string GetDataFromHttpClient(string url)
+        public HttpResponseMessage GetDataFromHttpClient(string url)
         {
             HttpClient httpClient = new HttpClient();
             var response = httpClient.GetAsync(url).Result;
-            return response.Content.ReadAsStringAsync().Result;
+            return response;
         }
 
         public void LoadFile(IFormFile file)

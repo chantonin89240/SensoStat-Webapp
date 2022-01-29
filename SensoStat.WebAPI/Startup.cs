@@ -5,6 +5,7 @@
     using SensoStat.Repository;
     using SensoStat.Repository.Contracts;
     using SensoStat.Services;
+    using SensoStat.Services.Contracts;
 
     public class Startup
     {
@@ -32,6 +33,7 @@
             });
 
             services.AddScoped<ISessionRepository, SessionRepository>();
+            services.AddScoped<IPanelistService, PanelistService>();
             services.AddScoped<SessionService>();
         }
 
