@@ -30,7 +30,7 @@
         /// Retourne toutes les campagnes.
         /// </summary>
         /// <returns>Une collection contenant toutes les campagnes.</returns>
-        List<Session> FindAll();
+        IEnumerable<Session> FindAll();
 
         /// <summary>
         /// Met à jour une campagne.

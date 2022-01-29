@@ -17,7 +17,7 @@
 
         public DateTime DateUpdate { get; set; }
 
-        public DateTime DateClose { get; set; }
+        public DateTime? DateClose { get; set; }
 
         public Person Person { get; set; }
 
