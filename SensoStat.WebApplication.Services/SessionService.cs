@@ -34,17 +34,16 @@
                     if(key != null)
                     {
                         // Value de KeyValuePair
-                        var text = ((IDictionary<String, Object>)line)[key];
-                        
+                        var text = ((IDictionary<String, Object>)line)[key];                        
                         var panelistPresentation = text.ToString().Split(";");
+                        
                         var codePanelist = panelistPresentation[0];
                         // créé un objet panelist
-                        for(var i = 1; i < panelistPresentation.Length; i++)
-                        {
-                            // créé un objet produit
-                            // créé un objet presentation
-                            var produit = panelistPresentation[i];
-                        }
+
+                        var planPresentation = panelistPresentation.Skip(1);
+                        // créé des objets produit
+                        // créé des objets presentation
+
                         // envoi de tout les objets
                     }
                 };

@@ -358,3 +358,21 @@
 2022-01-28 21:14:06.6949 Info Adding target FileTarget(Name=ownFile-web)
 2022-01-28 21:14:06.6949 Info Adding target ConsoleTarget(Name=lifetimeConsole)
 2022-01-28 21:14:06.7303 Info Validating config: TargetNames=allfile, lifetimeConsole, ownFile-web, ConfigItems=62, FilePath=/Users/twentycent/Desktop/Diiage/P5/SensoStat/SensoStat.WebApplication/bin/Debug/net6.0/NLog.config
+2022-01-29 09:44:29.9029 Info Message Template Auto Format enabled
+2022-01-29 09:44:29.9460 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-29 09:44:29.9684 Info Adding target FileTarget(Name=allfile)
+2022-01-29 09:44:29.9723 Info Adding target FileTarget(Name=ownFile-web)
+2022-01-29 09:44:29.9723 Info Adding target ConsoleTarget(Name=lifetimeConsole)
+2022-01-29 09:44:30.0163 Info Validating config: TargetNames=allfile, lifetimeConsole, ownFile-web, ConfigItems=62, FilePath=/Users/twentycent/Desktop/Diiage/P5/SensoStat/SensoStat.WebApplication/bin/Debug/net6.0/NLog.config
+2022-01-29 09:58:41.7778 Info Message Template Auto Format enabled
+2022-01-29 09:58:41.8189 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-29 09:58:41.8412 Info Adding target FileTarget(Name=allfile)
+2022-01-29 09:58:41.8437 Info Adding target FileTarget(Name=ownFile-web)
+2022-01-29 09:58:41.8437 Info Adding target ConsoleTarget(Name=lifetimeConsole)
+2022-01-29 09:58:41.8772 Info Validating config: TargetNames=allfile, lifetimeConsole, ownFile-web, ConfigItems=62, FilePath=/Users/twentycent/Desktop/Diiage/P5/SensoStat/SensoStat.WebApplication/bin/Debug/net6.0/NLog.config
+2022-01-29 10:01:24.9594 Info Message Template Auto Format enabled
+2022-01-29 10:01:25.0020 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-29 10:01:25.0248 Info Adding target FileTarget(Name=allfile)
+2022-01-29 10:01:25.0275 Info Adding target FileTarget(Name=ownFile-web)
+2022-01-29 10:01:25.0278 Info Adding target ConsoleTarget(Name=lifetimeConsole)
+2022-01-29 10:01:25.0601 Info Validating config: TargetNames=allfile, lifetimeConsole, ownFile-web, ConfigItems=62, FilePath=/Users/twentycent/Desktop/Diiage/P5/SensoStat/SensoStat.WebApplication/bin/Debug/net6.0/NLog.config
