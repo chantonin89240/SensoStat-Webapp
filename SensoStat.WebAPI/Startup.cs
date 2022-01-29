@@ -2,6 +2,9 @@
 {
     using Microsoft.EntityFrameworkCore;
     using SensoStat.EntitiesContext;
+    using SensoStat.Repository;
+    using SensoStat.Repository.Contracts;
+    using SensoStat.Services;
 
     public class Startup
     {
@@ -27,6 +30,9 @@
             {
                 options.UseSqlServer(connectionBdd);
             });
+
+            services.AddScoped<ISessionRepository, SessionRepository>();
+            services.AddScoped<SessionService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,8 +52,8 @@
                 {
                     var context = services.GetRequiredService<SensoStatDbContext>();
 
-                    context.Database.EnsureDeleted();
-                    context.Database.EnsureCreated();
+                    //context.Database.EnsureDeleted();
+                    //context.Database.EnsureCreated();
 
                     SeedData.Initialize(services);
 
@@ -56,6 +62,7 @@
                 {
                 }
             }
+
             app.UseHttpsRedirection();
 
             app.UseRouting();

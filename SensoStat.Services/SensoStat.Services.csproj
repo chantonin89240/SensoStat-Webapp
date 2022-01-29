@@ -14,4 +14,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SensoStat.Repository.Contracts\SensoStat.Repository.Contracts.csproj" />
+  </ItemGroup>
+
 </Project>
