@@ -6,16 +6,17 @@
     using System.IO;
     using CsvHelper;
     using System.Globalization;
-
+    using SensoStat.WebApplication.Services.Contracts;
 
     public class SessionController : Controller
     {
+        private readonly ISessionService sessionService;
         private PresentationViewModel model;
-        private FileUpload FileUpload;
-        public SessionController()
+
+        public SessionController(ISessionService service)
         {
             this.model = new PresentationViewModel();
-            this.FileUpload = new FileUpload();
+            this.sessionService = service;
         }
 
         public IActionResult Index()
@@ -72,12 +73,7 @@
         [HttpPost]
         public async Task<IActionResult> LoadFile(IFormFile file)
         {
-            using(var fileStream = file.OpenReadStream())
-            using (var reader = new StreamReader(fileStream))
-            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
-            {
-                var records = csv.GetRecords<dynamic>();
-            }
+            this.sessionService.LoadFile(file);
             return RedirectToAction("create");
         }
 

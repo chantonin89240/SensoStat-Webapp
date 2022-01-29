@@ -1,6 +1,8 @@
 ﻿namespace SensoStat.WebApplication
 {
     using SensoStat.WebApplication.Filters;
+    using SensoStat.WebApplication.Services;
+    using SensoStat.WebApplication.Services.Contracts;
 
     public class Startup
     {
@@ -14,13 +16,15 @@
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews(option =>
-            {
-                option.Filters.Add(typeof(LoggerActionFilter));
-            });
+            // services.AddControllersWithViews(option =>
+            // {
+            //     option.Filters.Add(typeof(LoggerActionFilter));
+            // });
 
             services.AddRazorPages()
                 .AddRazorRuntimeCompilation();
+
+            services.AddScoped<ISessionService, SessionService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
