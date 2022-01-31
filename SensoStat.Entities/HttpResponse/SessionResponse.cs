@@ -1,4 +1,4 @@
-﻿namespace SensoStat.Services.Response
+﻿namespace SensoStat.Services.HttpResponse
 {
     public class SessionResponse
     {

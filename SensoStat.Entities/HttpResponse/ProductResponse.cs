@@ -1,4 +1,4 @@
-﻿namespace SensoStat.Entities.Response
+﻿namespace SensoStat.Entities.HttpResponse
 {
     public class ProductResponse
     {

@@ -21,4 +21,4 @@ namespace SensoStat.WebAPI.Controllers
             return new OkObjectResult("");
         }
     }
-}
+} 

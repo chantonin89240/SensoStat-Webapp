@@ -100,3 +100,65 @@
 2022-01-31 17:49:10.9850 Info Adding target FileTarget(Name=ownFile-web)
 2022-01-31 17:49:10.9850 Info Adding target ConsoleTarget(Name=lifetimeConsole)
 2022-01-31 17:49:11.0528 Info Validating config: TargetNames=allfile, lifetimeConsole, ownFile-web, ConfigItems=62, FilePath=C:\Users\Twenty\source\repos\SensoStat\SensoStat.WebAPI\bin\Debug\net6.0\NLog.config
+2022-01-31 18:46:49.2680 Info Message Template Auto Format enabled
+2022-01-31 18:46:49.2771 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-31 18:46:49.3305 Info Adding target FileTarget(Name=allfile)
+2022-01-31 18:46:49.3401 Info Adding target FileTarget(Name=ownFile-web)
+2022-01-31 18:46:49.3401 Info Adding target ConsoleTarget(Name=lifetimeConsole)
+2022-01-31 18:46:49.3670 Info Validating config: TargetNames=allfile, lifetimeConsole, ownFile-web, ConfigItems=62, FilePath=C:\Users\Twenty\Source\Repos\SensoStat\SensoStat.WebAPI\bin\Debug\net6.0\NLog.config
+2022-01-31 18:49:14.9290 Info Message Template Auto Format enabled
+2022-01-31 18:49:14.9290 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-31 18:49:15.0162 Info Adding target FileTarget(Name=allfile)
+2022-01-31 18:49:15.0376 Info Adding target FileTarget(Name=ownFile-web)
+2022-01-31 18:49:15.0376 Info Adding target ConsoleTarget(Name=lifetimeConsole)
+2022-01-31 18:49:15.1089 Info Validating config: TargetNames=allfile, lifetimeConsole, ownFile-web, ConfigItems=62, FilePath=C:\Users\Twenty\Source\Repos\SensoStat\SensoStat.WebAPI\bin\Debug\net6.0\NLog.config
+2022-01-31 18:52:04.4487 Info Message Template Auto Format enabled
+2022-01-31 18:52:04.4598 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-31 18:52:04.5114 Info Adding target FileTarget(Name=allfile)
+2022-01-31 18:52:04.5213 Info Adding target FileTarget(Name=ownFile-web)
+2022-01-31 18:52:04.5213 Info Adding target ConsoleTarget(Name=lifetimeConsole)
+2022-01-31 18:52:04.5580 Info Validating config: TargetNames=allfile, lifetimeConsole, ownFile-web, ConfigItems=62, FilePath=C:\Users\Twenty\Source\Repos\SensoStat\SensoStat.WebAPI\bin\Debug\net6.0\NLog.config
+2022-01-31 19:18:59.9703 Info Message Template Auto Format enabled
+2022-01-31 19:18:59.9882 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-31 19:19:00.0577 Info Adding target FileTarget(Name=allfile)
+2022-01-31 19:19:00.1765 Info Adding target FileTarget(Name=ownFile-web)
+2022-01-31 19:19:00.1846 Info Adding target ConsoleTarget(Name=lifetimeConsole)
+2022-01-31 19:19:00.2174 Info Validating config: TargetNames=allfile, lifetimeConsole, ownFile-web, ConfigItems=62, FilePath=C:\Users\Twenty\Source\Repos\SensoStat\SensoStat.WebAPI\bin\Debug\net6.0\NLog.config
+2022-01-31 19:22:40.0497 Info AppDomain Shutting down. Logger closing...
+2022-01-31 19:22:40.1344 Info Logger has been shut down.
+2022-01-31 19:44:14.5990 Info Message Template Auto Format enabled
+2022-01-31 19:44:14.6151 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-31 19:44:14.6915 Info Adding target FileTarget(Name=allfile)
+2022-01-31 19:44:14.7320 Info Adding target FileTarget(Name=ownFile-web)
+2022-01-31 19:44:14.7320 Info Adding target ConsoleTarget(Name=lifetimeConsole)
+2022-01-31 19:44:14.7780 Info Validating config: TargetNames=allfile, lifetimeConsole, ownFile-web, ConfigItems=62, FilePath=C:\Users\Twenty\Source\Repos\SensoStat\SensoStat.WebAPI\bin\Debug\net6.0\NLog.config
+2022-01-31 19:57:10.7885 Info Message Template Auto Format enabled
+2022-01-31 19:57:10.8037 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-31 19:57:10.8697 Info Adding target FileTarget(Name=allfile)
+2022-01-31 19:57:10.9008 Info Adding target FileTarget(Name=ownFile-web)
+2022-01-31 19:57:10.9144 Info Adding target ConsoleTarget(Name=lifetimeConsole)
+2022-01-31 19:57:10.9680 Info Validating config: TargetNames=allfile, lifetimeConsole, ownFile-web, ConfigItems=62, FilePath=C:\Users\Twenty\Source\Repos\SensoStat\SensoStat.WebAPI\bin\Debug\net6.0\NLog.config
+2022-01-31 20:22:18.2576 Info Message Template Auto Format enabled
+2022-01-31 20:22:18.2747 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-31 20:22:18.3482 Info Adding target FileTarget(Name=allfile)
+2022-01-31 20:22:18.3920 Info Adding target FileTarget(Name=ownFile-web)
+2022-01-31 20:22:18.3979 Info Adding target ConsoleTarget(Name=lifetimeConsole)
+2022-01-31 20:22:18.4701 Info Validating config: TargetNames=allfile, lifetimeConsole, ownFile-web, ConfigItems=62, FilePath=C:\Users\Twenty\Source\Repos\SensoStat\SensoStat.WebAPI\bin\Debug\net6.0\NLog.config
+2022-01-31 20:24:19.2671 Info Message Template Auto Format enabled
+2022-01-31 20:24:19.2779 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-31 20:24:19.3355 Info Adding target FileTarget(Name=allfile)
+2022-01-31 20:24:19.3355 Info Adding target FileTarget(Name=ownFile-web)
+2022-01-31 20:24:19.3355 Info Adding target ConsoleTarget(Name=lifetimeConsole)
+2022-01-31 20:24:19.3691 Info Validating config: TargetNames=allfile, lifetimeConsole, ownFile-web, ConfigItems=62, FilePath=C:\Users\Twenty\Source\Repos\SensoStat\SensoStat.WebAPI\bin\Debug\net6.0\NLog.config
+2022-01-31 20:32:04.1677 Info Message Template Auto Format enabled
+2022-01-31 20:32:04.1780 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-31 20:32:04.2262 Info Adding target FileTarget(Name=allfile)
+2022-01-31 20:32:04.2262 Info Adding target FileTarget(Name=ownFile-web)
+2022-01-31 20:32:04.2262 Info Adding target ConsoleTarget(Name=lifetimeConsole)
+2022-01-31 20:32:04.2594 Info Validating config: TargetNames=allfile, lifetimeConsole, ownFile-web, ConfigItems=62, FilePath=C:\Users\Twenty\Source\Repos\SensoStat\SensoStat.WebAPI\bin\Debug\net6.0\NLog.config
+2022-01-31 20:32:50.4388 Info Message Template Auto Format enabled
+2022-01-31 20:32:50.4538 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-31 20:32:50.5342 Info Adding target FileTarget(Name=allfile)
+2022-01-31 20:32:50.5687 Info Adding target FileTarget(Name=ownFile-web)
+2022-01-31 20:32:50.5687 Info Adding target ConsoleTarget(Name=lifetimeConsole)
+2022-01-31 20:32:50.6770 Info Validating config: TargetNames=allfile, lifetimeConsole, ownFile-web, ConfigItems=62, FilePath=C:\Users\Twenty\Source\Repos\SensoStat\SensoStat.WebAPI\bin\Debug\net6.0\NLog.config

@@ -28,10 +28,10 @@
             string connectionBdd = this.Configuration.GetConnectionString("SensoStatDbContext");
             string connectionBddPostgresSQL = this.Configuration.GetConnectionString("SensoStatDbContextPostgresSql");
 
-            services.AddDbContext<SensoStatDbContext>(options =>
-            {
-                options.UseSqlServer(connectionBdd);
-            });
+            //services.AddDbContext<SensoStatDbContext>(options =>
+            //{
+            //    options.UseSqlServer(connectionBdd);
+            //});
 
             services.AddDbContext<SensoStatDbContext>(options =>
             {
