@@ -20,12 +20,12 @@ namespace SensoStat.WebAPI.Controllers
 
         // GET: api/<SessionController>
         [HttpGet]
-        public IActionResult GetSessions()
+        public IActionResult Get()
         {
-            return this._sessionService.Get();
+            return this.Ok(this._sessionService.Get());
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
         public IActionResult GetById(int idSession)
         {
             throw new NotImplementedException();
@@ -35,13 +35,13 @@ namespace SensoStat.WebAPI.Controllers
         public IActionResult CreateSession([FromBody] SessionRequest session)
         {
             var sessionResponse = this._sessionService.Create(session);
-            return CreatedAtAction(nameof(SessionsController.GetById), new { id = sessionResponse.Id }, sessionResponse);
+            return this.CreatedAtAction(nameof(SessionsController.GetById), new { id = sessionResponse.Id }, sessionResponse);
         }
 
         [HttpPut("{id}")]
         public IActionResult UpdateSession(int id)
         {
-            return this._sessionService.Get();
+            return this.Ok(this._sessionService.Get());
         }
     }
 }

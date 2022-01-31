@@ -33,15 +33,15 @@
                 options.UseSqlServer(connectionBdd);
             });
 
-            services.AddDbContext<SensoStatDbContext>(options =>
-            {
-                options.UseNpgsql(connectionBddPostgresSQL);
-            });
+            //services.AddDbContext<SensoStatDbContext>(options =>
+            //{
+            //    options.UseNpgsql(connectionBddPostgresSQL);
+            //});
 
             services.AddScoped<ISessionRepository, SessionRepository>();
             services.AddScoped<IPanelistRepository, DbPanelistRepository>();
             services.AddScoped<IPanelistService, PanelistService>();
-            // services.AddScoped<SessionService>();
+            services.AddScoped<SessionService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -61,8 +61,8 @@
                 {
                     var context = services.GetRequiredService<SensoStatDbContext>();
 
-                    context.Database.EnsureDeleted();
-                    context.Database.EnsureCreated();
+                    //context.Database.EnsureDeleted();
+                    //context.Database.EnsureCreated();
 
                     SeedData.Initialize(services);
 

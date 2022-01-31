@@ -1,4 +1,4 @@
-﻿namespace SensoStat.Entities.Response
+﻿namespace SensoStat.Entities.Responses
 {
     public class InstructionResponse
     {

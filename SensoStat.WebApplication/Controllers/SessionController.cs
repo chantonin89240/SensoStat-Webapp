@@ -1,12 +1,9 @@
 ﻿namespace SensoStat.WebApplication.Controllers
 {
-    using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Http;
-    using SensoStat.WebApplication.ViewModels;
-    using System.IO;
-    using CsvHelper;
-    using System.Globalization;
+    using Microsoft.AspNetCore.Mvc;
     using SensoStat.WebApplication.Services.Contracts;
+    using SensoStat.WebApplication.ViewModels;
 
     public class SessionController : Controller
     {
