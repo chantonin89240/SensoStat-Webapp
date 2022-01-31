@@ -10,9 +10,9 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/SensoStat.WebApplication/bin/Debug/net6.0/SensoStat.WebApplication.dll",
+            "program": "${workspaceFolder}/SensoStat.WebAPI/bin/Debug/net6.0/SensoStat.WebAPI.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/SensoStat.WebApplication",
+            "cwd": "${workspaceFolder}/SensoStat.WebAPI",
             "stopAtEntry": false,
             // Enable launching a web browser when ASP.NET Core starts. For more information: https://aka.ms/VSCode-CS-LaunchJson-WebBrowser
             "serverReadyAction": {

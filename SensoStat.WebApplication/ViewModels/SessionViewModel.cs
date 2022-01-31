@@ -3,16 +3,24 @@ namespace SensoStat.WebApplication.ViewModels
     using System.ComponentModel.DataAnnotations;
     public class SessionViewModel
     {
-        public int Id { get; set; }
-
+        [Required(ErrorMessage = "Veuillez saisir ce champ")]
         public string Name { get; set; }
 
-        public string Etat { get; set; } = "Non-publié";
+        [Required(ErrorMessage = "Veuillez saisir ce champ")]
+        public string? AccueilMsg { get; set; }
 
-        public DateTime DateCreate { get; set; }
+        public List<Instruction>? Instructions { get; set;}
 
-        public DateTime DateUpdate { get; set; }
+        [Required(ErrorMessage = "Veuillez saisir ce champ")]
+        public string? FinallMsg { get; set; }
+    }
 
-        public DateTime DateClose { get; set; }
+    public class Instruction
+    {   
+        [Required]
+        public string? Label { get; set;}
+
+        [Required(ErrorMessage = "Veuillez saisir ce champ")]
+        public string? Content { get; set;}
     }
 }

@@ -41,7 +41,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SensoStat.WebApplication.Se
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SensoStat.WebApplication.Services.Contracts", "SensoStat.WebApplication.Services.Contracts\SensoStat.WebApplication.Services.Contracts.csproj", "{7F92F2C0-C597-4583-8AEB-A2D57072EF83}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SensoStat.Services.Contracts", "SensoStat.Services.Contracts\SensoStat.Services.Contracts.csproj", "{46DD0F79-26F1-4110-94D0-9C51138EFF66}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SensoStat.Services.Contracts", "SensoStat.Services.Contracts\SensoStat.Services.Contracts.csproj", "{46DD0F79-26F1-4110-94D0-9C51138EFF66}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{C2D0E904-3B2F-4A48-82A9-45C7DFFA3C44}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Installation", "Installation", "{497DC638-53D3-4803-A63C-EAEA3207F705}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Rapport", "Rapport", "{EF979087-9B89-48B6-8DD4-64AA031662A7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Production", "Production", "{DC1FF119-6461-4755-AFB2-94614D7BAFBC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -278,6 +286,9 @@ Global
 		{05702C95-08D0-4CC9-8B67-D01086EC8D08} = {53366FEF-4502-4977-A774-6487CF1B941F}
 		{7F92F2C0-C597-4583-8AEB-A2D57072EF83} = {53366FEF-4502-4977-A774-6487CF1B941F}
 		{46DD0F79-26F1-4110-94D0-9C51138EFF66} = {24ED8572-F24F-49C4-AF2D-AC39C9E4A218}
+		{497DC638-53D3-4803-A63C-EAEA3207F705} = {C2D0E904-3B2F-4A48-82A9-45C7DFFA3C44}
+		{EF979087-9B89-48B6-8DD4-64AA031662A7} = {C2D0E904-3B2F-4A48-82A9-45C7DFFA3C44}
+		{DC1FF119-6461-4755-AFB2-94614D7BAFBC} = {C2D0E904-3B2F-4A48-82A9-45C7DFFA3C44}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {53616BDA-E4BE-4D6B-8CC5-EC1A87EA5359}

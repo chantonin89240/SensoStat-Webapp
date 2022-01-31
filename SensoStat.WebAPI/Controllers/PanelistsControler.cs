@@ -15,17 +15,10 @@ namespace SensoStat.WebAPI.Controllers
             this._panelistService = service;
         }
 
-        // GET: api/<SessionController>
-        [HttpGet]
-        public IEnumerable<Panelist> GetPanelists()
-        {
-            return this._panelistService.GetPanelists();
-        }
-
         [HttpPost]
-        public HttpResponseMessage CreatePanelist()
+        public IActionResult CreatePanelist()
         {
-            return this._panelistService.CreatePanelist();
+            return new OkObjectResult("");
         }
     }
 }
