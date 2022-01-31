@@ -7,6 +7,11 @@ namespace SensoStat.Services
 
     public class PanelistService : IPanelistService
     {
+        public readonly IPanelistRepository panelistRepository;
+        public PanelistService(IPanelistRepository repository)
+        {
+            this.panelistRepository = repository;
+        }
         public IEnumerable<Panelist> GetPanelists()
         {
             return new List<Panelist>();

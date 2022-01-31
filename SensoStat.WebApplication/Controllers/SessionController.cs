@@ -11,11 +11,9 @@
     public class SessionController : Controller
     {
         private readonly ISessionService sessionService;
-        private PresentationViewModel model;
 
         public SessionController(ISessionService service)
         {
-            this.model = new PresentationViewModel();
             this.sessionService = service;
         }
 
