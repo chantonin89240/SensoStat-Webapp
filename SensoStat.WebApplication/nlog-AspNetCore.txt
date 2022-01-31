@@ -262,3 +262,21 @@
 2022-01-29 12:33:44.2222 Info Adding target FileTarget(Name=ownFile-web)
 2022-01-29 12:33:44.2222 Info Adding target ConsoleTarget(Name=lifetimeConsole)
 2022-01-29 12:33:44.2614 Info Validating config: TargetNames=allfile, lifetimeConsole, ownFile-web, ConfigItems=62, FilePath=C:\Users\antonin\Documents\DIIAGE\Projet-5\WebApp\SensoStat.WebApplication\bin\Debug\net6.0\NLog.config
+2022-01-31 10:17:23.2701 Info Message Template Auto Format enabled
+2022-01-31 10:17:23.2701 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-31 10:17:23.3242 Info Adding target FileTarget(Name=allfile)
+2022-01-31 10:17:23.3348 Info Adding target FileTarget(Name=ownFile-web)
+2022-01-31 10:17:23.3348 Info Adding target ConsoleTarget(Name=lifetimeConsole)
+2022-01-31 10:17:23.3564 Info Validating config: TargetNames=allfile, lifetimeConsole, ownFile-web, ConfigItems=62, FilePath=C:\Users\antonin\Documents\DIIAGE\Projet-5\WebApp\SensoStat.WebApplication\bin\Debug\net6.0\NLog.config
+2022-01-31 12:55:31.2005 Info Message Template Auto Format enabled
+2022-01-31 12:55:31.2120 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-31 12:55:31.2721 Info Adding target FileTarget(Name=allfile)
+2022-01-31 12:55:31.2843 Info Adding target FileTarget(Name=ownFile-web)
+2022-01-31 12:55:31.2843 Info Adding target ConsoleTarget(Name=lifetimeConsole)
+2022-01-31 12:55:31.3137 Info Validating config: TargetNames=allfile, lifetimeConsole, ownFile-web, ConfigItems=62, FilePath=C:\Users\antonin\Documents\DIIAGE\Projet-5\WebApp\SensoStat.WebApplication\bin\Debug\net6.0\NLog.config
+2022-01-31 13:09:12.7599 Info Message Template Auto Format enabled
+2022-01-31 13:09:12.7688 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-31 13:09:12.8177 Info Adding target FileTarget(Name=allfile)
+2022-01-31 13:09:12.8177 Info Adding target FileTarget(Name=ownFile-web)
+2022-01-31 13:09:12.8177 Info Adding target ConsoleTarget(Name=lifetimeConsole)
+2022-01-31 13:09:12.8658 Info Validating config: TargetNames=allfile, lifetimeConsole, ownFile-web, ConfigItems=62, FilePath=C:\Users\antonin\Documents\DIIAGE\Projet-5\WebApp\SensoStat.WebApplication\bin\Debug\net6.0\NLog.config

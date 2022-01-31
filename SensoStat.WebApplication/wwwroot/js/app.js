@@ -5,10 +5,10 @@ function auto_grow(element) {
 // fonction d'ajout d'input d'instruction
 function addInstruction(type) {
 
-    // appel de la fonction researchLastInstruction qui vérifie et renvoi la dernière instruction ou question
-    var lastInstruction = researchLastInstruction();
+    // appel de la fonction researchLastInstruction qui vérifie et renvoi la dernière instruction ou question puis création d'une variable name reprenent le type et sont numéro  
+    var lastInstruction = researchLastInstruction(type);
+    var name = type + lastInstruction;
 
-    console.log(lastInstruction);
     // récupére la span ou sera les éléments 
     var span = document.getElementById("SpanInstru");
 
@@ -21,8 +21,8 @@ function addInstruction(type) {
     divLabel.setAttribute('class', 'col col-lg-2');
     // crée un label est l'ajoute à la divLabel
     var label = document.createElement("label");
-    label.setAttribute('for', '');
-    label.textContent = type;
+    label.setAttribute('for', name);
+    label.textContent = name;
     divLabel.appendChild(label);
 
     // crée une div comprenant le textarea
@@ -30,11 +30,11 @@ function addInstruction(type) {
     divInput.setAttribute('class', 'col-10')
     // crée un textarea est l'ajoute à la divInput
     var input = document.createElement("textarea");
-    input.setAttribute('class', 'form-control test');
-    input.setAttribute('name', type);
+    input.setAttribute('class', 'form-control ChampInstru');
+    input.setAttribute('name', name);
     input.setAttribute('rows', '1');
     input.setAttribute('oninput', 'auto_grow(this)');
-    input.setAttribute('placeholder', 'ici doit tre inscrit le message  !');
+    input.setAttribute('placeholder', 'ici doit etre inscrit le message  !');
     divInput.appendChild(input);
 
     // ajout les div à la section puis utilise append pour préciser l'ordre
@@ -47,10 +47,27 @@ function addInstruction(type) {
 }
 
 // récupére tout les inputs d''instructio net de question et renvoi le dernier 
-function researchLastInstruction() {
+function researchLastInstruction(type) {
     // récupére les input se trouvent dans la span SpanInstru
-    var all = document.getElementsByClassName("test");
-    return all;
-    // 
+    var all = document.getElementsByClassName("ChampInstru");
+    var totalInstruction = 0;
+    var totalQuestion = 0;
 
+    Array.from(all).forEach(element => {
+        if (element.name.includes('Instruction')) {
+            totalInstruction += 1;
+        }
+        else {
+            totalQuestion += 1;
+        }
+    })
+
+    if (type == 'Instruction') {
+        totalInstruction += 1;
+        return totalInstruction;
+    }
+    else {
+        totalQuestion += 1;
+        return totalQuestion;
+    }
 }
