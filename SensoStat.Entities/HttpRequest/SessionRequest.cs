@@ -10,11 +10,11 @@
 
         public int IdPerson { get; set; }
 
-        public List<Product> Products { get; set; }
+        public List<ProductRequest> Products { get; set; }
 
         public List<InstructionRequest> Instructions { get; set; }
 
-        public List<Publication> Publications { get; set; }
+        //public List<Publication> Publications { get; set; }
 
     }
 }
