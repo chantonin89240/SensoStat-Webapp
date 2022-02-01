@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SensoStat.EntitiesContext\SensoStat.EntitiesContext.csproj" />
+    <ProjectReference Include="..\SensoStat.Repository.Contracts\SensoStat.Repository.Contracts.csproj" />
     <ProjectReference Include="..\SensoStat.Repository\SensoStat.Repository.csproj" />
     <ProjectReference Include="..\SensoStat.Services\SensoStat.Services.csproj" />
     <ProjectReference Include="..\SensoStat.Services.Contracts\SensoStat.Services.Contracts.csproj" />

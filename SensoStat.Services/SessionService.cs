@@ -1,6 +1,8 @@
 ﻿namespace SensoStat.Services
 {
     using Microsoft.AspNetCore.Mvc;
+    using SensoStat.Entities;
+    using SensoStat.Entities.Request;
     using SensoStat.Repository.Contracts;
 
     public class SessionService
@@ -12,14 +14,25 @@
             this._sessionRepository = sessionRepository;
         }
 
-        public IActionResult GetSessions()
+        public IActionResult Get()
         {
             return new OkObjectResult(this._sessionRepository.FindAll());
         }
 
-        public IActionResult CreateSession()
+        public Session Create(SessionRequest sessionRequest)
         {
-            return new OkObjectResult("");
+            var session = new Session()
+            {
+                Name = sessionRequest.Name,
+                Etat = sessionRequest.Etat,
+                DateCreate = DateTime.Now,
+                IdPerson = sessionRequest.IdPerson,
+            };
+
+            session.DateUpdate = session.DateCreate;
+
+            this._sessionRepository.Add(session);
+            return session;
         }
     }
 }
