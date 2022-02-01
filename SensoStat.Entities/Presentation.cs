@@ -18,7 +18,7 @@
 
         public Presentation() { }
 
-        public Presentation(int rank, Panelist panelist, Product product) : this()
+        public Presentation(Panelist panelist, Product product, int rank) : this()
         {
             this.Rank = rank;
             this.Panelist = panelist;

@@ -23,9 +23,8 @@
             this.Presentations = new List<Presentation>();
         }
 
-        public Panelist(int id, string codePanelist) : this()
+        public Panelist(string codePanelist) : this()
         {
-            this.Id = id;
             this.CodePanelist = codePanelist;
         }
     }

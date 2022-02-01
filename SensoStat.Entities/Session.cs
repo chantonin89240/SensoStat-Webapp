@@ -19,7 +19,7 @@
 
         public DateTime? DateClose { get; set; }
 
-        public Person Person { get; set; }
+        public User Person { get; set; }
 
         public int IdPerson { get; set; }
 
@@ -36,9 +36,8 @@
             this.Publications = new List<Publication>();
         }
 
-        public Session(int id, string name, string etat, DateTime dateCreate, DateTime dateUpdate, DateTime dateClose, Person person) : this()
+        public Session(string name, string etat, DateTime dateCreate, DateTime dateUpdate, DateTime dateClose, User person) : this()
         {
-            this.Id = id;
             this.Name = name;
             this.Etat = etat;
             this.DateCreate = dateCreate;

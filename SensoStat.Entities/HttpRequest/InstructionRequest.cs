@@ -6,5 +6,8 @@
 
         public int Chronology { get; set; }
 
+        public int IdSession { get; set; }
+
+        public List<Response> Responses { get; set; }
     }
 }

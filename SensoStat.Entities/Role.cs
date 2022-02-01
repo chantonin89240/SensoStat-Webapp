@@ -10,11 +10,11 @@
         [Required]
         public string Libelle { get; set; }
 
-        public List<Person> Persons { get; set; }
+        public List<User> Persons { get; set; }
 
         public Role()
         {
-            this.Persons = new List<Person>();
+            this.Persons = new List<User>();
         }
 
         public Role(int id, string libelle) : this()

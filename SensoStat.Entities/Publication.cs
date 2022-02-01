@@ -22,7 +22,7 @@
 
         public Publication() { }
 
-        public Publication(string url, DateTime dateStart, DateTime dateEnd, Session session, Panelist panelist)
+        public Publication(Session session, Panelist panelist, string url, DateTime dateStart, DateTime dateEnd)
         {
             this.Url = url;
             this.DateStart = dateStart;

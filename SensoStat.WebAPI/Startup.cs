@@ -1,4 +1,4 @@
-﻿namespace SensoStat.WebAPI
+﻿ namespace SensoStat.WebAPI
 {
     using Microsoft.EntityFrameworkCore;
     using SensoStat.EntitiesContext;
@@ -69,6 +69,7 @@
                 }
                 catch (Exception ex)
                 {
+                    throw ex;
                 }
             }
 

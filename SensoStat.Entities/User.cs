@@ -3,7 +3,7 @@
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
-    public class Person
+    public class User
     {
         public int Id { get; set; }
 
@@ -28,14 +28,13 @@
 
         public List<Session> Sessions { get; set; }
 
-        public Person()
+        public User()
         {
             this.Sessions = new List<Session>();
         }
 
-        public Person(int id, Role role, string lastName, string firstName, string mail, string login, string password) : this()
+        public User(Role role, string lastName, string firstName, string mail, string login, string password) : this()
         {
-            this.Id = id;
             this.Role = role;
             this.IdRole = role.Id;
             this.LastName = lastName;
