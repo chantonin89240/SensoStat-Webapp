@@ -19,7 +19,7 @@
         [HttpGet]
         public IActionResult Get()
         {
-            return this.Ok(this._presentationService.Get());
+            throw new NotImplementedException();
         }
 
         [HttpGet("{id}")]
