@@ -2,11 +2,18 @@
 {
     using CsvHelper;
     using Microsoft.AspNetCore.Http;
+    using Newtonsoft.Json;
+    using SensoStat.Entities;
     using SensoStat.WebApplication.Services.Contracts;
     using System.Globalization;
 
     public class SessionService : ISessionService
     {
+        private readonly ClientService _clientService;
+        public SessionService(ClientService clientService)
+        {
+            this._clientService = clientService;
+        }
         /// <summary>
         /// Connection à une serveur HTTP.
         /// </summary>
@@ -17,6 +24,14 @@
             HttpClient httpClient = new HttpClient();
             var response = httpClient.GetAsync(url).Result;
             return response;
+        }
+
+        public IEnumerable<Session> GetSessions()
+        {
+            var sessions = this._clientService.GetDataFromHttpClient("api/Sessions");
+
+            return JsonConvert.DeserializeObject<IEnumerable<Session>>(sessions);
+
         }
 
         public void LoadFile(IFormFile file)

@@ -1,6 +1,7 @@
 ﻿namespace SensoStat.Repository
 {
     using System.Collections.Generic;
+    using Microsoft.EntityFrameworkCore;
     using SensoStat.Entities;
     using SensoStat.EntitiesContext;
     using SensoStat.Repository.Contracts;
@@ -35,19 +36,20 @@
         /// <inheritdoc/>
         public Session Find(int id)
         {
-            return this._context.Sessions.FirstOrDefault(session => session.Id == id);
+            return this._context.Sessions.Include(s => s.Products).Include(i => i.Instructions).FirstOrDefault(session => session.Id == id);
         }
 
         /// <inheritdoc/>
         public IEnumerable<Session> FindAll()
         {
-            return this._context.Sessions;
+            return this._context.Sessions.Include(s => s.Products).Include(i => i.Instructions).Include(s => s.Publications);
         }
 
         /// <inheritdoc/>
         public void Update(Session session)
         {
             this._context.Update(session);
+            this._context.SaveChanges();
         }
     }
 }

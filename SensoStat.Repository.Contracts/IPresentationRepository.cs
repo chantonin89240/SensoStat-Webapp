@@ -20,11 +20,11 @@
         void Delete(Presentation presentation);
 
         /// <summary>
-        /// Retourne la présentation demandée.
+        /// .
         /// </summary>
-        /// <param name="id">Id de la présentation à trouver.</param>
-        /// <returns>La présentation ayant l'id demandé si celui-ci est trouvé sinon renvoie null.</returns>
-        Presentation Find(int id);
+        /// <param name="id"></param>
+        /// <returns>.</returns>
+        IEnumerable<Presentation> FindByIdSession(int id);
 
         /// <summary>
         /// Retourne toutes les présentations.

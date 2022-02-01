@@ -1,25 +1,26 @@
 ﻿namespace SensoStat.WebApplication.Controllers
 {
-    using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Http;
-    using SensoStat.WebApplication.ViewModels;
-    using System.IO;
-    using CsvHelper;
-    using System.Globalization;
+    using Microsoft.AspNetCore.Mvc;
+    using SensoStat.WebApplication.Services;
     using SensoStat.WebApplication.Services.Contracts;
+    using SensoStat.WebApplication.ViewModels;
 
     public class SessionController : Controller
     {
-        private readonly ISessionService sessionService;
+        private readonly ISessionService _sessionService;
+        private readonly ClientService _clientService;
 
-        public SessionController(ISessionService service)
+        public SessionController(ISessionService service, ClientService clientService)
         {
-            this.sessionService = service;
+            this._sessionService = service;
+            this._clientService = clientService;
         }
 
         public IActionResult Index()
         {
-            return this.View();
+            var model = this._sessionService.GetSessions();
+            return this.View(model);
         }
 
         public IActionResult Archive()
@@ -42,7 +43,7 @@
         [HttpPost]
         public IActionResult Create(SessionViewModel session)
         {
-            
+            this._clientService.PostDataFromHttpClient("api/Sessions", session);
             return this.View();
         }
 
@@ -71,7 +72,7 @@
         [HttpPost]
         public async Task<IActionResult> LoadFile(IFormFile file)
         {
-            this.sessionService.LoadFile(file);
+            this._sessionService.LoadFile(file);
             return RedirectToAction("create");
         }
 

@@ -2,10 +2,10 @@
 
 namespace SensoStat.WebAPI.Controllers
 {
+    using System;
     using Microsoft.AspNetCore.Mvc;
     using SensoStat.Entities.Request;
     using SensoStat.Services;
-    using System;
 
     [Route("api/[controller]")]
     [ApiController]
@@ -20,28 +20,34 @@ namespace SensoStat.WebAPI.Controllers
 
         // GET: api/<SessionController>
         [HttpGet]
-        public IActionResult GetSessions()
+        public IActionResult Get()
         {
-            return this._sessionService.Get();
+            return this.Ok(this._sessionService.Get());
         }
 
-        //[HttpGet]
-        //public IActionResult GetById(int idSession)
-        //{
-        //    return this._sessionService.Get();
-        //}
+        [HttpGet("{id}")]
+        public IActionResult GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
 
-        //[HttpPost]
-        //public IActionResult CreateSession([FromBody] SessionRequest session)
-        //{
-        //    var sessionResponse = this._sessionService.Create(session);
-        //    return CreatedAtAction(nameof(SessionsController.GetById), new { id = sessionResponse.Id }, sessionResponse);
-        //}
+        [HttpPost]
+        public IActionResult CreateSession([FromBody] SessionRequest session)
+        {
+            var sessionResponse = this._sessionService.Create(session);
+            return this.CreatedAtAction(nameof(SessionsController.GetById), new { id = sessionResponse.Id }, sessionResponse);
+        }
 
         [HttpPut("{id}")]
         public IActionResult UpdateSession(int id)
         {
-            return this._sessionService.Get();
+            return this.Ok(this._sessionService.Get());
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteSession(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }
