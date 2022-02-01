@@ -125,12 +125,25 @@
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2196" />
     <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
+    <PackageReference Include="Prism.DryIoc.Forms">
+      <Version>8.1.97</Version>
+    </PackageReference>
+    <PackageReference Include="sqlite-net-pcl">
+      <Version>1.8.116</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>13.0.1</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\SensoStat\SensoStat.csproj">
-      <Project>{88DB3978-0E46-4518-ACF8-E0926B5D5B8E}</Project>
+      <Project>{03AE48B6-0930-45D9-AC7D-9A44693E7EB8}</Project>
       <Name>SensoStat</Name>
+      <ReferenceSourceTarget></ReferenceSourceTarget>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\" />
   </ItemGroup>
 </Project>

@@ -4,6 +4,12 @@
 
     public class PublicationFactory
     {
+        private static int nombrePaneliste = 50;
+        /// <summary>
+        /// Générateur de panéliste et de leur publication d'url respective
+        /// </summary>
+        /// <param name="sessions"></param>
+        /// <returns></returns>
         public static List<Publication> GeneratePublication(List<Session> sessions)
         {
             List<Publication> publications = new List<Publication>();
@@ -23,12 +29,8 @@
                    p.Date.Future()
                    ));
 
-                publications.AddRange(CreatePublicationFactory.Generate(50));
+                publications.AddRange(CreatePublicationFactory.Generate(nombrePaneliste));
             });
-                //.StrictMode(true)
-                //.RuleFor(p => p.Url, f => f.Internet.Url())
-                //.RuleFor(p => p.DateStart, f => f.Date.Recent())
-                //.RuleFor(p => p.DateEnd, f => f.Date.Future());
 
             return publications;
         }

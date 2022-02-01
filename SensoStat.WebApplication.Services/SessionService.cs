@@ -6,6 +6,7 @@
     using SensoStat.Entities;
     using SensoStat.WebApplication.Services.Contracts;
     using System.Globalization;
+    using System.Net;
 
     public class SessionService : ISessionService
     {
@@ -34,7 +35,12 @@
 
         }
 
-        public void LoadFile(IFormFile file)
+        /// <summary>
+        /// Méthode de chargement, lecture et enregistrement en base de données de fichier CSV
+        /// </summary>
+        /// <param name="file"></param>
+        /// <returns>Le code du status de la réponse rétourné par l'API</returns>
+        public HttpStatusCode LoadFile(IFormFile file)
         {
             using (var fileStream = file.OpenReadStream())
             using (var reader = new StreamReader(fileStream))
@@ -64,7 +70,7 @@
                 };
             }
 
-            
+            return HttpStatusCode.OK;
         }
     }
 }

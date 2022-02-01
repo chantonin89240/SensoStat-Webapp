@@ -16,6 +16,11 @@
         public static List<Publication> publications;
         public static List<Presentation> presentations = new List<Presentation>();
         public static List<Response> responses = new List<Response>();
+
+        /// <summary>
+        /// Méthode d'amorçage de la base de données 
+        /// </summary>
+        /// <param name="serviceProvider"></param>
         public static void Initialize(IServiceProvider serviceProvider)
         {
             
@@ -28,10 +33,6 @@
                 users = UserCreator();
                 context.Users.AddRange(users);
                 context.SaveChanges();
-
-                //panelists = PanelistCreator();
-                //context.Panelists.AddRange(panelists);
-                //context.SaveChanges();
 
                 sessions = SessionCreator();
                 context.Sessions.AddRange(sessions);
@@ -67,36 +68,57 @@
             }
         }
 
+        /// <summary>
+        /// Génère 10 utilisateurs du back office
+        /// </summary>
+        /// <returns>Liste d'utilisateurs</returns>
         public static List<User> UserCreator()
         {
             return PersonFactory.GeneratePerson(roles).ToList();
         }
 
+        /// <summary>
+        /// Génère 100 séances
+        /// </summary>
+        /// <returns>Liste de séances</returns>
         public static List<Session> SessionCreator()
         {
             return SessionFactory.GenerateSession(users).ToList();
         }
 
-        public static List<Panelist> PanelistCreator()
-        {
-            return PanelistFactory.GeneratePanelist();
-        }
-
+        /// <summary>
+        /// Génère 1000 produits
+        /// </summary>
+        /// <returns>Liste de produits</returns>
         public static List<Product> ProductCreator()
         {
             return ProductFactory.GenerateProduct(sessions);
         }
 
+        /// <summary>
+        /// Génère 9 instructions par session
+        /// </summary>
+        /// <returns>Liste d'instructions</returns>
         public static List<Instruction> InstructionCreator()
         {
             return InstructionFactory.GenerateInstruction(sessions);
         }
 
+        /// <summary>
+        /// Génère 50 panélistes et la publication de leurs URL pour chaque session
+        /// </summary>
+        /// <returns>Liste de publications</returns>
         public static List<Publication> PublicationCreator()
         {
             return PublicationFactory.GeneratePublication(sessions);
         }
 
+        /// <summary>
+        /// Génère un plan de présentation pour pour chaque panélist participant à une séance
+        /// </summary>
+        /// <param name="session"></param>
+        /// <param name="context"></param>
+        /// <returns>Liste de Plan de présentation</returns>
         public static List<Presentation> PresentationCreator(Session session, SensoStatDbContext context)
         {
             var panelistSession = from panelist in context.Panelists
@@ -110,6 +132,12 @@
             return PresentationFactory.GeneratePresentation(panelistSession.ToList(), productSession);
         }
 
+        /// <summary>
+        /// Génère les réponses de chaque panéliste pour chaque produit et chaque question
+        /// </summary>
+        /// <param name="session"></param>
+        /// <param name="context"></param>
+        /// <returns>Liste de réponse</returns>
         public static List<Response> ResponseCreator(Session session, SensoStatDbContext context)
         {
             var panelistSession = from panelist in context.Panelists

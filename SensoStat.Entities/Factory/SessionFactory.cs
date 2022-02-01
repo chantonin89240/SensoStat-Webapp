@@ -4,6 +4,13 @@
 
     public class SessionFactory
     {
+        private static int nombreSeance = 100;
+
+        /// <summary>
+        /// Générateur de fausses séances
+        /// </summary>
+        /// <param name="users"></param>
+        /// <returns></returns>
         public static IEnumerable<Session> GenerateSession(List<User> users)
         {
             var TypeEtat = new[] { "Close", "Deploy", "No Deploy" };
@@ -17,14 +24,8 @@
                 f.Date.Future(),
                 users[f.Random.Number(0, users.Count-1)]));
 
-            var sessions = CreateSessionFactory.Generate(100);
+            var sessions = CreateSessionFactory.Generate(nombreSeance);
 
-            //.RuleFor(p => p.Id, f => SessionId++)
-            //.RuleFor(p => p.Name, f => f.Name.JobTitle())
-            //.RuleFor(p => p.Etat, f => f.PickRandom(TypeEtat))
-            //.RuleFor(p => p.DateCreate, f => f.Date.Recent())
-            //.RuleFor(p => p.DateUpdate, f => f.Date.Recent())
-            //.RuleFor(p => p.DateClose, f => f.Date.Future());
             return sessions;
         }
     }

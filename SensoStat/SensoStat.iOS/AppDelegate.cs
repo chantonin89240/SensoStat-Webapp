@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Foundation;
+using Prism;
 using UIKit;
 
 namespace SensoStat.iOS
@@ -23,9 +24,17 @@ namespace SensoStat.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
-            LoadApplication(new App());
+            LoadApplication(new App(new IocInitializer()));
 
             return base.FinishedLaunching(app, options);
+        }
+    }
+
+    public class IocInitializer : IPlatformInitializer
+    {
+        public void RegisterTypes(IContainerRegistry containerRegistry)
+        {
+            //throw new NotImplementedException();
         }
     }
 }

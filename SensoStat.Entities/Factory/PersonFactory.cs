@@ -4,6 +4,13 @@
 
     public static class PersonFactory
     {
+        private static int nombreUtilisateur = 10;
+
+        /// <summary>
+        /// Générateur de faux utilisateurs et attribution d'un rôles random
+        /// </summary>
+        /// <param name="roles"></param>
+        /// <returns></returns>
         public static IEnumerable<User> GeneratePerson(List<Role> roles) 
         {
             var PersonId = 0;
@@ -14,17 +21,9 @@
                     f.Name.FirstName(),
                     f.Internet.Email(),
                     f.Name.FullName(),
-                    f.Random.String(10)));
+                    f.Random.String2(10)));
 
-            //.RuleFor(p => p.Id, f => PersonId++)
-            //.RuleFor(p => p.Role, roles[p.Random.Number(1, 2)])
-            //.RuleFor(p => p.LastName, f => f.Name.LastName())
-            //.RuleFor(p => p.FirstName, f => f.Name.FirstName())
-            //.RuleFor(p => p.Mail, f => f.Internet.Email())
-            //.RuleFor(p => p.Login, f => f.Name.FullName())
-            //.RuleFor(p => p.Password, f => f.Random.String(10));
-
-            var users = CreatePersonFactory.Generate(10);
+            var users = CreatePersonFactory.Generate(nombreUtilisateur);
             return users;
         }
     }

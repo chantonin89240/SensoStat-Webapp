@@ -4,6 +4,12 @@
 
     public class PresentationFactory
     {
+        /// <summary>
+        /// Générateur de de plan de présentation pour chaque panéliste et chaque produits en paramètres
+        /// </summary>
+        /// <param name="panelists"></param>
+        /// <param name="products"></param>
+        /// <returns></returns>
         public static List<Presentation> GeneratePresentation(List<Panelist> panelists, List<Product> products)
         {
             List<Presentation> presentations = new List<Presentation>();
@@ -21,10 +27,6 @@
                     presentations.Add(presentation);
                 });
             });
-
-            //var CreatePresentationFactory = new Faker<Presentation>()
-            //    .StrictMode(true)
-            //    .RuleFor(p => p.Rank, f => f.Random.Int(5));
 
             return presentations;
         }
