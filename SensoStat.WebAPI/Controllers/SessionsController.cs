@@ -2,10 +2,10 @@
 
 namespace SensoStat.WebAPI.Controllers
 {
+    using System;
     using Microsoft.AspNetCore.Mvc;
     using SensoStat.Entities.Request;
     using SensoStat.Services;
-    using System;
 
     [Route("api/[controller]")]
     [ApiController]
@@ -26,7 +26,7 @@ namespace SensoStat.WebAPI.Controllers
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetById(int idSession)
+        public IActionResult GetById(int id)
         {
             throw new NotImplementedException();
         }
@@ -42,6 +42,12 @@ namespace SensoStat.WebAPI.Controllers
         public IActionResult UpdateSession(int id)
         {
             return this.Ok(this._sessionService.Get());
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteSession(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }
