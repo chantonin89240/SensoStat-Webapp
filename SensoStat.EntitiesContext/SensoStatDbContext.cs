@@ -7,7 +7,7 @@
     {
         public DbSet<Instruction> Instructions { get; set; }
         public DbSet<Panelist> Panelists { get; set; }
-        public DbSet<Person> Persons { get; set; }
+        public DbSet<User> Users { get; set; }
         public DbSet<Presentation> Presentations { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Publication> Publications { get; set; }
@@ -40,7 +40,7 @@
                 entity.HasKey(e => e.Id);
             });
 
-            modelBuilder.Entity<Person>(entity =>
+            modelBuilder.Entity<User>(entity =>
             {
                 entity.ToTable("Person");
 

@@ -4,7 +4,7 @@
 
     public class PanelistFactory
     {
-        public static Faker<Panelist> GeneratePanelist()
+        public static List<Panelist> GeneratePanelist()
         {
             var PanelistId = 0;
             var CreatePanelistFactory = new Faker<Panelist>()
@@ -12,8 +12,8 @@
                 .RuleFor(p => p.Id, f => PanelistId++)
                 .RuleFor(p => p.CodePanelist, f => f.Random.String(4));
 
-
-            return CreatePanelistFactory;
+            var panelists = CreatePanelistFactory.Generate(100);
+            return panelists;
         }
     }
 }

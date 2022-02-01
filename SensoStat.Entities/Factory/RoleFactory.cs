@@ -9,8 +9,8 @@
             List<Role> roles = new List<Role>()
             {
                 new Role() { Id = 1, Libelle = "SuperAdmin" },
-                new Role() { Id = 1, Libelle = "Admin" },
-                new Role() { Id = 1, Libelle = "Stagiaire" },
+                new Role() { Id = 2, Libelle = "Admin" },
+                new Role() { Id = 3, Libelle = "Stagiaire" },
             };
 
             return roles;
