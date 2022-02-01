@@ -1,8 +1,4 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model List<SensoStat.Entities.Session>
 
 <div class="p-5">
 	<h2>Liste des séances actives</h2>
@@ -10,7 +6,6 @@
 	<table class="table table-bordered table-striped table-hover">
   <thead>
     <tr class="table-secondary">
-      <th scope="col">Réf.</th>
       <th scope="col">Nom de la séance</th>
       <th class="text-center" scope="col">Date de dernière modification</th>
       <th class="text-center" scope="col">Statut</th>
@@ -20,84 +15,22 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Vico</td>
-      <td class="text-center">20/12/2021</td>
-      <td class="text-center">Non Déployer</td>
-      <td class="text-end">0%</td>
-      <td class="text-end">0%</td>
-      <td class="text-center">
-          <a class="ms-1 me-1" asp-controller="Session" asp-action="edit" asp-route-id=""><i class="fas fa-edit"></i></a>
-          <a class="ms-1 me-1" asp-controller="Session" asp-action="CloneSession" asp-route-id="IdSesion"><i class="far fa-clone"></i></a>
-          <a class="ms-1 me-1" asp-controller="Session" asp-action="archive" asp-route-id=""><i class="fas fa-archive"></i></a>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>L'Oréal</td>
-      <td class="text-center">14/02/2021</td>
-      <td class="text-center">Non Déployer</td>
-      <td class="text-end">0%</td>
-      <td class="text-end">86%</td>
-      <td class="text-center">
-          <a class="ms-1 me-1" asp-controller="Session" asp-action="edit" asp-route-id=""><i class="fas fa-edit"></i></a>
-          <a class="ms-1 me-1" asp-controller="Session" asp-action="CloneSession" asp-route-id="IdSesion"><i class="far fa-clone"></i></a>
-          <a class="ms-1 me-1" asp-controller="Session" asp-action="archive" asp-route-id=""><i class="fas fa-archive"></i></a>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Nestlé</td>
-      <td class="text-center">14/02/2021</td>
-      <td class="text-center">Non Déployer</td>
-      <td class="text-end">0%</td>
-      <td class="text-end">100%</td>
-      <td class="text-center">
-          <a class="ms-1 me-1" asp-controller="Session" asp-action="edit" asp-route-id=""><i class="fas fa-edit"></i></a>
-          <a class="ms-1 me-1" asp-controller="Session" asp-action="CloneSession" asp-route-id="IdSesion"><i class="far fa-clone"></i></a>
-          <a class="ms-1 me-1" asp-controller="Session" asp-action="archive" asp-route-id=""><i class="fas fa-archive"></i></a>
-      </td>
-    </tr>
-     <tr>
-      <th scope="row">4</th>
-      <td>Givaudan</td>
-      <td class="text-center">20/12/2021</td>
-      <td class="text-center">Non Déployer</td>
-      <td class="text-end">0%</td>
-      <td class="text-end">14%</td>
-      <td class="text-center">
-          <a class="ms-1 me-1" asp-controller="Session" asp-action="edit" asp-route-id=""><i class="fas fa-edit"></i></a>
-          <a class="ms-1 me-1" asp-controller="Session" asp-action="CloneSession" asp-route-id="IdSesion"><i class="far fa-clone"></i></a>
-          <a class="ms-1 me-1" asp-controller="Session" asp-action="archive" asp-route-id=""><i class="fas fa-archive"></i></a>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">5</th>
-      <td>Decathlon</td>
-      <td class="text-center">14/02/2021</td>
-      <td class="text-center">Non Déployer</td>
-      <td class="text-end">0%</td>
-      <td class="text-end">58%</td>
-      <td class="text-center">
-          <a class="ms-1 me-1" asp-controller="Session" asp-action="edit" asp-route-id=""><i class="fas fa-edit"></i></a>
-          <a class="ms-1 me-1" asp-controller="Session" asp-action="CloneSession" asp-route-id="IdSesion"><i class="far fa-clone"></i></a>
-          <a class="ms-1 me-1" asp-controller="Session" asp-action="archive" asp-route-id=""><i class="fas fa-archive"></i></a>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">6</th>
-      <td>Urgo</td>
-      <td class="text-center">14/02/2021</td>
-      <td class="text-center">Non Déployer</td>
-      <td class="text-end">0%</td>
-      <td class="text-end">98%</td>
-      <td class="text-center">
-          <a class="ms-1 me-1" asp-controller="Session" asp-action="edit" asp-route-id=""><i class="fas fa-edit"></i></a>
-          <a class="ms-1 me-1" asp-controller="Session" asp-action="CloneSession" asp-route-id="IdSesion"><i class="far fa-clone"></i></a>
-          <a class="ms-1 me-1" asp-controller="Session" asp-action="archive" asp-route-id=""><i class="fas fa-archive"></i></a>
-      </td>
-    </tr>
+
+      @foreach (var session in @Model)
+      {
+        <tr>
+            <td>@session.Name</td>
+            <td class="text-center">@session.DateUpdate</td>
+            <td class="text-center">@session.Etat</td>
+            <td class="text-end">%</td>
+            <td class="text-end">%</td>
+            <td class="text-center">
+                <a class="ms-1 me-1" asp-controller="Session" asp-action="edit" asp-route-id="@session.Id"><i class="fas fa-edit"></i></a>
+                <a class="ms-1 me-1" asp-controller="Session" asp-action="CloneSession" asp-route-id="@session.Id"><i class="far fa-clone"></i></a>
+                <a class="ms-1 me-1" asp-controller="Session" asp-action="archive" asp-route-id="@session.Id"><i class="fas fa-archive"></i></a>
+            </td>
+        </tr>
+      }
   </tbody>
 </table>
 <div class="d-flex justify-content-end">

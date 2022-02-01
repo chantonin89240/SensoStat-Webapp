@@ -2,16 +2,19 @@
 {
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
+    using SensoStat.WebApplication.Services;
     using SensoStat.WebApplication.Services.Contracts;
     using SensoStat.WebApplication.ViewModels;
 
     public class SessionController : Controller
     {
         private readonly ISessionService _sessionService;
+        private readonly ClientService _clientService;
 
-        public SessionController(ISessionService service)
+        public SessionController(ISessionService service, ClientService clientService)
         {
             this._sessionService = service;
+            this._clientService = clientService;
         }
 
         public IActionResult Index()
@@ -40,7 +43,7 @@
         [HttpPost]
         public IActionResult Create(SessionViewModel session)
         {
-            
+            this._clientService.PostDataFromHttpClient("api/Sessions", session);
             return this.View();
         }
 
