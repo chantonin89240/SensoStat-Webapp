@@ -28,15 +28,15 @@
             string connectionBdd = this.Configuration.GetConnectionString("SensoStatDbContext");
             string connectionBddPostgresSQL = this.Configuration.GetConnectionString("SensoStatDbContextPostgresSql");
 
+            // services.AddDbContext<SensoStatDbContext>(options =>
+            // {
+            //     options.UseSqlServer(connectionBdd);
+            // });
+
             services.AddDbContext<SensoStatDbContext>(options =>
             {
-                options.UseSqlServer(connectionBdd);
+                options.UseNpgsql(connectionBddPostgresSQL);
             });
-
-            //services.AddDbContext<SensoStatDbContext>(options =>
-            //{
-            //    options.UseNpgsql(connectionBddPostgresSQL);
-            //});
 
             services.AddScoped<ISessionRepository, SessionRepository>();
             services.AddScoped<ISessionService, SessionService>();
@@ -58,6 +58,8 @@
                 app.UseSwaggerUI();
             }
 
+            // Configuration Comportement PostgresSql on TimeStamp with timezone
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
             using (var scope = app.ApplicationServices.CreateScope())
             {

@@ -10,7 +10,6 @@
         [Required]
         public string Name { get; set; }
 
-        [Required]
         public string Etat { get; set; }
 
         public DateTime DateCreate { get; set; }

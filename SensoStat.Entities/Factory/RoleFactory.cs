@@ -4,6 +4,10 @@
 
     public class RoleFactory
     {
+        /// <summary>
+        /// Génération des différents rôles ayant accès au back office
+        /// </summary>
+        /// <returns></returns>
         public static IEnumerable<Role> GenerateRole()
         {
             List<Role> roles = new List<Role>()

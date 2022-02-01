@@ -4,6 +4,13 @@
 
     public class ProductFactory
     {
+        private static int nombreProduit = 1000;
+
+        /// <summary>
+        /// Génèrateur de produits, chacun est associé à une séance  
+        /// </summary>
+        /// <param name="sessions"></param>
+        /// <returns></returns>
         public static List<Product> GenerateProduct(List<Session> sessions)
         {
             var ProductId = 0;
@@ -12,9 +19,8 @@
                     new Bogus.Randomizer().Replace("###"),
                     sessions[p.Random.Number(0, sessions.Count-1)]
                     ));
-            //.RuleFor(p => p.CodeProduct, f => f.Random.Int(4));
 
-            var products = CreateProductFactory.Generate(1000);
+            var products = CreateProductFactory.Generate(nombreProduit);
             return products;
         }
     }

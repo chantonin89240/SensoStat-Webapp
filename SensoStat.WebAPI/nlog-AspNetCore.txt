@@ -106,3 +106,77 @@
 2022-02-01 14:17:51.5201 Info Adding target FileTarget(Name=ownFile-web)
 2022-02-01 14:17:51.5201 Info Adding target ConsoleTarget(Name=lifetimeConsole)
 2022-02-01 14:17:51.5477 Info Validating config: TargetNames=allfile, lifetimeConsole, ownFile-web, ConfigItems=62, FilePath=C:\Users\antonin\Documents\DIIAGE\Projet-5\WebApp\SensoStat.WebAPI\bin\Debug\net6.0\NLog.config
+2022-02-01 20:19:28.7078 Info Message Template Auto Format enabled
+2022-02-01 20:19:28.7503 Info Loading assembly: NLog.Web.AspNetCore
+2022-02-01 20:19:28.7730 Info Adding target FileTarget(Name=allfile)
+2022-02-01 20:19:28.7761 Info Adding target FileTarget(Name=ownFile-web)
+2022-02-01 20:19:28.7761 Info Adding target ConsoleTarget(Name=lifetimeConsole)
+2022-02-01 20:19:28.8253 Info Validating config: TargetNames=allfile, lifetimeConsole, ownFile-web, ConfigItems=62, FilePath=/Users/twentycent/Desktop/Diiage/P5/SensoStat/SensoStat.WebAPI/bin/Debug/net6.0/NLog.config
+2022-02-01 20:22:54.7376 Info Message Template Auto Format enabled
+2022-02-01 20:22:54.7829 Info Loading assembly: NLog.Web.AspNetCore
+2022-02-01 20:23:26.7670 Info Message Template Auto Format enabled
+2022-02-01 20:23:26.8101 Info Loading assembly: NLog.Web.AspNetCore
+2022-02-01 20:23:26.8325 Info Adding target FileTarget(Name=allfile)
+2022-02-01 20:23:26.8357 Info Adding target FileTarget(Name=ownFile-web)
+2022-02-01 20:23:26.8357 Info Adding target ConsoleTarget(Name=lifetimeConsole)
+2022-02-01 20:23:26.8879 Info Validating config: TargetNames=allfile, lifetimeConsole, ownFile-web, ConfigItems=62, FilePath=/Users/twentycent/Desktop/Diiage/P5/SensoStat/SensoStat.WebAPI/bin/Debug/net6.0/NLog.config
+2022-02-01 20:24:58.3143 Info Message Template Auto Format enabled
+2022-02-01 20:24:58.3571 Info Loading assembly: NLog.Web.AspNetCore
+2022-02-01 20:24:58.3795 Info Adding target FileTarget(Name=allfile)
+2022-02-01 20:24:58.3828 Info Adding target FileTarget(Name=ownFile-web)
+2022-02-01 20:24:58.3828 Info Adding target ConsoleTarget(Name=lifetimeConsole)
+2022-02-01 20:24:58.4299 Info Validating config: TargetNames=allfile, lifetimeConsole, ownFile-web, ConfigItems=62, FilePath=/Users/twentycent/Desktop/Diiage/P5/SensoStat/SensoStat.WebAPI/bin/Debug/net6.0/NLog.config
+2022-02-01 20:25:11.5999 Info Message Template Auto Format enabled
+2022-02-01 20:25:11.6420 Info Loading assembly: NLog.Web.AspNetCore
+2022-02-01 20:25:11.6657 Info Adding target FileTarget(Name=allfile)
+2022-02-01 20:25:11.6689 Info Adding target FileTarget(Name=ownFile-web)
+2022-02-01 20:25:11.6689 Info Adding target ConsoleTarget(Name=lifetimeConsole)
+2022-02-01 20:25:11.7254 Info Validating config: TargetNames=allfile, lifetimeConsole, ownFile-web, ConfigItems=62, FilePath=/Users/twentycent/Desktop/Diiage/P5/SensoStat/SensoStat.WebAPI/bin/Debug/net6.0/NLog.config
+2022-02-01 20:26:32.9734 Info Message Template Auto Format enabled
+2022-02-01 20:26:33.0150 Info Loading assembly: NLog.Web.AspNetCore
+2022-02-01 20:26:33.0374 Info Adding target FileTarget(Name=allfile)
+2022-02-01 20:26:33.0400 Info Adding target FileTarget(Name=ownFile-web)
+2022-02-01 20:26:33.0400 Info Adding target ConsoleTarget(Name=lifetimeConsole)
+2022-02-01 20:26:33.0903 Info Validating config: TargetNames=allfile, lifetimeConsole, ownFile-web, ConfigItems=62, FilePath=/Users/twentycent/Desktop/Diiage/P5/SensoStat/SensoStat.WebAPI/bin/Debug/net6.0/NLog.config
+2022-02-01 20:28:11.5374 Info Message Template Auto Format enabled
+2022-02-01 20:28:11.5803 Info Loading assembly: NLog.Web.AspNetCore
+2022-02-01 20:28:11.6029 Info Adding target FileTarget(Name=allfile)
+2022-02-01 20:28:11.6058 Info Adding target FileTarget(Name=ownFile-web)
+2022-02-01 20:28:11.6058 Info Adding target ConsoleTarget(Name=lifetimeConsole)
+2022-02-01 20:28:11.6578 Info Validating config: TargetNames=allfile, lifetimeConsole, ownFile-web, ConfigItems=62, FilePath=/Users/twentycent/Desktop/Diiage/P5/SensoStat/SensoStat.WebAPI/bin/Debug/net6.0/NLog.config
+2022-02-01 20:29:44.4426 Info Message Template Auto Format enabled
+2022-02-01 20:29:44.4845 Info Loading assembly: NLog.Web.AspNetCore
+2022-02-01 20:29:44.5070 Info Adding target FileTarget(Name=allfile)
+2022-02-01 20:29:44.5097 Info Adding target FileTarget(Name=ownFile-web)
+2022-02-01 20:29:44.5097 Info Adding target ConsoleTarget(Name=lifetimeConsole)
+2022-02-01 20:29:44.5596 Info Validating config: TargetNames=allfile, lifetimeConsole, ownFile-web, ConfigItems=62, FilePath=/Users/twentycent/Desktop/Diiage/P5/SensoStat/SensoStat.WebAPI/bin/Debug/net6.0/NLog.config
+2022-02-01 20:31:09.8191 Info Message Template Auto Format enabled
+2022-02-01 20:31:09.8611 Info Loading assembly: NLog.Web.AspNetCore
+2022-02-01 20:31:09.8836 Info Adding target FileTarget(Name=allfile)
+2022-02-01 20:31:09.8864 Info Adding target FileTarget(Name=ownFile-web)
+2022-02-01 20:31:09.8864 Info Adding target ConsoleTarget(Name=lifetimeConsole)
+2022-02-01 20:31:09.9380 Info Validating config: TargetNames=allfile, lifetimeConsole, ownFile-web, ConfigItems=62, FilePath=/Users/twentycent/Desktop/Diiage/P5/SensoStat/SensoStat.WebAPI/bin/Debug/net6.0/NLog.config
+2022-02-01 20:41:39.7028 Info Message Template Auto Format enabled
+2022-02-01 20:41:39.7458 Info Loading assembly: NLog.Web.AspNetCore
+2022-02-01 20:41:39.7683 Info Adding target FileTarget(Name=allfile)
+2022-02-01 20:41:39.7717 Info Adding target FileTarget(Name=ownFile-web)
+2022-02-01 20:41:39.7717 Info Adding target ConsoleTarget(Name=lifetimeConsole)
+2022-02-01 20:41:39.8270 Info Validating config: TargetNames=allfile, lifetimeConsole, ownFile-web, ConfigItems=62, FilePath=/Users/twentycent/Desktop/Diiage/P5/SensoStat/SensoStat.WebAPI/bin/Debug/net6.0/NLog.config
+2022-02-01 20:43:14.7278 Info Message Template Auto Format enabled
+2022-02-01 20:43:14.7709 Info Loading assembly: NLog.Web.AspNetCore
+2022-02-01 20:43:14.7933 Info Adding target FileTarget(Name=allfile)
+2022-02-01 20:43:14.7964 Info Adding target FileTarget(Name=ownFile-web)
+2022-02-01 20:43:14.7967 Info Adding target ConsoleTarget(Name=lifetimeConsole)
+2022-02-01 20:43:14.8520 Info Validating config: TargetNames=allfile, lifetimeConsole, ownFile-web, ConfigItems=62, FilePath=/Users/twentycent/Desktop/Diiage/P5/SensoStat/SensoStat.WebAPI/bin/Debug/net6.0/NLog.config
+2022-02-01 20:52:12.9654 Info Message Template Auto Format enabled
+2022-02-01 20:52:13.0075 Info Loading assembly: NLog.Web.AspNetCore
+2022-02-01 20:52:13.0293 Info Adding target FileTarget(Name=allfile)
+2022-02-01 20:52:13.0318 Info Adding target FileTarget(Name=ownFile-web)
+2022-02-01 20:52:13.0318 Info Adding target ConsoleTarget(Name=lifetimeConsole)
+2022-02-01 20:52:13.0838 Info Validating config: TargetNames=allfile, lifetimeConsole, ownFile-web, ConfigItems=62, FilePath=/Users/twentycent/Desktop/Diiage/P5/SensoStat/SensoStat.WebAPI/bin/Debug/net6.0/NLog.config
+2022-02-01 21:35:48.4825 Info Message Template Auto Format enabled
+2022-02-01 21:35:48.5242 Info Loading assembly: NLog.Web.AspNetCore
+2022-02-01 21:35:48.5463 Info Adding target FileTarget(Name=allfile)
+2022-02-01 21:35:48.5495 Info Adding target FileTarget(Name=ownFile-web)
+2022-02-01 21:35:48.5495 Info Adding target ConsoleTarget(Name=lifetimeConsole)
+2022-02-01 21:35:48.6022 Info Validating config: TargetNames=allfile, lifetimeConsole, ownFile-web, ConfigItems=62, FilePath=/Users/twentycent/Desktop/Diiage/P5/SensoStat/SensoStat.WebAPI/bin/Debug/net6.0/NLog.config
