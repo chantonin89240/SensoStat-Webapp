@@ -21,7 +21,7 @@ function addInstruction(type) {
     divLabel.setAttribute('class', 'col col-lg-2');
     // crée un label est l'ajoute à la divLabel
     var label = document.createElement("label");
-    label.setAttribute('for', name);
+    label.setAttribute('for', type);
     label.textContent = name;
     divLabel.appendChild(label);
 
@@ -31,8 +31,8 @@ function addInstruction(type) {
     // crée un textarea est l'ajoute à la divInput
     var input = document.createElement("textarea");
     input.setAttribute('class', 'form-control ChampInstru');
-    input.setAttribute('name', name);
     input.setAttribute('rows', '1');
+    input.setAttribute('name', type);
     input.setAttribute('oninput', 'auto_grow(this)');
     input.setAttribute('placeholder', 'ici doit etre inscrit le message  !');
     divInput.appendChild(input);
@@ -54,7 +54,7 @@ function researchLastInstruction(type) {
     var totalQuestion = 0;
 
     Array.from(all).forEach(element => {
-        if (element.name.includes('Instruction')) {
+        if (element.name.includes('Instructions')) {
             totalInstruction += 1;
         }
         else {
@@ -62,7 +62,7 @@ function researchLastInstruction(type) {
         }
     })
 
-    if (type == 'Instruction') {
+    if (type == 'Instructions') {
         totalInstruction += 1;
         return totalInstruction;
     }

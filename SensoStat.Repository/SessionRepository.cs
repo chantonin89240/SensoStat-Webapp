@@ -42,7 +42,7 @@
         /// <inheritdoc/>
         public IEnumerable<Session> FindAll()
         {
-            return this._context.Sessions.Include(s => s.Products).Include(i => i.Instructions);
+            return this._context.Sessions.Include(s => s.Products).Include(i => i.Instructions).Include(s => s.Publications);
         }
 
         /// <inheritdoc/>
