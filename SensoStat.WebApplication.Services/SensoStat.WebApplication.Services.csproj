@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SensoStat.Entities\SensoStat.Entities.csproj" />
     <ProjectReference Include="..\SensoStat.WebApplication.Services.Contracts\SensoStat.WebApplication.Services.Contracts.csproj" />
   </ItemGroup>
 
