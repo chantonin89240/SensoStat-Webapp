@@ -7,16 +7,17 @@
 
     public class SessionController : Controller
     {
-        private readonly ISessionService sessionService;
+        private readonly ISessionService _sessionService;
 
         public SessionController(ISessionService service)
         {
-            this.sessionService = service;
+            this._sessionService = service;
         }
 
         public IActionResult Index()
         {
-            return this.View();
+            var model = this._sessionService.GetSessions();
+            return this.View(model);
         }
 
         public IActionResult Archive()
@@ -68,7 +69,7 @@
         [HttpPost]
         public async Task<IActionResult> LoadFile(IFormFile file)
         {
-            this.sessionService.LoadFile(file);
+            this._sessionService.LoadFile(file);
             return RedirectToAction("create");
         }
 
