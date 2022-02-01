@@ -49,6 +49,7 @@
         public void Update(Session session)
         {
             this._context.Update(session);
+            this._context.SaveChanges();
         }
     }
 }

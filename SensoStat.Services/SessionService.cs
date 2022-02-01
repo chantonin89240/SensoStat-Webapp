@@ -1,24 +1,40 @@
 ﻿namespace SensoStat.Services
 {
-    using Microsoft.AspNetCore.Mvc;
     using SensoStat.Entities;
     using SensoStat.Entities.Request;
     using SensoStat.Repository.Contracts;
+    using SensoStat.Services.Contracts;
 
-    public class SessionService
+    /// <summary>
+    /// .
+    /// </summary>
+    public class SessionService : ISessionService
     {
         private ISessionRepository _sessionRepository;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SessionService"/> class.
+        /// </summary>
+        /// <param name="sessionRepository">Repository utilisé.</param>
         public SessionService(ISessionRepository sessionRepository)
         {
             this._sessionRepository = sessionRepository;
         }
 
+        /// <summary>
+        /// .
+        /// </summary>
+        /// <returns>liste des session.</returns>
         public IEnumerable<Session> Get()
         {
             return this._sessionRepository.FindAll();
         }
 
+        /// <summary>
+        /// .
+        /// </summary>
+        /// <param name="sessionRequest">.</param>
+        /// <returns>la session créer.</returns>
         public Session Create(SessionRequest sessionRequest)
         {
             var session = new Session()
@@ -52,10 +68,14 @@
             return session;
         }
 
-        public Session Find(int idSession)
+        /// <summary>
+        /// .
+        /// </summary>
+        /// <param name="id">id de la session.</param>
+        /// <returns>la session.</returns>
+        public Session Find(int id)
         {
-            Session session = this._sessionRepository.Find(idSession);
-            return session;
+            return this._sessionRepository.Find(id);
         }
     }
 }

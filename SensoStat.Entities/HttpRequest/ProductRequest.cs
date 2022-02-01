@@ -3,7 +3,5 @@
     public class ProductRequest
     {
         public int CodeProduct { get; set; }
-
-
     }
 }
