@@ -16,7 +16,6 @@
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
     <TargetFrameworkVersion>v12.0</TargetFrameworkVersion>
     <AndroidEnableSGenConcurrent>true</AndroidEnableSGenConcurrent>
     <AndroidUseAapt2>true</AndroidUseAapt2>
@@ -88,7 +87,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SensoStat\SensoStat.csproj">
-      <Project>{88DB3978-0E46-4518-ACF8-E0926B5D5B8E}</Project>
+      <Project>{03AE48B6-0930-45D9-AC7D-9A44693E7EB8}</Project>
       <Name>SensoStat</Name>
     </ProjectReference>
   </ItemGroup>
