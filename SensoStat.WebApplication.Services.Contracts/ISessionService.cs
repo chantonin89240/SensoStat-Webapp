@@ -4,5 +4,6 @@
     public interface ISessionService
     {
         void LoadFile(IFormFile file);
+        void GetSessions();
     }
 }

@@ -7,6 +7,11 @@
 
     public class SessionService : ISessionService
     {
+        private readonly ClientService _clientService;
+        public SessionService(ClientService clientService)
+        {
+            this._clientService = clientService;
+        }
         /// <summary>
         /// Connection à une serveur HTTP.
         /// </summary>
@@ -17,6 +22,11 @@
             HttpClient httpClient = new HttpClient();
             var response = httpClient.GetAsync(url).Result;
             return response;
+        }
+
+        public void GetSessions()
+        {
+            var sessions = this._clientService.GetDataFromHttpClient("api/Sessions");
         }
 
         public void LoadFile(IFormFile file)

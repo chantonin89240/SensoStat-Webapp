@@ -14,9 +14,9 @@
             this._sessionRepository = sessionRepository;
         }
 
-        public IActionResult Get()
+        public IEnumerable<Session> Get()
         {
-            return new OkObjectResult(this._sessionRepository.FindAll());
+            return this._sessionRepository.FindAll();
         }
 
         public Session Create(SessionRequest sessionRequest)
