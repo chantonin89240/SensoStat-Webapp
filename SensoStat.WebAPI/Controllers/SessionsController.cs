@@ -25,19 +25,18 @@ namespace SensoStat.WebAPI.Controllers
             return this._sessionService.Get();
         }
 
-        //[HttpGet]
-        //public IActionResult GetById(int idSession)
-        //{
-        //    //throw new NotImplementedException();
-        //    return this._sessionService.Get();
-        //}
+        [HttpGet("{id}")]
+        public IActionResult GetById(int id)
+        {
+            return this.Ok(this._sessionService.Find(id));
+        }
 
-        //[HttpPost]
-        //public IActionResult CreateSession([FromBody] SessionRequest session)
-        //{
-        //    var sessionResponse = this._sessionService.Create(session);
-        //    return CreatedAtAction(nameof(SessionsController.GetById), new { id = sessionResponse.Id }, sessionResponse);
-        //}
+        [HttpPost]
+        public IActionResult CreateSession([FromBody] SessionRequest session)
+        {
+            var sessionResponse = this._sessionService.Create(session);
+            return CreatedAtAction(nameof(SessionsController.GetById), new { id = sessionResponse.Id }, sessionResponse);
+        }
 
         [HttpPut("{id}")]
         public IActionResult UpdateSession(int id)

@@ -6,11 +6,11 @@
     public class Publication
     {
         [Required]
-        public string Url { get; set; }
+        public string? Url { get; set; }
 
-        public DateTime DateStart { get; set; }
+        public DateTime? DateStart { get; set; }
 
-        public DateTime DateEnd { get; set; }
+        public DateTime? DateEnd { get; set; }
 
         public Session Session { get; set; }
 

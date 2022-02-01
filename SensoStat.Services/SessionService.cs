@@ -31,7 +31,30 @@
 
             session.DateUpdate = session.DateCreate;
 
+            foreach (var item in sessionRequest.Products)
+            {
+                session.Products.Add(new Product()
+                {
+                    CodeProduct = item.CodeProduct,
+                });
+            }
+
+            foreach (var item in sessionRequest.Instructions)
+            {
+                session.Instructions.Add(new Instruction()
+                {
+                    Libelle = item.Libelle,
+                    Chronology = item.Chronology,
+                });
+            }
+
             this._sessionRepository.Add(session);
+            return session;
+        }
+
+        public Session Find(int idSession)
+        {
+            Session session = this._sessionRepository.Find(idSession);
             return session;
         }
     }
