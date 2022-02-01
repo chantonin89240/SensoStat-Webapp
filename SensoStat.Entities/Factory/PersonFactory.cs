@@ -7,9 +7,8 @@
         public static IEnumerable<User> GeneratePerson(List<Role> roles) 
         {
             var PersonId = 0;
-            var CreatePersonFactory = new Faker<User>()
+            var CreatePersonFactory = new Faker<User>("fr")
                 .CustomInstantiator(f => new User(
-                    PersonId++,
                     roles[f.Random.Number(0, 2)],
                     f.Name.LastName(),
                     f.Name.FirstName(),

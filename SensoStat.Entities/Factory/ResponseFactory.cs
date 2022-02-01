@@ -1,17 +1,34 @@
-﻿namespace SensoStat.Entities.Factory
+﻿ namespace SensoStat.Entities.Factory
 {
     using Bogus;
 
     public class ResponseFactory
     {
-        public static Faker<Response> GenerateResponse()
+        public static List<Response> GenerateResponse(List<Panelist> panelists, List<Product> products, List<Instruction> instructions)
         {
-            var CreateResponseFactory = new Faker<Response>()
-                .StrictMode(true)
-                .RuleFor(p => p.CommentResponse, f => f.Lorem.Paragraph())
-                .RuleFor(p => p.DateResponse, f => f.Date.Recent());
+            List<Response> responses = new List<Response>();
+            var faker = new Faker();
 
-            return CreateResponseFactory;
+            panelists.ForEach(panelist =>
+            {
+                products.ForEach(product =>
+                {
+                    instructions.ForEach(instruction =>
+                    {
+                        var response = new Response(
+                            panelist,
+                            product,
+                            instruction,
+                            faker.Lorem.Sentence(),
+                            faker.Date.Past()
+                            );
+
+                        responses.Add(response);
+                    });
+                });
+            });
+
+            return responses;
         }
     }
 }

@@ -23,7 +23,7 @@
 
         public Response() { }
 
-        public Response(string commentResponse, DateTime dateResponse, Instruction intruction, Product product, Panelist panelist)
+        public Response(Panelist panelist, Product product, Instruction intruction, string commentResponse, DateTime dateResponse)
         {
             this.CommentResponse = commentResponse;
             this.DateResponse = dateResponse;

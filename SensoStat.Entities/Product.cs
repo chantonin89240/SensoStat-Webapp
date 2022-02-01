@@ -7,7 +7,7 @@
         public int Id { get; set; }
 
         [Required]
-        public int CodeProduct { get; set; }
+        public string CodeProduct { get; set; }
 
         public Session Session { get; set; }
 
@@ -23,9 +23,8 @@
             this.Presentations = new List<Presentation>();
         }
 
-        public Product(int id, int codeProduct, Session session) : this()
+        public Product(string codeProduct, Session session) : this()
         {
-            this.Id = id;
             this.CodeProduct = codeProduct;
             this.Session = session;
             this.IdSession = session.Id;

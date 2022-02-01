@@ -33,11 +33,10 @@
             this.Sessions = new List<Session>();
         }
 
-        public User(int id, Role role, string lastName, string firstName, string mail, string login, string password) : this()
+        public User(Role role, string lastName, string firstName, string mail, string login, string password) : this()
         {
-            this.Id = id;
             this.Role = role;
-            // this.IdRole = role.Id;
+            this.IdRole = role.Id;
             this.LastName = lastName;
             this.FirstName = firstName;
             this.Mail = mail;

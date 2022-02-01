@@ -13,6 +13,8 @@
         [Required]
         public int Chronology { get; set; }
 
+        public int IsQuestion { get; set; }
+
         public Session Session { get; set; }
 
         public int IdSession { get; set; }
@@ -24,11 +26,11 @@
             this.Responses = new List<Response>();
         }
 
-        public Instruction(int id, string libelle, int chronology, Session session)
+        public Instruction(string libelle, int chronology, int isQuestion,Session session)
         {
-            this.Id = id;
             this.Libelle = libelle;
             this.Chronology = chronology;
+            this.IsQuestion = isQuestion;
             this.Session = session;
             this.IdSession = session.Id;
         }

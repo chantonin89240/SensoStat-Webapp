@@ -8,15 +8,14 @@
         {
             var TypeEtat = new[] { "Close", "Deploy", "No Deploy" };
             var SessionId = 0;
-            var CreateSessionFactory = new Faker<Session>()
+            var CreateSessionFactory = new Faker<Session>("fr")
                 .CustomInstantiator(f => new Session(
-                SessionId++,
                 f.Name.JobTitle(),
                 f.PickRandom(TypeEtat),
                 f.Date.Recent(),
                 f.Date.Recent(),
                 f.Date.Future(),
-                users[f.Random.Number(0, users.Count)]));
+                users[f.Random.Number(0, users.Count-1)]));
 
             var sessions = CreateSessionFactory.Generate(100);
 
