@@ -28,7 +28,7 @@ namespace SensoStat.WebAPI.Controllers
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
-            throw new NotImplementedException();
+            return this.Ok(this._sessionService.Find(id));
         }
 
         [HttpPost]
