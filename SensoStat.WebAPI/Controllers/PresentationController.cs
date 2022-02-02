@@ -25,7 +25,7 @@
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
-            throw new NotImplementedException();
+            return this.Ok(this._presentationService.Find(id));
         }
 
         [HttpPost]

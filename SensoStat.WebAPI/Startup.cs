@@ -43,7 +43,7 @@
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IPresentationRepository, PresentationRepository>();
-            //services.AddScoped<IPresentationService, PresentationService>();
+            services.AddScoped<IPresentationService, PresentationService>();
             services.AddScoped<IPanelistRepository, DbPanelistRepository>();
             services.AddScoped<IPanelistService, PanelistService>();
             services.AddScoped<SessionService>();
