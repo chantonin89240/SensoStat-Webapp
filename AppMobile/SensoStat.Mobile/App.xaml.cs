@@ -36,6 +36,9 @@ namespace SensoStat.Mobile
         {
             containerRegistry.RegisterForNavigation<NavigationPage>(Constants.NavigationPage);
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>(Constants.MainPage);
+            containerRegistry.RegisterForNavigation<HomeSession, HomeViewModel>(Constants.HomeSession);
+            containerRegistry.RegisterForNavigation<Answer, AnswerViewModel>(Constants.Answer);
+            containerRegistry.RegisterForNavigation<FinalPage, FinalPageViewModel>(Constants.FinalPage);
         }
 
         private void RegisterRepositories(IContainerRegistry containerRegistry)
