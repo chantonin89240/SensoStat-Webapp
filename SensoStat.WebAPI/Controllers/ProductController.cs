@@ -31,9 +31,8 @@
         [HttpPost]
         public IActionResult CreateProduct([FromBody] ProductRequest product)
         {
-            //var productResponse = this._productService.Create(product);
-            //return this.CreatedAtAction(nameof(SessionsController.GetById), new { id => };
-            throw new NotImplementedException();
+            var productResponse = this._productService.Create(product);
+            return this.CreatedAtAction(nameof(SessionsController.GetById), new { id = productResponse.Id }, productResponse);
         }
 
         [HttpPut("{id}")]

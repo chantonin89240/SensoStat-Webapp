@@ -2,6 +2,7 @@
 {
     using System.Collections;
     using SensoStat.Entities;
+    using SensoStat.Entities.Request;
     using SensoStat.Repository.Contracts;
     using SensoStat.Services.Contracts;
 
@@ -31,6 +32,20 @@
         public Product Find(int id)
         {
             return this._productRepository.Find(id);
+        }
+
+        /// <inheritdoc/>
+        public Product Create(ProductRequest productRequest)
+        {
+            var product = new Product()
+            {
+                CodeProduct = productRequest.CodeProduct,
+                IdSession = productRequest.IdSession,
+            };
+
+            this._productRepository.Add(product);
+
+            return product;
         }
     }
 }

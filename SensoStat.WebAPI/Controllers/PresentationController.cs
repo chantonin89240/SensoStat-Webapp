@@ -4,32 +4,34 @@
     using Microsoft.AspNetCore.Mvc;
     using SensoStat.Entities.Request;
     using SensoStat.Services;
+    using SensoStat.Services.Contracts;
 
     [Route("api/[controller]")]
     [ApiController]
-    public class PresentationController : Controller
+    public class PresentationController : ControllerBase
     {
-        private PresentationService _presentationService;
+        private IPresentationService _presentationService;
 
-        public PresentationController(PresentationService presentationService)
+        public PresentationController(IPresentationService presentationService)
         {
             this._presentationService = presentationService;
         }
 
-        [HttpGet]
-        public IActionResult Get()
-        {
-            throw new NotImplementedException();
-        }
+        //[HttpGet]
+        //public IActionResult Get()
+        //{
+        //    var truc = this._presentationService.Get();
+        //    return this.Ok(truc);
+        //}
 
         [HttpGet("{id}")]
-        public IActionResult GetById(int id)
+        public IActionResult GetByIdSession(int id)
         {
-            return this.Ok(this._presentationService.Find(id));
+            return this.Ok(this._presentationService.FindByIdSession(id));
         }
 
         [HttpPost]
-        public IActionResult CreateProduct([FromBody] ProductRequest product)
+        public IActionResult CreatePresentation([FromBody] ProductRequest presentation)
         {
             //var productResponse = this._productService.Create(product);
             //return this.CreatedAtAction(nameof(SessionsController.GetById), new { id => };
@@ -37,13 +39,13 @@
         }
 
         [HttpPut("{id}")]
-        public IActionResult UpdateProduct(int id)
+        public IActionResult UpdatePresentation(int id)
         {
             throw new NotImplementedException();
         }
 
         [HttpDelete("{id}")]
-        public IActionResult DeleteProduct(int id)
+        public IActionResult DeletePresentation(int id)
         {
             throw new NotImplementedException();
         }

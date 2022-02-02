@@ -36,12 +36,13 @@
         /// <inheritdoc/>
         public IEnumerable<Presentation> FindAll()
         {
-            return this._context.Presentations;
+            return this._context.Presentations; //Include(p=>p.Panelist).Include(p=>p.Product);
         }
 
+        /// <inheritdoc/>
         public IEnumerable<Presentation> FindByIdSession(int id)
         {
-            return this._context.Presentations.ToList().FindAll(presentation => presentation.Product.IdSession == id);
+            return this._context.Presentations.Where(presentation => presentation.Product.IdSession == id);
         }
 
         /// <inheritdoc/>

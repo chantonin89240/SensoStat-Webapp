@@ -23,7 +23,7 @@
         /// .
         /// </summary>
         /// <param name="id"></param>
-        /// <returns>.</returns>
+        /// <returns>une collection contenant les présentations de la session passé en paramétre.</returns>
         IEnumerable<Presentation> FindByIdSession(int id);
 
         /// <summary>
