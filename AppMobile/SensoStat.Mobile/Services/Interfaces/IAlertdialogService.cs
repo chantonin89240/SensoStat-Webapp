@@ -1,5 +1,5 @@
 ﻿using System;
-namespace SensoStat.Services.Interfaces
+namespace SensoStat.Mobile.Services.Interfaces
 {
 	public class IAlertdialogService
 	{
