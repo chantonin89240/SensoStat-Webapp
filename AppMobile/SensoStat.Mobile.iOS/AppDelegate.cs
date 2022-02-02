@@ -7,7 +7,7 @@ using Prism;
 using Prism.Ioc;
 using UIKit;
 
-namespace SensoStat.iOS
+namespace SensoStat.Mobile.iOS
 {
     // The UIApplicationDelegate for the application. This class is responsible for launching the 
     // User Interface of the application, as well as listening (and optionally responding) to 
@@ -25,17 +25,17 @@ namespace SensoStat.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
-            LoadApplication(new App(new IocInitializer()));
+            LoadApplication(new App(new iOSInitializer()));
 
             return base.FinishedLaunching(app, options);
         }
     }
 
-    public class IocInitializer : IPlatformInitializer
+    public class iOSInitializer : IPlatformInitializer
     {
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            throw new NotImplementedException();
+            // throw new NotImplementedException();
         }
     }
 }

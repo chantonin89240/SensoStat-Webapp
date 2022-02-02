@@ -1,44 +1,23 @@
 ﻿using System;
+using Prism;
+using Prism.Ioc;
+using SensoStat.Commons;
+using SensoStat.ViewModels;
+using SensoStat.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace SensoStat
 {
-    public partial class App
+    public partial class App : Application
     {
-        public App(IPlatformInitializer initializer)
-                    : base(initializer)
+        public App(IPlatformInitializer initializer) : base(initializer)
         {
-
         }
 
-        protected override void RegisterTypes(IContainerRegistry containerRegistry)
+       protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            RegisterHelpers(containerRegistry);
-            RegisterServices(containerRegistry);
-            RegisterRepositories(containerRegistry);
-            RegisterViews(containerRegistry);
-        }
-
-        private void RegisterRepositories(IContainerRegistry containerRegistry)
-        {
-
-        }
-
-        private void RegisterServices(IContainerRegistry containerRegistry)
-        {
-
-        }
-
-        private void RegisterHelpers(IContainerRegistry containerRegistry)
-        {
-
-        }
-
-        private void RegisterViews(IContainerRegistry containerRegistry)
-        {
-            containerRegistry.RegisterForNavigation<NavigationPage>(Constants.NavigationPage);
-            containerRegistry.RegisterForNavigation<HomePage, HomePageViewModel>(Constants.HomePage);
+            
         }
 
         protected override void OnStart()
@@ -49,12 +28,6 @@ namespace SensoStat
         protected override void OnSleep()
         {
             // Handle when your app sleeps
-        }
-
-        protected override async void OnInitialized()
-        {
-            InitializeComponent();
-            await NavigationService.NavigateAsync($"{Constants.HomePage}/{Constants.HomePage}");
         }
 
         protected override void OnResume()

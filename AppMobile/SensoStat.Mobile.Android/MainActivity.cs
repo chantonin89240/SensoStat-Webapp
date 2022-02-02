@@ -1,4 +1,5 @@
 ﻿using System;
+
 using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
@@ -6,9 +7,9 @@ using Android.OS;
 using Prism;
 using Prism.Ioc;
 
-namespace SensoStat.Droid
+namespace SensoStat.Mobile.Droid
 {
-    [Activity(Label = "SensoStat", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize )]
+    [Activity(Label = "SensoStat.Mobile", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)
@@ -31,7 +32,7 @@ namespace SensoStat.Droid
     {
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            throw new NotImplementedException();
+            // throw new NotImplementedException();
         }
     }
 }
