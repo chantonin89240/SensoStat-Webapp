@@ -28,15 +28,15 @@
             string connectionBdd = this.Configuration.GetConnectionString("SensoStatDbContext");
             string connectionBddPostgresSQL = this.Configuration.GetConnectionString("SensoStatDbContextPostgresSql");
 
-            // services.AddDbContext<SensoStatDbContext>(options =>
-            // {
-            //     options.UseSqlServer(connectionBdd);
-            // });
-
             services.AddDbContext<SensoStatDbContext>(options =>
             {
-                options.UseNpgsql(connectionBddPostgresSQL);
+                options.UseSqlServer(connectionBdd);
             });
+
+            //services.AddDbContext<SensoStatDbContext>(options =>
+            //{
+            //    options.UseNpgsql(connectionBddPostgresSQL);
+            //});
 
             services.AddScoped<ISessionRepository, SessionRepository>();
             services.AddScoped<ISessionService, SessionService>();
@@ -68,8 +68,8 @@
                 {
                     var context = services.GetRequiredService<SensoStatDbContext>();
 
-                    context.Database.EnsureDeleted();
-                    context.Database.EnsureCreated();
+                    //context.Database.EnsureDeleted();
+                    //context.Database.EnsureCreated();
 
                     //SeedData.Initialize(services);
 

@@ -30,6 +30,11 @@
             return this._sessionRepository.FindAll();
         }
 
+        public IEnumerable<Session> getByStatut(string statut)
+        {
+            return this._sessionRepository.FindByStatut(statut);
+        }
+
         /// <summary>
         /// .
         /// </summary>
