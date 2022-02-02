@@ -69,7 +69,7 @@
                     //context.Database.EnsureDeleted();
                     //context.Database.EnsureCreated();
 
-                    SeedData.Initialize(services);
+                    //SeedData.Initialize(services);
 
                 }
                 catch (Exception ex)
