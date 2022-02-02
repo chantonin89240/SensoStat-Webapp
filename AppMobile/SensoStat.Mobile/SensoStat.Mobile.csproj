@@ -31,6 +31,10 @@
     <None Remove="Newtonsoft.Json" />
     <None Remove="Prism.Forms" />
     <None Remove="Helpers\Interface\" />
+    <None Remove="Repositories\Interface\" />
+    <None Remove="Models\Dtos\" />
+    <None Remove="Models\Entities\" />
+    <None Remove="Models\Entities\Interfaces\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Commons\" />
@@ -41,6 +45,10 @@
     <Folder Include="ViewModels\" />
     <Folder Include="Views\" />
     <Folder Include="Helpers\Interface\" />
+    <Folder Include="Repositories\Interface\" />
+    <Folder Include="Models\Dtos\" />
+    <Folder Include="Models\Entities\" />
+    <Folder Include="Models\Entities\Interfaces\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\Answer.xaml.cs">

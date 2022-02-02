@@ -2,6 +2,10 @@
 using Prism;
 using Prism.Ioc;
 using SensoStat.Mobile.Commons;
+using SensoStat.Mobile.Helpers;
+using SensoStat.Mobile.Helpers.Interface;
+using SensoStat.Mobile.Services;
+using SensoStat.Mobile.Services.Interfaces;
 using SensoStat.Mobile.ViewModels;
 using SensoStat.Mobile.Views;
 using Xamarin.Forms;
@@ -48,12 +52,14 @@ namespace SensoStat.Mobile
 
         private void RegisterServices(IContainerRegistry containerRegistry)
         {
-
+            containerRegistry.RegisterSingleton<IAlertdialogService, AlertDialogService>();
+            containerRegistry.RegisterSingleton<IRequestService, RequestService>();
+            containerRegistry.RegisterSingleton<IDatabaseService, DatabaseService>();
         }
 
         private void RegisterHelpers(IContainerRegistry containerRegistry)
         {
-
+            containerRegistry.RegisterSingleton<IDataTransferHelper, DataTransferHelper>();
         }
 
         protected override void OnStart()
