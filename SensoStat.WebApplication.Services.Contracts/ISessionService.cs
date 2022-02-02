@@ -10,6 +10,8 @@
 
         IEnumerable<Session> GetSessions();
 
+        IEnumerable<Session> GetSessionsClose();
+
         HttpStatusCode LoadFile(IFormFile file);
     }
 }

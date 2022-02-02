@@ -4,35 +4,35 @@
 	<h2>Liste des séances actives</h2>
 	<hr />
 	<table class="table table-bordered table-striped table-hover">
-  <thead>
-    <tr class="table-secondary">
-      <th scope="col">Nom de la séance</th>
-      <th class="text-center" scope="col">Date de dernière modification</th>
-      <th class="text-center" scope="col">Statut</th>
-      <th class="text-center" scope="col">% de réponse</th>
-      <th class="text-center" scope="col">% de complétion</th>
-      <th class="text-center" scope="col">Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-
-      @foreach (var session in @Model)
-      {
-        <tr>
-            <td>@session.Name</td>
-            <td class="text-center">@session.DateUpdate</td>
-            <td class="text-center">@session.Etat</td>
-            <td class="text-end">%</td>
-            <td class="text-end">%</td>
-            <td class="text-center">
-                <a class="ms-1 me-1" asp-controller="Session" asp-action="edit" asp-route-id="@session.Id"><i class="fas fa-edit"></i></a>
-                <a class="ms-1 me-1" asp-controller="Session" asp-action="CloneSession" asp-route-id="@session.Id"><i class="far fa-clone"></i></a>
-                <a class="ms-1 me-1" asp-controller="Session" asp-action="archive" asp-route-id="@session.Id"><i class="fas fa-archive"></i></a>
-            </td>
+      <thead>
+        <tr class="table-secondary">
+          <th scope="col">Nom de la séance</th>
+          <th class="text-center" scope="col">Date de dernière modification</th>
+          <th class="text-center" scope="col">Statut</th>
+          <th class="text-center" scope="col">% de réponse</th>
+          <th class="text-center" scope="col">% de complétion</th>
+          <th class="text-center" scope="col">Actions</th>
         </tr>
-      }
-  </tbody>
-</table>
+      </thead>
+      <tbody>
+
+          @foreach (var session in @Model)
+          {
+            <tr>
+                <td>@session.Name</td>
+                <td class="text-center">@session.DateUpdate</td>
+                <td class="text-center">@session.Etat</td>
+                <td class="text-end">%</td>
+                <td class="text-end">%</td>
+                <td class="text-center">
+                    <a class="ms-1 me-1" asp-controller="Session" asp-action="edit" asp-route-id="@session.Id"><i class="fas fa-edit"></i></a>
+                    <a class="ms-1 me-1" asp-controller="Session" asp-action="CloneSession" asp-route-id="@session.Id"><i class="far fa-clone"></i></a>
+                    <a class="ms-1 me-1" asp-controller="Session" asp-action="archive" asp-route-id="@session.Id"><i class="fas fa-archive"></i></a>
+                </td>
+            </tr>
+          }
+      </tbody>
+    </table>
 <div class="d-flex justify-content-end">
   <a class="btn btn-warning" asp-controller="session" asp-action="create">Nouvelle séance</a>
 </div>
