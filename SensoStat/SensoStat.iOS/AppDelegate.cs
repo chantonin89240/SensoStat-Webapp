@@ -4,6 +4,7 @@ using System.Linq;
 
 using Foundation;
 using Prism;
+using Prism.Ioc;
 using UIKit;
 
 namespace SensoStat.iOS
@@ -34,7 +35,7 @@ namespace SensoStat.iOS
     {
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            //throw new NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }

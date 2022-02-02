@@ -1,10 +1,10 @@
 ﻿using System;
-
 using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
 using Prism;
+using Prism.Ioc;
 
 namespace SensoStat.Droid
 {
@@ -31,7 +31,7 @@ namespace SensoStat.Droid
     {
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            //throw new NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }
