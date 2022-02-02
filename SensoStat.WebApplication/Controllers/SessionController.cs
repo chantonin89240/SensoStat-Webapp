@@ -19,13 +19,14 @@
 
         public IActionResult Index()
         {
-            var model = this._sessionService.GetSessions();
+            var model = this._sessionService.GetSessions().ToList();
             return this.View(model);
         }
 
         public IActionResult Archive()
         {
-            return this.View();
+            var model = this._sessionService.GetSessionsClose().ToList();
+            return this.View(model);
         }
 
         [HttpPost]

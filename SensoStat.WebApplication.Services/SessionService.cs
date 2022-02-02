@@ -31,8 +31,18 @@
         {
             var sessions = this._clientService.GetDataFromHttpClient("api/Sessions");
 
-            return JsonConvert.DeserializeObject<IEnumerable<Session>>(sessions);
+            var lesSessions = JsonConvert.DeserializeObject<IEnumerable<Session>>(sessions);
 
+            return lesSessions.Where(s => s.Etat != "Close").OrderByDescending(s => s.DateUpdate);
+        }
+
+        public IEnumerable<Session> GetSessionsClose()
+        {
+            var sessions = this._clientService.GetDataFromHttpClient("api/Sessions");
+
+            var lesSessions = JsonConvert.DeserializeObject<IEnumerable<Session>>(sessions);
+
+            return lesSessions.Where(s => s.Etat == "Close").OrderByDescending(s => s.DateUpdate);
         }
 
         /// <summary>
