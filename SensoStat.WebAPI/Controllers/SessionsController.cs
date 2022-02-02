@@ -20,9 +20,11 @@ namespace SensoStat.WebAPI.Controllers
 
         // GET: api/<SessionController>
         [HttpGet]
-        public IActionResult Get()
+        public IActionResult Get([FromQuery]string? statut)
         {
-            return this.Ok(this._sessionService.Get());
+            if (string.IsNullOrEmpty(statut)) return this.Ok(this._sessionService.Get());
+            else return this.Ok(this._sessionService.getByStatut(statut));
+
         }
 
         [HttpGet("{id}")]

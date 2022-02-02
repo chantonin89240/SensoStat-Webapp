@@ -34,7 +34,6 @@
             return this.View();
         }
 
-
         public IActionResult Create()
         {
             return this.View();
@@ -43,7 +42,8 @@
         [HttpPost]
         public IActionResult Create(SessionViewModel session)
         {
-            this._clientService.PostDataFromHttpClient("api/Sessions", session);
+
+            //this._clientService.PostDataFromHttpClient("api/Sessions", session);
             return this.View();
         }
 

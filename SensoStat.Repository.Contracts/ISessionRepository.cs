@@ -31,6 +31,7 @@
         /// </summary>
         /// <returns>Une collection contenant toutes les campagnes.</returns>
         IEnumerable<Session> FindAll();
+        IEnumerable<Session> FindByStatut(string statut);
 
         /// <summary>
         /// Met à jour une campagne.
