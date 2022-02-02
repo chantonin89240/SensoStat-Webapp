@@ -30,6 +30,7 @@
     <None Remove="sqlite-net-pcl" />
     <None Remove="Newtonsoft.Json" />
     <None Remove="Prism.Forms" />
+    <None Remove="Helpers\Interface\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Commons\" />
@@ -39,5 +40,11 @@
     <Folder Include="Services\" />
     <Folder Include="ViewModels\" />
     <Folder Include="Views\" />
+    <Folder Include="Helpers\Interface\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\Answer.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

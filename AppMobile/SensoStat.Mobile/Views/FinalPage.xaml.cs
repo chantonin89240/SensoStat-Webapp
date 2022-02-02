@@ -2,9 +2,9 @@
 
 namespace SensoStat.Mobile.Views
 {
-    public partial class MainPage : ContentPage
+    public partial class FinalPage : ContentPage
     {
-        public MainPage()
+        public FinalPage()
         {
             InitializeComponent();
         }

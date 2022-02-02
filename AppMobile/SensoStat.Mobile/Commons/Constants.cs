@@ -6,6 +6,9 @@ namespace SensoStat.Mobile.Commons
 		// Pages Names
 		public const string NavigationPage = "NavigationPage";
 		public const string MainPage = "MainPage";
+		public const string HomeSession = "HomeSession";
+		public const string Answer = "Answer";
+		public const string FinalPage = "FinalPage";
 
 		//Routes
 	}
