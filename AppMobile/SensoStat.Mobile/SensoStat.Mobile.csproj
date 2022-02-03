@@ -35,6 +35,7 @@
     <None Remove="Models\Dtos\" />
     <None Remove="Models\Entities\" />
     <None Remove="Models\Entities\Interfaces\" />
+    <None Remove="Microsoft.CognitiveServices.Speech" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Commons\" />

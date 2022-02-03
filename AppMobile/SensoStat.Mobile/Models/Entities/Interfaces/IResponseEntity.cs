@@ -3,7 +3,9 @@ namespace SensoStat.Mobile.Models.Entities.Interfaces
 {
     public interface IResponseEntity
     {
-        string Id { get; set; }
+        int Id { get; set; }
+
+        string IdResponse { get; set; }
 
         string Content { get; set; }
 

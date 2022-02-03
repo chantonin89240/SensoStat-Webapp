@@ -3,7 +3,9 @@ namespace SensoStat.Mobile.Models.Entities.Interfaces
 {
     public interface IInstructionEntity
     {
-        string Id { get; set; }
+        int Id { get; set; }
+
+        string IdInstruction { get; set; }
 
         string Content { get; set; }
 

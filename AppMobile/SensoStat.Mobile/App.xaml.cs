@@ -24,7 +24,7 @@ namespace SensoStat.Mobile
         protected override async void OnInitialized()
         {
             InitializeComponent();
-            await NavigationService.NavigateAsync($"{Constants.NavigationPage}/{Constants.MainPage}");
+            await NavigationService.NavigateAsync($"{Constants.NavigationPage}/{Constants.TextToSpeech}");
 
         }
 
@@ -43,6 +43,7 @@ namespace SensoStat.Mobile
             containerRegistry.RegisterForNavigation<HomeSession, HomeViewModel>(Constants.HomeSession);
             containerRegistry.RegisterForNavigation<Answer, AnswerViewModel>(Constants.Answer);
             containerRegistry.RegisterForNavigation<FinalPage, FinalPageViewModel>(Constants.FinalPage);
+            containerRegistry.RegisterForNavigation<TextToSpeech, TextToSpeechViewModel>(Constants.TextToSpeech);
         }
 
         private void RegisterRepositories(IContainerRegistry containerRegistry)

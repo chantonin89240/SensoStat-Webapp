@@ -9,9 +9,8 @@ using SensoStat.ViewModels.Base;
 namespace SensoStat.Mobile.ViewModels
 {
     public class MainPageViewModel : BaseViewModel
-    {
-        public DelegateCommand StartCommand { get; set; }
-
+    {       
+        #region CTOR
         public MainPageViewModel(IAlertdialogService alertdialogService, INavigationService navigationService) : base(alertdialogService, navigationService)
         {
             StartCommand = new DelegateCommand(async () => await DoStartCommand());
@@ -19,9 +18,26 @@ namespace SensoStat.Mobile.ViewModels
             Title = "Bienvenue sur votre séance sensorielle SensoStat!";
         }
 
+        #endregion
+        #region Lifecycle
+
+        #endregion
+        #region Privates
+
+        #endregion
+        #region Publics
+
+        #endregion
+        #region Commands
+        public DelegateCommand StartCommand { get; set; }
+
         private async Task DoStartCommand()
         {
             await NavigationService.NavigateAsync(Constants.HomeSession);
         }
+        #endregion
+        #region Methods
+
+        #endregion
     }
 }

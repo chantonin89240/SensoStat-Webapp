@@ -10,8 +10,7 @@ namespace SensoStat.Mobile.ViewModels
 {
     public class AnswerViewModel : BaseViewModel
     {
-        public DelegateCommand ValidAnswerCommand { get; set; }
-
+        #region CTOR
         public AnswerViewModel(IAlertdialogService alertdialogService, INavigationService navigationService) : base(alertdialogService, navigationService)
         {
             ValidAnswerCommand = new DelegateCommand(async () => await DoValidAnswerCommand());
@@ -19,9 +18,26 @@ namespace SensoStat.Mobile.ViewModels
             Title = "Bienvenue sur votre séance sensorielle SensoStat!";
         }
 
+        #endregion
+        #region Lifecycle
+
+        #endregion
+        #region Privates
+
+        #endregion
+        #region Publics
+
+        #endregion
+        #region Commands
+        public DelegateCommand ValidAnswerCommand { get; set; }
+
         private async Task DoValidAnswerCommand()
         {
             await NavigationService.NavigateAsync(Constants.FinalPage);
         }
+        #endregion
+        #region Methods
+
+        #endregion
     }
 }

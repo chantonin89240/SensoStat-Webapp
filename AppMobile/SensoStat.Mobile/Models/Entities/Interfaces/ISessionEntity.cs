@@ -13,6 +13,8 @@ namespace SensoStat.Mobile.Models.Entities.Interfaces
 
         string MsgFinal { get; set; }
 
-        // List<Instruction> Instructions { get; set; }
+        List<InstructionEntity> Instructions { get; set; }
+
+        List<ProductEntity> ProductRanked { get; set; }
     }
 }

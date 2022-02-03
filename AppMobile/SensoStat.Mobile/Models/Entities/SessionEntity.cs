@@ -17,13 +17,17 @@ namespace SensoStat.Mobile.Models.Entities
 
         public string MsgFinal { get; set; }
 
-        // public List<Instruction> Instructions { get; set; }
+        public List<InstructionEntity> Instructions { get; set; }
+
+        public List<ProductEntity> ProductRanked { get; set; }
 
         public SessionEntity()
         {
+            Instructions = new List<InstructionEntity>();
+            ProductRanked = new List<ProductEntity>();
         }
 
-        public SessionEntity(SessionDownDto session)
+        public SessionEntity(SessionDownDto session) :this()
         {
             IdSession = session.Id;
             Name = session.Name;

@@ -1,11 +1,9 @@
 ﻿using System;
 namespace SensoStat.Mobile.Services.Interfaces
 {
-	public class IAlertdialogService
+	public interface IAlertdialogService
 	{
-		public IAlertdialogService()
-		{
-		}
+		
 	}
 }
 
