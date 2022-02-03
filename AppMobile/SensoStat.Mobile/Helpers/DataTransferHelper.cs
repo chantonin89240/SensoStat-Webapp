@@ -10,6 +10,7 @@ namespace SensoStat.Mobile.Helpers
     public class DataTransferHelper : IDataTransferHelper
     {
         private HttpClient _httpClient;
+
         private HttpClient GetClient()
         {
             if (_httpClient == null)

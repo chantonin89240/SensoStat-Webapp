@@ -2,6 +2,7 @@
 using Prism.Commands;
 using Prism.Navigation;
 using SensoStat.Mobile.Commons;
+using SensoStat.Mobile.Services.Interfaces;
 using SensoStat.ViewModels.Base;
 
 namespace SensoStat.Mobile.ViewModels
@@ -10,7 +11,7 @@ namespace SensoStat.Mobile.ViewModels
     {
         public DelegateCommand CloseCommand { get; set; }
 
-        public FinalPageViewModel(INavigationService navigationService) : base(navigationService)
+        public FinalPageViewModel(IAlertdialogService alertdialogService, INavigationService navigationService) : base(alertdialogService, navigationService)
         {
             CloseCommand = new DelegateCommand(() => DoCloseCommand());
 
