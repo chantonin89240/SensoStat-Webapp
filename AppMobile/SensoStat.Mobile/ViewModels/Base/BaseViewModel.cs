@@ -2,12 +2,14 @@
 using Prism.AppModel;
 using Prism.Mvvm;
 using Prism.Navigation;
+using SensoStat.Mobile.Services.Interfaces;
 
 namespace SensoStat.ViewModels.Base
 {
 	public class BaseViewModel : BindableBase, INavigationAware, IPageLifecycleAware
 	{
-		//protected IAlertDialogService AlertDialogService;
+        // Protected
+		protected IAlertdialogService AlertDialogService;
 		protected INavigationService NavigationService;
 
         // Public attribut
@@ -19,9 +21,10 @@ namespace SensoStat.ViewModels.Base
 			set => SetProperty(ref _title, value);
 		}
 
-        public BaseViewModel(INavigationService navigationService)
+        public BaseViewModel(IAlertdialogService alertdialogService, INavigationService navigationService)
         {
             NavigationService = navigationService;
+            AlertDialogService = alertdialogService;
         }
 
         public void OnNavigatedFrom(INavigationParameters parameters)

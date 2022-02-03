@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace SensoStat.Mobile.Models.Entities.Interfaces
 {
-    public class ISessionEntity
+    public interface ISessionEntity
     {
         int Id { get; set; }
 

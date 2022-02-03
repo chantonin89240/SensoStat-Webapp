@@ -2,6 +2,7 @@
 using Prism.Commands;
 using Prism.Navigation;
 using SensoStat.Mobile.Commons;
+using SensoStat.Mobile.Services.Interfaces;
 using SensoStat.ViewModels.Base;
 
 namespace SensoStat.Mobile.ViewModels
@@ -10,7 +11,7 @@ namespace SensoStat.Mobile.ViewModels
     {
         public DelegateCommand NextCommand { get; set; }
 
-        public HomeViewModel(INavigationService navigationService) : base(navigationService)
+        public HomeViewModel(IAlertdialogService alertdialogService, INavigationService navigationService) : base(alertdialogService, navigationService)
         {
             NextCommand = new DelegateCommand(async () => await DoNextCommand());
 

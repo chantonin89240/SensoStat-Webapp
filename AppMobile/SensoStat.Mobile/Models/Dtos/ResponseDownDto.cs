@@ -9,7 +9,7 @@ namespace SensoStat.Mobile.Models.Dtos
 
         [JsonProperty("content")] public string Content { get; set; }
 
-        [JsonProperty("idQuestion")] public string IdQuestion { get; set; }
+        [JsonProperty("idQuestion")] public string IsQuestion { get; set; }
 
         public InstructionDownDto Instruction { get; set; }
     }

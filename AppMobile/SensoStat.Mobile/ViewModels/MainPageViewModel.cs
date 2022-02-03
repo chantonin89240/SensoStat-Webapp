@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Prism.Commands;
 using Prism.Navigation;
 using SensoStat.Mobile.Commons;
+using SensoStat.Mobile.Services.Interfaces;
 using SensoStat.ViewModels.Base;
 
 namespace SensoStat.Mobile.ViewModels
@@ -11,7 +12,7 @@ namespace SensoStat.Mobile.ViewModels
     {
         public DelegateCommand StartCommand { get; set; }
 
-        public MainPageViewModel(INavigationService navigationService) : base(navigationService)
+        public MainPageViewModel(IAlertdialogService alertdialogService, INavigationService navigationService) : base(alertdialogService, navigationService)
         {
             StartCommand = new DelegateCommand(async () => await DoStartCommand());
 

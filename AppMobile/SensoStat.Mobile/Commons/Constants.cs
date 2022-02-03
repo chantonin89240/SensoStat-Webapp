@@ -10,7 +10,7 @@ namespace SensoStat.Mobile.Commons
 		public const string Answer = "Answer";
 		public const string FinalPage = "FinalPage";
 
-		//Routes
+		// Routes
 	}
 }
 
