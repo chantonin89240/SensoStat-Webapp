@@ -8,10 +8,15 @@ namespace SensoStat.WebApplication.ViewModels
 
         [Required(ErrorMessage = "Veuillez saisir ce champ")]
         public string? AccueilMsg { get; set; }
-        public List<string>? Instructions { get; set; }
-        public List<string>? Questions { get; set; }
+        public List<InstructionItemViewModel>? Instructions { get; set; }
+        // public List<string>? Questions { get; set; }
 
         [Required(ErrorMessage = "Veuillez saisir ce champ")]
         public string? FinallMsg { get; set; }
+
+        public SessionViewModel()
+        {
+            Instructions = new List<InstructionItemViewModel>();
+        }
     }
 }

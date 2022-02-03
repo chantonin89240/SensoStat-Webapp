@@ -1,0 +1,40 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    await Html.RenderPartialAsync("_InstructionItemsViewModel");
+}
+@model SensoStat.WebApplication.ViewModels.SessionViewModel
+
+<div class="p-5">
+    <h2>Liste des séances actives</h2>
+    <hr />
+    <form asp-controler="user" asp-action="create" id="form">
+        @Html.LabelFor(m => m.Name)
+        @Html.EditorFor(m => m.Name)
+        @Html.LabelFor(m => m.AccueilMsg)
+        @Html.EditorFor(m => m.AccueilMsg)
+        @Html.LabelFor(m => m.FinallMsg)
+        @Html.EditorFor(m => m.FinallMsg)
+        <div id="sessionInstructionsContainer">
+            @Html.EditorFor(m => m.Instructions)
+        </div>
+        <input class="btn btn-warning" type="button" id="btnAdd" onclick="addPart()" value="Ajouter une intruction" />
+    </form>
+    <div class="row">
+        <input type="submit" value="Enregistrer" id="submit" class="btn btn-warning" />
+    </div>
+
+</div>
+
+
+@section Scripts {
+
+    @* @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}*@
+    <script type="text/javascript">function addPart() {
+            console.log("testEnterFunction");
+            var session = document.getElementById("form");
+            console.log(JSON.stringify(session);
+            console.log("debut fetch");
+        }</script>
+}
