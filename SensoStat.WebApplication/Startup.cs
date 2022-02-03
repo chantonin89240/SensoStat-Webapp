@@ -24,9 +24,11 @@
             services.AddRazorPages()
                 .AddRazorRuntimeCompilation();
 
+            var apiAdress = Configuration.GetSection("Api").Value;
+
             services.AddHttpClient<ClientService>(e =>
             {
-                e.BaseAddress = new Uri("https://localhost:5001");
+                e.BaseAddress = new Uri(apiAdress);
             });
 
             services.AddScoped<ISessionService, SessionService>();
