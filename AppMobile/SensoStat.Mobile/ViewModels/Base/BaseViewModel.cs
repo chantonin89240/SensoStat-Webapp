@@ -13,13 +13,17 @@ namespace SensoStat.ViewModels.Base
 		protected INavigationService NavigationService;
 
         // Public attribut
-		private string _title;
+        #region Title =>  string
+        private string _title;
 
-		public string Title
-		{
-			get => _title;
-			set => SetProperty(ref _title, value);
-		}
+        public string Title
+        {
+            get => _title;
+            set => SetProperty(ref _title, value);
+        }
+        #endregion
+
+
 
         public BaseViewModel(IAlertdialogService alertdialogService, INavigationService navigationService)
         {

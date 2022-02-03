@@ -16,5 +16,7 @@ namespace SensoStat.Mobile.Models.Dtos
 
         public List<InstructionDownDto> Instructions { get; set; }
 
+        public List<ProductDownDto> ProductRanked { get; set; }
+
     }
 }
