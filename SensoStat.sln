@@ -51,6 +51,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SensoStat.Mobile.iOS", "App
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SensoStat.Mobile", "AppMobile\SensoStat.Mobile\SensoStat.Mobile.csproj", "{EDE9F1C2-1095-4BE7-82FA-C907EAC8AD61}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SensoStat.WebApplication.ViewModels", "SensoStat.WebApplication.ViewModels\SensoStat.WebApplication.ViewModels.csproj", "{718D289D-A746-4C68-AEDA-D0C4279AAD00}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -259,6 +261,18 @@ Global
 		{EDE9F1C2-1095-4BE7-82FA-C907EAC8AD61}.Release|iPhone.Build.0 = Release|Any CPU
 		{EDE9F1C2-1095-4BE7-82FA-C907EAC8AD61}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{EDE9F1C2-1095-4BE7-82FA-C907EAC8AD61}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{718D289D-A746-4C68-AEDA-D0C4279AAD00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{718D289D-A746-4C68-AEDA-D0C4279AAD00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{718D289D-A746-4C68-AEDA-D0C4279AAD00}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{718D289D-A746-4C68-AEDA-D0C4279AAD00}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{718D289D-A746-4C68-AEDA-D0C4279AAD00}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{718D289D-A746-4C68-AEDA-D0C4279AAD00}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{718D289D-A746-4C68-AEDA-D0C4279AAD00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{718D289D-A746-4C68-AEDA-D0C4279AAD00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{718D289D-A746-4C68-AEDA-D0C4279AAD00}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{718D289D-A746-4C68-AEDA-D0C4279AAD00}.Release|iPhone.Build.0 = Release|Any CPU
+		{718D289D-A746-4C68-AEDA-D0C4279AAD00}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{718D289D-A746-4C68-AEDA-D0C4279AAD00}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -283,6 +297,7 @@ Global
 		{9500A906-372F-490D-A3CC-B7B44416F36A} = {566228AB-0A82-4B46-AF9C-93803A72A575}
 		{4AB4B9E3-D8D5-4E03-B2F3-4D821E30F882} = {566228AB-0A82-4B46-AF9C-93803A72A575}
 		{EDE9F1C2-1095-4BE7-82FA-C907EAC8AD61} = {566228AB-0A82-4B46-AF9C-93803A72A575}
+		{718D289D-A746-4C68-AEDA-D0C4279AAD00} = {53366FEF-4502-4977-A774-6487CF1B941F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {53616BDA-E4BE-4D6B-8CC5-EC1A87EA5359}

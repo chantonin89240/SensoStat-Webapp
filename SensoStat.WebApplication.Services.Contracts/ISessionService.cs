@@ -3,12 +3,13 @@
     using System.Net;
     using Microsoft.AspNetCore.Http;
     using SensoStat.Entities;
+    using SensoStat.WebApplication.ViewModels;
 
     public interface ISessionService
     {
         HttpResponseMessage GetDataFromHttpClient(string url);
 
-        IEnumerable<Session> GetSessions();
+        IEnumerable<SessionViewModel> GetSessions();
 
         IEnumerable<Session> GetSessionsClose();
 

@@ -64,6 +64,9 @@
     <PackageReference Include="Prism.DryIoc.Forms">
       <Version>8.1.97</Version>
     </PackageReference>
+    <PackageReference Include="Microsoft.CognitiveServices.Speech">
+      <Version>1.20.0</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
@@ -102,6 +105,7 @@
     <ProjectReference Include="..\SensoStat.Mobile\SensoStat.Mobile.csproj">
       <Project>{EDE9F1C2-1095-4BE7-82FA-C907EAC8AD61}</Project>
       <Name>SensoStat.Mobile</Name>
+      <ReferenceSourceTarget></ReferenceSourceTarget>
     </ProjectReference>
   </ItemGroup>
  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
