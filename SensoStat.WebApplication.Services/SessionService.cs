@@ -3,8 +3,8 @@
     using CsvHelper;
     using Microsoft.AspNetCore.Http;
     using Newtonsoft.Json;
-    using SensoStat.Entities;
     using SensoStat.WebApplication.Services.Contracts;
+    using SensoStat.WebApplication.ViewModels;
     using System.Globalization;
     using System.Net;
 
@@ -27,11 +27,11 @@
             return response;
         }
 
-        public IEnumerable<Session> GetSessions()
+        public IEnumerable<SessionViewModel> GetSessions()
         {
             var sessions = this._clientService.GetDataFromHttpClient("api/Sessions");
 
-            return JsonConvert.DeserializeObject<IEnumerable<Session>>(sessions);
+            return JsonConvert.DeserializeObject<IEnumerable<SessionViewModel>>(sessions);
 
         }
 
@@ -42,6 +42,8 @@
         /// <returns>Le code du status de la réponse rétourné par l'API</returns>
         public HttpStatusCode LoadFile(IFormFile file)
         {
+            List<object> listPlanPresentation = new List<object>();
+
             using (var fileStream = file.OpenReadStream())
             using (var reader = new StreamReader(fileStream))
             using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
@@ -59,17 +61,29 @@
                         var panelistPresentation = text.ToString().Split(";");
                         
                         var codePanelist = panelistPresentation[0];
-                        // créé un objet panelist
 
-                        var planPresentation = panelistPresentation.Skip(1);
-                        // créé des objets produit
+                        var planPresentation = panelistPresentation.Skip(1).ToList();
+                        var rank = 1;
                         // créé des objets presentation
+                        planPresentation.ForEach(plan =>
+                        {
+                            var item = new PresentationViewModel
+                            {
+                                Panelist = new PanelistViewModel { CodePanelist = codePanelist },
+                                Product = new ProductViewModel { CodeProduct = plan },
+                                Rank = rank
+                            };
 
+                            listPlanPresentation.Add(item);
+
+                            rank++;
+                        });
                         // envoi de tout les objets
                     }
                 };
             }
 
+            var retourn = listPlanPresentation;
             return HttpStatusCode.OK;
         }
     }

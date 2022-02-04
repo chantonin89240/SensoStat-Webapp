@@ -10,6 +10,10 @@
         [Required]
         public string Name { get; set; }
 
+        // public string MsgAccueil { get; set; }
+
+        // public string MsgFinal { get; set; }
+
         public string Etat { get; set; }
 
         public DateTime DateCreate { get; set; }

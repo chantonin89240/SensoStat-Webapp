@@ -34,7 +34,7 @@
                 </FormattedString>
             </Label.FormattedText>
         </Label>
-        <Button  Text="Répéter" Command="{Binding ValidAnswerCommand}" Background="#fd7e14" VerticalOptions="Center" Margin="10" />
+        <Button  Text="Répéter" Command="{Binding GoSpeechCommand}" Background="#fd7e14" VerticalOptions="Center" Margin="10" />
         <Button  Text="Valider" Command="{Binding ValidAnswerCommand}" Background="#fd7e14" VerticalOptions="Center" Margin="10" />
     </StackLayout>
 </ContentPage>

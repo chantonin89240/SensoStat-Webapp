@@ -15,6 +15,8 @@ namespace SensoStat.Mobile.ViewModels
         {
             ValidAnswerCommand = new DelegateCommand(async () => await DoValidAnswerCommand());
 
+            GoSpeechCommand = new DelegateCommand(async () => await DoGoSpeechCommand());
+
             Title = "Bienvenue sur votre séance sensorielle SensoStat!";
         }
 
@@ -34,6 +36,13 @@ namespace SensoStat.Mobile.ViewModels
         private async Task DoValidAnswerCommand()
         {
             await NavigationService.NavigateAsync(Constants.FinalPage);
+        }
+
+        public DelegateCommand GoSpeechCommand { get; set; }
+
+        private async Task DoGoSpeechCommand()
+        {
+            await NavigationService.NavigateAsync(Constants.TextToSpeech);
         }
         #endregion
         #region Methods

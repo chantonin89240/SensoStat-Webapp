@@ -24,7 +24,7 @@ namespace SensoStat.Mobile
         protected override async void OnInitialized()
         {
             InitializeComponent();
-            await NavigationService.NavigateAsync($"{Constants.NavigationPage}/{Constants.TextToSpeech}");
+            await NavigationService.NavigateAsync($"{Constants.NavigationPage}/{Constants.MainPage}");
 
         }
 

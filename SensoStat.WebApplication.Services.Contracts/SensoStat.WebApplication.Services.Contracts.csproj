@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SensoStat.Entities\SensoStat.Entities.csproj" />
+    <ProjectReference Include="..\SensoStat.WebApplication.ViewModels\SensoStat.WebApplication.ViewModels.csproj" />
   </ItemGroup>
 
 </Project>
