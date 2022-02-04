@@ -36,7 +36,7 @@
         /// <inheritdoc/>
         public IEnumerable<Presentation> FindAll()
         {
-            return this._context.Presentations; //Include(p=>p.Panelist).Include(p=>p.Product);
+            return this._context.Presentations;
         }
 
         /// <inheritdoc/>

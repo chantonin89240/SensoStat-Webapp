@@ -1,7 +1,14 @@
 ﻿@model List<SensoStat.Entities.Session>
 
-<div class="p-5">
-	<h2>Liste des séances actives</h2>
+<section class="p-5">
+    <div class="row">
+        <span class="col">
+            <h2>Liste des séances actives</h2>
+        </span>
+        <span class="col text-end">
+             <a class="btn btn-warning" asp-controller="session" asp-action="create">Nouvelle séance</a>
+        </span>
+    </div>
 	<hr />
 	<table class="table table-bordered table-striped table-hover">
       <thead>
@@ -26,14 +33,33 @@
                 <td class="text-end">%</td>
                 <td class="text-center">
                     <a class="ms-1 me-1" asp-controller="Session" asp-action="edit" asp-route-id="@session.Id"><i class="fas fa-edit"></i></a>
-                    <a class="ms-1 me-1" asp-controller="Session" asp-action="CloneSession" asp-route-id="@session.Id"><i class="far fa-clone"></i></a>
+                    <a class="ms-1 me-1" asp-controller="Session" asp-action="ExportData" asp-route-id="@session.Id"><i class="fas fa-download me-1"></i></a>
+                    <a class="ms-1 me-1" asp-controller="Session" asp-action="CloneSession"  data-bs-toggle="modal" data-bs-target="#CloneSeance" asp-route-id="@session.Id"><i class="far fa-clone"></i></a>
                     <a class="ms-1 me-1" asp-controller="Session" asp-action="archive" asp-route-id="@session.Id"><i class="fas fa-archive"></i></a>
                 </td>
             </tr>
           }
       </tbody>
     </table>
-<div class="d-flex justify-content-end">
-  <a class="btn btn-warning" asp-controller="session" asp-action="create">Nouvelle séance</a>
-</div>
+</section>
+
+
+
+<!-- Modal Validation suppression séance-->
+<div class="modal fade" id="CloneSeance" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">cloner la séance</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Êtes vous sûr de vouloir cloner cette séance?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+        <button type="button" class="btn btn-primary">Valider</button>
+      </div>
+    </div>
+  </div>
 </div>
