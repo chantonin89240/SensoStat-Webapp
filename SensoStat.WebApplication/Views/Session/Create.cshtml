@@ -1,0 +1,79 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+	@model SensoStat.WebApplication.ViewModels.SessionViewModel
+}
+
+<div class="p-3">
+	<h2>Créer une nouvelle séance</h2>
+	<hr />
+
+	<section class="row">
+		<!-- div de gestion de la séance -->
+		<div class="col-10">
+			<form id="formSession" method="post" asp-controller="Session" asp-action="Create">
+				<!-- section du nom de la séance ainsi que sont status -->
+				<span class="mb-4 d-flex justify-content-between">
+					<div class="d-flex">
+						<label for="exampleInputEmail1" class="form-label h5 me-1 mt-2">Nom de la séance :</label>
+						<span class="">
+							<input asp-for="Name" type="text" class="form-control" placeholder="Nom Séance">
+						</span>
+					</div>
+				</span>
+				<p>Ajoutez vos instruction(s) / question(s) dans l'ordre chronologique du déroulé de la séance</p>
+				<!-- section du message d'accueil -->
+				<span class="mb-3 row">
+					<div class="col col-lg-2">
+						<label>Message d'accueil</label>
+					</div>
+					<div class="col-10">
+						<textarea asp-for="MsgAccueil" class="form-control" rows="1" oninput="auto_grow(this)" placeholder="ici doit être inscrit le message de début de séance !"></textarea>
+					</div>
+				</span>
+				<!-- section qui ajoute des intruction / question -->
+				<span id="SpanInstru">
+							
+				</span>
+				<!-- section du message de fin -->
+				<span class="mb-3 row">
+					<div class="col col-lg-2">
+						<label>Message de fin</label>
+					</div>
+					<div class="col-10">
+						<textarea asp-for="MsgFinal" class="form-control" rows="1" oninput="auto_grow(this)" placeholder="ici doit être inscrit le message de fin de séance !"></textarea>
+					</div>
+				</span>
+				<!-- button d'ajout d'instruction / question -->
+			</form>
+				<button class="btn btn-warning" onclick="addInstruction('Instruction')">Ajouter une instruction</button>
+				<button class="btn btn-warning" onclick="addInstruction('Question')">Ajouter une question</button>
+			
+		</div>
+		<!-- div contenant les button pour les fonctionnalité -->
+		<div class="col-2 d-flex flex-column">
+			<button class="btn btn-warning mb-2" form="formSession" type="submit">Enregistrer</button>
+			<button class="btn btn-warning mb-2" type="button" data-bs-toggle="modal" data-bs-target="#AnnulerSeance">Annuler</button>
+		</div>
+	</section>
+</div>
+
+<!-- Modal Validation annulation séance-->
+<div class="modal fade" id="AnnulerSeance" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Annuler la séance</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Êtes vous sûr de vouloir annuler cette séance?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+        <a type="button" class="btn btn-primary" asp-controller="session" asp-action="index">Valider</a>
+      </div>
+    </div>
+  </div>
+</div>

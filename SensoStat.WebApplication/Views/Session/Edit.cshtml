@@ -1,0 +1,152 @@
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+	@model SensoStat.WebApplication.ViewModels.SessionViewModel
+}
+
+<div class="p-3">
+	<h2>Éditer une séance</h2>
+	<hr />
+	<div class="row">
+		<div class="col-10">
+			<div class="mb-4 d-flex justify-content-between">
+				<div class="d-flex">
+					<label for="exampleInputEmail1" class="form-label h5 me-1 mt-2">Nom de la séance :</label>
+					<div class="">
+						<input type="text" class="form-control " value="Vico">
+					</div>
+				</div>
+				<div>
+					<p class="h5 mt-2">Statut : Non-publié</p>
+				</div>
+			</div>
+			<p>Ajoutez vos instruction(s) / question(s) dans l'ordre chronologique du déroulé de la séance</p>
+			<div class="mb-3 row">
+				<div class="col col-lg-2">
+					<p>Message d'accueil</p>
+				</div>
+				<div class="col-10">
+					<textarea type="text" class="form-control" rows="1" oninput="auto_grow(this)">Bienvenue à cette séance. Vous allez donner votre avis sur 3 savons. Cliquez ou dites « Etape suivante »</textarea>
+				</div>
+			</div>
+			<div class="mb-3 row">
+				<div class="col col-lg-2">
+					<p>Instruction 1</p>
+				</div>
+				<div class="col-10">
+					<textarea type="text" class="form-control" rows="1" oninput="auto_grow(this)">Savonnez-vous les mains avec le savon #CodeProduit. Puis dites « Etape suivante »</textarea>
+				</div>
+			</div>
+			<div class="mb-3 row">
+				<div class="col col-lg-2">
+					<p>Instruction 2</p>
+				</div>
+				<div class="col-10">
+					<textarea type="text" class="form-control" rows="1" oninput="auto_grow(this)">Vous allez désormais tester le savon #CodeProduit. Cliquez ou dites « Etape suivante »</textarea>
+				</div>
+			</div>
+			<div class="mb-3 row">
+				<div class="col col-lg-2">
+					<p>Question 1</p>
+				</div>
+				<div class="col-10"> 
+					<textarea type="text" class="form-control" rows="1" oninput="auto_grow(this)">Comment appréciez-vous l’odeur du savon #CodeProduit entre 0 et 10 ? Pour répondre dites « Répondre ». Pour répéter la question, dites « Répéter ».</textarea>
+				</div>
+			</div>
+			<div class="mb-3 row">
+				<div class="col col-lg-2">
+					<p>Question 2</p>
+				</div>
+				<div class="col-10">
+					<textarea type="text" class="form-control" rows="1" oninput="auto_grow(this)">Jugez-vous que le savon #CodeProduit est : pas assez moussant, trop moussant ou juste bien ? Pour répondre dites « Répondre ». Pour répéter la question, dites « Répéter ».</textarea>
+				</div>
+			</div>
+			<div class="mb-3 row">
+				<div class="col col-lg-2">
+					<p>Question 3</p>
+				</div>
+				<div class="col-10"> 
+					<textarea type="text" class="form-control" rows="1" oninput="auto_grow(this)"></textarea>
+				</div>
+			</div>
+			<button class="btn btn-warning" type="submit">Ajouter une instruction</button>
+			<button class="btn btn-warning" type="submit">Ajouter une question</button>
+		</div>
+		<div class="col-2 d-flex flex-column">
+			<button class="btn btn-warning mb-2" type="button" data-bs-toggle="modal" data-bs-target="#ModalPlanPresentation">Importer un plan de présentation</button>
+			<button class="btn btn-warning mb-2" type="button" disabled style="color: grey;">Tester</button>
+			<button class="btn btn-warning mb-2" type="button" disabled style="color: grey;">Publier</button>
+			<button class="btn btn-warning mb-4" type="button" disabled style="color: grey;">Exporter les URL</button>
+			<button class="btn btn-warning mb-4" type="button">Enregistrer</button>
+			<button class="btn btn-warning mb-2" type="button" data-bs-toggle="modal" data-bs-target="#SuppPublication" disabled style="color: grey;">Annuler la publication</button>
+			<button class="btn btn-warning mb-2" type="button" data-bs-toggle="modal" data-bs-target="#SuppSeance">Supprimer la séance</button>
+		</div>
+	</div>
+</div>
+<!-- Modal Download du plan de présentation-->
+<div class="modal fade" id="ModalPlanPresentation" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Veuillez sélectionner un fichier de plan de présentation</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form enctype="multipart/form-data" method="post">
+			<dl>
+				<dt>
+					<label ></label>
+				</dt>
+				<dd>
+					<input name="file" type="file">
+					@* <span asp-validation-for="FileUpload.FormFile"></span> *@
+				</dd>
+			</dl>			
+		</form>
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+          <input class="btn btn-primary" asp-controller="session" asp-action="LoadFile" type="submit" value="Importer" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Validation suppression séance-->
+<div class="modal fade" id="SuppSeance" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Supprimer la séance</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Êtes vous sûr de vouloir supprimer cette séance?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+        <button type="button" class="btn btn-primary">Valider</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Validation suppression publication-->
+<div class="modal fade" id="SuppPublication" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Annuler la publication de la séance</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Êtes vous sûr de vouloir annuler la publication de cette séance? Un mail d'annulation sera envoyé à chaque panéliste.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+        <button type="button" class="btn btn-primary">Valider</button>
+      </div>
+    </div>
+  </div>
+</div>

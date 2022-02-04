@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="SensoStat.Mobile.Views.Answer">
+    <StackLayout BackgroundColor="LightGray">
+        <Label FontSize="26" Padding="30,24,30,0" TextColor="Black">
+            <Label.FormattedText>
+                <FormattedString>
+                    <FormattedString.Spans>
+                        <Span Text="Quels sont les points positifs du savon "/>
+                        <Span Text="n°786" FontAttributes="bold"/>
+                        <Span Text=" ?"/>
+                    </FormattedString.Spans>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+        <Label FontSize="16" Padding="30,24,30,0">
+            <Label.FormattedText>
+                <FormattedString>
+                    <FormattedString.Spans>
+                        <Span Text="Pour répondre, dites:"/>
+                    </FormattedString.Spans>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+        <Button  Text="Répondre" Command="{Binding ValidAnswerCommand}" Background="#fd7e14" VerticalOptions="Center" Margin="10" />
+        <Label FontSize="16" Padding="30,24,30,0">
+            <Label.FormattedText>
+                <FormattedString>
+                    <FormattedString.Spans>
+                        <Span Text="Pour répéter la question, dites:"/>
+                    </FormattedString.Spans>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+        <Button  Text="Répéter" Command="{Binding GoSpeechCommand}" Background="#fd7e14" VerticalOptions="Center" Margin="10" />
+        <Button  Text="Valider" Command="{Binding ValidAnswerCommand}" Background="#fd7e14" VerticalOptions="Center" Margin="10" />
+    </StackLayout>
+</ContentPage>

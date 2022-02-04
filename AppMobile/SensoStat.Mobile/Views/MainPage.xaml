@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SensoStat.Mobile.Views.MainPage"
+             NavigationPage.HasNavigationBar="False">
+
+    <StackLayout BackgroundColor="LightGray">
+        <Frame BackgroundColor="White" Padding="12" CornerRadius="0">
+            <Image Source="logo.png" />
+        </Frame>
+        <Label Text="{Binding Title}" HorizontalTextAlignment="Center" VerticalOptions="StartAndExpand" TextColor="White" FontSize="36"/>
+        <Button  Text="Commencer ma séance" Command="{Binding StartCommand}" Background="#fd7e14" VerticalOptions="Center" Margin="10" />
+        <Label FontSize="16" Padding="30,24,30,0">
+            <Label.FormattedText>
+                <FormattedString>
+                    <FormattedString.Spans>
+                        <Span Text="Contacter SensoStat "/>
+                        <Span Text="https://sensostat.fr" FontAttributes="None" TextColor="Blue"/>
+                    </FormattedString.Spans>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+    </StackLayout>
+
+</ContentPage>

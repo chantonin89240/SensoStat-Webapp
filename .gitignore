@@ -283,5 +283,7 @@ yarn-error.log
 bin/
 obj/
 .packages
+.DS_Store
+*.txt
 
 # End of https://www.toptal.com/developers/gitignore/api/aspnetcore,xamarinstudio,vuejs
