@@ -2,7 +2,6 @@
 {
     using System.Net;
     using Microsoft.AspNetCore.Http;
-    using SensoStat.Entities;
     using SensoStat.WebApplication.ViewModels;
 
     public interface ISessionService
@@ -11,7 +10,7 @@
 
         IEnumerable<SessionViewModel> GetSessions();
 
-        IEnumerable<Session> GetSessionsClose();
+        IEnumerable<SessionViewModel> GetSessionsClose();
 
         HttpStatusCode LoadFile(IFormFile file);
     }
