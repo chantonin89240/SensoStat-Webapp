@@ -21,9 +21,6 @@
 							<input asp-for="Name" type="text" class="form-control" placeholder="Nom Séance">
 						</span>
 					</div>
-					<div>
-						<p class="h5 mt-2">Statut : Non-publié</p>
-					</div>
 				</span>
 				<p>Ajoutez vos instruction(s) / question(s) dans l'ordre chronologique du déroulé de la séance</p>
 				<!-- section du message d'accueil -->
@@ -50,8 +47,8 @@
 				</span>
 				<!-- button d'ajout d'instruction / question -->
 			</form>
-				<button class="btn btn-warning" onclick="addInstruction('Instructions')">Ajouter une instruction</button>
-				<button class="btn btn-warning" onclick="addInstruction('Questions')">Ajouter une question</button>
+				<button class="btn btn-warning" onclick="addInstruction('Instruction')">Ajouter une instruction</button>
+				<button class="btn btn-warning" onclick="addInstruction('Question')">Ajouter une question</button>
 			
 		</div>
 		<!-- div contenant les button pour les fonctionnalité -->
@@ -62,7 +59,7 @@
 	</section>
 </div>
 
-<!-- Modal Validation suppression séance-->
+<!-- Modal Validation annulation séance-->
 <div class="modal fade" id="AnnulerSeance" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -75,7 +72,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-        <button type="button" class="btn btn-primary">Valider</button>
+        <a type="button" class="btn btn-primary" asp-controller="session" asp-action="index">Valider</a>
       </div>
     </div>
   </div>
