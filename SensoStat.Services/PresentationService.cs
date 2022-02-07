@@ -38,5 +38,12 @@
         {
             return this._presentationRepository.FindByIdSession(id);
         }
+
+        public List<Presentation> MultiCreate(List<Presentation> presentations)
+        {
+            this._presentationRepository.AddRange(presentations);
+
+            return presentations;
+        }
     }
 }

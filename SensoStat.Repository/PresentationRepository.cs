@@ -27,6 +27,13 @@
         }
 
         /// <inheritdoc/>
+        public void AddRange(List<Presentation> presentations)
+        {
+            this._context.Presentations.AddRange(presentations);
+            this._context.SaveChanges();
+        }
+
+        /// <inheritdoc/>
         public void Delete(Presentation presentation)
         {
             this._context.Presentations.Remove(presentation);

@@ -40,7 +40,7 @@
         }
 
         [HttpPost]
-        public IActionResult Create(SessionViewModel session)
+        public IActionResult Create(SessionVM session)
         {
 
             //this._clientService.PostDataFromHttpClient("api/Sessions", session);
