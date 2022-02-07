@@ -8,5 +8,6 @@
 
         IEnumerable<Presentation> FindByIdSession(int id);
 
+        List<Presentation> MultiCreate(List<Presentation> presentations);
     }
 }

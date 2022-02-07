@@ -13,6 +13,13 @@
         /// <param name="presentation">Présenetation à ajouter.</param>
         void Add(Presentation presentation);
 
+
+        /// <summary>
+        /// Ajoute une liste de présentations.
+        /// </summary>
+        /// <param name="presentation">Présenetation à ajouter.</param>
+        void AddRange(List<Presentation> presentations);
+
         /// <summary>
         /// Supprime une présentation.
         /// </summary>
