@@ -8,15 +8,22 @@
     {
         public IActionResult Index()
         {
+
             return this.View();
         }
 
+        /*public IActionResult Index(SessionViewModel session)
+        {
+
+            return this.View(session);
+        }*/
+
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> AddInstructionItem([Bind("Instructions")] SessionViewModel session)
+        public async Task<IActionResult> AddInstructionItem([FromBody] SessionVM session)
         {
             session.Instructions.Add(new InstructionItemViewModel());
             return PartialView("_InstructionItemsViewModel", session);
+            //return this.View("Index", session);
         }
     }
 }
