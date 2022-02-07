@@ -14,4 +14,12 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="HttpRequest\" />
+    <None Remove="HttpResponse\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="HttpRequest\" />
+    <Folder Include="HttpResponse\" />
+  </ItemGroup>
 </Project>
