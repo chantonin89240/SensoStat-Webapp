@@ -38,6 +38,8 @@
                 options.UseNpgsql(connectionBddPostgresSQL);
             });
 
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IUserService, UserService>();
             services.AddScoped<ISessionRepository, SessionRepository>();
             services.AddScoped<ISessionService, SessionService>();
             services.AddScoped<IProductRepository, ProductRepository>();
@@ -58,7 +60,7 @@
                 app.UseSwaggerUI();
             }
 
-            // Configuration Comportement PostgresSql on TimeStamp with timezone
+            // Configuration comportement PostgresSql on TimeStamp with timezone
             AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
             using (var scope = app.ApplicationServices.CreateScope())
@@ -68,11 +70,10 @@
                 {
                     var context = services.GetRequiredService<SensoStatDbContext>();
 
-                    //context.Database.EnsureDeleted();
-                    //context.Database.EnsureCreated();
+                    // context.Database.EnsureDeleted();
+                    // context.Database.EnsureCreated();
 
-                    //SeedData.Initialize(services);
-
+                    // SeedData.Initialize(services);
                 }
                 catch (Exception ex)
                 {

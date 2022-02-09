@@ -3,6 +3,7 @@ namespace SensoStat.Repository
     using SensoStat.Entities;
     using SensoStat.Repository.Contracts;
     using SensoStat.EntitiesContext;
+
     public class DbPanelistRepository : IPanelistRepository
     {
 

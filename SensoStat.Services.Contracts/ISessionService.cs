@@ -1,11 +1,11 @@
 ﻿namespace SensoStat.Services.Contracts
 {
     using SensoStat.Entities;
-    using SensoStat.Entities.Request;
+    using SensoStat.Entities.HttpRequest;
 
     public interface ISessionService
     {
-        IEnumerable<Session> Get();
+        IEnumerable<Session> GetAll();
 
         IEnumerable<Session> getByStatut(string statut);
 

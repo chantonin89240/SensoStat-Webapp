@@ -1,5 +1,6 @@
 ﻿namespace SensoStat.WebApplication.Filters
 {
+    using System.Text;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Filters;
 
@@ -14,7 +15,14 @@
 
         public void OnActionExecuted(ActionExecutedContext context)
         {
-            
+            /*StringBuilder stringBuilder = new StringBuilder("Sortie de l'action [");
+            stringBuilder.Append(context.ActionDescriptor.ControllerDescriptor.ControllerType.FullName)
+                .Append(".")
+                .Append(context.ActionDescriptor.DisplayName)
+                .Append("].");
+            this._logger.LogDebug(stringBuilder.ToString());
+            stringBuilder.Clear();
+            base.OnActionExecuted(context);*/
         }
 
         public void OnActionExecuting(ActionExecutingContext context)

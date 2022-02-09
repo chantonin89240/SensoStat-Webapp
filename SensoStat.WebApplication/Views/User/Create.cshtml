@@ -1,0 +1,75 @@
+﻿@{
+    @model SensoStat.WebApplication.ViewModels.UserViewModel;
+    var SelectListRoles = new SelectList(Model.Roles, "Id", "Libelle", Model.IdRole);
+}
+
+<div class="p-3">
+    <h2>Créer un nouveau compte</h2>
+    <hr />
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="card col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 offset-xxl-3 offset-xl-3 offset-lg-3 offset-md-3">
+        <div class="card-header">
+            <p class="card-title fs-4">Veuillez saisir les données du compte</p>
+        </div>
+        <div class="card-body">
+            <form method="post" asp-controller="user" asp-action="create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="row align-items-center mb-3">
+                    <div class="input-group">
+                        <span class="input-group-text">Prénom</span>
+                        @*@Html.EditorFor(m => m.FirstName, new { htmlAttributes = new { @class = "form-control rounded" } })*@
+                        <input asp-for="@Model.FirstName" name="model.FirstName" aria-describedby="userCreate" type="text" class="form-control rounded" />
+                        <span asp-validation-for="@Model.FirstName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row align-items-center mb-3">
+                    <div class="input-group">
+                        <span class="input-group-text">Nom</span>
+                        @*@Html.EditorFor(m => m.LastName, new { htmlAttributes = new { @class = "form-control rounded" } })*@
+                        <input asp-for="@Model.LastName" name="model.LastName" aria-describedby="userCreate" type="text" class="form-control rounded" />
+                        <span asp-validation-for="LastName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row align-items-center mb-3">
+                    @* ---- Au cas ou l'on change de présentation ----
+                         <div class="col-auto">
+                            <label class="col-form-label">Email</label>
+                        </div>
+                        <div class="col-auto">
+                            @Html.EditorFor(m => m.Email, new { htmlAttributes = new { @class = "form-control" } })
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div> *@
+                    <div class="input-group">
+                        <span class="input-group-text">Email</span>
+                        @*@Html.EditorFor(m => m.Email, new { htmlAttributes = new { @class = "form-control rounded" } })*@
+                        <input asp-for="@Model.Email" name="model.Email" aria-describedby="userCreate" type="text" class="form-control rounded" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row align-items-center mb-3">
+                    <div class="input-group">
+                        <span class="input-group-text">Mot de passe</span>
+                        @*@Html.EditorFor(m => m.Password, new { htmlAttributes = new { @class = "form-control rounded" } })*@
+                        <input asp-for="@Model.Password" name="model.Password" aria-describedby="userCreate" type="text" class="form-control rounded" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <span asp-for="Role.Id" class="input-group-text">Statut du compte<span class="text-danger">*</span></span>
+                    <select asp-for="Role.Id" name="model.IdRole" asp-items="SelectListRoles" class="form-select">
+ 
+                            <option value="0">Sélectionnez un statut</option>
+
+                    </select>
+                </div>
+                <div class="d-flex justify-content-end">
+                    <button type="button" class="btn btn-primary rounded me-3">Annuler</button>
+                    <button type="submit" class="btn btn-primary rounded">Enregistrer</button>
+                </div>
+            </form>
+
+
+        </div>
+    </div>
+
+</div>
