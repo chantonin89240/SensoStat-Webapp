@@ -8,6 +8,8 @@
         IEnumerable<RoleViewModel> GetRoles();
 
         UserViewModel CreateUser(UserViewModel model);
+
+        UserViewModel Authenticate(AuthentificationViewModel model);
     }
 }
 

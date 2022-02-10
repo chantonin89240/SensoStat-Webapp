@@ -6,7 +6,7 @@
     using SensoStat.WebApplication.ViewModels;
 
     public class UserService : IUserService
-    {
+    { 
         private readonly ClientService _clientService;
 
         public UserService(ClientService clientService)
@@ -26,6 +26,21 @@
             var user = this._clientService.PostDataFromHttpClient("api/User", model);
             var newUser = JsonConvert.DeserializeObject<UserViewModel>(user);
             return newUser;
+        }
+
+        public UserViewModel Authenticate(AuthentificationViewModel model)
+        {
+            var user = this._clientService.PostDataFromHttpClient("api/User/authenticate", model);
+
+            if(user == null)
+            {
+
+                return new UserViewModel() { Email = model.Email, Password = model.Password };
+            }
+
+            var userAuthentified = JsonConvert.DeserializeObject<UserViewModel>(user);
+
+            return userAuthentified;
         }
     }
 }

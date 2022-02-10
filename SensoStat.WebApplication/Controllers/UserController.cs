@@ -15,7 +15,7 @@
 
         public UserController(IUserService userService)
         {
-            model = new UserViewModel();
+            this.model = new UserViewModel();
             this._userService = userService;
         }
 
@@ -25,25 +25,37 @@
             return this.View();
         }
 
-        public IActionResult Authentificate(UserViewModel user)
+        public IActionResult Authenticate()
         {
-            // var userAuthentified = this._userService.Authenticate(user);
+
             return this.View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddInstructionItem([FromBody] SessionVM session)
+        [ValidateAntiForgeryToken]
+        public IActionResult Authenticate(AuthentificationViewModel model)
         {
-            session.Instructions.Add(new InstructionItemViewModel());
-            return PartialView("_InstructionItemsViewModel", session);
-            //return this.View("Index", session);
+            if (this.ModelState.IsValid)
+            {
+                var userAuthentified = this._userService.Authenticate(model);
+
+                if (userAuthentified.Token == null)
+                {
+                    this.ModelState.AddModelError(string.Empty, "Utilisateur ou mot de passe incorrect.");
+                    return this.View(model);
+                }
+
+                return this.RedirectToAction(nameof(Index), "session");
+            }
+
+            return this.View(model);
         }
 
         public IActionResult Create()
         {
             listRoles = this._userService.GetRoles().ToList();
-            model.Roles = listRoles;
-            return this.View(model);
+            this.model.Roles = listRoles;
+            return this.View(this.model);
         }
 
         [HttpPost]
@@ -51,7 +63,7 @@
         [ActionName("create")]
         public IActionResult Create(UserViewModel model)
         {
-            if(ModelState.IsValid)
+            if (this.ModelState.IsValid)
             {
                 var user = this._userService.CreateUser(model);
                 if (user.Id != 0)
@@ -60,7 +72,7 @@
                 }
 
                 user.Roles = listRoles;
-                ModelState.AddModelError(string.Empty, "Cet email est déjà utilisé pour un autre compte.");
+                this.ModelState.AddModelError(string.Empty, "Cet email est déjà utilisé pour un autre compte.");
                 return this.View(user);
             }
 

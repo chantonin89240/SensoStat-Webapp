@@ -98,6 +98,7 @@
         {
             // génère un token valide pour 7 jours
             var tokenHandler = new JwtSecurityTokenHandler();
+            var debug = _jwtSettings.JwtSecret;
             var key = Encoding.ASCII.GetBytes(_jwtSettings.JwtSecret);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
@@ -105,7 +106,7 @@
                 {
                     new Claim("id", user.Id.ToString()),
                     new Claim(JwtRegisteredClaimNames.Email,user.Email),
-                    new Claim(ClaimTypes.Role, user.Role.Libelle),
+                    //new Claim(ClaimTypes.Role, user.Role.Libelle),
                     // Cela va garantir que le token est unique
                     new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
 

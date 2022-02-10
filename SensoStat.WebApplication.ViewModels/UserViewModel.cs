@@ -13,7 +13,7 @@ namespace SensoStat.WebApplication.ViewModels
 
         public int IdRole { get; set; }
 
-        [Required(ErrorMessage = "errroooor")]
+        [Required]
         public string LastName { get; set; }
 
         [StringLength(60, MinimumLength = 3)]

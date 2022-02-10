@@ -67,15 +67,9 @@ namespace SensoStat.Mobile.ViewModels
            _speechConfig.SpeechSynthesisLanguage = "fr_FR";
 
            _speechSynthesizer = _speechSynthesizer ?? new SpeechSynthesizer(_speechConfig);
-            try
-            {
-                await _speechSynthesizer.SpeakTextAsync(textTo);
 
-            }catch (Exception e)
-            {
-                var ex = e;
-                Console.WriteLine(ex);
-            }
+           await _speechSynthesizer.SpeakTextAsync(textTo);
+
            ActiveBool = false;
         }
 

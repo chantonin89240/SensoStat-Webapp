@@ -1,11 +1,15 @@
 ﻿ namespace SensoStat.WebAPI
 {
+    using System.Text;
+    using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.EntityFrameworkCore;
+    using Microsoft.IdentityModel.Tokens;
     using SensoStat.EntitiesContext;
     using SensoStat.Repository;
     using SensoStat.Repository.Contracts;
     using SensoStat.Services;
     using SensoStat.Services.Contracts;
+    using SensoStat.WebAPI.Helpers;
 
     public class Startup
     {
@@ -27,6 +31,34 @@
 
             string connectionBdd = this.Configuration.GetConnectionString("SensoStatDbContext");
             string connectionBddPostgresSQL = this.Configuration.GetConnectionString("SensoStatDbContextPostgresSql");
+
+            // configuration de la configuration relative � l'API dans l'API, fortement typ�e
+            services.Configure<JwtSettings>(this.Configuration.GetSection("ApiSettings"));
+
+            // Utilisation de la configuration fortement typ�e dans le Program.cs
+            var conf = new JwtSettings();
+            this.Configuration.GetSection(nameof(JwtSettings)).Bind(conf);
+
+            // configuration du middleware d'authentification JWT fourni par Microsoft
+            services.AddAuthentication(auth =>
+            {
+                auth.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                auth.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(options =>
+            {
+                options.SaveToken = true;
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidIssuer = conf.JwtIssuer,
+                    ValidateAudience = true,
+                    ValidAudience = conf.JwtAudience,
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(conf.JwtSecret))
+                };
+            });
+
 
             //services.AddDbContext<SensoStatDbContext>(options =>
             //{
