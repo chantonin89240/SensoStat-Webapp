@@ -6,10 +6,13 @@
         <!-- section ou sera rassembler les components et trier -->
         <section class="container">
             <HomePageComponent v-bind:post="post"></HomePageComponent>
-        </section>
-        
-        <!-- Footer -->
-        <FooterComponent></FooterComponent>
+            <InstructionPageComponent  v-if="vrai"></InstructionPageComponent>
+            <QuestionPageComponent v-if="vrai"></QuestionPageComponent>
+            <EndPageComponent v-bind:endMessage="endMessage" v-if="vrai"></EndPageComponent>
+    </section>
+
+    <!-- Footer -->
+    <FooterComponent></FooterComponent>
     </div>
 </template>
 
@@ -34,7 +37,12 @@ export default {
     data() {
         return {
             loading: false,
-            post: null
+            post: null,
+            chronology: null,
+            nbChronology: null,
+            endMessage: "message de fin",
+            isQuestion: null,
+            vrai: false
         };
     },
     created() {
@@ -58,7 +66,8 @@ export default {
                     this.loading = false;
                     return;
                 });
-        }
+        },
+
     },
 }
 </script>

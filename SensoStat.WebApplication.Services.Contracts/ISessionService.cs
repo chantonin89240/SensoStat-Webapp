@@ -6,9 +6,9 @@
 
     public interface ISessionService
     {
-        HttpResponseMessage GetDataFromHttpClient(string url);
-
         IEnumerable<SessionViewModel> GetSessions();
+
+        SessionViewModel GetSessionById(int id);
 
         IEnumerable<SessionViewModel> GetSessionsClose();
 

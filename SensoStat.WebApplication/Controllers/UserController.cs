@@ -21,9 +21,9 @@
         [HttpPost]
         public async Task<IActionResult> AddInstructionItem([FromBody] SessionVM session)
         {
-            session.Instructions.Add(new InstructionItemViewModel());
-            return PartialView("_InstructionItemsViewModel", session);
-            //return this.View("Index", session);
+            //session.Instructions.Add(new InstructionItemViewModel());
+            //return PartialView("InstructionItemsViewModel", session);
+            return this.View("Index", session);
         }
     }
 }
