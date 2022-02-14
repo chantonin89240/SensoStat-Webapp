@@ -14,13 +14,11 @@ namespace SensoStat.WebApplication.ViewModels
         [Required(ErrorMessage = "Veuillez saisir ce champ")]
         public string MsgFinal { get; set; }
 
-        [UIHint("InstructionItemViewModel")]
-        public List<InstructionItemViewModel> Instructions { get; set; }
+        public List<string> Types { get; set; }
 
-        public SessionVM()
-        {
-            this.Instructions = new List<InstructionItemViewModel>();
-        }
+        public List<string> Messages { get; set; }
+
+ 
 
     }
 }

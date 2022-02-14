@@ -66,6 +66,7 @@
                 {
                     Libelle = item.Libelle,
                     Chronology = item.Chronology,
+                    IsQuestion = item.IsQuestion,
                 });
             }
 

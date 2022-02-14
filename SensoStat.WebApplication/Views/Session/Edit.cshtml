@@ -8,71 +8,77 @@
 <div class="p-3">
 	<h2>Éditer une séance</h2>
 	<hr />
-	<div class="row">
+
+	<section class="row">
+		<!-- div de gestion de la séance -->
 		<div class="col-10">
-			<div class="mb-4 d-flex justify-content-between">
-				<div class="d-flex">
-					<label for="exampleInputEmail1" class="form-label h5 me-1 mt-2">Nom de la séance :</label>
-					<div class="">
-						<input type="text" class="form-control " value="Vico">
+			<form id="formSession" method="post" asp-controller="Session" asp-action="Edite">
+				<!-- section du nom de la séance ainsi que sont status -->
+				<span class="mb-4 d-flex justify-content-between">
+					<div class="d-flex">
+						<label for="exampleInputEmail1" class="form-label h5 me-1 mt-2">Nom de la séance :</label>
+						<span class="">
+							<input asp-for="Name" type="text" class="form-control" placeholder="Nom Séance" value="@Model.Name">
+						</span>
 					</div>
-				</div>
-				<div>
-					<p class="h5 mt-2">Statut : Non-publié</p>
-				</div>
-			</div>
-			<p>Ajoutez vos instruction(s) / question(s) dans l'ordre chronologique du déroulé de la séance</p>
-			<div class="mb-3 row">
-				<div class="col col-lg-2">
-					<p>Message d'accueil</p>
-				</div>
-				<div class="col-10">
-					<textarea type="text" class="form-control" rows="1" oninput="auto_grow(this)">Bienvenue à cette séance. Vous allez donner votre avis sur 3 savons. Cliquez ou dites « Etape suivante »</textarea>
-				</div>
-			</div>
-			<div class="mb-3 row">
-				<div class="col col-lg-2">
-					<p>Instruction 1</p>
-				</div>
-				<div class="col-10">
-					<textarea type="text" class="form-control" rows="1" oninput="auto_grow(this)">Savonnez-vous les mains avec le savon #CodeProduit. Puis dites « Etape suivante »</textarea>
-				</div>
-			</div>
-			<div class="mb-3 row">
-				<div class="col col-lg-2">
-					<p>Instruction 2</p>
-				</div>
-				<div class="col-10">
-					<textarea type="text" class="form-control" rows="1" oninput="auto_grow(this)">Vous allez désormais tester le savon #CodeProduit. Cliquez ou dites « Etape suivante »</textarea>
-				</div>
-			</div>
-			<div class="mb-3 row">
-				<div class="col col-lg-2">
-					<p>Question 1</p>
-				</div>
-				<div class="col-10"> 
-					<textarea type="text" class="form-control" rows="1" oninput="auto_grow(this)">Comment appréciez-vous l’odeur du savon #CodeProduit entre 0 et 10 ? Pour répondre dites « Répondre ». Pour répéter la question, dites « Répéter ».</textarea>
-				</div>
-			</div>
-			<div class="mb-3 row">
-				<div class="col col-lg-2">
-					<p>Question 2</p>
-				</div>
-				<div class="col-10">
-					<textarea type="text" class="form-control" rows="1" oninput="auto_grow(this)">Jugez-vous que le savon #CodeProduit est : pas assez moussant, trop moussant ou juste bien ? Pour répondre dites « Répondre ». Pour répéter la question, dites « Répéter ».</textarea>
-				</div>
-			</div>
-			<div class="mb-3 row">
-				<div class="col col-lg-2">
-					<p>Question 3</p>
-				</div>
-				<div class="col-10"> 
-					<textarea type="text" class="form-control" rows="1" oninput="auto_grow(this)"></textarea>
-				</div>
-			</div>
-			<button class="btn btn-warning" type="submit">Ajouter une instruction</button>
-			<button class="btn btn-warning" type="submit">Ajouter une question</button>
+				</span>
+				<p>Ajoutez vos instruction(s) / question(s) dans l'ordre chronologique du déroulé de la séance</p>
+				<!-- section du message d'accueil -->
+				<span class="mb-3 row">
+					<div class="col col-lg-2">
+						<label>Message d'accueil</label>
+					</div>
+					<div class="col-10">
+						<textarea asp-for="MsgAccueil" class="form-control" rows="1" oninput="auto_grow(this)" placeholder="ici doit être inscrit le message de début de séance !">@Model.MsgAccueil</textarea>
+					</div>
+				</span>
+				<!-- section qui ajoute des intruction / question -->
+				<span id="SpanInstru">
+					@foreach(var item in @Model.Instructions.Select((value, index) => new { value, index })){
+						if(@item.value.IsQuestion  == 0){
+							<section class="mb-3 row SectionInstru" id="@item.index">
+								<div class="col col-lg-2">
+									<label for="Instruction">Instruction</label>
+								</div>
+								<div class="col-10 d-inline-flex">
+									<input type="hidden" name="Types" value="Instruction">
+									<textarea class="form-control" rows="1" name="Messages" oninput="auto_grow(this)" placeholder="ici doit etre inscrit le message  !">@item.value.Libelle</textarea>
+									<i class="fas fa-times-circle text-danger h-100 w-5 ms-3" name="" onclick="deleteInput('@item.index')"></i>
+								</div>
+							</section>
+						}
+						else{
+							<section class="mb-3 row SectionInstru" id="@item.index">
+								<div class="col col-lg-2">
+									<label for="Question">Question</label>
+								</div>
+								<div class="col-10 d-inline-flex">
+									<input type="hidden" name="Types" value="Question">
+									<textarea class="form-control" rows="1" name="Messages" oninput="auto_grow(this)" placeholder="ici doit etre inscrit le message  !">@item.value.Libelle</textarea>
+									<i class="fas fa-times-circle text-danger h-100 w-5 ms-3" name="" onclick="deleteInput('@item.index')"></i>
+								</div>
+							</section>
+						}
+
+					}
+							
+				</span>
+				<!-- section du message de fin -->
+				<span class="mb-3 row">
+					<div class="col col-lg-2">
+						<label>Message de fin</label>
+					</div>
+					<div class="col-10">
+						<textarea asp-for="MsgFinal" class="form-control" rows="1" oninput="auto_grow(this)" placeholder="ici doit être inscrit le message de fin de séance !">@Model.MsgFinal</textarea>
+					</div>
+				</span>
+				<!-- button d'ajout d'instruction / question -->
+			</form>
+				<button class="btn btn-warning" onclick="addInstruction('Instruction')">Ajouter une instruction</button>
+				<button class="btn btn-warning" onclick="addInstruction('Question')">Ajouter une question</button>
+			
 		</div>
+		<!-- div contenant les button pour les fonctionnalité -->
 		<div class="col-2 d-flex flex-column">
 			<button class="btn btn-warning mb-2" type="button" data-bs-toggle="modal" data-bs-target="#ModalPlanPresentation">Importer un plan de présentation</button>
 			<button class="btn btn-warning mb-2" type="button" disabled style="color: grey;">Tester</button>
@@ -82,8 +88,49 @@
 			<button class="btn btn-warning mb-2" type="button" data-bs-toggle="modal" data-bs-target="#SuppPublication" disabled style="color: grey;">Annuler la publication</button>
 			<button class="btn btn-warning mb-2" type="button" data-bs-toggle="modal" data-bs-target="#SuppSeance">Supprimer la séance</button>
 		</div>
-	</div>
+	</section>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- Modal Download du plan de présentation-->
 <div class="modal fade" id="ModalPlanPresentation" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">

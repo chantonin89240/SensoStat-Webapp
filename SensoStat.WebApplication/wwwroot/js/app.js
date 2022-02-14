@@ -26,17 +26,24 @@ function addInstruction(type) {
     // crée un label est l'ajoute à la divLabel
     var label = document.createElement("label");
     label.setAttribute('for', type);
-    label.textContent = name;
+    label.textContent = type;
     divLabel.appendChild(label);
 
     // crée une div comprenant le textarea
     var divInput = document.createElement("div");
     divInput.setAttribute('class', 'col-10 d-inline-flex');
+    
+    var inputHidden = document.createElement("input");
+    inputHidden.setAttribute('type', 'hidden');
+    inputHidden.setAttribute('name', 'Types');
+    inputHidden.setAttribute('value', type);
+    divInput.appendChild(inputHidden);
+
     // crée un textarea est l'ajoute à la divInput
     var input = document.createElement("textarea");
     input.setAttribute('class', 'form-control');
     input.setAttribute('rows', '1');
-    input.setAttribute('name', name);
+    input.setAttribute('name', 'Messages');
     input.setAttribute('oninput', 'auto_grow(this)');
     input.setAttribute('placeholder', 'ici doit etre inscrit le message  !');
     divInput.appendChild(input);
