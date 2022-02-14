@@ -2,13 +2,9 @@
 {
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+
     public class Response
     {
-        [Required]
-        public string CommentResponse { get; set; }
-
-        public DateTime DateResponse { get; set; }
-
         public Instruction Instruction { get; set; }
 
         public int IdInstruction { get; set; }
@@ -20,6 +16,11 @@
         public Panelist Panelist { get; set; }
 
         public int IdPanelist { get; set; }
+
+        [Required]
+        public string CommentResponse { get; set; }
+
+        public DateTime DateResponse { get; set; }
 
         public Response() { }
 

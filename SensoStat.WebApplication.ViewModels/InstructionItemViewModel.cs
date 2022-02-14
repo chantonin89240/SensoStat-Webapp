@@ -23,7 +23,7 @@ namespace SensoStat.WebApplication.ViewModels
 
         public InstructionItemViewModel()
         {
-            this.Responses = new List<ResponseViewModel>();
+            this.Libelle = "";
         }
 
         public InstructionItemViewModel(string libelle, int chronology, int isQuestion, SessionViewModel session)

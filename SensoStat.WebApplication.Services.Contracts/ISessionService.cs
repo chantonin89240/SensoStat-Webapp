@@ -6,12 +6,12 @@
 
     public interface ISessionService
     {
-        HttpResponseMessage GetDataFromHttpClient(string url);
-
         IEnumerable<SessionViewModel> GetSessions();
+
+        SessionViewModel GetSessionById(int id);
 
         IEnumerable<SessionViewModel> GetSessionsClose();
 
-        HttpStatusCode LoadFile(IFormFile file);
+        HttpStatusCode LoadFile(IFormFile file, int idSession);
     }
 }

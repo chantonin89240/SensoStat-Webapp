@@ -53,5 +53,51 @@
             //ajout des tests de communications
             return jsonResult;
         }
+
+        /// <summary>
+        /// Execute une requete Http de type Get Post Put ou Delete suivant le 1er argument "method"
+        /// </summary>
+        /// <param name="method"></param>
+        /// <param name="url"></param>
+        /// <param name="content"></param>
+        /// <returns>Le body de la réponse http au format string</returns>
+        public string RequestHttp(string method, string url, object? content)
+        {
+            var reponseHttp = new HttpResponseMessage();
+
+            if (method == "Post" || method == "Put")
+            {
+                var json = JsonConvert.SerializeObject(content);
+                var stringContent = new StringContent(json, Encoding.UTF8, "application/json");
+
+                switch (method)
+                {
+                    case "Post":
+                        reponseHttp = _httpClient.PostAsync(url, stringContent).Result;
+                        break;
+                    case "Put":
+                        reponseHttp = _httpClient.PutAsync(url, stringContent).Result;
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            switch (method)
+            {
+                case "Get":
+                    reponseHttp = _httpClient.GetAsync(url).Result;
+                    break;
+                case "Delete":
+                    reponseHttp = _httpClient.DeleteAsync(url).Result;
+                    break;
+                default:
+                    break;
+            }
+
+            var jsonResult = reponseHttp.Content.ReadAsStringAsync().Result;
+
+            return jsonResult;
+        }
     }
 }

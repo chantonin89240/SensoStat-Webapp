@@ -11,8 +11,8 @@ namespace SensoStat.Mobile.Commons
 		public const string FinalPage = "FinalPage";
 		public const string TextToSpeech = "TextToSpeech";
 
-		public static string CognitiveServicesApiKey = "cac300db47c649af9b34155891cbf8c4";
-		public static string CognitiveServicesRegion = "francecentral";
+		public static string CognitiveServicesApiKey = "b2e32041353748908c8e5805be94fff0";
+		public static string CognitiveServicesRegion = "westeurope";
 		// Routes
 	}
 }

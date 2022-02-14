@@ -1,7 +1,7 @@
 ﻿namespace SensoStat.Services
 {
     using SensoStat.Entities;
-    using SensoStat.Entities.Request;
+    using SensoStat.Entities.HttpRequest;
     using SensoStat.Repository.Contracts;
     using SensoStat.Services.Contracts;
 
@@ -25,7 +25,7 @@
         /// .
         /// </summary>
         /// <returns>liste des session.</returns>
-        public IEnumerable<Session> Get()
+        public IEnumerable<Session> GetAll()
         {
             return this._sessionRepository.FindAll();
         }
@@ -66,6 +66,7 @@
                 {
                     Libelle = item.Libelle,
                     Chronology = item.Chronology,
+                    IsQuestion = item.IsQuestion,
                 });
             }
 

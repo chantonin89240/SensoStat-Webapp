@@ -15,17 +15,6 @@
         {
             this._clientService = clientService;
         }
-        /// <summary>
-        /// Connection à une serveur HTTP.
-        /// </summary>
-        /// <param name="url"></param>
-        /// <returns>Réponse du serveur</returns>
-        public HttpResponseMessage GetDataFromHttpClient(string url)
-        {
-            HttpClient httpClient = new HttpClient();
-            var response = httpClient.GetAsync(url).Result;
-            return response;
-        }
 
         public IEnumerable<SessionViewModel> GetSessions()
         {
@@ -34,6 +23,20 @@
             var lesSessions = JsonConvert.DeserializeObject<IEnumerable<SessionViewModel>>(sessions);
 
             return lesSessions.Where(s => s.Etat != "Close").OrderByDescending(s => s.DateUpdate);
+        }
+
+        public SessionViewModel GetSessionById(int id)
+        {
+            var session = this._clientService.GetDataFromHttpClient($"api/Sessions/{id}");
+
+            var laSession = JsonConvert.DeserializeObject<SessionViewModel>(session);
+
+            laSession.MsgAccueil = laSession.Instructions.First().Libelle;
+            laSession.MsgFinal = laSession.Instructions.Last().Libelle;
+
+            laSession.Instructions.Remove(laSession.Instructions.First());
+            laSession.Instructions.Remove(laSession.Instructions.Last());
+            return laSession;
         }
 
         public IEnumerable<SessionViewModel> GetSessionsClose()
@@ -49,8 +52,9 @@
         /// Méthode de chargement, lecture et enregistrement en base de données de fichier CSV
         /// </summary>
         /// <param name="file"></param>
+        /// <param name="idSession"></param>
         /// <returns>Le code du status de la réponse rétourné par l'API</returns>
-        public HttpStatusCode LoadFile(IFormFile file)
+        public HttpStatusCode LoadFile(IFormFile file, int idSession)
         {
             List<object> listPlanPresentation = new List<object>();
 
@@ -80,7 +84,7 @@
                             var item = new PresentationViewModel
                             {
                                 Panelist = new PanelistViewModel { CodePanelist = codePanelist },
-                                Product = new ProductViewModel { CodeProduct = plan },
+                                Product = new ProductViewModel { CodeProduct = plan, IdSession = idSession },
                                 Rank = rank
                             };
 
@@ -93,6 +97,8 @@
                 };
             }
 
+            var presentations = this._clientService.PostDataFromHttpClient("api/Presentation", listPlanPresentation);
+            var lesPresentations = JsonConvert.DeserializeObject<IEnumerable<SessionViewModel>>(presentations);
             var retourn = listPlanPresentation;
             return HttpStatusCode.OK;
         }

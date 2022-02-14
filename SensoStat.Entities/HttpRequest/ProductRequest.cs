@@ -1,5 +1,7 @@
-﻿namespace SensoStat.Entities.Request
+﻿namespace SensoStat.Entities.HttpRequest
 {
+    using SensoStat.Entities;
+
     public class ProductRequest
     {
         public string CodeProduct { get; set; }

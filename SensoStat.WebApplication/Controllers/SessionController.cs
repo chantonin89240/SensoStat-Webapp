@@ -2,6 +2,7 @@
 {
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
+    using SensoStat.Entities;
     using SensoStat.WebApplication.Services;
     using SensoStat.WebApplication.Services.Contracts;
     using SensoStat.WebApplication.ViewModels;
@@ -41,16 +42,36 @@
         }
 
         [HttpPost]
-        public IActionResult Create(SessionViewModel session)
+        public IActionResult Create(SessionVM session)
         {
+            Session sessionCreate = new Session() {
+                Name = session.Name,
+                IdPerson = 1,
+                Etat = "Non-déployée",
+            };
+            sessionCreate.Instructions.Add(new Instruction() { Chronology = 0, Libelle = session.MsgAccueil, IsQuestion = 0 });
 
-            //this._clientService.PostDataFromHttpClient("api/Sessions", session);
-            return this.View();
+            foreach (var item in session.Messages.Select((value, index) => new { value, index }))
+            {
+                int isQuestion = 0;
+                if (session.Types[item.index] == "Question")
+                {
+                    isQuestion = 1;
+                }
+
+                sessionCreate.Instructions.Add(new Instruction() { Chronology = item.index + 1, Libelle = item.value, IsQuestion = isQuestion });
+            }
+
+            sessionCreate.Instructions.Add(new Instruction() { Chronology = sessionCreate.Instructions.Count(), Libelle = session.MsgFinal, IsQuestion = 0 });
+
+            this._clientService.PostDataFromHttpClient("api/Sessions", sessionCreate);
+            return this.RedirectToAction("Index");
         }
 
         public IActionResult Edit(int id)
         {
-            return this.View();
+            var model = this._sessionService.GetSessionById(id);
+            return this.View(model);
         }
 
         [HttpPost]
@@ -71,9 +92,9 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> LoadFile(IFormFile file)
+        public async Task<IActionResult> LoadFile(int id, IFormFile file)
         {
-            this._sessionService.LoadFile(file);
+            this._sessionService.LoadFile(file, id);
             return RedirectToAction("create");
         }
 

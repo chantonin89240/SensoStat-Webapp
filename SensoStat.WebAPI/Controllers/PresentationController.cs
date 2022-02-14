@@ -2,7 +2,7 @@
 {
     using System;
     using Microsoft.AspNetCore.Mvc;
-    using SensoStat.Entities.Request;
+    using SensoStat.Entities;
     using SensoStat.Services;
     using SensoStat.Services.Contracts;
 
@@ -31,11 +31,11 @@
         }
 
         [HttpPost]
-        public IActionResult CreatePresentation([FromBody] ProductRequest presentation)
+        public IActionResult CreatePresentation([FromBody] List<Presentation> presentations)
         {
-            //var productResponse = this._productService.Create(product);
-            //return this.CreatedAtAction(nameof(SessionsController.GetById), new { id => };
-            throw new NotImplementedException();
+            var productResponse = this._presentationService.MultiCreate(presentations);
+            return this.CreatedAtAction(nameof(PresentationController), presentations);
+
         }
 
         [HttpPut("{id}")]

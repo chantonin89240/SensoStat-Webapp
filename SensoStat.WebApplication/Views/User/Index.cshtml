@@ -1,45 +1,87 @@
-﻿@model SensoStat.WebApplication.ViewModels.SessionViewModel
-
+﻿@model SensoStat.WebApplication.ViewModels.SessionVM
 @{
-    await Html.RenderPartialAsync("_InstructionItemsViewModel");
-}
 
+}
 
 <div class="p-5">
     <h2>Liste des séances actives</h2>
     <hr />
     <form asp-controler="user" asp-action="create" id="form">
-        @Html.LabelFor(m => m.Name)
-        @Html.EditorFor(m => m.Name)
-        @*<input asp-for="Name" class="form-control" />
-        <input asp-for="AccueilMsg" class="form-control" />
-        <input asp-for="FinallMsg" class="form-control" />*@
-        @Html.LabelFor(m => m.MsgAccueil)
-        @Html.EditorFor(m => m.MsgAccueil)
-
-        @Html.LabelFor(m => m.MsgFinal)
-        @Html.EditorFor(m => m.MsgFinal)
-        <div id="sessionInstructionsContainer">
-            @Html.EditorFor(m => m.Instructions)
+        <div class="row" id="appdata" data-obj="@Json.Serialize(Model)">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Name, new { htmlAttributes = new { @class = "control-label" } })
+                @Html.EditorFor(m => m.Name, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
         </div>
-        <input class="btn btn-warning" type="button" id="btnAdd" onclick="addPart()" value="Ajouter une intruction" />
+        <div class="row">
+            <div class="form-group">
+                @Html.LabelFor(m => m.MsgAccueil, new { htmlAttributes = new { @class = "control-label" } })
+                @Html.EditorFor(m => m.MsgAccueil, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+        <div id="sessionInstructionsContainer">
+            @Html.EditorFor(m => m.Messages)
+        </div>
+        <div class="row">
+            <div class="form-group">
+                @Html.LabelFor(m => m.MsgFinal, new { htmlAttributes = new { @class = "control-label" } })
+                @Html.EditorFor(m => m.MsgFinal, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+        <input class="btn btn-warning" type="button" id="btnAdd" onclick="addPart()" value="Ajouter une intruction"
+               @Html.ActionLink("ajouter", "AddInstructionItem")
     </form>
     <div class="row">
         <input type="submit" value="Enregistrer" id="submit" class="btn btn-warning" />
     </div>
-
+    @Html.Raw(Json.Serialize(@Model))
 </div>
 
 
 @section Scripts {
 
     @* @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}*@
-    <script type="text/javascript">
+<script type="text/javascript">
+        var uri = "user/AddInstructionItem";
         function addPart() {
-                console.log("testEnterFunction");
-                var session = document.getElementById("form");
-                console.log(JSON.stringify(session));
-                console.log("debut fetch");
+            console.log("testEnterFunction");
+            var session = document.getElementById("form");
+            var divInstruction = document.getElementById("sessionInstructionsContainer");
+
+            var model = @Html.Raw(Json.Serialize(@Model))
+            // var obj = JSON.parse(document.getElementById('appdata').dataset.obj);
+           
+            console.log(model);
+            console.log(divInstruction);
+
+            
+            var data = {
+                Name: document.getElementById("Name").value,
+                MsgAccueil: document.getElementById("MsgAccueil").value,
+                Instructions: document.getElementById("Instructions_Libelle").value ,
+                MsgFinal: document.getElementById("MsgFinal").value
+            }
+            console.log(data);
+            console.log("testEnterFunction2 ");
+
+            fetch(uri, {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+                .then(response => {
+                console.log("res")
+                console.log(response);
+                response.json();
+            })
+            .then(() => {
+                console.log("tout est passé");
+
+            })
+            .catch(error => console.error('Unable to add item.', error));
         }
-    </script>
+</script>
 }

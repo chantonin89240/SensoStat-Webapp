@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -66,6 +67,7 @@ namespace SensoStat.Mobile.ViewModels
            _speechConfig.SpeechSynthesisLanguage = "fr_FR";
 
            _speechSynthesizer = _speechSynthesizer ?? new SpeechSynthesizer(_speechConfig);
+
            await _speechSynthesizer.SpeakTextAsync(textTo);
 
            ActiveBool = false;
