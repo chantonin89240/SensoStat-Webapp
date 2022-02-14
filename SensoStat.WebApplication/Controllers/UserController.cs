@@ -21,7 +21,6 @@
 
         public IActionResult Index()
         {
-
             return this.View();
         }
 
@@ -68,7 +67,7 @@
                 var user = this._userService.CreateUser(model);
                 if (user.Id != 0)
                 {
-                    return this.RedirectToAction(nameof(Create));
+                    return this.RedirectToAction(nameof(Authenticate));
                 }
 
                 user.Roles = listRoles;
