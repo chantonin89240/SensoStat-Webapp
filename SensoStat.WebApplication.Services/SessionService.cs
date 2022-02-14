@@ -49,8 +49,9 @@
         /// Méthode de chargement, lecture et enregistrement en base de données de fichier CSV
         /// </summary>
         /// <param name="file"></param>
+        /// <param name="idSession"></param>
         /// <returns>Le code du status de la réponse rétourné par l'API</returns>
-        public HttpStatusCode LoadFile(IFormFile file)
+        public HttpStatusCode LoadFile(IFormFile file, int idSession)
         {
             List<object> listPlanPresentation = new List<object>();
 
@@ -80,7 +81,7 @@
                             var item = new PresentationViewModel
                             {
                                 Panelist = new PanelistViewModel { CodePanelist = codePanelist },
-                                Product = new ProductViewModel { CodeProduct = plan },
+                                Product = new ProductViewModel { CodeProduct = plan, IdSession = idSession },
                                 Rank = rank
                             };
 
@@ -93,6 +94,8 @@
                 };
             }
 
+            var presentations = this._clientService.PostDataFromHttpClient("api/Presentation", listPlanPresentation);
+            var lesPresentations = JsonConvert.DeserializeObject<IEnumerable<SessionViewModel>>(presentations);
             var retourn = listPlanPresentation;
             return HttpStatusCode.OK;
         }

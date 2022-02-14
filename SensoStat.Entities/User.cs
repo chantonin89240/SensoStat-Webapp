@@ -22,7 +22,7 @@
         public string Email { get; set; }
 
         [Required]
-        public string Login { get; set; }
+        public string? Login { get; set; }
 
         // L'attribut [JsonIgnore] empêche la sérialisation des propriétés "password" et "salt", son renvoi dans les réponses à l'API.
         [JsonIgnore]

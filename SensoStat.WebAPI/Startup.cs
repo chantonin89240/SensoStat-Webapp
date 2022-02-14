@@ -4,6 +4,7 @@
     using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.IdentityModel.Tokens;
+    using Microsoft.OpenApi.Models;
     using SensoStat.EntitiesContext;
     using SensoStat.Repository;
     using SensoStat.Repository.Contracts;
@@ -28,6 +29,32 @@
             services.AddEndpointsApiExplorer();
 
             services.AddSwaggerGen();
+            /*services.AddSwaggerGen(option =>
+            {
+                option.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
+                {
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.ApiKey,
+                    Scheme = "Bearer",
+                    BearerFormat = "JWT",
+                    In = ParameterLocation.Header,
+                    Description = "Ent�tes d'autorisation JWT \r\n\r\n Tapez 'Bearer' [espace] et votre token dans l'input qui suis.\r\n\r\nExemple: \"Bearer 1safsfsdfdfd\"",
+                });
+                option.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                     {
+                           new OpenApiSecurityScheme
+                             {
+                                 Reference = new OpenApiReference
+                                 {
+                                     Type = ReferenceType.SecurityScheme,
+                                     Id = "Bearer",
+                                 },
+                             },
+                           new string[] { }
+                     },
+                });
+            });*/
 
             string connectionBdd = this.Configuration.GetConnectionString("SensoStatDbContext");
             string connectionBddPostgresSQL = this.Configuration.GetConnectionString("SensoStatDbContextPostgresSql");
@@ -68,6 +95,7 @@
             services.AddDbContext<SensoStatDbContext>(options =>
             {
                 options.UseNpgsql(connectionBddPostgresSQL);
+                options.EnableSensitiveDataLogging();
             });
 
             services.AddScoped<IUserRepository, UserRepository>();
@@ -102,10 +130,10 @@
                 {
                     var context = services.GetRequiredService<SensoStatDbContext>();
 
-                    // context.Database.EnsureDeleted();
-                    // context.Database.EnsureCreated();
+                    context.Database.EnsureDeleted();
+                    context.Database.EnsureCreated();
 
-                    // SeedData.Initialize(services);
+                    SeedData.Initialize(services);
                 }
                 catch (Exception ex)
                 {
@@ -117,6 +145,14 @@
 
             app.UseRouting();
 
+            // global cors policy
+            app.UseCors(x => x
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
+
+            // utilisation du middleware fourni par Microsoft
+            // app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

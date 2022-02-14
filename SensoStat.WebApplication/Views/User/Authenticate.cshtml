@@ -11,15 +11,16 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="mb-3">
                 <label asp-for="@Model.Email" class="form-label">Identifiant</label>
-                <input asp-for="@Model.Email"  name="model.Email" aria-describedby="userAuth" type="text" class="form-control rounded" />
+                <input asp-for="@Model.Email" name="model.Email" aria-describedby="userAuth" type="text" class="form-control rounded" />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="mb-3">
                 <label asp-for="@Model.Password" class="form-label">Mot de passe</label>
-                <input asp-for="@Model.Password"  name="model.Password" aria-describedby="userCreate" type="text" class="form-control rounded" />
+                <input asp-for="@Model.Password" name="model.Password" aria-describedby="userCreate" type="text" class="form-control rounded" />
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
             <button type="submit" class="btn btn-warning">Se connecter</button>
+            <div asp-validation-summary="All" class="text-danger"></div>
         </form>
     </div>
 
