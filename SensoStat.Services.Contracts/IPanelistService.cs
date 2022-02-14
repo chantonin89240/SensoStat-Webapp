@@ -4,6 +4,7 @@ namespace SensoStat.Services.Contracts
     public interface IPanelistService
     {
         IEnumerable<Panelist> GetPanelists();
-        HttpResponseMessage CreatePanelist();
+
+        Panelist CreatePanelist(Panelist panelist);
     }
 }
