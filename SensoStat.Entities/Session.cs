@@ -18,7 +18,7 @@
 
         public DateTime DateCreate { get; set; }
 
-        public DateTime DateUpdate { get; set; }
+        public DateTime? DateUpdate { get; set; }
 
         public DateTime? DateClose { get; set; }
 

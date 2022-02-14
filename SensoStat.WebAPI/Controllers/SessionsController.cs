@@ -4,7 +4,7 @@ namespace SensoStat.WebAPI.Controllers
 {
     using System;
     using Microsoft.AspNetCore.Mvc;
-    using SensoStat.Entities.Request;
+    using SensoStat.Entities.HttpRequest;
     using SensoStat.Services;
 
     [Route("api/[controller]")]
@@ -22,7 +22,7 @@ namespace SensoStat.WebAPI.Controllers
         [HttpGet]
         public IActionResult Get([FromQuery]string? statut)
         {
-            if (string.IsNullOrEmpty(statut)) return this.Ok(this._sessionService.Get());
+            if (string.IsNullOrEmpty(statut)) return this.Ok(this._sessionService.GetAll());
             else return this.Ok(this._sessionService.getByStatut(statut));
 
         }
@@ -43,7 +43,7 @@ namespace SensoStat.WebAPI.Controllers
         [HttpPut("{id}")]
         public IActionResult UpdateSession(int id)
         {
-            return this.Ok(this._sessionService.Get());
+            return this.Ok(this._sessionService.GetAll());
         }
 
         [HttpDelete("{id}")]

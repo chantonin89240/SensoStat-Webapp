@@ -1,6 +1,7 @@
 ﻿namespace SensoStat.Entities.Factory
 {
     using Bogus;
+    using System.Security.Cryptography;
 
     public static class PersonFactory
     {
@@ -11,8 +12,9 @@
         /// </summary>
         /// <param name="roles"></param>
         /// <returns></returns>
-        public static IEnumerable<User> GeneratePerson(List<Role> roles) 
+        public static IEnumerable<User> GeneratePerson(List<Role> roles)
         {
+            var salt = GenerateSalt();
             var PersonId = 0;
             var CreatePersonFactory = new Faker<User>("fr")
                 .CustomInstantiator(f => new User(
@@ -21,10 +23,22 @@
                     f.Name.FirstName(),
                     f.Internet.Email(),
                     f.Name.FullName(),
-                    f.Random.String2(10)));
+                    f.Random.String2(10),
+                    Convert.ToBase64String(salt)));
 
             var users = CreatePersonFactory.Generate(nombreUtilisateur);
             return users;
+        }
+
+        private static byte[] GenerateSalt()
+        {
+            byte[] salt = new byte[128 / 8];
+            using (var rngCsp = new RNGCryptoServiceProvider())
+            {
+                rngCsp.GetNonZeroBytes(salt);
+            }
+
+            return salt;
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace SensoStat.Entities.Request
+﻿namespace SensoStat.Entities.HttpRequest
 {
     using SensoStat.Entities;
 

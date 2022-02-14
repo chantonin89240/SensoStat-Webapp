@@ -71,9 +71,9 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> LoadFile(IFormFile file)
+        public async Task<IActionResult> LoadFile(int id, IFormFile file)
         {
-            this._sessionService.LoadFile(file);
+            this._sessionService.LoadFile(file, id);
             return RedirectToAction("create");
         }
 

@@ -12,6 +12,6 @@
 
         IEnumerable<SessionViewModel> GetSessionsClose();
 
-        HttpStatusCode LoadFile(IFormFile file);
+        HttpStatusCode LoadFile(IFormFile file, int idSession);
     }
 }

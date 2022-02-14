@@ -2,6 +2,7 @@
 {
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+    using System.Text.Json.Serialization;
 
     public class User
     {
@@ -18,13 +19,18 @@
         public string FirstName { get; set; }
 
         [Required]
-        public string Mail { get; set; }
+        public string Email { get; set; }
 
         [Required]
-        public string Login { get; set; }
+        public string? Login { get; set; }
 
+        // L'attribut [JsonIgnore] empêche la sérialisation des propriétés "password" et "salt", son renvoi dans les réponses à l'API.
+        [JsonIgnore]
         [Required]
         public string Password { get; set; }
+
+        [JsonIgnore]
+        public string Salt { get; set; }
 
         public List<Session> Sessions { get; set; }
 
@@ -33,15 +39,16 @@
             this.Sessions = new List<Session>();
         }
 
-        public User(Role role, string lastName, string firstName, string mail, string login, string password) : this()
+        public User(Role role, string lastName, string firstName, string email, string login, string password, string salt) : this()
         {
             this.Role = role;
             this.IdRole = role.Id;
             this.LastName = lastName;
             this.FirstName = firstName;
-            this.Mail = mail;
+            this.Email = email;
             this.Login = login;
             this.Password = password;
+            this.Salt = salt;
         }
     }
 }

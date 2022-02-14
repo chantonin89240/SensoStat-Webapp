@@ -6,13 +6,21 @@
     public class SensoStatDbContext : DbContext
     {
         public DbSet<Instruction> Instructions { get; set; }
+
         public DbSet<Panelist> Panelists { get; set; }
+
         public DbSet<User> Users { get; set; }
+
         public DbSet<Presentation> Presentations { get; set; }
+
         public DbSet<Product> Products { get; set; }
+
         public DbSet<Publication> Publications { get; set; }
+
         public DbSet<Response> Responses { get; set; }
+
         public DbSet<Role> Roles { get; set; }
+
         public DbSet<Session> Sessions { get; set; }
 
         public SensoStatDbContext(DbContextOptions<SensoStatDbContext> options)

@@ -102,12 +102,12 @@
 					<input name="file" type="file">
 					@* <span asp-validation-for="FileUpload.FormFile"></span> *@
 				</dd>
-			</dl>			
+			</dl>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                <input class="btn btn-primary" asp-controller="session" asp-action="LoadFile" asp-route-id="99" type="submit" value="Importer" />
+            </div>
 		</form>
-      </div>
-      <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-          <input class="btn btn-primary" asp-controller="session" asp-action="LoadFile" type="submit" value="Importer" />
       </div>
     </div>
   </div>

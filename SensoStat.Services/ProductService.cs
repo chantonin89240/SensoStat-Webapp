@@ -2,7 +2,7 @@
 {
     using System.Collections;
     using SensoStat.Entities;
-    using SensoStat.Entities.Request;
+    using SensoStat.Entities.HttpRequest;
     using SensoStat.Repository.Contracts;
     using SensoStat.Services.Contracts;
 

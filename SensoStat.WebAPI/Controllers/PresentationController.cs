@@ -3,7 +3,6 @@
     using System;
     using Microsoft.AspNetCore.Mvc;
     using SensoStat.Entities;
-    using SensoStat.Entities.Request;
     using SensoStat.Services;
     using SensoStat.Services.Contracts;
 
