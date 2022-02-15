@@ -1,7 +1,7 @@
 ﻿namespace SensoStat.Services
 {
     using SensoStat.Entities;
-    using SensoStat.Entities.HttpRequest;
+    using SensoStat.Models.HttpRequest;
     using SensoStat.Repository.Contracts;
     using SensoStat.Services.Contracts;
 

@@ -1,7 +1,9 @@
-﻿using System;
-namespace SensoStat.Entities.HttpResponse
+﻿namespace SensoStat.Models.HttpResponse
 {
-    public class AuthenticateResponse
+    using System;
+    using SensoStat.Entities;
+
+    public class CreateUserResponse
     {
         public int Id { get; set; }
 
@@ -13,16 +15,13 @@ namespace SensoStat.Entities.HttpResponse
 
         public int IdRole { get; set; }
 
-        public string Token { get; set; }
-
-        public AuthenticateResponse(User user, string token)
+        public CreateUserResponse(User user)
         {
             Id = user.Id;
             FirstName = user.FirstName;
             LastName = user.LastName;
             Email = user.Email;
             IdRole = user.IdRole;
-            Token = token;
         }
     }
 }

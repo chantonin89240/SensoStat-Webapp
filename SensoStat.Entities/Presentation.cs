@@ -8,14 +8,14 @@
         [Required]
         public int Rank { get; set; }
 
+        [ForeignKey(nameof(IdPanelist))]
         public Panelist Panelist { get; set; }
 
-        // [ForeignKey(nameof(Panelist))]
         public int IdPanelist { get; set; }
 
+        [ForeignKey(nameof(IdProduct))]
         public Product Product { get; set; }
 
-        // [ForeignKey(nameof(Product))]
         public int IdProduct { get; set; }
 
         public int IdSession { get; set; }

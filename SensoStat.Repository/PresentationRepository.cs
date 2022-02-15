@@ -49,6 +49,7 @@
         /// <inheritdoc/>
         public IEnumerable<Presentation> FindByIdSession(int id)
         {
+            var result = this._context.Presentations.Include(p => p.Product).Include(p => p.Panelist).Where(presentation => presentation.Product.IdSession == id);
             return this._context.Presentations.Where(presentation => presentation.Product.IdSession == id);
         }
 

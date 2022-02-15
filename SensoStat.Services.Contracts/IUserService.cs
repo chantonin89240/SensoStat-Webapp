@@ -1,7 +1,7 @@
 ﻿using System;
 using SensoStat.Entities;
-using SensoStat.Entities.HttpRequest;
-using SensoStat.Entities.HttpResponse;
+using SensoStat.Models.HttpRequest;
+using SensoStat.Models.HttpResponse;
 
 namespace SensoStat.Services.Contracts
 {

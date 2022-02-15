@@ -44,7 +44,7 @@
     return false;
   }
 
-  let items = document.querySelectorAll('.container .SectionInstru');
+  let items = document.querySelectorAll('.container .box');
   items.forEach(function(item) {
     item.addEventListener('dragstart', handleDragStart);
     item.addEventListener('dragover', handleDragOver);

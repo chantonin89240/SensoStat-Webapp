@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="HttpRequest\" />
+    <None Remove="HttpResponse\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="HttpRequest\" />
+    <Folder Include="HttpResponse\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SensoStat.Entities\SensoStat.Entities.csproj" />
+  </ItemGroup>
+</Project>
