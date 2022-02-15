@@ -2,198 +2,213 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
-	@model SensoStat.WebApplication.ViewModels.SessionViewModel
+    @model SensoStat.WebApplication.ViewModels.SessionViewModel
 }
 
 <div class="p-3">
-	<h2>Éditer une séance</h2>
-	<hr />
+    <h2>Ã‰diter une sÃ©ance</h2>
+    <hr />
 
-	<section class="row">
-		<!-- div de gestion de la séance -->
-		<div class="col-10">
-			<form id="formSession" method="post" asp-controller="Session" asp-action="Edite">
-				<!-- section du nom de la séance ainsi que sont status -->
-				<span class="mb-4 d-flex justify-content-between">
-					<div class="d-flex">
-						<label for="exampleInputEmail1" class="form-label h5 me-1 mt-2">Nom de la séance :</label>
-						<span class="">
-							<input asp-for="Name" type="text" class="form-control" placeholder="Nom Séance" value="@Model.Name">
-						</span>
-					</div>
-				</span>
-				<p>Ajoutez vos instruction(s) / question(s) dans l'ordre chronologique du déroulé de la séance</p>
-				<!-- section du message d'accueil -->
-				<span class="mb-3 row">
-					<div class="col col-lg-2">
-						<label>Message d'accueil</label>
-					</div>
-					<div class="col-10">
-						<textarea asp-for="MsgAccueil" class="form-control" rows="1" oninput="auto_grow(this)" placeholder="ici doit être inscrit le message de début de séance !">@Model.MsgAccueil</textarea>
-					</div>
-				</span>
-				<!-- section qui ajoute des intruction / question -->
-				<span id="SpanInstru">
-					@foreach(var item in @Model.Instructions.Select((value, index) => new { value, index })){
-						if(@item.value.IsQuestion  == 0){
-							<section class="mb-3 row SectionInstru" id="@item.index">
-								<div class="col col-lg-2">
-									<label for="Instruction">Instruction</label>
-								</div>
-								<div class="col-10 d-inline-flex">
-									<input type="hidden" name="Types" value="Instruction">
-									<textarea class="form-control" rows="1" name="Messages" oninput="auto_grow(this)" placeholder="ici doit etre inscrit le message  !">@item.value.Libelle</textarea>
-									<i class="fas fa-times-circle text-danger h-100 w-5 ms-3" name="" onclick="deleteInput('@item.index')"></i>
-								</div>
-							</section>
-						}
-						else{
-							<section class="mb-3 row SectionInstru" id="@item.index">
-								<div class="col col-lg-2">
-									<label for="Question">Question</label>
-								</div>
-								<div class="col-10 d-inline-flex">
-									<input type="hidden" name="Types" value="Question">
-									<textarea class="form-control" rows="1" name="Messages" oninput="auto_grow(this)" placeholder="ici doit etre inscrit le message  !">@item.value.Libelle</textarea>
-									<i class="fas fa-times-circle text-danger h-100 w-5 ms-3" name="" onclick="deleteInput('@item.index')"></i>
-								</div>
-							</section>
-						}
+    <section class="row">
+        <!-- div de gestion de la sÃ©ance -->
+        <div class="col-10">
+            <form id="formSession" method="post" asp-controller="Session" asp-action="Edite">
+                <!-- section du nom de la sÃ©ance ainsi que sont status -->
+                <span class="mb-4 d-flex justify-content-between">
+                    <div class="d-flex">
+                        <label for="exampleInputEmail1" class="form-label h5 me-1 mt-2">Nom de la sÃ©ance :</label>
+                        <span class="">
+                            <input asp-for="Name" type="text" class="form-control" placeholder="Nom SÃ©ance" value="@Model.Name">
+                        </span>
+                    </div>
+                </span>
+                <p>Ajoutez vos instruction(s) / question(s) dans l'ordre chronologique du dÃ©roulÃ© de la sÃ©ance</p>
+                <!-- section du message d'accueil -->
+                <span class="mb-3 row">
+                    <div class="col col-lg-2">
+                        <label>Message d'accueil</label>
+                    </div>
+                    <div class="col-10">
+                        <textarea asp-for="MsgAccueil" class="form-control" rows="1" oninput="auto_grow(this)" placeholder="ici doit Ãªtre inscrit le message de dÃ©but de sÃ©ance !">@Model.MsgAccueil</textarea>
+                    </div>
+                </span>
+                <!-- section qui ajoute des intruction / question -->
+                <span id="SpanInstru">
+                    @foreach (var item in @Model.Instructions.Select((value, index) => new { value, index }))
+                    {
+                        if (@item.value.IsQuestion == 0)
+                        {
+                            <section class="mb-3 row SectionInstru" id="@item.index">
+                                <div class="col col-lg-2">
+                                    <label for="Instruction">Instruction</label>
+                                </div>
+                                <div class="col-10 d-inline-flex">
+                                    <input type="hidden" name="Types" value="Instruction">
+                                    <textarea class="form-control" rows="1" name="Messages" oninput="auto_grow(this)" placeholder="ici doit etre inscrit le message  !">@item.value.Libelle</textarea>
+                                    <i class="fas fa-times-circle text-danger h-100 w-5 ms-3" name="" onclick="deleteInput('@item.index')"></i>
+                                </div>
+                            </section>
+                        }
+                        else
+                        {
+                            <section class="mb-3 row SectionInstru" id="@item.index">
+                                <div class="col col-lg-2">
+                                    <label for="Question">Question</label>
+                                </div>
+                                <div class="col-10 d-inline-flex">
+                                    <input type="hidden" name="Types" value="Question">
+                                    <textarea class="form-control" rows="1" name="Messages" oninput="auto_grow(this)" placeholder="ici doit etre inscrit le message  !">@item.value.Libelle</textarea>
+                                    <i class="fas fa-times-circle text-danger h-100 w-5 ms-3" name="" onclick="deleteInput('@item.index')"></i>
+                                </div>
+                            </section>
+                        }
 
-					}
-							
-				</span>
-				<!-- section du message de fin -->
-				<span class="mb-3 row">
-					<div class="col col-lg-2">
-						<label>Message de fin</label>
-					</div>
-					<div class="col-10">
-						<textarea asp-for="MsgFinal" class="form-control" rows="1" oninput="auto_grow(this)" placeholder="ici doit être inscrit le message de fin de séance !">@Model.MsgFinal</textarea>
-					</div>
-				</span>
-				<!-- button d'ajout d'instruction / question -->
-			</form>
-				<button class="btn btn-warning" onclick="addInstruction('Instruction')">Ajouter une instruction</button>
-				<button class="btn btn-warning" onclick="addInstruction('Question')">Ajouter une question</button>
-			
-		</div>
-		<!-- div contenant les button pour les fonctionnalité -->
-		<div class="col-2 d-flex flex-column">
-			<button class="btn btn-warning mb-2" type="button" data-bs-toggle="modal" data-bs-target="#ModalPlanPresentation">Importer un plan de présentation</button>
-			<button class="btn btn-warning mb-2" type="button" disabled style="color: grey;">Tester</button>
-			<button class="btn btn-warning mb-2" type="button" disabled style="color: grey;">Publier</button>
-			<button class="btn btn-warning mb-4" type="button" disabled style="color: grey;">Exporter les URL</button>
-			<button class="btn btn-warning mb-4" type="button">Enregistrer</button>
-			<button class="btn btn-warning mb-2" type="button" data-bs-toggle="modal" data-bs-target="#SuppPublication" disabled style="color: grey;">Annuler la publication</button>
-			<button class="btn btn-warning mb-2" type="button" data-bs-toggle="modal" data-bs-target="#SuppSeance">Supprimer la séance</button>
-		</div>
-	</section>
+                    }
+
+                </span>
+                <!-- section du message de fin -->
+                <span class="mb-3 row">
+                    <div class="col col-lg-2">
+                        <label>Message de fin</label>
+                    </div>
+                    <div class="col-10">
+                        <textarea asp-for="MsgFinal" class="form-control" rows="1" oninput="auto_grow(this)" placeholder="ici doit Ãªtre inscrit le message de fin de sÃ©ance !">@Model.MsgFinal</textarea>
+                    </div>
+                </span>
+                <!-- button d'ajout d'instruction / question -->
+            </form>
+            <button class="btn btn-warning" onclick="addInstruction('Instruction')">Ajouter une instruction</button>
+            <button class="btn btn-warning" onclick="addInstruction('Question')">Ajouter une question</button>
+
+        </div>
+        <!-- div contenant les button pour les fonctionnalitÃ© -->
+        <div class="col-2 d-flex flex-column">
+            <button class="btn btn-warning mb-2" type="button" data-bs-toggle="modal" data-bs-target="#ModalPlanPresentation">Importer un plan de présentation</button>
+            <button class="btn btn-warning mb-2" type="button" data-bs-toggle="modal" data-bs-target="#DisplayPresentation">Visualiser le plan de présentation</button>
+            <button class="btn btn-warning mb-2" type="button" disabled style="color: grey;">Tester</button>
+            <button class="btn btn-warning mb-2" type="button" disabled style="color: grey;">Publier</button>
+            <button class="btn btn-warning mb-4" type="button" disabled style="color: grey;">Exporter les URL</button>
+            <button class="btn btn-warning mb-4" type="button">Enregistrer</button>
+            <button class="btn btn-warning mb-2" type="button" data-bs-toggle="modal" data-bs-target="#SuppPublication" disabled style="color: grey;">Annuler la publication</button>
+            <button class="btn btn-warning mb-2" type="button" data-bs-toggle="modal" data-bs-target="#SuppSeance">Supprimer la séance</button>
+        </div>
+    </section>
 </div>
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- Modal Download du plan de présentation-->
+<!-- Modal Download du plan de prÃ©sentation-->
 <div class="modal fade" id="ModalPlanPresentation" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Veuillez sélectionner un fichier de plan de présentation</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form enctype="multipart/form-data" method="post">
-			<dl>
-				<dt>
-					<label ></label>
-				</dt>
-				<dd>
-					<input name="file" type="file">
-					@* <span asp-validation-for="FileUpload.FormFile"></span> *@
-				</dd>
-			</dl>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Veuillez sÃ©lectionner un fichier de plan de prÃ©sentation</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form enctype="multipart/form-data" method="post">
+                    <dl>
+                        <dt>
+                            <label></label>
+                        </dt>
+                        <dd>
+                            <input name="file" type="file">
+                            @* <span asp-validation-for="FileUpload.FormFile"></span> *@
+                        </dd>
+                    </dl>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                        <input class="btn btn-primary" asp-controller="session" asp-action="LoadFile" asp-route-id="99" type="submit" value="Importer" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Validation suppression sÃ©ance-->
+<div class="modal fade" id="SuppSeance" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Supprimer la sÃ©ance</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ÃŠtes vous sÃ»r de vouloir supprimer cette sÃ©ance?
+            </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                <input class="btn btn-primary" asp-controller="session" asp-action="LoadFile" asp-route-id="99" type="submit" value="Importer" />
+                <button type="button" class="btn btn-primary">Valider</button>
             </div>
-		</form>
-      </div>
+        </div>
     </div>
-  </div>
-</div>
-
-<!-- Modal Validation suppression séance-->
-<div class="modal fade" id="SuppSeance" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Supprimer la séance</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        Êtes vous sûr de vouloir supprimer cette séance?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-        <button type="button" class="btn btn-primary">Valider</button>
-      </div>
-    </div>
-  </div>
 </div>
 
 <!-- Modal Validation suppression publication-->
 <div class="modal fade" id="SuppPublication" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Annuler la publication de la séance</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        Êtes vous sûr de vouloir annuler la publication de cette séance? Un mail d'annulation sera envoyé à chaque panéliste.
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-        <button type="button" class="btn btn-primary">Valider</button>
-      </div>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Annuler la publication de la sÃ©ance</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ÃŠtes vous sÃ»r de vouloir annuler la publication de cette sÃ©ance? Un mail d'annulation sera envoyÃ© Ã  chaque panÃ©liste.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                <button type="button" class="btn btn-primary">Valider</button>
+            </div>
+        </div>
     </div>
-  </div>
+</div>
+
+<!-- Modal visualistaion plan de présenation -->
+<div class="modal fade" id="DisplayPresentation" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Code sujet</th>
+                            <th scope="col">First</th>
+                            <th scope="col">Last</th>
+                            <th scope="col">Handle</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>mdo</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>fat</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td colspan="2">Larry the Bird</td>
+                            <td>twitter</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Understood</button>
+            </div>
+        </div>
+    </div>
 </div>

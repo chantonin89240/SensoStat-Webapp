@@ -5,34 +5,28 @@
 
         <!-- section ou sera rassembler les components et trier -->
         <section class="container">
-            <HomePageComponent v-bind:post="post"></HomePageComponent>
-            <InstructionPageComponent  v-if="vrai"></InstructionPageComponent>
-            <QuestionPageComponent v-if="vrai"></QuestionPageComponent>
-            <EndPageComponent v-bind:endMessage="endMessage" v-if="vrai"></EndPageComponent>
-    </section>
+            <p v-text="post.instructions[0].libelle"></p>
+            <p v-text="nbChronology"></p>
+            <br />
 
-    <!-- Footer -->
-    <FooterComponent></FooterComponent>
+            <p>Cliquez ou dites :</p>
+            <a class="btn btn-warning" @click="verifInstruction">Etape suivante</a>
+        </section>
+
+        <!-- Footer -->
+        <FooterComponent></FooterComponent>
     </div>
 </template>
 
 <script>
     import NavbarComponent from './components/Navbar.vue';
     import FooterComponent from './components/Footer';
-    import HomePageComponent from './components/HomePage.vue';
-    import EndPageComponent from './components/EndPage.vue';
-    import InstructionPageComponent from './components/InstructionPage.vue';
-    import QuestionPageComponent from './components/QuestionPage.vue';
 
 export default {
     name: 'App',
     components: {
         NavbarComponent,
         FooterComponent,
-        HomePageComponent,
-        EndPageComponent,
-        InstructionPageComponent,
-        QuestionPageComponent
         },
     data() {
         return {
@@ -40,7 +34,6 @@ export default {
             post: null,
             chronology: null,
             nbChronology: null,
-            endMessage: "message de fin",
             isQuestion: null,
             vrai: false
         };
@@ -50,9 +43,8 @@ export default {
         // already being observed
         this.fetchData();
     },
-    watch: {
-        // call again the method if the route changes
-        '$route': 'fetchData'
+    beforeMount() {
+        this.nbChronology = this.post.instructions[0].libelle;
     },
     methods: {
         fetchData() {
@@ -67,6 +59,9 @@ export default {
                     return;
                 });
         },
+        verifInstruction() {
+
+        }
 
     },
 }

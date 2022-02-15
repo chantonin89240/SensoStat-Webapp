@@ -15,15 +15,18 @@ namespace SensoStat.WebApplication.ViewModels
 
         public int Rank { get; set; }
 
+        public int IdSession { get; set; }
+
         public PresentationViewModel() { }
 
-        public PresentationViewModel(PanelistViewModel panelist, ProductViewModel product, int rank) : this()
+        public PresentationViewModel(PanelistViewModel panelist, ProductViewModel product, int rank, int idSession) : this()
         {
             this.Rank = rank;
             this.Panelist = panelist;
             this.IdPanelist = panelist.Id;
             this.Product = product;
             this.IdProduct = product.Id;
+            this.IdSession = idSession;
         }
     }
 }
