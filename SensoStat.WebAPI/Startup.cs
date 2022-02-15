@@ -1,4 +1,4 @@
-﻿ namespace SensoStat.WebAPI
+﻿namespace SensoStat.WebAPI
 {
     using System.Text;
     using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -87,16 +87,16 @@
             });
 
 
-            // services.AddDbContext<SensoStatDbContext>(options =>
-            // {
-            //    options.UseSqlServer(connectionBdd);
-            // });
-
             services.AddDbContext<SensoStatDbContext>(options =>
             {
-                 options.UseNpgsql(connectionBddPostgresSQL);
-                 options.EnableSensitiveDataLogging();
+                options.UseSqlServer(connectionBdd);
             });
+
+            //services.AddDbContext<SensoStatDbContext>(options =>
+            //{
+            //     options.UseNpgsql(connectionBddPostgresSQL);
+            //     options.EnableSensitiveDataLogging();
+            //});
 
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUserService, UserService>();

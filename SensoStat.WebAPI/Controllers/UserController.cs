@@ -25,6 +25,7 @@
         public IActionResult Authenticate(AuthenticateRequest model)
         {
             var response = this._userService.Authenticate(model);
+            Response.Cookies.Append("Jwt", response.Token, new CookieOptions { Expires = DateTime.Now.AddHours(1)});
 
             if (response == null)
             {
