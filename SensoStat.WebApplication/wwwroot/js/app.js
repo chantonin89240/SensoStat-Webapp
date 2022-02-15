@@ -19,11 +19,16 @@ function addInstruction(type) {
     var section = document.createElement("section")
     section.setAttribute('class', 'mb-3 row SectionInstru');
     section.setAttribute('id', name);
-    section.setAttribute('draggable', true);
 
     // cr�e une div comprenant le label
     var divLabel = document.createElement("div");
-    divLabel.setAttribute('class', 'col col-lg-2');
+    divLabel.setAttribute('class', 'col col-lg-2 m-auto');
+    // cr�e une icone est l'ajoute � la divInput
+    var icon = document.createElement("i");
+    icon.setAttribute('class', 'fa-solid fa-bars h-100 w-5 me-3');
+    icon.setAttribute('name', name);
+    divLabel.appendChild(icon);
+
     // cr�e un label est l'ajoute � la divLabel
     var label = document.createElement("label");
     label.setAttribute('for', type);
@@ -49,7 +54,7 @@ function addInstruction(type) {
     input.setAttribute('placeholder', 'ici doit etre inscrit le message  !');
     divInput.appendChild(input);
 
-    // cr�e une icone est l'ajoute � la divInput
+    // crée une icone est l'ajoute � la divInput
     var icon = document.createElement("i");
     icon.setAttribute('class', 'fas fa-times-circle text-danger h-100 w-5 ms-3');
     icon.setAttribute('name', name);
