@@ -1,35 +1,20 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
-
-textarea#note {
+﻿textarea#note {
 	box-sizing:border-box;
 	display:block;
 	max-width:100%;
 
 }
-.SectionInstru{
-	display: flex;
-}
-/*.container {
-	display: grid;
-	grid-template-columns: repeat(5, 1fr);
-	gap: 10px;
-}
 
-.SectionInstru {
-	cursor: move;
-}*/
 .container {
 	display: grid;
 	grid-template-columns: repeat(5, 1fr);
 	gap: 10px;
 }
 
-
-
 .box {
-border: 3px solid #666;
-background-color: #ddd;
-border-radius: .5em;
-padding: 10px;
-cursor: move;
+	border: 3px solid #666;
+	background-color: #ddd;
+	border-radius: .5em;
+	padding: 10px;
+	cursor: move;
 }

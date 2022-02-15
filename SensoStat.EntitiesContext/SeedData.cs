@@ -127,6 +127,14 @@
                                   where pub.IdSession == session.Id
                                   select panelist;
 
+            var panelistSessionMethod = context.Panelists
+                                            .Join(context.Publications,
+                                                    pan => pan.Id,
+                                                    pub => pub.IdPaneslist,
+                                                    (pan, pub) => new { pan, pub })
+                                            .Where(o => o.pub.IdSession == session.Id)
+                                            .Select(o => o.pan);
+
             var productSession = context.Products.Where(p => p.IdSession == session.Id).ToList();
 
             return PresentationFactory.GeneratePresentation(panelistSession.ToList(), productSession);

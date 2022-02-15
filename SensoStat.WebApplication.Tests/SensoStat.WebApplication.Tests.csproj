@@ -26,4 +26,10 @@
     <ProjectReference Include="..\SensoStat.WebApplication\SensoStat.WebApplication.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Assets\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets\" />
+  </ItemGroup>
 </Project>

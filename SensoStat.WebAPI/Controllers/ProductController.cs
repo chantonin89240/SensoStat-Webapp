@@ -2,7 +2,7 @@
 {
     using System;
     using Microsoft.AspNetCore.Mvc;
-    using SensoStat.Entities.HttpRequest;
+    using SensoStat.Models.HttpRequest;
     using SensoStat.Services;
 
     [Route("api/[controller]")]

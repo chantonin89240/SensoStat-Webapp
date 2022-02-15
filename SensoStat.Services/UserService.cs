@@ -12,8 +12,8 @@
     using SensoStat.WebAPI.Helpers;
     using Microsoft.IdentityModel.Tokens;
     using System.IdentityModel.Tokens.Jwt;
-    using SensoStat.Entities.HttpResponse;
-    using SensoStat.Entities.HttpRequest;
+    using SensoStat.Models.HttpResponse;
+    using SensoStat.Models.HttpRequest;
 
     public class UserService : IUserService
     {

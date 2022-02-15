@@ -31,11 +31,17 @@
         }
 
         [HttpPost]
-        public IActionResult CreatePresentation([FromBody] List<Presentation> presentations)
+        public bool CreatePresentation([FromBody] List<Presentation> presentations)
         {
-            var productResponse = this._presentationService.MultiCreate(presentations);
-            return this.CreatedAtAction(nameof(PresentationController), presentations);
-
+            try
+            {
+                var productResponse = this._presentationService.MultiCreate(presentations);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         [HttpPut("{id}")]

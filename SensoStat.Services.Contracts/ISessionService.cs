@@ -1,7 +1,7 @@
 ﻿namespace SensoStat.Services.Contracts
 {
     using SensoStat.Entities;
-    using SensoStat.Entities.HttpRequest;
+    using SensoStat.Models.HttpRequest;
 
     public interface ISessionService
     {
