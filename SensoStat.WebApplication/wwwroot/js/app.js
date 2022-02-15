@@ -8,28 +8,29 @@ function auto_grow(element) {
 // fonction d'ajout d'input d'instruction
 function addInstruction(type) {
 
-    // appel de la fonction researchLastInstruction qui vérifie et renvoi la dernière instruction ou question puis création d'une variable name reprenent le type et sont numéro  
+    // appel de la fonction researchLastInstruction qui vï¿½rifie et renvoi la derniï¿½re instruction ou question puis crï¿½ation d'une variable name reprenent le type et sont numï¿½ro  
     var lastInstruction = researchLastInstruction(type);
     var name = type + " " + lastInstruction;
 
-    // récupére la span ou sera les éléments 
+    // rï¿½cupï¿½re la span ou sera les ï¿½lï¿½ments 
     var span = document.getElementById("SpanInstru");
 
-    // crée une section qui sera envoyer dans la span SpanInstru
+    // crï¿½e une section qui sera envoyer dans la span SpanInstru
     var section = document.createElement("section")
     section.setAttribute('class', 'mb-3 row SectionInstru');
     section.setAttribute('id', name);
+    section.setAttribute('draggable', true);
 
-    // crée une div comprenant le label
+    // crï¿½e une div comprenant le label
     var divLabel = document.createElement("div");
     divLabel.setAttribute('class', 'col col-lg-2');
-    // crée un label est l'ajoute à la divLabel
+    // crï¿½e un label est l'ajoute ï¿½ la divLabel
     var label = document.createElement("label");
     label.setAttribute('for', type);
     label.textContent = type;
     divLabel.appendChild(label);
 
-    // crée une div comprenant le textarea
+    // crï¿½e une div comprenant le textarea
     var divInput = document.createElement("div");
     divInput.setAttribute('class', 'col-10 d-inline-flex');
     
@@ -39,7 +40,7 @@ function addInstruction(type) {
     inputHidden.setAttribute('value', type);
     divInput.appendChild(inputHidden);
 
-    // crée un textarea est l'ajoute à la divInput
+    // crï¿½e un textarea est l'ajoute ï¿½ la divInput
     var input = document.createElement("textarea");
     input.setAttribute('class', 'form-control');
     input.setAttribute('rows', '1');
@@ -48,14 +49,14 @@ function addInstruction(type) {
     input.setAttribute('placeholder', 'ici doit etre inscrit le message  !');
     divInput.appendChild(input);
 
-    // crée une icone est l'ajoute à la divInput
+    // crï¿½e une icone est l'ajoute ï¿½ la divInput
     var icon = document.createElement("i");
     icon.setAttribute('class', 'fas fa-times-circle text-danger h-100 w-5 ms-3');
     icon.setAttribute('name', name);
     icon.setAttribute('onclick', "deleteInput('"+ name +"')");
     divInput.appendChild(icon);
 
-    // ajout les div à la section puis utilise append pour préciser l'ordre
+    // ajout les div ï¿½ la section puis utilise append pour prï¿½ciser l'ordre
     section.appendChild(divLabel);
     section.appendChild(divInput);
     section.append(divLabel, divInput);
@@ -64,9 +65,9 @@ function addInstruction(type) {
     span.appendChild(section);
 }
 
-// récupére tout les inputs d''instructio net de question et renvoi le dernier 
+// rï¿½cupï¿½re tout les inputs d''instructio net de question et renvoi le dernier 
 function researchLastInstruction(type) {
-    // récupére les input se trouvent dans la span SpanInstru
+    // rï¿½cupï¿½re les input se trouvent dans la span SpanInstru
     if (type == 'Instruction') {
         totalInstruction += 1;
         return totalInstruction;
