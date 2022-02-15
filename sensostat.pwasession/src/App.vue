@@ -3,14 +3,13 @@
         <!-- Navbar -->
         <NavbarComponent></NavbarComponent>
 
+        
+
         <!-- section ou sera rassembler les components et trier -->
         <section class="container">
-            <p v-text="post.instructions[0].libelle"></p>
-            <p v-text="nbChronology"></p>
-            <br />
+            <InstructionComponent v-if="isQuestion == 0" v-bind:currentInstruction="currentInstruction"></InstructionComponent>
 
-            <p>Cliquez ou dites :</p>
-            <a class="btn btn-warning" @click="verifInstruction">Etape suivante</a>
+            <QuestionComponent v-if="isQuestion == 1" v-bind:currentInstruction="currentInstruction"></QuestionComponent>
         </section>
 
         <!-- Footer -->
@@ -20,22 +19,25 @@
 
 <script>
     import NavbarComponent from './components/Navbar.vue';
-    import FooterComponent from './components/Footer';
+    import FooterComponent from './components/Footer.vue';
+    import InstructionComponent from './components/Instruction.vue';
+    import QuestionComponent from './components/Question.vue';
 
 export default {
     name: 'App',
     components: {
         NavbarComponent,
         FooterComponent,
+        InstructionComponent,
+        QuestionComponent,
         },
     data() {
         return {
-            loading: false,
-            post: null,
-            chronology: null,
+            session: null,
             nbChronology: null,
-            isQuestion: null,
-            vrai: false
+            isQuestion: 0,
+            instructions : null,
+            currentInstruction : null
         };
     },
     created() {
@@ -44,18 +46,15 @@ export default {
         this.fetchData();
     },
     beforeMount() {
-        this.nbChronology = this.post.instructions[0].libelle;
+        this.nbChronology = this.instructions.length;
     },
     methods: {
         fetchData() {
-            this.post = null;
-            this.loading = true;
-
             fetch('https://localhost:5001/api/sessions/3')
                 .then(r => r.json())
                 .then(json => {
-                    this.post = json;
-                    this.loading = false;
+                    this.session = json;
+                    this.instructions = json.instructions;
                     return;
                 });
         },
