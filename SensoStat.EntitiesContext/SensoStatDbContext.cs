@@ -46,6 +46,7 @@
                 entity.ToTable("Panelist");
 
                 entity.HasKey(e => e.Id);
+
             });
 
             modelBuilder.Entity<User>(entity =>

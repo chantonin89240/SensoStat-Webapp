@@ -11,7 +11,7 @@
         /// Ajoute un nouveau paneliste.
         /// </summary>
         /// <param name="panelist">Paneliste à ajouter.</param>
-        void Add(Panelist panelist);
+        Panelist Add(Panelist panelist);
 
         /// <summary>
         /// Supprime un paneliste.

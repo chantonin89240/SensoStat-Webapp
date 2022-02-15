@@ -16,9 +16,10 @@ namespace SensoStat.WebAPI.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreatePanelist()
+        public IActionResult CreatePanelist(Panelist panelist)
         {
-            return new OkObjectResult("");
+            var newPanelist = this._panelistService.CreatePanelist(panelist);
+            return this.CreatedAtAction(nameof(PanelistsController.CreatePanelist), new { id = newPanelist.Id }, newPanelist);
         }
     }
-} 
+}
