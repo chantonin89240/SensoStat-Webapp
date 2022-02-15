@@ -36,7 +36,7 @@
         /// <inheritdoc/>
         public Session Find(int id)
         {
-            return this._context.Sessions.FirstOrDefault(session => session.Id == id);
+            return this._context.Sessions.Include(s => s.Products).Include(i => i.Instructions).FirstOrDefault(session => session.Id == id);
         }
 
         /// <inheritdoc/>
