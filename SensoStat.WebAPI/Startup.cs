@@ -86,17 +86,16 @@
                 };
             });
 
+            //services.AddDbContext<SensoStatDbContext>(options =>
+            //{
+            //    options.UseSqlServer(connectionBdd);
+            //});
 
             services.AddDbContext<SensoStatDbContext>(options =>
             {
-                options.UseSqlServer(connectionBdd);
+                 options.UseNpgsql(connectionBddPostgresSQL);
+                 options.EnableSensitiveDataLogging();
             });
-
-            //services.AddDbContext<SensoStatDbContext>(options =>
-            //{
-            //     options.UseNpgsql(connectionBddPostgresSQL);
-            //     options.EnableSensitiveDataLogging();
-            //});
 
             services.AddAuthorization();
 
