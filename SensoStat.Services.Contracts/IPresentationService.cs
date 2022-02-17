@@ -9,5 +9,7 @@
         IEnumerable<PresentationResponse> FindAllByIdSession(int id);
 
         bool MultiCreate(List<PresentationRequest> presentations);
+
+        IEnumerable<PresentationDTO> FindByIdSessionAndIdPanelist(int idSession, int idPanelist);
     }
 }
