@@ -23,7 +23,7 @@
         public UserViewModel CreateUser(UserViewModel model)
         {
             var user = this._clientService.PostDataFromHttpClient("api/User", model);
-            var newUser = JsonConvert.DeserializeObject<UserViewModel>(user.Content.ToString());
+            var newUser = JsonConvert.DeserializeObject<UserViewModel>(user.Content.ReadAsStringAsync().Result);
             return newUser;
         }
 

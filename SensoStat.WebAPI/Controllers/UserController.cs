@@ -52,7 +52,6 @@
         }
 
         [HttpPost]
-        [Authorize(Roles = "SuperAdmin,Admin,Stagiaire")]
         public IActionResult Create(CreateUserRequest model)
         {
             var user = this._userService.CreateUser(model);
