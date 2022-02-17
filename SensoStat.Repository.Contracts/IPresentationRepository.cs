@@ -38,7 +38,7 @@
         /// <param name="idSession">Id de la Session.</param>
         /// <param name="idPanelist">Id du paneliste.</param>
         /// <returns>Une collection contenant les présentations de la session et du panaliste passé en paramètre.</returns>
-        IEnumerable<PresentationDTO> FindByIdSessionAndIdPanelist(int idSession, int idPanelist);
+        //IEnumerable<PresentationDTO> FindByIdSessionAndIdPanelist(int idSession, int idPanelist);
 
         /// <summary>
         /// Retourne toutes les présentations.

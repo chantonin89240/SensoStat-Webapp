@@ -83,8 +83,8 @@
                         {
                             var item = new PresentationViewModel
                             {
-                                Panelist = new PanelistViewModel { CodePanelist = codePanelist },
-                                Product = new ProductViewModel { CodeProduct = plan, IdSession = idSession },
+                                CodePanelist = codePanelist,
+                                CodeProduct = plan,
                                 Rank = rank,
                                 IdSession = idSession
                             };
@@ -93,18 +93,15 @@
 
                             rank++;
                         });
-                        // envoi de tout les objets
                     }
                 };
             }
 
+            // envoi de tout les objets
             var presentations = this._clientService.PostDataFromHttpClient("api/Presentation", listPlanPresentation);
-            var lesPresentations = JsonConvert.DeserializeObject<bool>(presentations.Content.ToString());
-            if(lesPresentations == true)
-            {
-                return true;
-            }
-            return false;
+            var lesPresentations = JsonConvert.DeserializeObject<bool>(presentations.Content.ReadAsStringAsync().Result);
+
+            return lesPresentations;
         }
 
         public List<PresentationViewModel> GetPresentations(int id)
