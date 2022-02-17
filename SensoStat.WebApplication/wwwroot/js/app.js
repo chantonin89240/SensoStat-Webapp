@@ -25,7 +25,7 @@ function addInstruction(type) {
     divLabel.setAttribute('class', 'col col-lg-2 m-auto');
     // cr�e une icone est l'ajoute � la divInput
     var icon = document.createElement("i");
-    icon.setAttribute('class', 'fa-solid fa-bars h-100 w-5 me-3');
+    icon.setAttribute('class', 'fas fa-times-circle h-100 w-5 me-3');
     icon.setAttribute('name', name);
     divLabel.appendChild(icon);
 

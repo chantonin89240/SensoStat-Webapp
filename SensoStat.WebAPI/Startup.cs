@@ -29,7 +29,7 @@
             services.AddEndpointsApiExplorer();
 
             services.AddSwaggerGen();
-            /*services.AddSwaggerGen(option =>
+            services.AddSwaggerGen(option =>
             {
                 option.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
                 {
@@ -54,13 +54,13 @@
                            new string[] { }
                      },
                 });
-            });*/
+            });
 
             string connectionBdd = this.Configuration.GetConnectionString("SensoStatDbContext");
             string connectionBddPostgresSQL = this.Configuration.GetConnectionString("SensoStatDbContextPostgresSql");
 
             // configuration de la configuration relative � l'API dans l'API, fortement typ�e
-            services.Configure<JwtSettings>(this.Configuration.GetSection("ApiSettings"));
+            services.Configure<JwtSettings>(this.Configuration.GetSection("JwtSettings"));
 
             // Utilisation de la configuration fortement typ�e dans le Program.cs
             var conf = new JwtSettings();
@@ -87,25 +87,29 @@
             });
 
 
-            //services.AddDbContext<SensoStatDbContext>(options =>
-            //{
-            //    options.UseSqlServer(connectionBdd);
-            //});
-
             services.AddDbContext<SensoStatDbContext>(options =>
             {
-                 options.UseNpgsql(connectionBddPostgresSQL);
-                 options.EnableSensitiveDataLogging();
+                options.UseSqlServer(connectionBdd);
             });
+
+            //services.AddDbContext<SensoStatDbContext>(options =>
+            //{
+            //     options.UseNpgsql(connectionBddPostgresSQL);
+            //     options.EnableSensitiveDataLogging();
+            //});
+
+            services.AddAuthorization();
 
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IRoleRepository, RoleRepository>();
             services.AddScoped<ISessionRepository, SessionRepository>();
             services.AddScoped<ISessionService, SessionService>();
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IPresentationRepository, PresentationRepository>();
             services.AddScoped<IPresentationService, PresentationService>();
+            services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IPanelistRepository, DbPanelistRepository>();
             services.AddScoped<IPanelistService, PanelistService>();
             services.AddScoped<SessionService>();
@@ -152,7 +156,7 @@
                 .AllowAnyHeader());
 
             // utilisation du middleware fourni par Microsoft
-            // app.UseAuthentication();
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

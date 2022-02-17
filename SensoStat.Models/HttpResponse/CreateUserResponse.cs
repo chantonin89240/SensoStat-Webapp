@@ -1,6 +1,5 @@
 ﻿namespace SensoStat.Models.HttpResponse
 {
-    using System;
     using SensoStat.Entities;
 
     public class CreateUserResponse

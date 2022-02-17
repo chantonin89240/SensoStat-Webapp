@@ -99,7 +99,7 @@
             }
 
             var presentations = this._clientService.PostDataFromHttpClient("api/Presentation", listPlanPresentation);
-            var lesPresentations = JsonConvert.DeserializeObject<bool>(presentations);
+            var lesPresentations = JsonConvert.DeserializeObject<bool>(presentations.Content.ToString());
             if(lesPresentations == true)
             {
                 return true;

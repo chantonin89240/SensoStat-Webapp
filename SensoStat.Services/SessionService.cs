@@ -52,14 +52,6 @@
 
             session.DateUpdate = session.DateCreate;
 
-            foreach (var item in sessionRequest.Products)
-            {
-                session.Products.Add(new Product()
-                {
-                    CodeProduct = item.CodeProduct,
-                });
-            }
-
             foreach (var item in sessionRequest.Instructions)
             {
                 session.Instructions.Add(new Instruction()

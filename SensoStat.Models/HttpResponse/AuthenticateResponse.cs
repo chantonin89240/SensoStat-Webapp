@@ -13,7 +13,7 @@
 
         public string Email { get; set; }
 
-        public int IdRole { get; set; }
+        public string RoleLibelle { get; set; }
 
         public string Token { get; set; }
 
@@ -23,7 +23,7 @@
             FirstName = user.FirstName;
             LastName = user.LastName;
             Email = user.Email;
-            IdRole = user.IdRole;
+            RoleLibelle = user.Role.Libelle;
             Token = token;
         }
     }

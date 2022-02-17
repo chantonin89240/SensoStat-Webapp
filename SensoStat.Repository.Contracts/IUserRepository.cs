@@ -13,8 +13,6 @@ namespace SensoStat.Repository.Contracts
 
         User FindByEmail(string email);
 
-        IEnumerable<Role> FindAllRoles();
-
         IEnumerable<User> FindAll();
 
         void Update(User User);

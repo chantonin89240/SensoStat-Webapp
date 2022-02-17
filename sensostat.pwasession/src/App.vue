@@ -1,72 +1,70 @@
 <template>
     <div id="app">
         <!-- Navbar -->
-        <NavbarComponent></NavbarComponent>
-
+        <NavbarComponent/>
         <!-- section ou sera rassembler les components et trier -->
         <section class="container">
-            <p v-text="post.instructions[0].libelle"></p>
-            <p v-text="nbChronology"></p>
-            <br />
-
-            <p>Cliquez ou dites :</p>
-            <a class="btn btn-warning" @click="verifInstruction">Etape suivante</a>
+            <!-- <InstructionComponent v-if="currentInstruction.isQuestion == 0" v-bind:currentInstruction="currentInstruction" @nextInstruction="verifInstruction"></InstructionComponent> -->
+            <button  @click="call(1350)">Test</button>
+            <!-- <QuestionComponent v-if="currentInstruction.isQuestion == 1" v-bind:currentInstruction="currentInstruction" @nextInstruction="verifInstruction"></QuestionComponent> -->
         </section>
-
         <!-- Footer -->
-        <FooterComponent></FooterComponent>
+        <FooterComponent/>
     </div>
 </template>
-
 <script>
     import NavbarComponent from './components/Navbar.vue';
-    import FooterComponent from './components/Footer';
-
+    import FooterComponent from './components/Footer.vue';
+    // import InstructionComponent from './components/Instruction.vue';
+    // import QuestionComponent from './components/Question.vue';
+    import PresentationService from './services/PresentationService.js';
 export default {
     name: 'App',
     components: {
         NavbarComponent,
         FooterComponent,
+        // InstructionComponent,
+        // QuestionComponent,
         },
     data() {
         return {
-            loading: false,
-            post: null,
-            chronology: null,
+            session: null,
             nbChronology: null,
-            isQuestion: null,
-            vrai: false
+            instructions : null,
+            currentInstruction : null,
+            produits : null,
+            currentProduit : null,
+            presentation : null,
+            presentationService : undefined,
         };
     },
-    created() {
-        // fetch the data when the view is created and the data is
-        // already being observed
-        this.fetchData();
-    },
-    beforeMount() {
-        this.nbChronology = this.post.instructions[0].libelle;
+    mounted(){
+        this.presentationService = new PresentationService()
+        this.presentationService.get().then((session) => {
+            this.session = session;
+            this.instructions = this.session.instructions;
+            this.currentInstruction = this.instructions[0];
+            this.nbChronology = this.instructions.length;
+        })
+        this.presentationService.getPresentation(1,1).then((presentation) => {
+            this.presentation = presentation;
+        })
     },
     methods: {
-        fetchData() {
-            this.post = null;
-            this.loading = true;
-
-            fetch('https://localhost:5001/api/sessions/3')
-                .then(r => r.json())
-                .then(json => {
-                    this.post = json;
-                    this.loading = false;
-                    return;
-                });
+        verifInstruction(curInstruction) {
+            if (curInstruction.chronology == this.nbChronology-2) {
+                this.currentInstruction = this.instructions[curInstruction.chronology+1];
+            }
+            this.currentInstruction = this.instructions[curInstruction.chronology+1];
         },
-        verifInstruction() {
-
+        call(number) {
+            for (let index = 0; index < number; index++) {
+                fetch("https://sensostatapi.azurewebsites.net/api/sessions/1")                
+            }
         }
-
     },
 }
 </script>
-
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

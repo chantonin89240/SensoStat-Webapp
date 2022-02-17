@@ -21,15 +21,16 @@
             return jsonResult;
         }
 
-        public string PostDataFromHttpClient(string url, object content)
+        public HttpResponseMessage PostDataFromHttpClient(string url, object content)
         {
             var json = JsonConvert.SerializeObject(content);
             var stringContent = new StringContent(json, Encoding.UTF8, "application/json");
             //call http
             var reponseHttp = _httpClient.PostAsync(url, stringContent).Result;
+            return reponseHttp;
             //lire le resultat => json
-            string jsonResult = reponseHttp.Content.ReadAsStringAsync().Result;
-            return jsonResult;
+            //string jsonResult = reponseHttp.Content.ReadAsStringAsync().Result;
+
         }
 
         public string PutDataFromHttpClient(string url, object content)
