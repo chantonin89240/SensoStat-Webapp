@@ -22,7 +22,7 @@
 
                 products.ForEach(product =>
                 {
-                    var presentation = new Presentation(panelist, product, rankList[rnd.Next(0, rankList.Count-1)], product.IdSession);
+                    var presentation = new Presentation(panelist.Id, product.Id, rankList[rnd.Next(0, rankList.Count-1)]);
                     rankList.Remove(presentation.Rank);
                     presentations.Add(presentation);
                 });

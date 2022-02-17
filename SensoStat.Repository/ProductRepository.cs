@@ -25,10 +25,18 @@
         /// Ajoute un produit.
         /// </summary>
         /// <param name="product">le produit à ajouter.</param>
-        public void Add(Product product)
+        public Product Add(Product product)
         {
-            this._context.Products.Add(product);
-            this._context.SaveChanges();
+            //var existingProduct = this._context.Products.FirstOrDefault(p => p == product);
+            var existingProduct = this._context.Products.FirstOrDefault(p => p.CodeProduct == product.CodeProduct && p.IdSession == product.IdSession);
+            if (existingProduct == null)
+            {
+                this._context.Products.Add(product);
+                this._context.SaveChanges();
+                return product;
+            }
+
+            return existingProduct;
         }
 
         /// <summary>

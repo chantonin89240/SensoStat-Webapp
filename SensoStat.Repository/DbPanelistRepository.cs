@@ -23,14 +23,16 @@ namespace SensoStat.Repository
         /// <param name="panelist">Paneliste à ajouter.</param>
         public Panelist Add(Panelist panelist)
         {
-            var existingCode = this._context.Panelists.FirstOrDefault(p => p.CodePanelist == panelist.CodePanelist);
-            if(existingCode == null)
+            var existingPanelist = this._context.Panelists.FirstOrDefault(p => p.CodePanelist == panelist.CodePanelist);
+
+            if (existingPanelist == null)
             {
                 this._context.Panelists.Add(panelist);
                 this._context.SaveChanges();
                 return panelist;
             }
-            return existingCode;
+
+            return existingPanelist;
         }
 
         /// <summary>
