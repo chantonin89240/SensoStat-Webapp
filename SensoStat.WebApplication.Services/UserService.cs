@@ -1,6 +1,5 @@
 ﻿namespace SensoStat.WebApplication.Services
 {
-    using System;
     using Newtonsoft.Json;
     using SensoStat.WebApplication.Services.Contracts;
     using SensoStat.WebApplication.ViewModels;
@@ -24,21 +23,22 @@
         public UserViewModel CreateUser(UserViewModel model)
         {
             var user = this._clientService.PostDataFromHttpClient("api/User", model);
-            var newUser = JsonConvert.DeserializeObject<UserViewModel>(user);
+            var newUser = JsonConvert.DeserializeObject<UserViewModel>(user.Content.ReadAsStringAsync().Result);
             return newUser;
         }
 
         public UserViewModel Authenticate(AuthentificationViewModel model)
         {
-            var user = this._clientService.PostDataFromHttpClient("api/User/authenticate", model);
+            var response = this._clientService.PostDataFromHttpClient("api/User/authenticate", model);
 
-            if(user == null)
+            if(response.StatusCode.ToString() == "Unauthorized")
             {
 
                 return new UserViewModel() { Email = model.Email, Password = model.Password };
             }
 
-            var userAuthentified = JsonConvert.DeserializeObject<UserViewModel>(user);
+            var userAuthentified = JsonConvert.DeserializeObject<UserViewModel>(response.Content.ReadAsStringAsync().Result);
+
 
             return userAuthentified;
         }

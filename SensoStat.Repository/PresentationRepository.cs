@@ -49,8 +49,22 @@
         /// <inheritdoc/>
         public IEnumerable<Presentation> FindByIdSession(int id)
         {
+            var result = this._context.Presentations.Include(p => p.Product).Include(p => p.Panelist).Where(presentation => presentation.Product.IdSession == id);
             return this._context.Presentations.Where(presentation => presentation.Product.IdSession == id);
         }
+
+        /// <inheritdoc/>
+        /*public IEnumerable<PresentationDTO> FindByIdSessionAndIdPanelist(int idSession, int idPanelist)
+        {
+            return this._context.Presentations.Where(p => p.Product.IdSession == idSession && p.IdPanelist == idPanelist).Select(p => new PresentationDTO
+            {
+                IdPanelist = idPanelist,
+                IdSession = idSession,
+                CodeProduit = p.Product.CodeProduct,
+                IdProduit = p.IdProduct,
+                Rank = p.Rank,
+            }).OrderBy(p => p.Rank);
+        }*/
 
         /// <inheritdoc/>
         public void Update(Presentation presentation)

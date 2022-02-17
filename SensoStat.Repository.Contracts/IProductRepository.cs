@@ -11,7 +11,7 @@
         /// Ajoute un nouveau produit.
         /// </summary>
         /// <param name="product">Produit à ajouter.</param>
-        void Add(Product product);
+        Product Add(Product product);
 
         /// <summary>
         /// Supprime un produit.

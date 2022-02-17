@@ -1,13 +1,16 @@
 ﻿namespace SensoStat.Services.Contracts
 {
     using SensoStat.Entities;
+    using SensoStat.Models.HttpRequest;
+    using SensoStat.Models.HttpResponse;
 
     public interface IPresentationService
     {
-        IEnumerable<Presentation> Get();
 
-        IEnumerable<Presentation> FindByIdSession(int id);
+        IEnumerable<PresentationResponse> FindAllByIdSession(int id);
 
-        List<Presentation> MultiCreate(List<Presentation> presentations);
+        bool MultiCreate(List<PresentationRequest> presentations);
+
+        // IEnumerable<PresentationDTO> FindByIdSessionAndIdPanelist(int idSession, int idPanelist);
     }
 }

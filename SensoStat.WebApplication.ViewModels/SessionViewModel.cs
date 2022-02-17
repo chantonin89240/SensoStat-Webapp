@@ -28,6 +28,8 @@ namespace SensoStat.WebApplication.ViewModels
 
         public List<ProductViewModel> Products { get; set; }
 
+        public List<PresentationViewModel> Presentations { get; set; }
+
         [UIHint("InstructionItemViewModel")]
         public List<InstructionItemViewModel> Instructions { get; set; }
 

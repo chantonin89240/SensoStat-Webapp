@@ -2,7 +2,7 @@
 {
     using System;
     using Microsoft.AspNetCore.Mvc;
-    using SensoStat.Entities;
+    using SensoStat.Models.HttpRequest;
     using SensoStat.Services;
     using SensoStat.Services.Contracts;
 
@@ -27,15 +27,27 @@
         [HttpGet("{id}")]
         public IActionResult GetByIdSession(int id)
         {
-            return this.Ok(this._presentationService.FindByIdSession(id));
+            return this.Ok(this._presentationService.FindAllByIdSession(id));
         }
 
-        [HttpPost]
-        public IActionResult CreatePresentation([FromBody] List<Presentation> presentations)
+        /*[HttpGet("{idSession}/{idPanlelist}")]
+        public IActionResult GetByIdSessionAndIdPanelist(int idSession, int idPanlelist)
         {
-            var productResponse = this._presentationService.MultiCreate(presentations);
-            return this.CreatedAtAction(nameof(PresentationController), presentations);
+            var presentations = this._presentationService.FindByIdSessionAndIdPanelist(idSession, idPanlelist);
 
+            if (presentations == null)
+            {
+                return this.NotFound();
+            }
+
+            return this.Ok(presentations);
+        }*/
+
+        [HttpPost]
+        public bool CreatePresentation([FromBody] List<PresentationRequest> presentations)
+        {
+            var test = this._presentationService.MultiCreate(presentations);
+            return test;
         }
 
         [HttpPut("{id}")]

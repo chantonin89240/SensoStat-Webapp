@@ -3,7 +3,7 @@
     using System;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
-    using SensoStat.Entities.HttpRequest;
+    using SensoStat.Models.HttpRequest;
     using SensoStat.Services.Contracts;
 
     [ApiController]
@@ -25,25 +25,24 @@
         public IActionResult Authenticate(AuthenticateRequest model)
         {
             var response = this._userService.Authenticate(model);
-            Response.Cookies.Append("Jwt", response.Token, new CookieOptions { Expires = DateTime.Now.AddHours(1)});
 
             if (response == null)
             {
-                return this.BadRequest(new { message = "Utilisateur ou mot de passe incorrect." });
+                return this.Unauthorized();
             }
 
             return this.Ok(response);
         }
 
-        // [Authorize(Roles = "Admin")]
         [HttpGet]
+        [Authorize(Roles = "SuperAdmin,Admin,Stagiaire")]
         public IActionResult GetAll()
         {
             var users = this._userService.GetAll();
             return this.Ok(users);
         }
 
-        [Authorize]
+        [Authorize(Roles = "SuperAdmin,Admin,Stagiaire")]
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {

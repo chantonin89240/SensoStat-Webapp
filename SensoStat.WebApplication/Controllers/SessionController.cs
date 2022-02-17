@@ -71,6 +71,7 @@
         public IActionResult Edit(int id)
         {
             var model = this._sessionService.GetSessionById(id);
+            model.Presentations = this._sessionService.GetPresentations(id);
             return this.View(model);
         }
 
@@ -94,7 +95,13 @@
         [HttpPost]
         public async Task<IActionResult> LoadFile(int id, IFormFile file)
         {
-            this._sessionService.LoadFile(file, id);
+            var fileSave = this._sessionService.LoadFile(file, id);
+            if (fileSave)
+            {
+                return RedirectToAction("create");
+            }
+
+            this.ModelState.AddModelError(string.Empty, "Un problème est survenue, le fichier n'a pas été enregistré, veuillez réessayer.");
             return RedirectToAction("create");
         }
 

@@ -1,4 +1,4 @@
-﻿namespace SensoStat.Entities.HttpRequest
+﻿namespace SensoStat.Models.HttpRequest
 {
     using System.ComponentModel.DataAnnotations;
 

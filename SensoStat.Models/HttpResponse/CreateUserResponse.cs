@@ -1,6 +1,7 @@
-﻿using System;
-namespace SensoStat.Entities.HttpResponse
+﻿namespace SensoStat.Models.HttpResponse
 {
+    using SensoStat.Entities;
+
     public class CreateUserResponse
     {
         public int Id { get; set; }

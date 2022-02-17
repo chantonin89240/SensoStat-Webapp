@@ -1,7 +1,7 @@
 ﻿namespace SensoStat.Services
 {
     using SensoStat.Entities;
-    using SensoStat.Entities.HttpRequest;
+    using SensoStat.Models.HttpRequest;
     using SensoStat.Repository.Contracts;
     using SensoStat.Services.Contracts;
 
@@ -51,14 +51,6 @@
             };
 
             session.DateUpdate = session.DateCreate;
-
-            foreach (var item in sessionRequest.Products)
-            {
-                session.Products.Add(new Product()
-                {
-                    CodeProduct = item.CodeProduct,
-                });
-            }
 
             foreach (var item in sessionRequest.Instructions)
             {

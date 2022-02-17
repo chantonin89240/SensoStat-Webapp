@@ -13,7 +13,6 @@
         /// <param name="presentation">Présenetation à ajouter.</param>
         void Add(Presentation presentation);
 
-
         /// <summary>
         /// Ajoute une liste de présentations.
         /// </summary>
@@ -32,6 +31,14 @@
         /// <param name="id"></param>
         /// <returns>une collection contenant les présentations de la session passé en paramétre.</returns>
         IEnumerable<Presentation> FindByIdSession(int id);
+
+        /// <summary>
+        /// Retourne toutes les présentations de la session et du panaliste.
+        /// </summary>
+        /// <param name="idSession">Id de la Session.</param>
+        /// <param name="idPanelist">Id du paneliste.</param>
+        /// <returns>Une collection contenant les présentations de la session et du panaliste passé en paramètre.</returns>
+        //IEnumerable<PresentationDTO> FindByIdSessionAndIdPanelist(int idSession, int idPanelist);
 
         /// <summary>
         /// Retourne toutes les présentations.

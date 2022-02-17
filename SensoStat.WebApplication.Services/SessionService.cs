@@ -54,7 +54,7 @@
         /// <param name="file"></param>
         /// <param name="idSession"></param>
         /// <returns>Le code du status de la réponse rétourné par l'API</returns>
-        public HttpStatusCode LoadFile(IFormFile file, int idSession)
+        public bool LoadFile(IFormFile file, int idSession)
         {
             List<object> listPlanPresentation = new List<object>();
 
@@ -83,8 +83,8 @@
                         {
                             var item = new PresentationViewModel
                             {
-                                Panelist = new PanelistViewModel { CodePanelist = codePanelist },
-                                Product = new ProductViewModel { CodeProduct = plan, IdSession = idSession },
+                                CodePanelist = codePanelist,
+                                CodeProduct = plan,
                                 Rank = rank,
                                 IdSession = idSession
                             };
@@ -93,15 +93,23 @@
 
                             rank++;
                         });
-                        // envoi de tout les objets
                     }
                 };
             }
 
+            // envoi de tout les objets
             var presentations = this._clientService.PostDataFromHttpClient("api/Presentation", listPlanPresentation);
-            var lesPresentations = JsonConvert.DeserializeObject<IEnumerable<SessionViewModel>>(presentations);
-            var retourn = listPlanPresentation;
-            return HttpStatusCode.OK;
+            var lesPresentations = JsonConvert.DeserializeObject<bool>(presentations.Content.ReadAsStringAsync().Result);
+
+            return lesPresentations;
+        }
+
+        public List<PresentationViewModel> GetPresentations(int id)
+        {
+            var presentations = this._clientService.GetDataFromHttpClient($"api/Presentation/{id}");
+            var lesPresentations = JsonConvert.DeserializeObject<List<PresentationViewModel>>(presentations);
+
+            return lesPresentations;
         }
     }
 }

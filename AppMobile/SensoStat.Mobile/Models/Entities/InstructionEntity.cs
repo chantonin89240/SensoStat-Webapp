@@ -7,8 +7,7 @@ namespace SensoStat.Mobile.Models.Entities
 {
     public class InstructionEntity : IInstructionEntity
     {
-        [PrimaryKey] [AutoIncrement] public int Id { get; set; }
-        public string IdInstruction { get; set; }
+        [PrimaryKey] public int Id { get; set; }
         public string Content { get; set; }
         public int Position { get; set; }
 
@@ -17,9 +16,9 @@ namespace SensoStat.Mobile.Models.Entities
         {
         }
 
-        public InstructionEntity(InstructionDownDto instruction)
+        public InstructionEntity(IInstructionEntity instruction)
         {
-            IdInstruction = instruction.Id;
+            Id = instruction.Id;
             Content = instruction.Content;
             Position = instruction.Position;
         }
