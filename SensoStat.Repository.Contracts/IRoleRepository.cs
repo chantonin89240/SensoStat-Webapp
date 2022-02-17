@@ -25,7 +25,7 @@
         /// </summary>
         /// <param name="id">Id du rôle à trouver.</param>
         /// <returns>Le rôle ayant l'id demandé si celui-ci est trouvé sinon renvoie null.</returns>
-        Role Find(int id);
+        Role FindById(int id);
 
         /// <summary>
         /// Retourne toutes les rôles.

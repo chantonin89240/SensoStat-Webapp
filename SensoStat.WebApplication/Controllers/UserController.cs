@@ -44,6 +44,8 @@
                     return this.View(model);
                 }
 
+                this.Response.Cookies.Append("Jwt", userAuthentified.Token, new CookieOptions { Expires = DateTime.Now.AddHours(1) });
+
                 return this.RedirectToAction(nameof(Index), "session");
             }
 

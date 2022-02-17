@@ -14,17 +14,19 @@
     using System.IdentityModel.Tokens.Jwt;
     using SensoStat.Models.HttpResponse;
     using SensoStat.Models.HttpRequest;
-
     public class UserService : IUserService
     {
         private readonly JwtSettings _jwtSettings;
 
         private IUserRepository _userRepository;
 
-        public UserService(IOptions<JwtSettings> jwtSettings, IUserRepository userRepository)
+        private IRoleRepository _roleRepository;
+
+        public UserService(IOptions<JwtSettings> jwtSettings, IUserRepository userRepository, IRoleRepository roleRepository)
         {
             this._jwtSettings = jwtSettings.Value;
             this._userRepository = userRepository;
+            this._roleRepository = roleRepository;
         }
 
         public AuthenticateResponse Authenticate(AuthenticateRequest model)
@@ -44,6 +46,8 @@
             {
                 return null;
             }
+
+            user.Role = this._roleRepository.FindById(user.IdRole);
 
             // authentification réussie, on génère le token
             var token = generateJwtToken(user);
@@ -91,7 +95,7 @@
 
         public IEnumerable<Role> GetRoles()
         {
-            return this._userRepository.FindAllRoles();
+            return this._roleRepository.FindAll();
         }
 
         private string generateJwtToken(User user)
@@ -106,7 +110,7 @@
                 {
                     new Claim("id", user.Id.ToString()),
                     new Claim(JwtRegisteredClaimNames.Email,user.Email),
-                    //new Claim(ClaimTypes.Role, user.Role.Libelle),
+                    new Claim(ClaimTypes.Role, user.Role.Libelle),
                     // Cela va garantir que le token est unique
                     new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
 

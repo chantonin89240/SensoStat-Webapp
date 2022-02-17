@@ -1,6 +1,5 @@
 ﻿namespace SensoStat.Repository
 {
-    using System;
     using System.Collections.Generic;
     using SensoStat.Entities;
     using SensoStat.EntitiesContext;
@@ -39,18 +38,13 @@
         /// <inheritdoc/>
         public User FindByEmail(string email)
         {
-            return this._context.Users.SingleOrDefault(x => x.Email == email);
+            return this._context.Users.FirstOrDefault(x => x.Email == email);
         }
 
         /// <inheritdoc/>
         public IEnumerable<User> FindAll()
         {
             return this._context.Users;
-        }
-
-        public IEnumerable<Role> FindAllRoles()
-        {
-            return this._context.Roles;
         }
 
         /// <inheritdoc/>
