@@ -27,7 +27,6 @@
         /// <param name="product">le produit à ajouter.</param>
         public Product Add(Product product)
         {
-            //var existingProduct = this._context.Products.FirstOrDefault(p => p == product);
             var existingProduct = this._context.Products.FirstOrDefault(p => p.CodeProduct == product.CodeProduct && p.IdSession == product.IdSession);
             if (existingProduct == null)
             {
@@ -56,7 +55,7 @@
         /// <returns>.</returns>
         public Product Find(int id)
         {
-            return this._context.Products.Include(p => p.Presentations).FirstOrDefault(p => p.Id == id);
+            return this._context.Products.FirstOrDefault(p => p.Id == id);
         }
 
         /// <summary>

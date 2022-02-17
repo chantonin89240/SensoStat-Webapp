@@ -6,25 +6,25 @@
     @model SensoStat.WebApplication.ViewModels.SessionViewModel
 
     var index = 1;
-    List<PanelistViewModel> listPanelist = new List<PanelistViewModel>();
+    List<string> listPanelist = new List<string>();
     Dictionary<string, List<string>> planPresentation = new Dictionary<string, List<string>>();
 
-    @*foreach (var line in Model.Presentations)
+    foreach (var line in Model.Presentations)
     {
-        if(!listPanelist.Any(p => p.CodePanelist == line.Panelist.CodePanelist))
+        if(!listPanelist.Any(p => p == line.CodePanelist))
         {
-            listPanelist.Add(line.Panelist);
+            listPanelist.Add(line.CodePanelist);
         }
     }
 
-    foreach(var panelist in listPanelist)
+    foreach(var codePanelist in listPanelist)
     {
         List<string> ProductRanked = new List<string>();
 
-        ProductRanked = Model.Presentations.Where(p => p.Panelist == panelist).OrderBy(p => p.Rank).Select(p => p.Product.CodeProduct).ToList();
+        ProductRanked = Model.Presentations.Where(p => p.CodePanelist == codePanelist).OrderBy(p => p.Rank).Select(p => p.CodeProduct).ToList();
 
-        planPresentation.Add(panelist.CodePanelist, ProductRanked);
-    }*@
+        planPresentation.Add(codePanelist, ProductRanked);
+    }
 }
 
 <div class="p-3">
@@ -142,7 +142,7 @@
                     </dl>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                        <input class="btn btn-primary" asp-controller="session" asp-action="LoadFile" asp-route-id="99" type="submit" value="Importer" />
+                        <input class="btn btn-primary" asp-controller="session" asp-action="LoadFile" asp-route-id="@Model.Id" type="submit" value="Importer" />
                     </div>
                 </form>
             </div>
@@ -203,19 +203,13 @@
                             <th scope="col">Code sujet</th>
                             @foreach (var product in Model.Products)
                             {
-                                <th scope="col">Produit @index</th>
+                                <th class="text-center" scope="col">Produit @index</th>
                                 index++;
                             }
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">C01</th>
-                            <td>12</td>
-                            <td>214</td>
-                            <td>189</td>
-                        </tr>
-                        @foreach(var line in planPresentation)
+                        @foreach(var line in planPresentation.OrderBy(p => p.Key))
                         {
                             <tr>
                                 <th scope="row">@line.Key</th>

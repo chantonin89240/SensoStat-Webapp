@@ -51,7 +51,7 @@ namespace SensoStat.Repository
         /// <returns>>Le paneliste ayant l'id demandé si celui-ci est trouvé sinon renvoie null.</returns>
         public Panelist Find(int id)
         {
-            return new Panelist();
+            return this._context.Panelists.FirstOrDefault(p => p.Id == id);
         }
 
         /// <summary>
