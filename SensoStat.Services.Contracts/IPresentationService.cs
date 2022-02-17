@@ -1,5 +1,6 @@
 ﻿namespace SensoStat.Services.Contracts
 {
+    using SensoStat.Entities;
     using SensoStat.Models.HttpRequest;
     using SensoStat.Models.HttpResponse;
 
