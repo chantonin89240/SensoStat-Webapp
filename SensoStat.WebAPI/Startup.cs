@@ -29,7 +29,7 @@
             services.AddEndpointsApiExplorer();
 
             services.AddSwaggerGen();
-            /*services.AddSwaggerGen(option =>
+            services.AddSwaggerGen(option =>
             {
                 option.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
                 {
@@ -54,7 +54,7 @@
                            new string[] { }
                      },
                 });
-            });*/
+            });
 
             string connectionBdd = this.Configuration.GetConnectionString("SensoStatDbContext");
             string connectionBddPostgresSQL = this.Configuration.GetConnectionString("SensoStatDbContextPostgresSql");
@@ -85,7 +85,6 @@
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(conf.JwtSecret))
                 };
             });
-
 
             //services.AddDbContext<SensoStatDbContext>(options =>
             //{

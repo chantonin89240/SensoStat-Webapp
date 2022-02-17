@@ -5,11 +5,11 @@ namespace SensoStat.WebApplication.ViewModels
 {
     public class PresentationViewModel
     {
-        public int IdPanelist { get; set; }
+        public string CodePanelist { get; set; }
 
         public PanelistViewModel Panelist { get; set; }
 
-        public int IdProduct { get; set; }
+        public string CodeProduct { get; set; }
 
         public ProductViewModel Product { get; set; }
 
@@ -19,13 +19,11 @@ namespace SensoStat.WebApplication.ViewModels
 
         public PresentationViewModel() { }
 
-        public PresentationViewModel(PanelistViewModel panelist, ProductViewModel product, int rank, int idSession) : this()
+        public PresentationViewModel(string codePanelist, string codeProduct, int rank, int idSession) : this()
         {
             this.Rank = rank;
-            this.Panelist = panelist;
-            this.IdPanelist = panelist.Id;
-            this.Product = product;
-            this.IdProduct = product.Id;
+            this.CodePanelist = codePanelist;
+            this.CodeProduct = codeProduct;
             this.IdSession = idSession;
         }
     }

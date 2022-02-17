@@ -9,7 +9,7 @@
     List<PanelistViewModel> listPanelist = new List<PanelistViewModel>();
     Dictionary<string, List<string>> planPresentation = new Dictionary<string, List<string>>();
 
-    @*foreach (var line in Model.Presentations)
+    foreach (var line in Model.Presentations)
     {
         if(!listPanelist.Any(p => p.CodePanelist == line.Panelist.CodePanelist))
         {
@@ -24,7 +24,7 @@
         ProductRanked = Model.Presentations.Where(p => p.Panelist == panelist).OrderBy(p => p.Rank).Select(p => p.Product.CodeProduct).ToList();
 
         planPresentation.Add(panelist.CodePanelist, ProductRanked);
-    }*@
+    }
 }
 
 <div class="p-3">
