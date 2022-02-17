@@ -1,7 +1,7 @@
 ﻿using System;
 namespace SensoStat.Mobile.Models.Entities.Interfaces
 {
-    public class IProductEntity
+    public interface IProductEntity
     {
         int Id { get; set; }
 
