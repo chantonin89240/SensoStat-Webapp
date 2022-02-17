@@ -18,18 +18,15 @@
         // [ForeignKey(nameof(Product))]
         public int IdProduct { get; set; }
 
-        public int IdSession { get; set; }
-
         public Presentation() { }
 
-        public Presentation(Panelist panelist, Product product, int rank, int idSession) : this()
+        public Presentation(Panelist panelist, Product product, int rank) : this()
         {
             this.Rank = rank;
             this.Panelist = panelist;
             this.IdPanelist = panelist.Id;
             this.Product = product;
             this.IdProduct = product.Id;
-            this.IdSession = idSession;
         }
     }
 }

@@ -1,11 +1,11 @@
 <template>
     <div>
-        <p>aaaaaaaaaaaaa</p>
+        <p>{{currentInstruction.libelle}}</p>
         <p></p>
         <br />
 
         <p>Cliquez ou dites :</p>
-        <a class="btn btn-warning" @click="verifInstruction">Etape suivante</a>
+        <a class="btn btn-warning" @click="nextInstruction">Etape suivante</a>
     </div>
 </template>
 
@@ -16,6 +16,11 @@ export default {
         currentInstruction: undefined
     },
     name: 'InstructionComponent',
+    methods:{
+        nextInstruction(){
+            this.$emit('nextInstruction')
+        }
+    }
 
 }
 </script>
