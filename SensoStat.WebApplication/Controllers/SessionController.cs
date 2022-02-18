@@ -10,12 +10,10 @@
     public class SessionController : Controller
     {
         private readonly ISessionService _sessionService;
-        private readonly ClientService _clientService;
 
-        public SessionController(ISessionService service, ClientService clientService)
+        public SessionController(ISessionService service)
         {
             this._sessionService = service;
-            this._clientService = clientService;
         }
 
         public IActionResult Index()

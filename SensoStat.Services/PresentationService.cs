@@ -52,6 +52,14 @@
         public bool MultiCreate(List<PresentationRequest> presentationsRequest)
         {
             List<Presentation> presentations = new List<Presentation>();
+            var idSession = presentationsRequest[0].IdSession;
+
+            // Suppression du précédent plan de présentation si il existe
+            var existingPlan = this._presentationRepository.FindByIdSession(idSession).ToList();
+            if (existingPlan.Count != 0)
+            {
+                this._presentationRepository.DeleteRange(existingPlan);
+            }
 
             try
             {
@@ -69,7 +77,7 @@
                 var products = presentationsRequest.Select(p => p.CodeProduct).Distinct().ToList();
                 products.ForEach(prod =>
                 {
-                    var product = this._productRepository.Add(new Product() { CodeProduct = prod, IdSession = presentationsRequest[0].IdSession });
+                    var product = this._productRepository.Add(new Product() { CodeProduct = prod, IdSession = idSession });
                     productsCreated.Add(product);
                 });
 

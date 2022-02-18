@@ -41,6 +41,13 @@
         }
 
         /// <inheritdoc/>
+        public void DeleteRange(List<Presentation> presentations)
+        {
+            this._context.Presentations.RemoveRange(presentations);
+            this._context.SaveChanges();
+        }
+
+        /// <inheritdoc/>
         public IEnumerable<Presentation> FindAll()
         {
             return this._context.Presentations;
