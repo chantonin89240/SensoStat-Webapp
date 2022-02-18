@@ -17,19 +17,26 @@
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            // services.AddControllersWithViews(option =>
-            // {
-            //     option.Filters.Add(typeof(LoggerActionFilter));
-            // });
+            services.AddControllersWithViews(option =>
+            {
+                option.Filters.Add(typeof(LoggerActionFilter));
+            });
 
             services.AddRazorPages()
                 .AddRazorRuntimeCompilation();
 
             var apiAdress = Configuration.GetSection("Api").Value;
 
+            //string token;
+            //services.(a =>
+            //{
+            //    a.;
+            //});
+
             services.AddHttpClient<ClientService>(e =>
             {
                 e.BaseAddress = new Uri(apiAdress);
+                //e.DefaultRequestHeaders.Authorization = token;
             });
 
             services.AddScoped<ISessionService, SessionService>();

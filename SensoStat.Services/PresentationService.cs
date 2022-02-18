@@ -94,9 +94,9 @@
             }
         }
 
-        //public IEnumerable<PresentationDTO> FindByIdSessionAndIdPanelist(int idSession, int idPanelist)
-        //{
-        //    return this._presentationRepository.FindByIdSessionAndIdPanelist(idSession, idPanelist);
-        //}
+        public IEnumerable<PresentationDTO> FindByIdSessionAndIdPanelist(int idSession, int idPanelist)
+        {
+            return this._presentationRepository.FindByIdSessionAndIdPanelist(idSession, idPanelist);
+        }
     }
 }

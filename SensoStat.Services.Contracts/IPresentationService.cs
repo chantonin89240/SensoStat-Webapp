@@ -11,6 +11,6 @@
 
         bool MultiCreate(List<PresentationRequest> presentations);
 
-        // IEnumerable<PresentationDTO> FindByIdSessionAndIdPanelist(int idSession, int idPanelist);
+        IEnumerable<PresentationDTO> FindByIdSessionAndIdPanelist(int idSession, int idPanelist);
     }
 }

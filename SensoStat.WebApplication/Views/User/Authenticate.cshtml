@@ -16,7 +16,7 @@
             </div>
             <div class="mb-3">
                 <label asp-for="@Model.Password" class="form-label">Mot de passe</label>
-                <input asp-for="@Model.Password" name="model.Password" aria-describedby="userCreate" type="text" class="form-control rounded" />
+                <input asp-for="@Model.Password" name="model.Password" aria-describedby="userCreate" type="password" class="form-control rounded" />
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
             <button type="submit" class="btn btn-warning">Se connecter</button>

@@ -54,7 +54,7 @@
         }
 
         /// <inheritdoc/>
-        /*public IEnumerable<PresentationDTO> FindByIdSessionAndIdPanelist(int idSession, int idPanelist)
+        public IEnumerable<PresentationDTO> FindByIdSessionAndIdPanelist(int idSession, int idPanelist)
         {
             return this._context.Presentations.Where(p => p.Product.IdSession == idSession && p.IdPanelist == idPanelist).Select(p => new PresentationDTO
             {
@@ -64,7 +64,7 @@
                 IdProduit = p.IdProduct,
                 Rank = p.Rank,
             }).OrderBy(p => p.Rank);
-        }*/
+        }
 
         /// <inheritdoc/>
         public void Update(Presentation presentation)
