@@ -58,8 +58,8 @@ export default {
                 this.nbPresentation = this.presentations.length;
                 this.currentPresentation = this.presentations[0];
                 this.instructionCodeProduit.forEach(instruction => {
-                        instruction.libelle = instruction.libelle.replace('#codeProduit', this.currentPresentation.codeProduit);
-                    });
+                    instruction.libelle = instruction.libelle.replace('#codeProduit', this.currentPresentation.codeProduit);
+                });
             })
         });
     },

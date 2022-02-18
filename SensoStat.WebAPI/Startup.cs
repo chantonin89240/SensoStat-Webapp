@@ -85,17 +85,23 @@
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(conf.JwtSecret))
                 };
             });
-
-            services.AddDbContext<SensoStatDbContext>(options =>
+            var typeBdd = Configuration.GetSection("Bdd").Value;
+            switch (typeBdd)
             {
-                options.UseSqlServer(connectionBdd);
-            });
-
-            //services.AddDbContext<SensoStatDbContext>(options =>
-            //{
-            //     options.UseNpgsql(connectionBddPostgresSQL);
-            //     options.EnableSensitiveDataLogging();
-            //});
+                case "PostgreSql":
+                    services.AddDbContext<SensoStatDbContext>(options =>
+                    {
+                        options.UseNpgsql(connectionBddPostgresSQL);
+                        options.EnableSensitiveDataLogging();
+                    });
+                    break;
+                default:
+                    services.AddDbContext<SensoStatDbContext>(options =>
+                    {
+                        options.UseSqlServer(connectionBdd);
+                    });
+                    break;
+            }
 
             services.AddAuthorization();
 
@@ -133,10 +139,10 @@
                 {
                     var context = services.GetRequiredService<SensoStatDbContext>();
 
-                    context.Database.EnsureDeleted();
-                    context.Database.EnsureCreated();
+                    //context.Database.EnsureDeleted();
+                    //context.Database.EnsureCreated();
 
-                    SeedData.Initialize(services);
+                    //SeedData.Initialize(services);
                 }
                 catch (Exception ex)
                 {
