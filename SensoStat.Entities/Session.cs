@@ -7,12 +7,11 @@
     {
         public int Id { get; set; }
 
-        [Required]
         public string Name { get; set; }
 
-        // public string MsgAccueil { get; set; }
+        public string MsgAccueil { get; set; }
 
-        // public string MsgFinal { get; set; }
+        public string MsgFinal { get; set; }
 
         public string Etat { get; set; }
 
@@ -39,9 +38,11 @@
             this.Publications = new List<Publication>();
         }
 
-        public Session(string name, string etat, DateTime dateCreate, DateTime dateUpdate, DateTime dateClose, User person) : this()
+        public Session(string name, string msgAccueil, string msgFinal, string etat, DateTime dateCreate, DateTime dateUpdate, DateTime dateClose, User person) : this()
         {
             this.Name = name;
+            this.MsgAccueil = msgAccueil;
+            this.MsgFinal = msgFinal;
             this.Etat = etat;
             this.DateCreate = dateCreate;
             this.DateUpdate = dateUpdate;

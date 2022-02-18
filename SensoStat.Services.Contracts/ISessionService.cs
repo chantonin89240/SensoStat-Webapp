@@ -2,6 +2,7 @@
 {
     using SensoStat.Entities;
     using SensoStat.Models.HttpRequest;
+    using SensoStat.Models.HttpResponse;
 
     public interface ISessionService
     {
@@ -12,5 +13,7 @@
         Session Create(SessionRequest sessionRequest);
 
         Session Find(int id);
+
+        SessionResponse Update(SessionRequest session);
     }
 }

@@ -20,6 +20,12 @@
         void Delete(Instruction instruction);
 
         /// <summary>
+        /// Supprime les instructions appartenant à une séance
+        /// </summary>
+        /// <param name="idSession"></param>
+        void DeleteAllByIdSession(int idSession);
+
+        /// <summary>
         /// Retourne l'instruction demandée.
         /// </summary>
         /// <param name="id">Id de l'instruction à trouver.</param>
@@ -30,7 +36,7 @@
         /// Retourne toutes les instructions.
         /// </summary>
         /// <returns>Une collection contenant toutes les instructions.</returns>
-        IEnumerable<Instruction> FindAll();
+        IEnumerable<Instruction> FindAll(int idSession);
 
         /// <summary>
         /// Met à jour une instruction.

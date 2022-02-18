@@ -17,7 +17,7 @@
         /// Supprime une campagne.
         /// </summary>
         /// <param name="session">Campagne à supprimer.</param>
-        void Delete(Session session);
+        void Delete(int id);
 
         /// <summary>
         /// Retourne la campagne demandée.
@@ -31,6 +31,12 @@
         /// </summary>
         /// <returns>Une collection contenant toutes les campagnes.</returns>
         IEnumerable<Session> FindAll();
+
+        /// <summary>
+        /// .
+        /// </summary>
+        /// <param name="statut">toto.</param>
+        /// <returns>.</returns>
         IEnumerable<Session> FindByStatut(string statut);
 
         /// <summary>
