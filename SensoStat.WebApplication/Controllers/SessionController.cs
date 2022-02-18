@@ -42,29 +42,15 @@
         }
 
         [HttpPost]
-        public IActionResult Create(SessionVM session)
+        public IActionResult Create(SessionViewModel session)
         {
-            Session sessionCreate = new Session() {
-                Name = session.Name,
-                IdPerson = 1,
-                Etat = "Non-déployée",
-            };
-            sessionCreate.Instructions.Add(new Instruction() { Chronology = 0, Libelle = session.MsgAccueil, IsQuestion = 0 });
+            // IdPerson à remplacer
+            session.IdPerson = 1;
+            session.Etat = "Non-déployée";
 
-            foreach (var item in session.Messages.Select((value, index) => new { value, index }))
-            {
-                int isQuestion = 0;
-                if (session.Types[item.index] == "Question")
-                {
-                    isQuestion = 1;
-                }
+            session = this._sessionService.MessagesToInstructions(session);
 
-                sessionCreate.Instructions.Add(new Instruction() { Chronology = item.index + 1, Libelle = item.value, IsQuestion = isQuestion });
-            }
-
-            sessionCreate.Instructions.Add(new Instruction() { Chronology = sessionCreate.Instructions.Count(), Libelle = session.MsgFinal, IsQuestion = 0 });
-
-            this._clientService.PostDataFromHttpClient("api/Sessions", sessionCreate);
+            this._sessionService.CreateSession(session);
             return this.RedirectToAction("Index");
         }
 
@@ -78,18 +64,26 @@
         [HttpPost]
         public IActionResult Edit(SessionViewModel session)
         {
-            return this.View();
+            session = this._sessionService.MessagesToInstructions(session);
+
+            this._sessionService.UpdateSession(session);
+            return this.View(session);
         }
 
-        public IActionResult Delete()
+        /*public IActionResult Delete()
         {
             return this.View();
-        }
+        }*/
 
         [HttpPost]
-        public IActionResult Delete(SessionViewModel session)
+        public async Task<IActionResult> Delete(int id)
         {
-            return this.View();
+            if (this._sessionService.DeleteSession(id))
+            {
+                return this.RedirectToAction("Index");
+            }
+
+            return this.RedirectToAction("edit", new { id = id });
         }
 
         [HttpPost]
@@ -98,17 +92,17 @@
             var fileSave = this._sessionService.LoadFile(file, id);
             if (fileSave)
             {
-                return RedirectToAction("create");
+                return this.RedirectToAction("edit", new { id = id });
             }
 
             this.ModelState.AddModelError(string.Empty, "Un problème est survenue, le fichier n'a pas été enregistré, veuillez réessayer.");
-            return RedirectToAction("create");
+            return RedirectToAction("edit", new { id = id });
         }
 
         [HttpPost]
         public async Task<IActionResult> CloneSession(int id)
         {
-            return RedirectToAction("create");
+            return RedirectToAction("index");
         }
     }
 }

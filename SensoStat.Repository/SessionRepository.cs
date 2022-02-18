@@ -27,8 +27,9 @@
         }
 
         /// <inheritdoc/>
-        public void Delete(Session session)
+        public void Delete(int id)
         {
+            var session = this._context.Sessions.First(s => s.Id == id);
             this._context.Sessions.Remove(session);
             this._context.SaveChanges();
         }
@@ -36,7 +37,7 @@
         /// <inheritdoc/>
         public Session Find(int id)
         {
-            return this._context.Sessions.Include(s => s.Products).Include(i => i.Instructions).FirstOrDefault(session => session.Id == id);
+            return this._context.Sessions.FirstOrDefault(session => session.Id == id);
         }
 
         /// <inheritdoc/>

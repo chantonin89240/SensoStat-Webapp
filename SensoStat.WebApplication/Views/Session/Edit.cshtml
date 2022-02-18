@@ -9,21 +9,28 @@
     List<string> listPanelist = new List<string>();
     Dictionary<string, List<string>> planPresentation = new Dictionary<string, List<string>>();
 
-    foreach (var line in Model.Presentations)
+    if (Model.Presentations != null)
     {
-        if(!listPanelist.Any(p => p == line.CodePanelist))
+        foreach (var line in Model.Presentations)
         {
-            listPanelist.Add(line.CodePanelist);
+            if(!listPanelist.Any(p => p == line.CodePanelist))
+            {
+                listPanelist.Add(line.CodePanelist);
+            }
         }
-    }
 
-    foreach(var codePanelist in listPanelist)
-    {
-        List<string> ProductRanked = new List<string>();
+        foreach(var codePanelist in listPanelist)
+        {
+            List<string> ProductRanked = new List<string>();
 
-        ProductRanked = Model.Presentations.Where(p => p.CodePanelist == codePanelist).OrderBy(p => p.Rank).Select(p => p.CodeProduct).ToList();
+            ProductRanked = Model.Presentations
+                .Where(p => p.CodePanelist == codePanelist)
+                .OrderBy(p => p.Rank)
+                .Select(p => p.CodeProduct)
+                .ToList();
 
-        planPresentation.Add(codePanelist, ProductRanked);
+            planPresentation.Add(codePanelist, ProductRanked);
+        }
     }
 }
 
@@ -31,10 +38,12 @@
     <h2>Éditer une séance</h2>
     <hr />
 
-    <section class="row">
-        <!-- div de gestion de la séance -->
-        <div class="col-10">
-            <form id="formSession" method="post" asp-controller="Session" asp-action="Edite">
+    <!-- div de gestion de la séance -->
+    <form id="formSession" method="post" asp-controller="Session" asp-action="Edit">
+        <input type="hidden" asp-for="IdPerson" value="@Model.IdPerson">
+        <input type="hidden" asp-for="Etat" value="@Model.Etat">
+        <section class="row">
+            <div class="col-10">
                 <!-- section du nom de la séance ainsi que sont status -->
                 <span class="mb-4 d-flex justify-content-between">
                     <div class="d-flex">
@@ -42,6 +51,10 @@
                         <span class="">
                             <input asp-for="Name" type="text" class="form-control" placeholder="Nom Séance" value="@Model.Name">
                         </span>
+                    </div>
+                    <div class="d-flex me-1 mt-2">
+                        <label class="form-label h5">Statut :</label>
+                        <span asp-for="Etat" type="text" class="h5 ms-1">@Model.Etat</span>
                     </div>
                 </span>
                 <p>Ajoutez vos instruction(s) / question(s) dans l'ordre chronologique du déroulé de la séance</p>
@@ -98,23 +111,22 @@
                     </div>
                 </span>
                 <!-- button d'ajout d'instruction / question -->
-            </form>
-            <button class="btn btn-warning" onclick="addInstruction('Instruction')">Ajouter une instruction</button>
-            <button class="btn btn-warning" onclick="addInstruction('Question')">Ajouter une question</button>
-
-        </div>
-        <!-- div contenant les button pour les fonctionnalité -->
-        <div class="col-2 d-flex flex-column">
-            <button class="btn btn-warning mb-2" type="button" data-bs-toggle="modal" data-bs-target="#ModalPlanPresentation">Importer un plan de présentation</button>
-            <button class="btn btn-warning mb-2" type="button" data-bs-toggle="modal" data-bs-target="#DisplayPresentation">Visualiser le plan de présentation</button>
-            <button class="btn btn-warning mb-2" type="button" disabled style="color: grey;">Tester</button>
-            <button class="btn btn-warning mb-2" type="button" disabled style="color: grey;">Publier</button>
-            <button class="btn btn-warning mb-4" type="button" disabled style="color: grey;">Exporter les URL</button>
-            <button class="btn btn-warning mb-4" type="button">Enregistrer</button>
-            <button class="btn btn-warning mb-2" type="button" data-bs-toggle="modal" data-bs-target="#SuppPublication" disabled style="color: grey;">Annuler la publication</button>
-            <button class="btn btn-warning mb-2" type="button" data-bs-toggle="modal" data-bs-target="#SuppSeance">Supprimer la séance</button>
-        </div>
-    </section>
+                <button class="btn btn-warning" type="button" onclick="addInstruction('Instruction')">Ajouter une instruction</button>
+                <button class="btn btn-warning" type="button" onclick="addInstruction('Question')">Ajouter une question</button>
+            </div>
+            <!-- div contenant les button pour les fonctionnalité -->
+            <div class="col-2 d-flex flex-column">
+                <button class="btn btn-warning mb-2" type="button" data-bs-toggle="modal" data-bs-target="#ModalPlanPresentation">Importer un plan de présentation</button>
+                <button class="btn btn-warning mb-2" type="button" data-bs-toggle="modal" data-bs-target="#DisplayPresentation">Visualiser le plan de présentation</button>
+                <button class="btn btn-warning mb-2" type="button" disabled style="color: grey;">Tester</button>
+                <button class="btn btn-warning mb-2" type="button" disabled style="color: grey;">Publier</button>
+                <button class="btn btn-warning mb-4" type="button" disabled style="color: grey;">Exporter les URL</button>
+                <button class="btn btn-warning mb-4" form="formSession" type="submit">Enregistrer</button>
+                <button class="btn btn-warning mb-2" type="button" data-bs-toggle="modal" data-bs-target="#SuppPublication" disabled style="color: grey;">Annuler la publication</button>
+                <button class="btn btn-warning mb-2" type="button" data-bs-toggle="modal" data-bs-target="#SuppSeance">Supprimer la séance</button>
+            </div>
+        </section>
+    </form>
 </div>
 
 
@@ -159,11 +171,13 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                ÃŠtes vous sÃ»r de vouloir supprimer cette séance?
+                Êtes vous sûr de vouloir supprimer cette séance?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                <button type="button" class="btn btn-primary">Valider</button>
+                <form method="post" asp-controller="session" asp-action="delete" asp-route-id="@Model.Id">
+                    <button type="submit" class="btn btn-primary">Valider</button>
+                </form>
             </div>
         </div>
     </div>
@@ -178,7 +192,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                ÃŠtes vous sÃ»r de vouloir annuler la publication de cette séance? Un mail d'annulation sera envoyé Ã  chaque panéliste.
+                Êtes vous sûr de vouloir annuler la publication de cette séance?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>

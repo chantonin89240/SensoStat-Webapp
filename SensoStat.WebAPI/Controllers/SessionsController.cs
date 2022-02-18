@@ -41,15 +41,16 @@ namespace SensoStat.WebAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult UpdateSession(int id)
+        public IActionResult UpdateSession([FromBody] SessionRequest session)
         {
-            return this.Ok(this._sessionService.GetAll());
+            var sessionResponse = this._sessionService.Update(session);
+            return this.CreatedAtAction(nameof(SessionsController.GetById), new { id = sessionResponse.Id }, sessionResponse);
         }
 
         [HttpDelete("{id}")]
-        public IActionResult DeleteSession(int id)
+        public bool DeleteSession(int id)
         {
-            throw new NotImplementedException();
+            return this._sessionService.DeleteSession(id);
         }
     }
 }

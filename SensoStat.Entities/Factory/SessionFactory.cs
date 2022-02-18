@@ -18,6 +18,8 @@
             var CreateSessionFactory = new Faker<Session>("fr")
                 .CustomInstantiator(f => new Session(
                 f.Name.JobTitle(),
+                f.Lorem.Paragraph(),
+                f.Lorem.Paragraph(),
                 f.PickRandom(TypeEtat),
                 f.Date.Recent(),
                 f.Date.Recent(),

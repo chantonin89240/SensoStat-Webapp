@@ -31,11 +31,6 @@
 
             var laSession = JsonConvert.DeserializeObject<SessionViewModel>(session);
 
-            laSession.MsgAccueil = laSession.Instructions.First().Libelle;
-            laSession.MsgFinal = laSession.Instructions.Last().Libelle;
-
-            laSession.Instructions.Remove(laSession.Instructions.First());
-            laSession.Instructions.Remove(laSession.Instructions.Last());
             return laSession;
         }
 
@@ -48,6 +43,11 @@
             return lesSessions.Where(s => s.Etat == "Close").OrderByDescending(s => s.DateUpdate);
         }
 
+        public SessionViewModel CreateSession(SessionViewModel session)
+        {
+            this._clientService.PostDataFromHttpClient("api/Sessions", session);
+            return session;
+        }
         /// <summary>
         /// Méthode de chargement, lecture et enregistrement en base de données de fichier CSV
         /// </summary>
@@ -111,5 +111,42 @@
 
             return lesPresentations;
         }
+
+        public SessionViewModel UpdateSession(SessionViewModel session)
+        {
+            this._clientService.PutDataFromHttpClient($"api/Sessions/{session.Id}", session);
+
+            return session;
+        }
+
+        /// <summary>
+        /// Méthode de gestion de la liste d'instruction de la séance à la création et à l'édition
+        /// </summary>
+        /// <param name="session"></param>
+        /// <returns></returns>
+        public SessionViewModel MessagesToInstructions(SessionViewModel session)
+        {
+            if (session.Messages != null)
+            {
+                foreach (var item in session.Messages.Select((value, index) => new { value, index }))
+                {
+                    int isQuestion = 0;
+                    if (session.Types[item.index] == "Question")
+                    {
+                        isQuestion = 1;
+                    }
+
+                    session.Instructions.Add(new InstructionItemViewModel() { Chronology = item.index + 1, Libelle = item.value, IsQuestion = isQuestion });
+                }
+            }
+
+            return session;
+        }
+
+        public bool DeleteSession(int id)
+        {
+            var request = this._clientService.DeleteDataFromHttpClient($"api/Sessions/{id}");
+            return JsonConvert.DeserializeObject<bool>(request);
+        } 
     }
 }
