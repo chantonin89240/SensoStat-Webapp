@@ -26,6 +26,12 @@
         void Delete(Presentation presentation);
 
         /// <summary>
+        /// Supprime une liste de présentations.
+        /// </summary>
+        /// <param name="presentations"></param>
+        void DeleteRange(List<Presentation> presentations);
+
+        /// <summary>
         /// .
         /// </summary>
         /// <param name="id"></param>
