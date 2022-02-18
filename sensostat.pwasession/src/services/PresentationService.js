@@ -3,7 +3,7 @@ import axios from 'axios';
 export default class PresentationService {
     async get(){
         return new Promise((resolve) => {
-            axios.get("https://localhost:5001/api/sessions/102", {
+            axios.get("https://localhost:5001/api/sessions/1", {
                 headers : {
 
                 }

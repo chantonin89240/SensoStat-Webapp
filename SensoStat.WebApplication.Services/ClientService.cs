@@ -1,14 +1,19 @@
 ﻿namespace SensoStat.WebApplication.Services
 {
     using Newtonsoft.Json;
+    using System.Net.Http.Headers;
     using System.Text;
+
     public class ClientService
     {
         private readonly HttpClient _httpClient;
 
+        public static string tokenApi;
+
         public ClientService(HttpClient client)
         {
             this._httpClient = client;
+            this._httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", tokenApi);
         }
 
         public string GetDataFromHttpClient(string url)
