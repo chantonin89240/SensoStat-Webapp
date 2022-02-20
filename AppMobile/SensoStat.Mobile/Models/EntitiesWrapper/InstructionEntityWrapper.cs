@@ -6,20 +6,20 @@ namespace SensoStat.Mobile.Models.EntitiesWrapper
     public class InstructionEntityWrapper : IInstructionEntity, IProductEntity
     {
         public int Id { get; set; }
-        public string Content { get; set; }
-        public int Position { get; set; }
+        public string Libelle { get; set; }
+        public int Chronology { get; set; }
 
-        public string IdProduct { get ; set ; }
-        public string Code { get ; set ; }
+        public int IdProduct { get ; set ; }
+        public string CodeProduct { get ; set ; }
 
-        public string FormatText => $"{Content} {Code}";
+        public string FormatText => $"{Libelle} {CodeProduct}";
 
         public string GetPosition()
         {
-            return Position.ToString();
+            return Chronology.ToString();
         }
 
-        public string DynamicFormatText { get => $"{Content} {Code}"; }
+        public string DynamicFormatText { get => $"{Libelle} {CodeProduct}"; }
 
 
         public InstructionEntityWrapper()
@@ -29,11 +29,11 @@ namespace SensoStat.Mobile.Models.EntitiesWrapper
         public InstructionEntityWrapper(IInstructionEntity instruction, IProductEntity product) : this()
         {
             Id = instruction.Id;
-            Content = instruction.Content;
-            Position = instruction.Position;
+            Libelle = instruction.Libelle;
+            Chronology = instruction.Chronology;
 
-            IdProduct = product.IdProduct;
-            Code = product.Code;
+            IdProduct = product.Id;
+            CodeProduct = product.CodeProduct;
         }
     }
 }

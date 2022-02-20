@@ -14,7 +14,12 @@ namespace SensoStat.Mobile.Commons
 
 		public static string CognitiveServicesApiKey = "b2e32041353748908c8e5805be94fff0";
 		public static string CognitiveServicesRegion = "westeurope";
+
+
 		// Routes
+		public const string BaseServerAddress = "https://localhost:5001/api/";
+		public const string RandomEndpoint = "Pwa?idSession=111&idPanelist=348";
+
 	}
 }
 

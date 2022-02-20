@@ -7,9 +7,7 @@ namespace SensoStat.Mobile.Models.Entities
 {
     public class SessionEntity : ISessionEntity
     {
-        [PrimaryKey] [AutoIncrement] public int Id { get; set; }
-
-        public string IdSession { get; set; }
+        [PrimaryKey] public int Id { get; set; }
 
         public string Name { get; set; }
 
@@ -17,19 +15,24 @@ namespace SensoStat.Mobile.Models.Entities
 
         public string MsgFinal { get; set; }
 
-        public List<InstructionEntity> Instructions { get; set; }
+        //public PublicationEntity Publication { get; set; }
 
-        public List<ProductEntity> ProductRanked { get; set; }
+        //public List<InstructionEntity> Instructions { get; set; }
+
+        //public List<ProductEntity> Products { get; set; }
+
+        //public List<PresentationEntity> Presentations { get; set; }
 
         public SessionEntity()
         {
-            Instructions = new List<InstructionEntity>();
-            ProductRanked = new List<ProductEntity>();
+            //Instructions = new List<InstructionEntity>();
+            //Products = new List<ProductEntity>();
+            //Presentations = new List<PresentationEntity>();
         }
 
         public SessionEntity(SessionDownDto session) :this()
         {
-            IdSession = session.Id;
+            Id = session.Id;
             Name = session.Name;
             MsgHome = session.MsgHome;
             MsgFinal = session.MsgFinal;

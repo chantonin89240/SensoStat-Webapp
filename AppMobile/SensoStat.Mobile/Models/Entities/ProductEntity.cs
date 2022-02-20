@@ -7,11 +7,9 @@ namespace SensoStat.Mobile.Models.Entities
 {
     public class ProductEntity : IProductEntity
     {
-        [PrimaryKey] [AutoIncrement] public int Id { get; set; }
+        [PrimaryKey] public int Id { get; set; }
 
-        public string IdProduct { get; set; }
-
-        public string Code { get; set; }
+        public string CodeProduct { get; set; }
 
         public ProductEntity()
         {
@@ -19,8 +17,8 @@ namespace SensoStat.Mobile.Models.Entities
 
         public ProductEntity(ProductDownDto product)
         {
-            IdProduct = product.Id;
-            Code = product.Code;
+            Id = product.Id;
+            CodeProduct = product.CodeProduct;
         }
     }
 }

@@ -5,10 +5,12 @@ namespace SensoStat.Mobile.Models.Entities.Interfaces
     {
         int Id { get; set; }
 
-        string IdResponse { get; set; }
+        int IdRemote { get; set; }
 
         string Content { get; set; }
 
-        string IdInstruction { get; set; }
+        int IdInstruction { get; set; }
+
+        int IdProduct { get; set; }
     }
 }

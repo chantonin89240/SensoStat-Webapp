@@ -5,8 +5,8 @@ namespace SensoStat.Mobile.Models.Dtos
 {
     public class ProductDownDto
     {
-        [JsonProperty("id")] public string Id { get; set; }
+        [JsonProperty("id")] public int Id { get; set; }
 
-        [JsonProperty("code")] public string Code { get; set; }
+        [JsonProperty("codeProduct")] public string CodeProduct { get; set; }
     }
 }

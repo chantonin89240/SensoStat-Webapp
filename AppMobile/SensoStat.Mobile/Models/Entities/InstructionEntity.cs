@@ -8,19 +8,20 @@ namespace SensoStat.Mobile.Models.Entities
     public class InstructionEntity : IInstructionEntity
     {
         [PrimaryKey] public int Id { get; set; }
-        public string Content { get; set; }
-        public int Position { get; set; }
 
+        public string Libelle { get; set; }
+
+        public int Chronology { get; set; }
 
         public InstructionEntity()
         {
         }
 
-        public InstructionEntity(IInstructionEntity instruction)
+        public InstructionEntity(IInstructionEntity instruction) : this()
         {
             Id = instruction.Id;
-            Content = instruction.Content;
-            Position = instruction.Position;
+            Libelle = instruction.Libelle;
+            Chronology = instruction.Chronology;
         }
     }
 }

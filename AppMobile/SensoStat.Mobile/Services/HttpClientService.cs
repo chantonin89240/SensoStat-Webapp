@@ -65,7 +65,7 @@ namespace SensoStat.Mobile.Services
         /// <param name="url"></param>
         /// <param name="content"></param>
         /// <returns>Le body de la réponse http au format string</returns>
-        public HttpResponseMessage RequestHttp(HttpMethod method2, string method, string url, object? content)
+        public HttpResponseMessage RequestHttp(HttpMethod method2, string method, string url, object content = null)
         {
             var responseHttp = new HttpResponseMessage();
             var request = new HttpRequestMessage();
