@@ -17,11 +17,11 @@ namespace SensoStat.Mobile.Services
 
         #region Session
 
-        public SessionEntity InsertMovie(SessionEntity movie)
+        public SessionEntity InsertSession(SessionEntity session)
         {
             try
             {
-                return _sessionRepository.Insert(movie);
+                return _sessionRepository.Insert(session);
             }
             catch (Exception e)
             {
@@ -30,7 +30,7 @@ namespace SensoStat.Mobile.Services
             }
         }
 
-        public SessionEntity GetMovieById(int id)
+        public SessionEntity GetSessionById(int id)
         {
             try
             {
@@ -43,11 +43,11 @@ namespace SensoStat.Mobile.Services
             }
         }
 
-        public void DeleteMovie(SessionEntity movie)
+        public void DeleteSession(SessionEntity session)
         {
             try
             {
-                _sessionRepository.Delete(movie);
+                _sessionRepository.Delete(session);
             }
             catch (Exception e)
             {
@@ -55,7 +55,7 @@ namespace SensoStat.Mobile.Services
             }
         }
 
-        public List<SessionEntity> GetMovies()
+        public List<SessionEntity> GetSessions()
         {
             try
             {

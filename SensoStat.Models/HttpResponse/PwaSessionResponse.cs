@@ -9,6 +9,10 @@ namespace SensoStat.Models.HttpResponse
 
         public string Name { get; set; }
 
+        public string MsgAccueil { get; set; }
+
+        public string MsgFinal { get; set; }
+
         public PublicationResponse Publication { get; set; }
 
         public List<InstructionResponse> Instructions { get; set; }
@@ -28,6 +32,8 @@ namespace SensoStat.Models.HttpResponse
         {
             Id = session.Id;
             Name = session.Name;
+            MsgAccueil = session.MsgAccueil;
+            MsgFinal = session.MsgFinal;
 
             session.Products.ForEach(p => Products.Add(new ProductResponse(p)));
             session.Instructions.ForEach(i => Instructions.Add(new InstructionResponse(i)));

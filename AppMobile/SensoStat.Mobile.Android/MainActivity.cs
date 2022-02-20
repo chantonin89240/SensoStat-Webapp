@@ -1,6 +1,4 @@
-﻿using System;
-
-using Android.App;
+﻿using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
@@ -8,6 +6,9 @@ using Prism;
 using Prism.Ioc;
 using Xamarin.Forms;
 using SensoStat.Mobile.Droid.Services;
+using SensoStat.Mobile.Repositories.Interface;
+using SensoStat.Mobile.Repositories;
+using SensoStat.Mobile.Services.Interfaces;
 
 namespace SensoStat.Mobile.Droid
 {
@@ -54,7 +55,8 @@ namespace SensoStat.Mobile.Droid
     {
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            // throw new NotImplementedException();
+            containerRegistry.RegisterSingleton<IDatabase, SqliteConnectionService>();
+            containerRegistry.Register(typeof(IRepository<>), typeof(Repository<>));
         }
     }
 }

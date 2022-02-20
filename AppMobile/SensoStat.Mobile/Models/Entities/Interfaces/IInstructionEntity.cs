@@ -5,8 +5,8 @@ namespace SensoStat.Mobile.Models.Entities.Interfaces
     {
         int Id { get; set; }
 
-        string Content { get; set; }
+        string Libelle { get; set; }
 
-        int Position { get; set; }
+        int Chronology { get; set; }
     }
 }

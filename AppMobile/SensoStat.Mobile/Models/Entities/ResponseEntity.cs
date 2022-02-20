@@ -8,9 +8,14 @@ namespace SensoStat.Mobile.Models.Entities
     public class ResponseEntity : IResponseEntity
     {
         [PrimaryKey] [AutoIncrement] public int Id { get ; set ; }
-        public string IdResponse { get ; set ; }
+
+        public int IdRemote { get ; set ; }
+
         public string Content { get ; set ; }
-        public string IdInstruction { get ; set ; }
+
+        public int IdInstruction { get ; set ; }
+
+        public int IdProduct { get; set; }
 
         public ResponseEntity()
         {
@@ -18,9 +23,9 @@ namespace SensoStat.Mobile.Models.Entities
 
         public ResponseEntity(ResponseDownDto response)
         {
-            IdResponse = response.Id;
+            IdRemote = response.Id;
             Content = response.Content;
-            IdInstruction = response.Id;
+            IdInstruction = response.Instruction.Id;
         }
     }
 }

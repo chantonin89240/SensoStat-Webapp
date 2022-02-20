@@ -5,6 +5,9 @@ using System.Linq;
 using Foundation;
 using Prism;
 using Prism.Ioc;
+using SensoStat.Mobile.iOS.Services;
+using SensoStat.Mobile.Repositories;
+using SensoStat.Mobile.Repositories.Interface;
 using UIKit;
 
 namespace SensoStat.Mobile.iOS
@@ -35,7 +38,9 @@ namespace SensoStat.Mobile.iOS
     {
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            // throw new NotImplementedException();
+            // Register plateform specific services here
+            containerRegistry.RegisterSingleton<IDatabase, SqliteConnectionService>();
+            containerRegistry.Register(typeof(IRepository<>), typeof(Repository<>));
         }
     }
 }
