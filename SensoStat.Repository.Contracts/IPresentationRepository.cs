@@ -57,5 +57,7 @@
         /// </summary>
         /// <param name="presentation">Présentation à modifier.</param>
         void Update(Presentation presentation);
+
+        IEnumerable<Presentation> FindByIdSessionAndIdPanelistVincent(int idSession, int idPanelist);
     }
 }

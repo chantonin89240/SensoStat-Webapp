@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Prism.Commands;
 using Prism.Navigation;
 using SensoStat.Mobile.Commons;
@@ -13,8 +14,6 @@ namespace SensoStat.Mobile.ViewModels
         public HomeViewModel(IAlertdialogService alertdialogService, INavigationService navigationService) : base(alertdialogService, navigationService)
         {
             NextCommand = new DelegateCommand(async () => await DoNextCommand());
-
-            Title = "Bienvenue sur votre séance sensorielle SensoStat!";
         }
         #endregion
         #region Lifecycle
@@ -31,11 +30,30 @@ namespace SensoStat.Mobile.ViewModels
 
         private async Task DoNextCommand()
         {
-            await NavigationService.NavigateAsync(Constants.Answer);
+            
+            if (Index < 1) // && !Intructions[Index+1].IsQuestion
+            {
+                Index++;
+                Instruction = GetInstruction();
+            }
+            else
+            {
+                Index++;
+                await NavigationService.NavigateAsync(Constants.Answer);
+            }
         }
         #endregion
         #region Methods
+        //public string GetInstruction()
+        //{   
+        //    return Instructions[Index];
+        //}
 
+        //public string GetProduct()
+        //{
+        //    return Products[IndexProduct];
+        //}
         #endregion
     }
 }
+

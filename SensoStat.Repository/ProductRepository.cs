@@ -62,9 +62,9 @@
         /// Retourne une liste des produits.
         /// </summary>
         /// <returns>.</returns>
-        public IEnumerable<Product> FindAll()
+        public IEnumerable<Product> FindAll(int idSession)
         {
-            return this._context.Products.Include(p => p.Presentations);
+            return this._context.Products.Where(p => p.IdSession == idSession);
         }
 
         /// <summary>

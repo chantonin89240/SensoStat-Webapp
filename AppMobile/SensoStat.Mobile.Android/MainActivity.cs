@@ -6,15 +6,23 @@ using Android.Runtime;
 using Android.OS;
 using Prism;
 using Prism.Ioc;
+using Xamarin.Forms;
+using SensoStat.Mobile.Droid.Services;
 
 namespace SensoStat.Mobile.Droid
 {
-    [Activity(Label = "SensoStat.Mobile", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize)]
+    [Activity(Label = "SensoStat.Mobile", Icon = "@mipmap/icon", Theme = "@style/MainTheme", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
+        IMicrophoneService micService;
+        internal static MainActivity Instance { get; private set; }
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            Instance = this;
             base.OnCreate(savedInstanceState);
+
+            micService = DependencyService.Resolve<IMicrophoneService>();
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
@@ -25,6 +33,20 @@ namespace SensoStat.Mobile.Droid
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+
+            switch (requestCode)
+            {
+                case AndroidMicrophoneServices.RecordAudioPermissionCode:
+                    if (grantResults[0] == Permission.Granted)
+                    {
+                        micService.OnRequestPermissionResult(true);
+                    }
+                    else
+                    {
+                        micService.OnRequestPermissionResult(false);
+                    }
+                    break;
+            }
         }
     }
 

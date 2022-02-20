@@ -5,12 +5,12 @@
     @using SensoStat.WebApplication.ViewModels
     @model SensoStat.WebApplication.ViewModels.SessionViewModel
 
-    var index = 1;
-    List<string> listPanelist = new List<string>();
     Dictionary<string, List<string>> planPresentation = new Dictionary<string, List<string>>();
 
     if (Model.Presentations != null)
     {
+        List<string> listPanelist = new List<string>();
+
         foreach (var line in Model.Presentations)
         {
             if(!listPanelist.Any(p => p == line.CodePanelist))
@@ -212,28 +212,31 @@
             </div>
             <div class="modal-body">
                 <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Code sujet</th>
-                            @foreach (var product in Model.Products)
-                            {
-                                <th class="text-center" scope="col">Produit @index</th>
-                                index++;
-                            }
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach(var line in planPresentation.OrderBy(p => p.Key))
-                        {
+                    @if (planPresentation.Count != 0)
+                    {
+                        <thead>
                             <tr>
-                                <th scope="row">@line.Key</th>
-                                @foreach(var product in line.Value)
+                                <th scope="col">Code sujet</th>
+
+                                @for (var i = 1; i < planPresentation.Values.First().Count + 1; i++)
                                 {
-                                    <td class="text-center">@product</td>
+                                    <th class="text-center" scope="col">Rang @i</th>
                                 }
                             </tr>
-                        }
-                    </tbody>
+                        </thead>
+                        <tbody>
+                            @foreach (var line in planPresentation.OrderBy(p => p.Key))
+                            {
+                                <tr>
+                                    <th scope="row">@line.Key</th>
+                                    @foreach (var product in line.Value)
+                                    {
+                                        <td class="text-center">@product</td>
+                                    }
+                                </tr>
+                            }
+                        </tbody>
+                    }
                 </table>
             </div>
             <div class="modal-footer">

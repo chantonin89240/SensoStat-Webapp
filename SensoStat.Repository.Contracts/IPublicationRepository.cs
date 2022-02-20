@@ -24,7 +24,7 @@
         /// </summary>
         /// <param name="id">Id de la publication à trouver.</param>
         /// <returns>La publication ayant l'id demandé si celui-ci est trouvé sinon renvoie null.</returns>
-        Publication Find(int id);
+        Publication Find(int idPanelist, int idSession);
 
         /// <summary>
         /// Retourne toutes les publications.

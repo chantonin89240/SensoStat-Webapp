@@ -72,6 +72,8 @@
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SplashActivity.cs" />
+    <Compile Include="Services\AndroidMicrophoneServices.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -97,13 +99,22 @@
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>
+    <AndroidResource Include="Resources\drawable\splash_screen.xml">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\micro.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
+    <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SensoStat.Mobile\SensoStat.Mobile.csproj">
-      <Project>{EDE9F1C2-1095-4BE7-82FA-C907EAC8AD61}</Project>
+      <Project>{0DDFD92F-C93E-4E3E-93AD-AA1C7AE32D9D}</Project>
       <Name>SensoStat.Mobile</Name>
       <ReferenceSourceTarget></ReferenceSourceTarget>
     </ProjectReference>

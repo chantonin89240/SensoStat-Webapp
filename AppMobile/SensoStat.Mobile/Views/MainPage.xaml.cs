@@ -1,4 +1,6 @@
 ﻿using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace SensoStat.Mobile.Views
 {
@@ -8,5 +10,14 @@ namespace SensoStat.Mobile.Views
         {
             InitializeComponent();
         }
+
+        //protected override void OnAppearing()
+        //{
+        //    base.OnAppearing();
+
+        //    var safeInsets = On<iOS>().SafeAreaInsets();
+        //    safeInsets.Left = 0;
+        //    Padding = safeInsets;
+        //}
     }
 }

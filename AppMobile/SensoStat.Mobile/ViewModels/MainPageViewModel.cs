@@ -15,7 +15,9 @@ namespace SensoStat.Mobile.ViewModels
         {
             StartCommand = new DelegateCommand(async () => await DoStartCommand());
 
-            Title = "Bienvenue sur votre séance sensorielle SensoStat!";
+            Title = "Bienvenue à cette séance.";
+
+            MsgAccueil = "Vous allez donner votre avis sur 3 savons.";
         }
 
         #endregion
@@ -26,7 +28,16 @@ namespace SensoStat.Mobile.ViewModels
 
         #endregion
         #region Publics
+        // Public attribut
+        #region MsgAccueil =>  string
+        private string _msgAccueil;
 
+        public string MsgAccueil
+        {
+            get => _msgAccueil;
+            set => SetProperty(ref _msgAccueil, value);
+        }
+        #endregion
         #endregion
         #region Commands
         public DelegateCommand StartCommand { get; set; }

@@ -17,9 +17,9 @@
         }
 
         [HttpGet]
-        public IActionResult Get()
+        public IActionResult Get(int idSession)
         {
-            return this.Ok(this._productService.Get());
+            return this.Ok(this._productService.Get(idSession));
         }
 
         [HttpGet("{id}")]

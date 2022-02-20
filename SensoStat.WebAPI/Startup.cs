@@ -118,6 +118,7 @@
             services.AddScoped<IPanelistRepository, DbPanelistRepository>();
             services.AddScoped<IPanelistService, PanelistService>();
             services.AddScoped<IInstructionRepository, InstructionRepository>();
+            services.AddScoped<IPublicationRepository, PublicationRepository>();
             services.AddScoped<SessionService>();
         }
 

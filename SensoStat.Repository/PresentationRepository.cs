@@ -56,7 +56,6 @@
         /// <inheritdoc/>
         public IEnumerable<Presentation> FindByIdSession(int id)
         {
-            var result = this._context.Presentations.Include(p => p.Product).Include(p => p.Panelist).Where(presentation => presentation.Product.IdSession == id);
             return this._context.Presentations.Where(presentation => presentation.Product.IdSession == id);
         }
 
@@ -78,6 +77,12 @@
         {
             this._context.Update(presentation);
             this._context.SaveChanges();
+        }
+
+        /// <inheritdoc/>
+        public IEnumerable<Presentation> FindByIdSessionAndIdPanelistVincent(int idSession, int idPanelist)
+        {
+            return this._context.Presentations.Where(p => p.Product.IdSession == idSession && p.IdPanelist == idPanelist);
         }
     }
 }

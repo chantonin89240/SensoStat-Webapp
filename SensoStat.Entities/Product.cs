@@ -7,7 +7,6 @@
     {
         public int Id { get; set; }
 
-        [Required]
         public string CodeProduct { get; set; }
 
         public Session? Session { get; set; }

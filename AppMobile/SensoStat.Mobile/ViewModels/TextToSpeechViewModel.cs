@@ -18,9 +18,6 @@ namespace SensoStat.Mobile.ViewModels
     {
         private SpeechConfig _speechConfig;
         private SpeechSynthesizer _speechSynthesizer;
-        public Picker Languages = new Picker();
-
-        IEnumerable<Locale> locales;
 
         public TextToSpeechViewModel(IAlertdialogService alertdialogService, INavigationService navigationService) : base(alertdialogService, navigationService)
         {
@@ -53,22 +50,28 @@ namespace SensoStat.Mobile.ViewModels
 
         private async Task DoReadCommand()
         {
-           await SpeechUp(Text);
+            if (IsBusy)
+                return;
+            IsBusy = true;
+            await SpeechUp(Text);
+            IsBusy = false;
         }
         #endregion
         #region Methods
 
         #endregion
 
-        private async Task SpeechUp(string textTo)
+        private async Task SpeechUp(string text)
         {
            ActiveBool = true;
 
-           _speechConfig.SpeechSynthesisLanguage = "fr_FR";
+            if (_speechSynthesizer == null)
+            {
+                _speechConfig.SpeechSynthesisLanguage = "fr-FR";
+                _speechSynthesizer = new SpeechSynthesizer(_speechConfig);
+            }
 
-           _speechSynthesizer = _speechSynthesizer ?? new SpeechSynthesizer(_speechConfig);
-
-           await _speechSynthesizer.SpeakTextAsync(textTo);
+            await _speechSynthesizer.SpeakTextAsync(text);
 
            ActiveBool = false;
         }
@@ -76,11 +79,6 @@ namespace SensoStat.Mobile.ViewModels
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
             ActiveBool = false;
-            // locales = await TextToSpeech.GetLocalesAsync();
-            // locales.ToList().ForEach(lang =>
-            // {
-            //     Languages.Items.Add(lang.Name);
-            // });
 
             _speechConfig = SpeechConfig.FromSubscription(Constants.CognitiveServicesApiKey, Constants.CognitiveServicesRegion);
 

@@ -5,7 +5,6 @@
     x:Class="SensoStat.Mobile.Views.TextToSpeech">
     <ContentPage.Content>
         <StackLayout BackgroundColor="LightGray">
-      
             <Entry Text="{Binding Text}"></Entry>
             <ActivityIndicator IsRunning="{Binding ActiveBool}" />
             <Button  Text="Lecture"  Command="{Binding ReadCommand}" Background="#fd7e14" VerticalOptions="Center" Margin="10" />
