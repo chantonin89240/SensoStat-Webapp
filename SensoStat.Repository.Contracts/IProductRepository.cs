@@ -30,7 +30,7 @@
         /// Retourne tous les produits.
         /// </summary>
         /// <returns>Une collection contenant tous les produits.</returns>
-        IEnumerable<Product> FindAll();
+        IEnumerable<Product> FindAll(int idSession);
 
         /// <summary>
         /// Met à jour un produit.

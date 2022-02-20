@@ -7,10 +7,8 @@
     {
         public int Id { get; set; }
 
-        [Required]
         public string Libelle { get; set; }
 
-        [Required]
         public int Chronology { get; set; }
 
         public int IsQuestion { get; set; }

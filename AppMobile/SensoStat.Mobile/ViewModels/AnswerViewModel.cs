@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Microsoft.CognitiveServices.Speech;
 using Prism.Commands;
 using Prism.Navigation;
 using SensoStat.Mobile.Commons;
@@ -13,16 +14,23 @@ namespace SensoStat.Mobile.ViewModels
         #region CTOR
         public AnswerViewModel(IAlertdialogService alertdialogService, INavigationService navigationService) : base(alertdialogService, navigationService)
         {
-            ValidAnswerCommand = new DelegateCommand(async () => await DoValidAnswerCommand());
+            GoAnswerCommand = new DelegateCommand(async () => await DoGoAnswerCommand());
 
             GoSpeechCommand = new DelegateCommand(async () => await DoGoSpeechCommand());
-
-            Title = "Bienvenue sur votre séance sensorielle SensoStat!";
         }
 
         #endregion
         #region Lifecycle
+        public override void OnNavigatedTo(INavigationParameters parameters)
+        {
+            ActiveBool = false;
 
+            _speechConfig = SpeechConfig.FromSubscription(Constants.CognitiveServicesApiKey, Constants.CognitiveServicesRegion);
+
+            base.OnNavigatedTo(parameters);
+        }
+
+ 
         #endregion
         #region Privates
 
@@ -31,11 +39,11 @@ namespace SensoStat.Mobile.ViewModels
 
         #endregion
         #region Commands
-        public DelegateCommand ValidAnswerCommand { get; set; }
+        public DelegateCommand GoAnswerCommand { get; set; }
 
-        private async Task DoValidAnswerCommand()
+        private async Task DoGoAnswerCommand()
         {
-            await NavigationService.NavigateAsync(Constants.FinalPage);
+            await NavigationService.NavigateAsync(Constants.AnswerPage);
         }
 
         public DelegateCommand GoSpeechCommand { get; set; }

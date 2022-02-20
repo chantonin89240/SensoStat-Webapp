@@ -9,6 +9,7 @@ namespace SensoStat.Mobile.Repositories
     {
         private readonly IDatabase _sqLite;
         private readonly SQLiteConnection _connection;
+
         public Repository(IDatabase sQLite)
         {
             _sqLite = sQLite;

@@ -42,6 +42,7 @@ namespace SensoStat.Mobile
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>(Constants.MainPage);
             containerRegistry.RegisterForNavigation<HomeSession, HomeViewModel>(Constants.HomeSession);
             containerRegistry.RegisterForNavigation<Answer, AnswerViewModel>(Constants.Answer);
+            containerRegistry.RegisterForNavigation<AnswerPage, AnswerPageViewModel>(Constants.AnswerPage);
             containerRegistry.RegisterForNavigation<FinalPage, FinalPageViewModel>(Constants.FinalPage);
             containerRegistry.RegisterForNavigation<TextToSpeech, TextToSpeechViewModel>(Constants.TextToSpeech);
         }

@@ -27,9 +27,7 @@
             this.Url = url;
             this.DateStart = dateStart;
             this.DateEnd = dateEnd;
-            this.Session = session;
             this.IdSession = session.Id;
-            this.Panelist = panelist;
             this.IdPaneslist = panelist.Id;
         }
 

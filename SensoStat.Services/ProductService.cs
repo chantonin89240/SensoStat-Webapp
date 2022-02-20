@@ -23,9 +23,9 @@
         }
 
         /// <inheritdoc/>
-        public IEnumerable Get()
+        public IEnumerable Get(int idSession)
         {
-            return this._productRepository.FindAll();
+            return this._productRepository.FindAll(idSession);
         }
 
         /// <inheritdoc/>
