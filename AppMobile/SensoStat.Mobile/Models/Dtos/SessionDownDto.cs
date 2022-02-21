@@ -14,13 +14,13 @@ namespace SensoStat.Mobile.Models.Dtos
 
         [JsonProperty("msgFinal")] public string MsgFinal { get; set; }
 
-        public PublicationDownDto Publication { get; set; }
+        [JsonProperty("publication")] public PublicationDownDto Publication { get; set; }
 
-        public List<InstructionDownDto> Instructions { get; set; }
+        [JsonProperty("instructions")] public List<InstructionDownDto> Instructions { get; set; }
 
-        public List<ProductDownDto> Products { get; set; }
+        [JsonProperty("products")] public List<ProductDownDto> Products { get; set; }
 
-        public List<PresentationDownDto> Presentations { get; set; }
+        [JsonProperty("presentations")] public List<PresentationDownDto> Presentations { get; set; }
 
     }
 }

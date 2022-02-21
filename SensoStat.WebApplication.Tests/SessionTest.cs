@@ -40,7 +40,32 @@ namespace SensoStat.WebApplication.Tests
             fileMock.Setup(_ => _.Length).Returns(ms.Length);
 
             var idSession = 100;
-            bool status;
+
+            // Arrange
+
+            SessionController controller = new SessionController(mock.Object);
+            var file = fileMock.Object;
+
+            // Act
+            var result = await controller.LoadFile(idSession, file);
+
+            // Assert
+            Assert.IsType<RedirectToActionResult>(result);
+            // or 
+            // Assert.IsAssignableFrom<RedirectToActionResult>(result);
+        }
+
+        /// <summary>
+        /// Test unitaire de la méthode LoadFile()
+        /// </summary>
+        /// <returns></returns>
+        [Fact]
+        public async Task UploadEmptyFileTest()
+        {
+            // Pattern AAA
+            var fileMock = new Mock<IFormFile>();
+
+            var idSession = 100;
 
             // Arrange
 

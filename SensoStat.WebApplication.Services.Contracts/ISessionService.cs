@@ -23,5 +23,7 @@
         SessionViewModel MessagesToInstructions(SessionViewModel session);
 
         bool DeleteSession(int id);
+
+        bool Publish(int idSession);
     }
 }

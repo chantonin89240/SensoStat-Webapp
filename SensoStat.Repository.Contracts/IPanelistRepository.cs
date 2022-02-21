@@ -30,7 +30,7 @@
         /// Retourne tous les panelistes.
         /// </summary>
         /// <returns>Une collection contenant tous les panelistes.</returns>
-        IEnumerable<Panelist> FindAll();
+        IEnumerable<Panelist> FindAll(List<int> idPanelistInPresentations);
 
         /// <summary>
         /// Met à jour un paneliste.

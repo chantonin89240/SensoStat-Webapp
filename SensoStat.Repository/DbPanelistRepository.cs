@@ -17,6 +17,7 @@ namespace SensoStat.Repository
         {
             this._context = context;
         }
+
         /// <summary>
         /// Ajoute un nouveau paneliste.
         /// </summary>
@@ -55,12 +56,12 @@ namespace SensoStat.Repository
         }
 
         /// <summary>
-        /// Retourne tous les panelistes.
+        /// Retourne tous les panelistes dont l'id est passé en paramètre.
         /// </summary>
         /// <returns>Une collection contenant tous les panelistes.</returns>
-        public IEnumerable<Panelist> FindAll()
+        public IEnumerable<Panelist> FindAll(List<int> idPanelistInPresentations)
         {
-            return new List<Panelist>();
+            return this._context.Panelists.Where(p => idPanelistInPresentations.Contains(p.Id));
         }
 
         /// <summary>

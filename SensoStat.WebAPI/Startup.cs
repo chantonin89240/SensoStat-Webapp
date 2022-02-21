@@ -101,18 +101,28 @@
 
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUserService, UserService>();
+
             services.AddScoped<IRoleRepository, RoleRepository>();
+
             services.AddScoped<ISessionRepository, SessionRepository>();
             services.AddScoped<ISessionService, SessionService>();
+
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IProductService, ProductService>();
+
             services.AddScoped<IPresentationRepository, PresentationRepository>();
             services.AddScoped<IPresentationService, PresentationService>();
+
             services.AddScoped<IProductRepository, ProductRepository>();
+
             services.AddScoped<IPanelistRepository, DbPanelistRepository>();
             services.AddScoped<IPanelistService, PanelistService>();
+
             services.AddScoped<IInstructionRepository, InstructionRepository>();
+
             services.AddScoped<IPublicationRepository, PublicationRepository>();
+            services.AddScoped<IPublicationService, PublicationService>();
+
             services.AddScoped<SessionService>();
         }
 

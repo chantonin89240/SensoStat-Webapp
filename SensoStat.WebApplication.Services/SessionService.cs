@@ -147,6 +147,12 @@
         {
             var request = this._clientService.DeleteDataFromHttpClient($"api/Sessions/{id}");
             return JsonConvert.DeserializeObject<bool>(request);
-        } 
+        }
+
+        public bool Publish(int idSession)
+        {
+            var request = this._clientService.PostDataFromHttpClient($"api/Publication?id={idSession}", null);
+            return JsonConvert.DeserializeObject<bool>(request.Content.ReadAsStringAsync().Result);
+        }
     }
 }
