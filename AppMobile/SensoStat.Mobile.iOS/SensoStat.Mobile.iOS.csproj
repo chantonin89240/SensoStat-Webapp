@@ -115,12 +115,22 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon20.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Resources\Assets.xcassets\Contents.json" />
-    <ImageAsset Include="Resources\Assets.xcassets\logo.imageset\logo.png" />
-    <ImageAsset Include="Resources\Assets.xcassets\logo.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Assets.xcassets\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Assets.xcassets\logo.imageset\logo.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Assets.xcassets\logo.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
-    <ImageAsset Include="Resources\Assets.xcassets\logo.imageset\logo-2.png" />
-    <ImageAsset Include="Resources\Assets.xcassets\logo.imageset\logo-1.png" />
+    <ImageAsset Include="Resources\Assets.xcassets\logo.imageset\logo-2.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Assets.xcassets\logo.imageset\logo-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
