@@ -24,7 +24,7 @@
                 f.Date.Recent(),
                 f.Date.Recent(),
                 f.Date.Future(),
-                users[f.Random.Number(0, users.Count-1)]));
+                users[f.Random.Number(0, users.Count - 1)]));
 
             var sessions = CreateSessionFactory.Generate(nombreSeance);
 

@@ -14,10 +14,16 @@
         void Add(Publication publication);
 
         /// <summary>
+        /// Ajoute une listes de publications.
+        /// </summary>
+        /// <param name="publications"></param>
+        void AddRange(List<Publication> publications);
+
+        /// <summary>
         /// Supprime une publication.
         /// </summary>
         /// <param name="publication">Publication à supprimer.</param>
-        void Delete(Publication publication);
+        void Delete(int idSession);
 
         /// <summary>
         /// Retourne la publication demandée.

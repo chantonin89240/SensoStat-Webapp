@@ -17,6 +17,9 @@ namespace SensoStat.Services.Contracts
 
         CreateUserResponse CreateUser(CreateUserRequest model);
 
+        byte[] GenerateSalt();
+
+        string HashPasswordWithSalt(string password, byte[] salt);
     }
 }
 

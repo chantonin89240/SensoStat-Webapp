@@ -19,9 +19,18 @@
             throw new NotImplementedException();
         }
 
-        public void Delete(Publication publication)
+        public void AddRange(List<Publication> publications)
         {
-            throw new NotImplementedException();
+            this._context.Publications.AddRange(publications);
+            this._context.SaveChanges();
+        }
+
+        public void Delete(int idSession)
+        {
+            var publications = this._context.Publications.Where(p => p.IdSession == idSession);
+
+            this._context.Publications.RemoveRange(publications);
+            this._context.SaveChanges();
         }
 
         public Publication? Find(int idPanelist, int idSession)

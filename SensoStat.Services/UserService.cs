@@ -14,6 +14,7 @@
     using System.IdentityModel.Tokens.Jwt;
     using SensoStat.Models.HttpResponse;
     using SensoStat.Models.HttpRequest;
+
     public class UserService : IUserService
     {
         private readonly JwtSettings _jwtSettings;
@@ -124,7 +125,7 @@
             return tokenHandler.WriteToken(token);
         }
 
-        private byte[] GenerateSalt()
+        public byte[] GenerateSalt()
         {
             byte[] salt = new byte[128 / 8];
             using (var rngCsp = new RNGCryptoServiceProvider())
@@ -135,7 +136,7 @@
             return salt;
         }
 
-        private string HashPasswordWithSalt(string password, byte[] salt)
+        public string HashPasswordWithSalt(string password, byte[] salt)
         {
             // obtenir une clé de 256-bit (en utilisant HMACSHA256 sur 100,000 itérations)
             return Convert.ToBase64String(KeyDerivation.Pbkdf2(

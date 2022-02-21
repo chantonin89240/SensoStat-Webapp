@@ -44,7 +44,7 @@
         {
             // IdPerson à remplacer
             session.IdPerson = 1;
-            session.Etat = "Non-déployée";
+            session.Etat = "Non-publiée";
 
             session = this._sessionService.MessagesToInstructions(session);
 
@@ -62,10 +62,11 @@
         [HttpPost]
         public IActionResult Edit(SessionViewModel session)
         {
-            session = this._sessionService.MessagesToInstructions(session);
+            var sessionUpdated = this._sessionService.MessagesToInstructions(session);
 
-            this._sessionService.UpdateSession(session);
-            return this.View(session);
+            this._sessionService.UpdateSession(sessionUpdated);
+            sessionUpdated.Presentations = this._sessionService.GetPresentations(sessionUpdated.Id);
+            return this.View(sessionUpdated);
         }
 
         /*public IActionResult Delete()
@@ -101,6 +102,21 @@
         public async Task<IActionResult> CloneSession(int id)
         {
             return RedirectToAction("index");
+        }
+
+        [HttpPost("{id}")]
+        public IActionResult Publish(int id, SessionViewModel session)
+        {
+            var test = session;
+            if (this._sessionService.Publish(id))
+            {
+                this.TempData["success"] = "La séance a bien été publiée.";
+                return this.RedirectToAction("edit", new { id = id });
+            }
+
+            // ajouter message d'erreur de publication
+            this.ModelState.AddModelError(string.Empty, "Un problème est survenue, le publication n'a pu être enregistrer, veuillez réessayer.");
+            return this.RedirectToAction("edit", new { id = id });
         }
     }
 }

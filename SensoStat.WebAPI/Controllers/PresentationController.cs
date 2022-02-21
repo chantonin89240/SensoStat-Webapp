@@ -46,8 +46,7 @@
         [HttpPost]
         public bool CreatePresentation([FromBody] List<PresentationRequest> presentations)
         {
-            var test = this._presentationService.MultiCreate(presentations);
-            return test;
+            return this._presentationService.MultiCreate(presentations);
         }
 
         [HttpPut("{id}")]

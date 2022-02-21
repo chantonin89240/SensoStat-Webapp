@@ -37,14 +37,14 @@ namespace SensoStat.WebAPI.Controllers
         public IActionResult CreateSession([FromBody] SessionRequest session)
         {
             var sessionResponse = this._sessionService.Create(session);
-            return this.CreatedAtAction(nameof(SessionsController.GetById), new { id = sessionResponse.Id }, sessionResponse);
+            return this.CreatedAtAction(nameof(SessionsController.CreateSession), new { id = sessionResponse.Id }, sessionResponse);
         }
 
         [HttpPut("{id}")]
         public IActionResult UpdateSession([FromBody] SessionRequest session)
         {
             var sessionResponse = this._sessionService.Update(session);
-            return this.CreatedAtAction(nameof(SessionsController.GetById), new { id = sessionResponse.Id }, sessionResponse);
+            return this.CreatedAtAction(nameof(SessionsController.UpdateSession), new { id = sessionResponse.Id }, sessionResponse);
         }
 
         [HttpDelete("{id}")]
