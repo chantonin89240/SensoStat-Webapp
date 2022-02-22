@@ -1,17 +1,17 @@
 <template>
     <div id="app">
         <!-- Navbar -->
-        <NavbarComponent/>
+        <NavbarComponent />
 
         <!-- section ou sera rassembler les components et trier -->
         <section class="container">
             <InstructionComponent v-if="currentInstruction.isQuestion == 0" v-bind:currentInstruction="currentInstruction" @nextInstruction="verifInstruction"></InstructionComponent>
             <!-- <button  @click="call(1350)">Test</button> -->
-            <QuestionComponent v-if="currentInstruction.isQuestion == 1" v-bind:currentInstruction="currentInstruction" @nextInstruction="verifInstruction"></QuestionComponent>
+            <QuestionComponent v-if="currentInstruction.isQuestion == 1" v-bind:currentInstruction="currentInstruction" @repeteSpeech="repeteSpeech" @nextInstruction="verifInstruction"></QuestionComponent>
         </section>
 
         <!-- Footer -->
-        <FooterComponent/>
+        <FooterComponent />
     </div>
 </template>
 
@@ -21,6 +21,7 @@
     import InstructionComponent from './components/Instruction.vue';
     import QuestionComponent from './components/Question.vue';
     import PresentationService from './services/PresentationService.js';
+    import SpeechService from './services/SpeechService.js';
 
 export default {
     name: 'App',
@@ -40,7 +41,9 @@ export default {
             currentPresentation : null,
             presentations : null,
             nbPresentation : null,
-            presentationService : undefined,
+            presentationService: undefined,
+            textSpeech: null,
+            SpeechService: undefined,
         };
     },
     mounted(){
@@ -53,7 +56,7 @@ export default {
             this.instructionCodeProduit = JSON.parse(JSON.stringify(this.instructions));
             this.currentInstruction = this.instructionCodeProduit[0];
         }).then(() => {
-            this.presentationService.getPresentation(1,1).then((presentation) => {
+            this.presentationService.getPresentation(102,62).then((presentation) => {
                 this.presentations = presentation;
                 this.nbPresentation = this.presentations.length;
                 this.currentPresentation = this.presentations[0];
@@ -63,6 +66,14 @@ export default {
             })
         });
     },
+        watch: {
+            currentInstruction() {
+                this.SpeechService = new SpeechService();
+                this.textSpeech = this.currentInstruction.libelle
+                console.log(this.textSpeech);
+                this.SpeechService.synthesizeSpeech(this.textSpeech);
+         }
+     },
     methods: {
         verifInstruction() {
             if (this.currentInstruction.chronology == this.nbChronology-2) {
@@ -82,10 +93,9 @@ export default {
                 this.currentInstruction = this.instructionCodeProduit[this.currentInstruction.chronology+1];
             }
         },
-        call(number) {
-            for (let index = 0; index < number; index++) {
-                fetch("https://sensostatapi.azurewebsites.net/api/sessions/1")                
-            }
+        repeteSpeech() {
+            console.log(this.textSpeech);
+            this.SpeechService.synthesizeSpeech(this.textSpeech);
         }
     },
 }

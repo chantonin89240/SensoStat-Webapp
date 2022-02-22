@@ -1,11 +1,13 @@
 <template>
     <div>
         <p>{{currentInstruction.libelle}}</p>
-        <p></p>
         <br />
 
-        <p>Cliquez ou dites :</p>
-        <a class="btn btn-warning" @click="nextInstruction">Etape suivante</a>
+        <p>Pour r&eacute;pondre, dites :</p>
+        <a class="btn btn-warning" @click="questionResponse">R&eacute;pondre</a>
+
+        <p>Pour r&eacute;p&eacute;ter la question, dites :</p>
+        <a class="btn btn-warning" @click="repeteSpeech">R&eacute;p&eacute;ter</a>
     </div>
 </template>
 
@@ -18,7 +20,12 @@ export default {
     },
     name: 'QuestionInstructionComponent',
     methods:{
-        
+        questionResponse() {
+            this.$emit('questionResponse')
+        },
+        repeteSpeech() {
+            this.$emit('repeteSpeech')
+        }
     }
 
 }

@@ -30,7 +30,7 @@
             return this.Ok(this._presentationService.FindAllByIdSession(id));
         }
 
-        /*[HttpGet("{idSession}/{idPanlelist}")]
+        [HttpGet("{idSession}/{idPanlelist}")]
         public IActionResult GetByIdSessionAndIdPanelist(int idSession, int idPanlelist)
         {
             var presentations = this._presentationService.FindByIdSessionAndIdPanelist(idSession, idPanlelist);
@@ -41,7 +41,7 @@
             }
 
             return this.Ok(presentations);
-        }*/
+        }
 
         [HttpPost]
         public bool CreatePresentation([FromBody] List<PresentationRequest> presentations)

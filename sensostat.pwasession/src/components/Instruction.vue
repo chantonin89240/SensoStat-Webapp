@@ -6,21 +6,28 @@
 
         <p>Cliquez ou dites :</p>
         <a class="btn btn-warning" @click="nextInstruction">Etape suivante</a>
+
+        
     </div>
 </template>
 
 <script>
-
-export default {
+    
+    export default {
+        
     props:{
         currentInstruction: undefined
     },
     name: 'InstructionComponent',
+    data() {
+        return {
+            
+        };
+    },
     methods:{
         nextInstruction(){
             this.$emit('nextInstruction')
-        }
+        },
     }
-
 }
 </script>
