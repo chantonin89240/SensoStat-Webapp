@@ -47,7 +47,7 @@
 
         public SessionViewModel CreateSession(SessionViewModel session)
         {
-            this._clientService.PostDataFromHttpClient("api/Sessions", session);
+            var test = this._clientService.PostDataFromHttpClient("api/Sessions/create", session);
             return session;
         }
         /// <summary>
@@ -116,6 +116,8 @@
 
         public SessionViewModel UpdateSession(SessionViewModel session)
         {
+            session.DateUpdate = DateTime.Now;
+
             this._clientService.PutDataFromHttpClient($"api/Sessions/{session.Id}", session);
 
             return session;

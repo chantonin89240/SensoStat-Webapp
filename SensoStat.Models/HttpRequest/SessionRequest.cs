@@ -22,6 +22,8 @@ namespace SensoStat.Models.HttpRequest
         [Required]
         public string MsgFinal { get; set; }
 
+        public DateTime DateCreate { get; set; }
+
         public List<string> Types { get; set; }
 
         public List<string> Messages { get; set; }

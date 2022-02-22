@@ -20,7 +20,9 @@ namespace SensoStat.WebApplication.ViewModels
 
         public string Etat { get; set; }
 
-        public DateTime? DateUpdate { get; set; }
+        public DateTime? DateCreate { get; set; }
+
+        public DateTime DateUpdate { get; set; }
 
         public UserViewModel Person { get; set; }
 
@@ -39,7 +41,6 @@ namespace SensoStat.WebApplication.ViewModels
         {
             this.Products = new List<ProductViewModel>();
             this.Instructions = new List<InstructionItemViewModel>();
-            //this.Publications = new List<PublicationViewModel>();
         }
 
         public SessionViewModel(string name, string etat, UserViewModel person) : this()

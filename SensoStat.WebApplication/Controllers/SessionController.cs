@@ -45,6 +45,7 @@
             // IdPerson à remplacer
             session.IdPerson = 1;
             session.Etat = "Non-publiée";
+            session.DateCreate = DateTime.Now;
 
             session = this._sessionService.MessagesToInstructions(session);
 
@@ -52,6 +53,7 @@
             return this.RedirectToAction("Index");
         }
 
+        [HttpGet]
         public IActionResult Edit(int id)
         {
             var model = this._sessionService.GetSessionById(id);
@@ -64,8 +66,9 @@
         {
             session = this._sessionService.MessagesToInstructions(session);
 
-            this._sessionService.UpdateSession(session);
+            session = this._sessionService.UpdateSession(session);
             session.Presentations = this._sessionService.GetPresentations(session.Id);
+
             return this.View(session);
         }
 

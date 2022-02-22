@@ -57,7 +57,7 @@
             {
                 Name = sessionRequest.Name,
                 Etat = sessionRequest.Etat,
-                DateCreate = DateTime.Now,
+                DateCreate = sessionRequest.DateCreate,
                 IdPerson = sessionRequest.IdPerson,
                 MsgAccueil = sessionRequest.MsgAccueil,
                 MsgFinal = sessionRequest.MsgFinal,
@@ -102,11 +102,11 @@
                 MsgAccueil = sessionRequest.MsgAccueil,
                 MsgFinal = sessionRequest.MsgFinal,
                 Etat = sessionRequest.Etat,
-                DateCreate = DateTime.Now,
+                DateCreate = sessionRequest.DateCreate,
                 IdPerson = sessionRequest.IdPerson,
             };
 
-            session.DateUpdate = session.DateCreate;
+            session.DateUpdate = DateTime.Now;
 
             foreach (var item in sessionRequest.Instructions)
             {
