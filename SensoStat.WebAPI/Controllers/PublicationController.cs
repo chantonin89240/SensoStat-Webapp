@@ -27,5 +27,18 @@
         {
             return new SessionResponse();
         }
+
+        [HttpGet("{id}")]
+        public IActionResult Export(int id)
+        {
+            var result = this._publicationService.ExportUrl(id);
+
+            if (result.Count != 0)
+            {
+                return this.Ok(result);
+            }
+
+            return this.NotFound();
+        }
     }
 }

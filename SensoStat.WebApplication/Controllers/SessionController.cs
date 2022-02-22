@@ -62,17 +62,12 @@
         [HttpPost]
         public IActionResult Edit(SessionViewModel session)
         {
-            var sessionUpdated = this._sessionService.MessagesToInstructions(session);
+            session = this._sessionService.MessagesToInstructions(session);
 
-            this._sessionService.UpdateSession(sessionUpdated);
-            sessionUpdated.Presentations = this._sessionService.GetPresentations(sessionUpdated.Id);
-            return this.View(sessionUpdated);
+            this._sessionService.UpdateSession(session);
+            session.Presentations = this._sessionService.GetPresentations(session.Id);
+            return this.View(session);
         }
-
-        /*public IActionResult Delete()
-        {
-            return this.View();
-        }*/
 
         [HttpPost]
         public async Task<IActionResult> Delete(int id)
@@ -107,7 +102,6 @@
         [HttpPost("{id}")]
         public IActionResult Publish(int id, SessionViewModel session)
         {
-            var test = session;
             if (this._sessionService.Publish(id))
             {
                 this.TempData["success"] = "La séance a bien été publiée.";
@@ -117,6 +111,15 @@
             // ajouter message d'erreur de publication
             this.ModelState.AddModelError(string.Empty, "Un problème est survenue, le publication n'a pu être enregistrer, veuillez réessayer.");
             return this.RedirectToAction("edit", new { id = id });
+        }
+
+        public IActionResult Export(int id)
+        {
+            Stream? stream = this._sessionService.Export(id);
+
+            var filename = this.Request.Form["filename"];
+
+            return File(stream, "application/octet-stream", filename);
         }
     }
 }

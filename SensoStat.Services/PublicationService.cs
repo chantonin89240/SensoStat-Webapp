@@ -1,5 +1,6 @@
 ﻿using System;
 using SensoStat.Entities;
+using SensoStat.Models.HttpResponse;
 using SensoStat.Repository.Contracts;
 using SensoStat.Services.Contracts;
 
@@ -30,7 +31,7 @@ namespace SensoStat.Services
             {
                 // Maj état de publication
                 var session = this._sessionRepository.Find(idSession);
-                session.Etat = "Deploy";
+                session.Etat = "Publiée";
                 this._sessionRepository.Update(session);
 
                 // Création publication
@@ -48,6 +49,7 @@ namespace SensoStat.Services
                         IdPaneslist = p.Id,
                         DateStart = DateTime.Now,
                         Url = $"http://localhost:8080/{hashUrl}",
+                        Salt = Convert.ToBase64String(salt),
                     });
                 });
 
@@ -64,6 +66,28 @@ namespace SensoStat.Services
         public bool DeletePublication(int idsession)
         {
             return true;
+        }
+
+        public List<ExportResponse> ExportUrl(int idSession)
+        {
+            var exportResponseList = new List<ExportResponse>();
+
+            var publications = this._publicationRepository.FindAll(idSession);
+            var listIdPanelist = publications.Select(p => p.IdPaneslist).ToList();
+            var panelists = this._panelistRepository.FindAll(listIdPanelist);
+
+            publications.ToList().ForEach(p =>
+            {
+                var exportResponse = new ExportResponse()
+                {
+                    URL = p.Url,
+                    CodePanelist = panelists.First(pan => pan.Id == p.IdPaneslist).CodePanelist,
+                };
+
+                exportResponseList.Add(exportResponse);
+            });
+
+            return exportResponseList;
         }
     }
 }

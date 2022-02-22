@@ -13,7 +13,7 @@
         /// <returns></returns>
         public static IEnumerable<Session> GenerateSession(List<User> users)
         {
-            var TypeEtat = new[] { "Close", "Deploy", "No Deploy" };
+            var TypeEtat = new[] { "Cloturée", "Publiée", "Non publiée" };
             var SessionId = 0;
             var CreateSessionFactory = new Faker<Session>("fr")
                 .CustomInstantiator(f => new Session(

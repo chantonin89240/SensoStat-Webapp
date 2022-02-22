@@ -11,7 +11,7 @@
         public static List<Panelist> GeneratePanelist()
         {
             var PanelistId = 0;
-            var CreatePanelistFactory = new Faker<Panelist>("fr")
+            var CreatePanelistFactory = new Faker<Panelist>()
                 .CustomInstantiator( f => new Panelist(
                     new Bogus.Randomizer().Replace("?##")));
 

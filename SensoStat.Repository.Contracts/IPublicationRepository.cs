@@ -36,12 +36,13 @@
         /// Retourne toutes les publications.
         /// </summary>
         /// <returns>Une collection contenant toutes les publications.</returns>
-        IEnumerable<Publication> FindAll();
+        IEnumerable<Publication> FindAll(int idSession);
 
         /// <summary>
         /// Met à jour une publication.
         /// </summary>
         /// <param name="publication">Publication à modifier.</param>
         void Update(Publication publication);
+
     }
 }
