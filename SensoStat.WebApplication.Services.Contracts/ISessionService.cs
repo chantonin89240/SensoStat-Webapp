@@ -25,5 +25,7 @@
         bool DeleteSession(int id);
 
         bool Publish(int idSession);
+
+        Stream Export(int idSession);
     }
 }

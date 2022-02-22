@@ -23,7 +23,6 @@
         /// <param name="serviceProvider"></param>
         public static void Initialize(IServiceProvider serviceProvider)
         {
-            
             using (var context = new SensoStatDbContext(serviceProvider.GetRequiredService<DbContextOptions<SensoStatDbContext>>()))
             {
                 roles = RoleFactory.GenerateRole().ToList();
@@ -36,6 +35,10 @@
 
                 sessions = SessionCreator();
                 context.Sessions.AddRange(sessions);
+                context.SaveChanges();
+
+                panelists = PanelistCreator();
+                context.Panelists.AddRange(panelists);
                 context.SaveChanges();
 
                 products = ProductCreator();
@@ -96,6 +99,15 @@
         }
 
         /// <summary>
+        /// Génère 1000 produits
+        /// </summary>
+        /// <returns>Liste de produits</returns>
+        public static List<Panelist> PanelistCreator()
+        {
+            return PanelistFactory.GeneratePanelist().ToList();
+        }
+
+        /// <summary>
         /// Génère 9 instructions par session
         /// </summary>
         /// <returns>Liste d'instructions</returns>
@@ -110,7 +122,7 @@
         /// <returns>Liste de publications</returns>
         public static List<Publication> PublicationCreator()
         {
-            return PublicationFactory.GeneratePublication(sessions);
+            return PublicationFactory.GeneratePublication(sessions, panelists);
         }
 
         /// <summary>

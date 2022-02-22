@@ -1,12 +1,14 @@
 ﻿namespace SensoStat.WebApplication.Services
 {
     using CsvHelper;
+    using CsvHelper.Configuration;
     using Microsoft.AspNetCore.Http;
     using Newtonsoft.Json;
     using SensoStat.WebApplication.Services.Contracts;
     using SensoStat.WebApplication.ViewModels;
     using System.Globalization;
     using System.Net;
+    using System.Text;
 
     public class SessionService : ISessionService
     {
@@ -22,7 +24,7 @@
 
             var lesSessions = JsonConvert.DeserializeObject<IEnumerable<SessionViewModel>>(sessions);
 
-            return lesSessions.Where(s => s.Etat != "Close").OrderByDescending(s => s.DateUpdate);
+            return lesSessions.Where(s => s.Etat != "Cloturée").OrderByDescending(s => s.DateUpdate);
         }
 
         public SessionViewModel GetSessionById(int id)
@@ -40,7 +42,7 @@
 
             var lesSessions = JsonConvert.DeserializeObject<IEnumerable<SessionViewModel>>(sessions);
 
-            return lesSessions.Where(s => s.Etat == "Close").OrderByDescending(s => s.DateUpdate);
+            return lesSessions.Where(s => s.Etat == "Cloturée").OrderByDescending(s => s.DateUpdate);
         }
 
         public SessionViewModel CreateSession(SessionViewModel session)
@@ -154,5 +156,28 @@
             var request = this._clientService.PostDataFromHttpClient($"api/Publication?id={idSession}", null);
             return JsonConvert.DeserializeObject<bool>(request.Content.ReadAsStringAsync().Result);
         }
+
+        public Stream Export(int idSession)
+        {
+            var request = this._clientService.GetDataFromHttpClient($"api/Publication/{idSession}");
+            var publications = JsonConvert.DeserializeObject<List<ExportViewModel>>(request);
+
+            var config = new CsvConfiguration(CultureInfo.InvariantCulture)
+            {
+                PrepareHeaderForMatch = args => args.Header.ToLower(),
+            };
+
+            var ms = new MemoryStream();
+            using (var writer = new StreamWriter(ms, leaveOpen: true))
+            using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
+            {
+                csv.WriteRecords(publications);
+                writer.Flush();
+            }
+
+            ms.Position = 0;
+
+            return ms;
+        } 
     }
 }

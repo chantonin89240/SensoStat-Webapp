@@ -38,9 +38,9 @@
             return this._context.Publications.FirstOrDefault(pub => pub.IdPaneslist == idPanelist && pub.IdSession == idSession);
         }
 
-        public IEnumerable<Publication> FindAll()
+        public IEnumerable<Publication> FindAll(int idSession)
         {
-            throw new NotImplementedException();
+            return this._context.Publications.Where(p => p.IdSession == idSession);
         }
 
         public void Update(Publication publication)

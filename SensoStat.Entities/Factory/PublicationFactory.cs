@@ -10,26 +10,29 @@
         /// </summary>
         /// <param name="sessions"></param>
         /// <returns></returns>
-        public static List<Publication> GeneratePublication(List<Session> sessions)
+        public static List<Publication> GeneratePublication(List<Session> sessions, List<Panelist> panelists)
         {
             List<Publication> publications = new List<Publication>();
 
             sessions.ForEach(session =>
             {
-                var CreatePanelistFactory = new Faker<Panelist>("fr")
+                var CreatePanelistFactory = new Faker<Panelist>()
                 .CustomInstantiator(f => new Panelist(
                    new Bogus.Randomizer().Replace("?##")));
 
-                var CreatePublicationFactory = new Faker<Publication>()
-               .CustomInstantiator(p => new Publication(
-                   session,
-                   CreatePanelistFactory.Generate(),
-                   p.Internet.Url(),
-                   p.Date.Recent(),
-                   p.Date.Future()
-                   ));
+                panelists.ForEach(panelist =>
+                {
+                    var CreatePublicationFactory = new Faker<Publication>()
+                      .CustomInstantiator(p => new Publication(
+                          session,
+                          panelist,
+                          p.Internet.Url(),
+                          p.Date.Recent(),
+                          p.Date.Future(),
+                          p.Internet.Password()));
 
-                publications.AddRange(CreatePublicationFactory.Generate(nombrePaneliste));
+                    publications.Add(CreatePublicationFactory.Generate());
+                });
             });
 
             return publications;
