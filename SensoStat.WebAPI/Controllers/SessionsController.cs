@@ -34,6 +34,7 @@ namespace SensoStat.WebAPI.Controllers
         }
 
         [HttpPost]
+        [Route("create")]
         public IActionResult CreateSession([FromBody] SessionRequest session)
         {
             var sessionResponse = this._sessionService.Create(session);

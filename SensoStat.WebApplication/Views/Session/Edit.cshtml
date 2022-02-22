@@ -46,12 +46,14 @@
     }
     <!-- div de gestion de la séance -->
 
-    <input type="hidden" asp-for="IdPerson" value="@Model.IdPerson">
-    <input type="hidden" asp-for="Etat" value="@Model.Etat">
+    
     <section class="row">
         <div class="col-10">
             <!-- section du nom de la séance ainsi que sont status -->
             <form id="formSession" method="post" asp-controller="session" asp-action="edit">
+                <input type="hidden" asp-for="IdPerson" value="@Model.IdPerson">
+                <input type="hidden" asp-for="Etat" value="@Model.Etat">
+                <input type="hidden" asp-for="DateCreate" value="@Model.DateCreate">
                 <span class="mb-4 d-flex justify-content-between">
                     <div class="d-flex">
                         <label for="exampleInputEmail1" class="form-label h5 me-1 mt-2">Nom de la séance :</label>
@@ -61,7 +63,7 @@
                     </div>
                     <div class="d-flex me-1 mt-2">
                         <label class="form-label h5">Statut :</label>
-                        <span asp-for="Etat" type="text" class="h5 ms-1">@Model.Etat</span>
+                        <span asp-for="Etat" name="model.Etat" type="text" class="h5 ms-1">@Model.Etat</span>
                     </div>
                 </span>
                 <p>Ajoutez vos instruction(s) / question(s) dans l'ordre chronologique du déroulé de la séance</p>

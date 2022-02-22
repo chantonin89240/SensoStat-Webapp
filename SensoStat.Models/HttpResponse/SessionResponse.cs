@@ -12,6 +12,8 @@ namespace SensoStat.Models.HttpResponse
 
         public int IdPerson { get; set; }
 
+        public DateTime? DateCreate { get; set; }
+
         public List<Instruction> Instructions { get; set; }
 
         public SessionResponse()
@@ -24,6 +26,7 @@ namespace SensoStat.Models.HttpResponse
             Name = session.Name;
             Etat = session.Etat;
             Instructions = session.Instructions;
+            DateCreate = session.DateCreate;
         }
     }
 }
