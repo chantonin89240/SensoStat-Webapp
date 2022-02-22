@@ -27,11 +27,6 @@
 
         public void OnActionExecuting(ActionExecutingContext context)
         {
-            if (!context.ModelState.IsValid)
-            {
-                context.Result = new BadRequestObjectResult(context.ModelState);
-            }
-
             if (context.ModelState.IsValid)
             {
                 var tokenExiste = context.HttpContext.Request.Cookies.ContainsKey("Jwt");
@@ -40,6 +35,10 @@
                     var token = context.HttpContext.Request.Cookies["Jwt"];
                     ClientService.tokenApi = token;
                 }
+            }
+            else
+            {
+                context.Result = new BadRequestObjectResult(context.ModelState);
             }
         }
 

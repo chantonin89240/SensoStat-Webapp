@@ -1,8 +1,8 @@
 <template>
     <div>
-        <QuestionInstructionComponent v-bind:currentInstruction="currentInstruction"/>
-        <QuestionReponseComponent/>
-        <QuestionValidationComponent/>
+        <QuestionInstructionComponent v-if="questionInstru" @questionResponse="questionResponse" v-bind:currentInstruction="currentInstruction" @repeteSpeech="repeteSpeech"/>
+        <QuestionReponseComponent v-if="questionReponse" @questionValide="questionValide"/>
+        <QuestionValidationComponent v-if="questionValidation" @nextInstruction="nextInstruction" @questionResponse="questionResponse" v-bind:response="response" />
     </div>
 </template>
 
@@ -20,11 +20,33 @@ export default {
         QuestionInstructionComponent,
         QuestionReponseComponent,
         QuestionValidationComponent
+        },
+    data() {
+        return {
+            questionInstru: true,
+            questionReponse: false,
+            questionValidation: false,
+            response: null,
+        };
     },
     name: 'QuestionComponent',
     methods:{
-        nextInstruction(){
-            this.$emit('nextInstruction', this.currentInstruction)
+        nextInstruction() {
+            this.$emit('nextInstruction')
+        },
+        questionResponse() {
+            this.questionInstru = false;
+            this.questionReponse = true;
+            this.questionValidation = false;
+        },
+        questionValide(response) {
+            this.questionInstru = false;
+            this.questionReponse = false;
+            this.questionValidation = true;
+            this.response = response;
+        },
+        repeteSpeech() {
+            this.$emit('repeteSpeech')
         }
     }
 
