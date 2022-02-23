@@ -45,6 +45,7 @@
                 }
 
                 this.Response.Cookies.Append("Jwt", userAuthentified.Token, new CookieOptions { Expires = DateTime.Now.AddHours(1) });
+                this.Response.Cookies.Append("Role", userAuthentified.RoleLibelle);
 
                 return this.RedirectToAction(nameof(Index), "session");
             }

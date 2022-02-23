@@ -38,7 +38,8 @@
             }
             else
             {
-                context.Result = new BadRequestObjectResult(context.ModelState);
+                // context.Result = new BadRequestObjectResult(context.ModelState);
+                context.ModelState.AddModelError(string.Empty, "Une erreur est survenue.");
             }
         }
 

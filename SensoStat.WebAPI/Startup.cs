@@ -28,7 +28,7 @@
 
             services.AddEndpointsApiExplorer();
 
-            services.AddSwaggerGen();
+            //services.AddSwaggerGen();
             services.AddSwaggerGen(option =>
             {
                 option.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
@@ -155,6 +155,7 @@
                     //context.Database.EnsureCreated();
 
                     //SeedData.Initialize(services);
+
                 }
                 catch (Exception ex)
                 {

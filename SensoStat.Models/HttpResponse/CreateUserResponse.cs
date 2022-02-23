@@ -12,15 +12,15 @@
 
         public string Email { get; set; }
 
-        public int IdRole { get; set; }
+        public string RoleLibelle { get; set; }
 
-        public CreateUserResponse(User user)
+        public CreateUserResponse(User user, string roleLibelle)
         {
             Id = user.Id;
             FirstName = user.FirstName;
             LastName = user.LastName;
             Email = user.Email;
-            IdRole = user.IdRole;
+            RoleLibelle = roleLibelle;
         }
     }
 }

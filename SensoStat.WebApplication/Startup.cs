@@ -16,7 +16,6 @@
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
             services.AddControllersWithViews(option =>
             {
                 option.Filters.Add(typeof(LoggerActionFilter));
@@ -26,12 +25,6 @@
                 .AddRazorRuntimeCompilation();
 
             var apiAdress = Configuration.GetSection("Api").Value;
-
-            //string token;
-            //services.(a =>
-            //{
-            //    a.;
-            //});
 
             services.AddHttpClient<ClientService>(e =>
             {

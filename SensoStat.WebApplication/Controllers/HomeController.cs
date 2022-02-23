@@ -6,6 +6,7 @@
     {
         public IActionResult Index()
         {
+            this.HttpContext.Request.Cookies = null;
             return this.View();
         }
     }

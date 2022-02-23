@@ -4,13 +4,14 @@ namespace SensoStat.WebApplication.ViewModels
     public class SessionViewModel
     {
         public int Id { get; set; }
-        [Required(ErrorMessage = "Veuillez saisir ce champ")]
+        [Required(ErrorMessage = "Veuillez saisir le nom de la séance")]
         public string Name { get; set; }
-        [Required(ErrorMessage = "Veuillez saisir ce champ")]
+        [Required(ErrorMessage = "Veuillez saisir le message d'accueil de la séance")]
         public string MsgAccueil { get; set; }
-        [Required(ErrorMessage = "Veuillez saisir ce champ")]
+        [Required(ErrorMessage = "Veuillez saisir le message final de la séance")]
         public string MsgFinal { get; set; }
-        public List<string> Types { get; set; }
+        public List<string>? Types { get; set; }
+        [Required(ErrorMessage = "Veuillez ajouter au moins une instructions")]
         public List<string> Messages { get; set; }
         public string? Etat { get; set; }
         public DateTime? DateCreate { get; set; }

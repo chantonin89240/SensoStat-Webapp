@@ -13,6 +13,8 @@ namespace SensoStat.WebApplication.ViewModels
 
         public int IdRole { get; set; }
 
+        public string? RoleLibelle { get; set; }
+
         [Required]
         public string LastName { get; set; }
 
@@ -42,7 +44,7 @@ namespace SensoStat.WebApplication.ViewModels
         public UserViewModel(RoleViewModel role, string lastName, string firstName, string email, /*string login,*/ string password) : this()
         {
             this.Role = role;
-            this.IdRole = role.Id;
+            this.RoleLibelle = role.Libelle;
             this.LastName = lastName;
             this.FirstName = firstName;
             this.Email = email;
