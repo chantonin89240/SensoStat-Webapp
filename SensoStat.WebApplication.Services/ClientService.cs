@@ -1,6 +1,7 @@
 ﻿namespace SensoStat.WebApplication.Services
 {
     using Newtonsoft.Json;
+    using System.IdentityModel.Tokens.Jwt;
     using System.Net.Http.Headers;
     using System.Text;
 
@@ -13,7 +14,14 @@
         public ClientService(HttpClient client)
         {
             this._httpClient = client;
-            this._httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", tokenApi);
+            this._httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", tokenApi);      
+        }
+
+        public void decodeToken(string token)
+        { 
+            var handler = new JwtSecurityTokenHandler();
+            var jwtSecurityToken = handler.ReadJwtToken(token);
+            var role = jwtSecurityToken.Claims.First(claim => claim.Type == "role").Value;
         }
 
         public string GetDataFromHttpClient(string url)

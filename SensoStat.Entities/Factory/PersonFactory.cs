@@ -1,6 +1,7 @@
 ﻿namespace SensoStat.Entities.Factory
 {
     using Bogus;
+    using Microsoft.AspNetCore.Cryptography.KeyDerivation;
     using System.Security.Cryptography;
 
     public static class PersonFactory
@@ -27,6 +28,11 @@
                     Convert.ToBase64String(salt)));
 
             var users = CreatePersonFactory.Generate(nombreUtilisateur);
+            var saltUser = GenerateSalt();
+            var password = HashPasswordWithSalt("Azerty@123", saltUser);
+
+            users.Add(new User(roles[0], "Thomas", "Arnaud", "arnaud.thomas@sensostat.fr", "Arnaud Thomas", password, Convert.ToBase64String(saltUser)));
+
             return users;
         }
 
@@ -39,6 +45,17 @@
             }
 
             return salt;
+        }
+
+        private static string HashPasswordWithSalt(string password, byte[] salt)
+        {
+            // obtenir une clé de 256-bit (en utilisant HMACSHA256 sur 100,000 itérations)
+            return Convert.ToBase64String(KeyDerivation.Pbkdf2(
+                password: password,
+                salt: salt,
+                prf: KeyDerivationPrf.HMACSHA256,
+                iterationCount: 100000,
+                numBytesRequested: 256 / 8));
         }
     }
 }

@@ -12,6 +12,8 @@ namespace SensoStat.Models.HttpResponse
 
         public int IdPerson { get; set; }
 
+        public string Role { get; set; }
+
         public DateTime? DateCreate { get; set; }
 
         public List<Instruction> Instructions { get; set; }

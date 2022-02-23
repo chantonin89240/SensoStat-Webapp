@@ -87,16 +87,21 @@
             {
                 this._userRepository.Add(user);
 
-                return new CreateUserResponse(user);
+                return new CreateUserResponse(user, GetRole(user.IdRole));
             }
 
             user.Password = model.Password;
-            return new CreateUserResponse(user);
+            return new CreateUserResponse(user, GetRole(user.IdRole));
         }
 
         public IEnumerable<Role> GetRoles()
         {
             return this._roleRepository.FindAll();
+        }
+
+        public string GetRole(int id)
+        {
+            return this._roleRepository.FindById(id).Libelle;
         }
 
         private string generateJwtToken(User user)

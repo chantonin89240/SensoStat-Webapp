@@ -12,42 +12,47 @@
 	<section class="row">
 		<!-- div de gestion de la séance -->
 		<div class="col-10">
-			<form id="formSession" method="post" asp-controller="Session" asp-action="Create">
-				<!-- section du nom de la séance ainsi que sont status -->
-				<span class="mb-4 d-flex justify-content-between">
-					<div class="d-flex">
-						<label for="exampleInputEmail1" class="form-label h5 me-1 mt-2">Nom de la séance :</label>
-						<span class="">
-							<input asp-for="Name" type="text" class="form-control" placeholder="Nom Séance">
-						</span>
-					</div>
-				</span>
-				<p>Ajoutez vos instruction(s) / question(s) dans l'ordre chronologique du déroulé de la séance</p>
-				<!-- section du message d'accueil -->
-				<span class="mb-3 row">
-					<div class="col col-lg-2">
-						<label>Message d'accueil</label>
-					</div>
-					<div class="col-10">
-						<textarea asp-for="MsgAccueil" class="form-control" rows="1" oninput="auto_grow(this)" placeholder="ici doit être inscrit le message de début de séance !"></textarea>
-					</div>
-				</span>
-				<!-- section qui ajoute des intruction / question -->
-				<span id="SpanInstru">
-							
-				</span>
+            <form id="formSession" method="post" asp-controller="Session" asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <!-- section du nom de la séance ainsi que sont status -->
+                <span class="mb-4 d-flex justify-content-between">
+                    <div class="d-flex">
+                        <label for="exampleInputEmail1" class="form-label h5 me-1 mt-2">Nom de la séance :</label>
+                        <span class="">
+                            <input asp-for="Name" type="text" class="form-control" placeholder="Nom Séance">
+                        </span>
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                </span>
+                <p>Ajoutez vos instruction(s) / question(s) dans l'ordre chronologique du déroulé de la séance</p>
+                <!-- section du message d'accueil -->
+                <span class="mb-3 row">
+                    <div class="col col-lg-2">
+                        <label>Message d'accueil</label>
+                    </div>
+                    <div class="col-10">
+                        <textarea asp-for="MsgAccueil" class="form-control" rows="1" oninput="auto_grow(this)" placeholder="ici doit être inscrit le message de début de séance !"></textarea>
+                        <span asp-validation-for="MsgAccueil" class="text-danger"></span>
+                    </div>
+                </span>
+                <!-- section qui ajoute des intruction / question -->
+                <span id="SpanInstru">
 
-				<!-- section du message de fin -->
-				<span class="mb-3 row">
-					<div class="col col-lg-2">
-						<label>Message de fin</label>
-					</div>
-					<div class="col-10">
-						<textarea asp-for="MsgFinal" class="form-control" rows="1" oninput="auto_grow(this)" placeholder="ici doit être inscrit le message de fin de séance !"></textarea>
-					</div>
-				</span>
-				<!-- button d'ajout d'instruction / question -->
-			</form>
+                </span>
+                <span asp-validation-for="Messages" class="text-danger"></span>
+
+                <!-- section du message de fin -->
+                <span class="mb-3 row">
+                    <div class="col col-lg-2">
+                        <label>Message de fin</label>
+                    </div>
+                    <div class="col-10">
+                        <textarea asp-for="MsgFinal" class="form-control" rows="1" oninput="auto_grow(this)" placeholder="ici doit être inscrit le message de fin de séance !"></textarea>
+                        <span asp-validation-for="MsgFinal" class="text-danger"></span>
+                    </div>
+                </span>
+                <!-- button d'ajout d'instruction / question -->
+            </form>
 				<button class="btn btn-warning" onclick="addInstruction('Instruction')">Ajouter une instruction</button>
 				<button class="btn btn-warning" onclick="addInstruction('Question')">Ajouter une question</button>
 			

@@ -10,6 +10,7 @@
     <PackageReference Include="CsvHelper" Version="27.2.1" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.13" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.16.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -18,4 +19,7 @@
     <ProjectReference Include="..\SensoStat.WebApplication.ViewModels\SensoStat.WebApplication.ViewModels.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="System.IdentityModel.Tokens.Jwt" />
+  </ItemGroup>
 </Project>

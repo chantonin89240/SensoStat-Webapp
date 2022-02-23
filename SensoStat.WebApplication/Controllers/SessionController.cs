@@ -103,7 +103,7 @@
         }
 
         [HttpPost("{id}")]
-        public IActionResult Publish(int id, SessionViewModel session)
+        public IActionResult Publish(int id)
         {
             if (this._sessionService.Publish(id))
             {
