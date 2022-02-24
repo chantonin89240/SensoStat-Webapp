@@ -2,7 +2,6 @@
 {
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Filters;
-    using SensoStat.WebApplication.Controllers;
     using SensoStat.WebApplication.Services;
 
     public class LoggerActionFilter : IActionFilter, IExceptionFilter
@@ -16,6 +15,19 @@
 
         public void OnActionExecuted(ActionExecutedContext context)
         {
+            var action = context.Result;
+            var userAuth = context.HttpContext.User.Claims;
+            var controllerName = (string)context.RouteData.Values["Controller"];
+            var tokenExiste = context.HttpContext.Request.Cookies.ContainsKey("Jwt");
+            // (userAuth.Count() == 0 && controllerName != "Home") || //((!tokenExiste && controllerName != "Home"))
+            if (userAuth.Count() == 0 && controllerName != "Home") 
+            {
+                if (!tokenExiste)
+                {
+                    context.Result = new RedirectToActionResult("Index", "Home", null);
+                }
+            }
+
             /*StringBuilder stringBuilder = new StringBuilder("Sortie de l'action [");
             stringBuilder.Append(context.ActionDescriptor.ControllerDescriptor.ControllerType.FullName)
                 .Append(".")
@@ -27,17 +39,8 @@
         }
 
         public void OnActionExecuting(ActionExecutingContext context)
-        
         {
             var tokenExiste = context.HttpContext.Request.Cookies.ContainsKey("Jwt");
-            var controllerName = (string)context.RouteData.Values["Controller"];
-
-            if (!tokenExiste && controllerName != "Home")
-            {
-
-                context.Result = new RedirectToActionResult("Index", "Home", null);
-            }
-
             if (context.ModelState.IsValid)
             {
                 if (tokenExiste)

@@ -1,6 +1,7 @@
 ﻿namespace SensoStat.WebApplication.Controllers
 {
     using System;
+    using System.Security.Claims;
     using Microsoft.AspNetCore.Mvc;
     using SensoStat.WebApplication.Services.Contracts;
     using SensoStat.WebApplication.ViewModels;
@@ -44,13 +45,17 @@
                     return this.View(model);
                 }
 
+                var claims = new ClaimsIdentity();
+                var claimType = "Jwt";
+                claims.AddClaim(new Claim(claimType, userAuthentified.Token));
+                this.HttpContext.User.AddIdentity(claims);
+
                 this.Response.Cookies.Append("Jwt", userAuthentified.Token, new CookieOptions { Expires = DateTime.Now.AddHours(1) });
                 this.Response.Cookies.Append("Role", userAuthentified.RoleLibelle);
                 this.Response.Cookies.Append("IdUser", userAuthentified.Id.ToString());
 
                 return this.RedirectToAction(nameof(Index), "session");
             }
-
             return this.View(model);
         }
 
