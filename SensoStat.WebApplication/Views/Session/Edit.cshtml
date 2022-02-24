@@ -51,7 +51,7 @@
         <div class="col-10">
             <!-- section du nom de la séance ainsi que sont status -->
             <form id="formSession" method="post" asp-controller="session" asp-action="edit">
-                <input type="hidden" asp-for="IdPerson" value="@Model.IdPerson">
+                <input type="hidden" asp-for="IdPerson" value="@Convert.ToInt32(this.Url.ActionContext.HttpContext.Request.Cookies["IdUser"])">
                 <input type="hidden" asp-for="Etat" value="@Model.Etat">
                 <input type="hidden" asp-for="DateCreate" value="@Model.DateCreate">
                 <span class="mb-4 d-flex justify-content-between">

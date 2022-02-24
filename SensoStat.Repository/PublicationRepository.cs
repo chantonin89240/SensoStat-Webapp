@@ -38,6 +38,12 @@
             return this._context.Publications.FirstOrDefault(pub => pub.IdPaneslist == idPanelist && pub.IdSession == idSession);
         }
 
+        public Publication? Find(string hash)
+        {
+            var urlCompare = $"http://localhost:8080/{hash}";
+            return this._context.Publications.FirstOrDefault(pub => pub.Url == urlCompare);
+        }
+
         public IEnumerable<Publication> FindAll(int idSession)
         {
             return this._context.Publications.Where(p => p.IdSession == idSession);

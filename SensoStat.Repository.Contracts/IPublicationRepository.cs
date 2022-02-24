@@ -32,6 +32,8 @@
         /// <returns>La publication ayant l'id demandé si celui-ci est trouvé sinon renvoie null.</returns>
         Publication Find(int idPanelist, int idSession);
 
+        Publication Find(string hash);
+
         /// <summary>
         /// Retourne toutes les publications.
         /// </summary>

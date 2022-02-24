@@ -13,6 +13,7 @@
 		<!-- div de gestion de la séance -->
 		<div class="col-10">
             <form id="formSession" method="post" asp-controller="Session" asp-action="Create">
+                <input type="hidden" asp-for="IdPerson" value="@Convert.ToInt32(this.Url.ActionContext.HttpContext.Request.Cookies["IdUser"])">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <!-- section du nom de la séance ainsi que sont status -->
                 <span class="mb-4 d-flex justify-content-between">
