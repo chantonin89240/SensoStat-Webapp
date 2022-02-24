@@ -1,5 +1,6 @@
 ﻿namespace SensoStat.WebApplication.Controllers
 {
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using SensoStat.Entities;
@@ -7,6 +8,7 @@
     using SensoStat.WebApplication.Services.Contracts;
     using SensoStat.WebApplication.ViewModels;
 
+    //[Authorize]
     public class SessionController : Controller
     {
         private readonly ISessionService _sessionService;

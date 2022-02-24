@@ -2,6 +2,7 @@
 {
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Filters;
+    using SensoStat.WebApplication.Controllers;
     using SensoStat.WebApplication.Services;
 
     public class LoggerActionFilter : IActionFilter, IExceptionFilter
@@ -26,10 +27,19 @@
         }
 
         public void OnActionExecuting(ActionExecutingContext context)
+        
         {
+            var tokenExiste = context.HttpContext.Request.Cookies.ContainsKey("Jwt");
+            var controllerName = (string)context.RouteData.Values["Controller"];
+
+            if (!tokenExiste && controllerName != "Home")
+            {
+
+                context.Result = new RedirectToActionResult("Index", "Home", null);
+            }
+
             if (context.ModelState.IsValid)
             {
-                var tokenExiste = context.HttpContext.Request.Cookies.ContainsKey("Jwt");
                 if (tokenExiste)
                 {
                     var token = context.HttpContext.Request.Cookies["Jwt"];
@@ -39,7 +49,7 @@
             else
             {
                 // context.Result = new BadRequestObjectResult(context.ModelState);
-                context.ModelState.AddModelError(string.Empty, "Une erreur est survenue.");
+                context.ModelState.AddModelError(string.Empty, "Veuillez saisir tous les champs obligatoires.");
             }
         }
 

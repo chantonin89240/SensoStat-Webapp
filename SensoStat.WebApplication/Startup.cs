@@ -1,8 +1,11 @@
 ﻿namespace SensoStat.WebApplication
 {
+    using Microsoft.AspNetCore.Authentication.JwtBearer;
+    using Microsoft.IdentityModel.Tokens;
     using SensoStat.WebApplication.Filters;
     using SensoStat.WebApplication.Services;
     using SensoStat.WebApplication.Services.Contracts;
+    using System.Text;
 
     public class Startup
     {
@@ -21,6 +24,15 @@
                 option.Filters.Add(typeof(LoggerActionFilter));
             });
 
+            services.AddDistributedMemoryCache();
+
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromSeconds(10);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
+
             services.AddRazorPages()
                 .AddRazorRuntimeCompilation();
 
@@ -31,6 +43,29 @@
                 e.BaseAddress = new Uri(apiAdress);
                 //e.DefaultRequestHeaders.Authorization = token;
             });
+
+            var JwtSecret = "THIS IS USED TO SIGN AND VERIFY JWT TOKENS, REPLACE IT WITH YOUR OWN SECRET, IT CAN BE ANY STRING";
+            var JwtIssuer = "https://localhost:5001";
+            var JwtAudience = "https://localhost:7083";
+
+            //services.AddAuthentication(auth =>
+            //{
+            //    auth.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+            //    auth.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            //})
+            //.AddJwtBearer(options =>
+            //{
+            //    options.SaveToken = true;
+            //    options.TokenValidationParameters = new TokenValidationParameters
+            //    {
+            //        ValidateIssuer = true,
+            //        ValidIssuer = JwtIssuer,
+            //        ValidateAudience = true,
+            //        ValidAudience = JwtAudience,
+            //        ValidateIssuerSigningKey = true,
+            //        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(JwtSecret))
+            //    };
+            //});
 
             services.AddScoped<ISessionService, SessionService>();
             services.AddScoped<IUserService, UserService>();
@@ -49,13 +84,14 @@
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
+            
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
