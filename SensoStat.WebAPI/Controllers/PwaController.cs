@@ -16,10 +16,25 @@
             this._sessionService = sessionService;
         }
 
-        [HttpGet]
+        [HttpGet("{idSession, idPanelist}")]
         public IActionResult GetById(int idSession, int idPanelist)
         {
             return this.Ok(this._sessionService.FindSession(idSession, idPanelist));
+        }
+
+        [HttpGet]
+        public IActionResult GetByHash(string hash)
+        {
+            var session = this._sessionService.FindSessionWithHash(hash);
+
+            if (session != null)
+            {
+                return this.Ok(session);
+            }
+            else
+            {
+                return this.NotFound();
+            }
         }
 
         [HttpPost]

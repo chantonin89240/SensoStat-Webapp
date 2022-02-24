@@ -10,10 +10,12 @@
 
         IEnumerable<Session> getByStatut(string statut);
 
-        Session Create(SessionRequest sessionRequest);
+        SessionResponse Create(SessionRequest sessionRequest);
 
-        Session Find(int id);
+        SessionResponse Find(int id);
 
         SessionResponse Update(SessionRequest session);
+
+        PwaSessionResponse FindSessionWithHash(string hash);
     }
 }

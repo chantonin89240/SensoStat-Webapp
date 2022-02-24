@@ -46,6 +46,7 @@
 
                 this.Response.Cookies.Append("Jwt", userAuthentified.Token, new CookieOptions { Expires = DateTime.Now.AddHours(1) });
                 this.Response.Cookies.Append("Role", userAuthentified.RoleLibelle);
+                this.Response.Cookies.Append("IdUser", userAuthentified.Id.ToString());
 
                 return this.RedirectToAction(nameof(Index), "session");
             }
@@ -70,7 +71,7 @@
                 var user = this._userService.CreateUser(model);
                 if (user.Id != 0)
                 {
-                    return this.RedirectToAction(nameof(Authenticate));
+                    return this.RedirectToAction(nameof(Index), "session");
                 }
 
                 user.Roles = listRoles;

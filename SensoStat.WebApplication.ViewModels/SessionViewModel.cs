@@ -11,7 +11,6 @@ namespace SensoStat.WebApplication.ViewModels
         [Required(ErrorMessage = "Veuillez saisir le message final de la séance")]
         public string MsgFinal { get; set; }
         public List<string>? Types { get; set; }
-        [Required(ErrorMessage = "Veuillez ajouter au moins une instructions")]
         public List<string> Messages { get; set; }
         public string? Etat { get; set; }
         public DateTime? DateCreate { get; set; }

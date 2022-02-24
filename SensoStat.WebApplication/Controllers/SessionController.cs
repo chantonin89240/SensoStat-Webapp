@@ -43,7 +43,7 @@
         public IActionResult Create(SessionViewModel session)
         {
             // IdPerson à remplacer
-            session.IdPerson = 1;
+            session.IdPerson = Convert.ToInt32(this.Request.Cookies["IdUser"]);
             session.Etat = "Non-publiée";
             session.DateCreate = DateTime.Now;
 

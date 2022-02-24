@@ -51,8 +51,8 @@
         /// </summary>
         /// <param name="sessionRequest">.</param>
         /// <returns>la session créer.</returns>
-        public Session Create(SessionRequest sessionRequest)
-        {
+        public SessionResponse Create(SessionRequest sessionRequest)
+         {
             var session = new Session()
             {
                 Name = sessionRequest.Name,
@@ -76,7 +76,7 @@
             }
 
             this._sessionRepository.Add(session);
-            return session;
+            return new SessionResponse(session);
         }
 
         /// <summary>
@@ -84,11 +84,12 @@
         /// </summary>
         /// <param name="id">id de la session.</param>
         /// <returns>la session.</returns>
-        public Session Find(int id)
+        public SessionResponse Find(int id)
         {
             var session = this._sessionRepository.Find(id);
             session.Instructions = this._instructionRepository.FindAll(id).ToList();
-            return session;
+            var test = new SessionResponse(session);
+            return new SessionResponse(session);
         }
 
         public SessionResponse Update(SessionRequest sessionRequest)
@@ -153,6 +154,28 @@
             presentations.ForEach(p => pwaSession.Presentations.Add(new PwaPresentationResponse(p)));
 
             return pwaSession;
+        }
+
+        public PwaSessionResponse FindSessionWithHash(string hash)
+        {
+            var publication = this._publicationtRepository.Find(hash);
+            if (publication != null)
+            {
+                var session = this._sessionRepository.Find(publication.IdSession);
+                session.Instructions = this._instructionRepository.FindAll(publication.IdSession).ToList();
+                session.Products = this._productRepository.FindAll(publication.IdSession).ToList();
+
+                var pwaSession = new PwaSessionResponse(session);
+
+                pwaSession.Publication = new PublicationResponse(publication);
+
+                var presentations = this._presentationtRepository.FindByIdSessionAndIdPanelistVincent(publication.IdSession, publication.IdPaneslist).ToList();
+                presentations.ForEach(p => pwaSession.Presentations.Add(new PwaPresentationResponse(p)));
+
+                return pwaSession;
+            }
+
+            return null;
         }
     }
 }
