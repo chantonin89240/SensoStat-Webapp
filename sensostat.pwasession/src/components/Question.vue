@@ -2,7 +2,7 @@
     <div>
         <QuestionInstructionComponent v-if="questionInstru" @questionResponse="questionResponse" v-bind:currentInstruction="currentInstruction" @repeteSpeech="repeteSpeech"/>
         <QuestionReponseComponent v-if="questionReponse" @questionValide="questionValide"/>
-        <QuestionValidationComponent v-if="questionValidation" @nextInstruction="nextInstruction" @questionResponse="questionResponse" v-bind:response="response" />
+        <QuestionValidationComponent v-if="questionValidation" @nextInstruction="nextInstruction" v-bind:response="response" />
     </div>
 </template>
 
@@ -33,6 +33,9 @@ export default {
     methods:{
         nextInstruction() {
             this.$emit('nextInstruction')
+            this.questionInstru = true;
+            this.questionReponse = false;
+            this.questionValidation = false;
         },
         questionResponse() {
             this.questionInstru = false;

@@ -1,19 +1,22 @@
 import * as sdk from "microsoft-cognitiveservices-speech-sdk";
 const speechConfig = sdk.SpeechConfig.fromSubscription("b2e32041353748908c8e5805be94fff0", "westeurope");
+const player = new sdk.SpeakerAudioDestination()
 
 export default class SpeechService {
-    
+
+    // text to speech
     synthesizeSpeech(textSpeech) {
         speechConfig.speechSynthesisLanguage = "fr-CA";
         speechConfig.speechSynthesisVoiceName = "fr-CA-JeanNeural";
         const audioConfig = sdk.AudioConfig.fromDefaultSpeakerOutput();
-
         const synthesizer = new sdk.SpeechSynthesizer(speechConfig, audioConfig);
         synthesizer.speakTextAsync(
             textSpeech,
             result => {
                 if (result) {
                     synthesizer.close();
+                    console.log(result)
+
                     return result.audioData;
                 }
             },
@@ -23,6 +26,11 @@ export default class SpeechService {
             });
     }
 
+    pause() {
+        player.pause()
+    }
+
+    // speech to text
     recognizeSpeech() {
         speechConfig.speechRecognitionLanguage = "fr-FR";
         const audioConfig = sdk.AudioConfig.fromDefaultMicrophoneInput();
@@ -30,7 +38,7 @@ export default class SpeechService {
         const recognizer = new sdk.SpeechRecognizer(speechConfig, audioConfig);
         
         recognizer.recognizeOnceAsync(result => {
-            return 1;
+            
         })
     }
 
