@@ -16,5 +16,10 @@
 
             return this.View();
         }
+
+        public IActionResult Error()
+        {
+            return this.View("404");
+        }
     }
 }
