@@ -31,6 +31,9 @@ export default {
         },
         reformuler() {
             this.$emit('questionResponse')
+        },
+        envoieData() {
+
         }
     }
 

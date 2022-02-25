@@ -19,5 +19,9 @@
             this.Chronology = instruction.Chronology;
             this.IsQuestion = instruction.IsQuestion;
         }
+
+        public InstructionResponse()
+        {
+        }
     }
 }

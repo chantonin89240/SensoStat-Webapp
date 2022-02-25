@@ -13,18 +13,13 @@ namespace SensoStat.Models.HttpResponse
 
         public string MsgFinal { get; set; }
 
-        public PublicationResponse Publication { get; set; }
-
         public List<InstructionResponse> Instructions { get; set; }
-
-        public List<ProductResponse> Products { get; set; }
 
         public List<PwaPresentationResponse> Presentations { get; set; }
 
         public PwaSessionResponse()
         {
             Instructions = new List<InstructionResponse>();
-            Products = new List<ProductResponse>();
             Presentations = new List<PwaPresentationResponse>();
         }
 
@@ -35,7 +30,6 @@ namespace SensoStat.Models.HttpResponse
             MsgAccueil = session.MsgAccueil;
             MsgFinal = session.MsgFinal;
 
-            session.Products.ForEach(p => Products.Add(new ProductResponse(p)));
             session.Instructions.ForEach(i => Instructions.Add(new InstructionResponse(i)));
         }
     }

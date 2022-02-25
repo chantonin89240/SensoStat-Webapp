@@ -129,6 +129,8 @@
             services.AddScoped<IPublicationRepository, PublicationRepository>();
             services.AddScoped<IPublicationService, PublicationService>();
 
+            services.AddScoped<IPwaRepository, PwaRepository>();
+
             services.AddScoped<SessionService>();
         }
 
@@ -151,10 +153,10 @@
                 {
                     var context = services.GetRequiredService<SensoStatDbContext>();
 
-                    context.Database.EnsureDeleted();
-                    context.Database.EnsureCreated();
+                    //context.Database.EnsureDeleted();
+                    //context.Database.EnsureCreated();
 
-                    SeedData.Initialize(services);
+                    //SeedData.Initialize(services);
 
                 }
                 catch (Exception ex)

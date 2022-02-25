@@ -1,6 +1,5 @@
 ﻿namespace SensoStat.WebAPI.Controllers
 {
-    using System;
     using Microsoft.AspNetCore.Mvc;
     using SensoStat.Models.HttpRequest;
     using SensoStat.Services;
