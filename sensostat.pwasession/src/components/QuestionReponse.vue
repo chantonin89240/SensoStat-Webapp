@@ -3,7 +3,7 @@
         <p>C'est &agrave; vous !</p>
 
         <div class="form-floating">
-            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" v-model="response"></textarea>
+            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" v-model="response" required></textarea>
             <label for="floatingTextarea">Comments</label>
         </div>
 

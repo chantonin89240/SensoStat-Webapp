@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SensoStat.EntitiesContext\SensoStat.EntitiesContext.csproj" />
+    <ProjectReference Include="..\SensoStat.Models\SensoStat.Models.csproj" />
     <ProjectReference Include="..\SensoStat.Repository.Contracts\SensoStat.Repository.Contracts.csproj" />
   </ItemGroup>
 

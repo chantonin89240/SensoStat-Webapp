@@ -10,7 +10,7 @@
             <InstructionComponent v-if="isQuestion == 0 && msgAccueilTrue == false && msgFinalTrue == false && autoResponse == false" v-bind:currentInstruction="currentInstruction" @nextInstruction="verifInstruction"></InstructionComponent>
             <!-- <button  @click="call(1350)">Test</button> -->
             <QuestionComponent v-if="isQuestion == 1 && msgAccueilTrue == false && msgFinalTrue == false && autoResponse == false" v-bind:currentInstruction="currentInstruction" @repeteSpeech="repeteSpeech" @nextInstruction="verifInstruction"></QuestionComponent>
-            <MsgFinal v-if="msgFinalTrue" v-bind:msgFinal="msgFinal"></MsgFinal>
+            <MsgFinalComponent v-if="msgFinalTrue" v-bind:msgFinal="msgFinal"></MsgFinalComponent>
         </section>
 
         <!-- Footer -->
@@ -42,7 +42,8 @@ export default {
         },
     data() {
         return {
-            session: null,
+            idSession: null,
+            token: null,
             autori: null,
             autoResponse: true,
             currentInstruction: null,
@@ -54,14 +55,18 @@ export default {
             currentPresentation : null,
             presentations : null,
             nbPresentation : null,
-            presentationService: undefined,
+            presentationService: new PresentationService(),
             SpeechService: new SpeechService(),
             msgAccueilTrue: false,
             msgFinalTrue: false,
+            msgFinal: null,
         };
     },
     mounted(){
-       
+        let urlParams = window.location.search;
+        let urlToken = urlParams.substring(6);
+        this.token = encodeURIComponent(urlToken);
+
     },
     watch: {
         currentText() {
@@ -108,24 +113,23 @@ export default {
             this.SpeechService.synthesizeSpeech(this.currentText);
         },
         callInstru() {
-            this.presentationService = new PresentationService()
-            this.presentationService.get().then((session) => {
-                this.session = session;
-                this.instructions = this.session.instructions;
+            this.presentationService.getSession(this.token).then((response) => {
+                console.log(response);
+                this.idSession = response.idSession;
+                this.instructions = response.instructions;
                 this.nbChronology = this.instructions.length;
                 this.instructionCodeProduit = JSON.parse(JSON.stringify(this.instructions));
                 this.currentInstruction = this.instructionCodeProduit[0];
-                this.currentText =  this.session.msgAccueil;
-                
-            }).then(() => {
-                this.presentationService.getPresentation(101, 101).then((presentation) => {
-                    this.presentations = presentation;
-                    this.nbPresentation = this.presentations.length;
-                    this.currentPresentation = this.presentations[0];
-                    this.instructionCodeProduit.forEach(instruction => {
-                        instruction.libelle = instruction.libelle.replace('#codeProduit', this.currentPresentation.codeProduit);
-                    });
+                this.currentText = response.msgAccueil;
+                this.msgFinal = response.msgFinal;
+
+                this.presentations = response.presentations;
+                this.nbPresentation = this.presentations.length;
+                this.currentPresentation = this.presentations[0];
+                this.instructionCodeProduit.forEach(instruction => {
+                    instruction.libelle = instruction.libelle.replace('#codeProduit', this.currentPresentation.codeProduit);
                 })
+
             });
         }
     },

@@ -1,28 +1,28 @@
 import axios from 'axios';
 
 export default class PresentationService {
-    async get(){
+    async postResponse(token ,idInstruction, idProduct, idPanelist, response) {
         return new Promise((resolve) => {
-            axios.get("https://localhost:5001/api/sessions/101", {
-                headers : {
-
+            axios.post("https://localhost:5001/api/Pwa", {
+                headers: {
+                    Authorization: token
                 }
-            }).then((response => {
-                resolve(response.data)
-            }))
+            },
+            {
+                idInstruction: idInstruction,
+                idProduct: idProduct,
+                idPanelist: idPanelist,
+                commentResponse: response
+            })
         })
     }
-    
-    async getPresentation(idSession, idPanelist){
-        return new Promise((resolve) => {
-            axios.get("https://localhost:5001/api/presentation/"+ idSession +"/" + idPanelist, {
-                headers : {
 
-                }
-            }).then((response => {
-                resolve(response.data)
-            }))
-        })
+    async getSession(token) {
+        return new Promise((resolve) => {
+            axios.get("https://localhost:5001/api/Pwa?hash=" + token).then((response) => {
+                    resolve(response.data)
+                })
+            })
     }
 
 }

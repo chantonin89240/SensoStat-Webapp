@@ -17,12 +17,13 @@
         private readonly IPresentationRepository _presentationtRepository;
         private readonly IPublicationRepository _publicationtRepository;
         private readonly IPanelistRepository _panelistRepository;
+        private readonly IPwaRepository _pwaRepository;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SessionService"/> class.
         /// </summary>
         /// <param name="sessionRepository">Repository utilisé.</param>
-        public SessionService(ISessionRepository sessionRepository, IInstructionRepository instructionRepository, IProductRepository productRepository, IPresentationRepository presentationtRepository, IPublicationRepository publicationtRepository, IPanelistRepository panelistRepository)
+        public SessionService(ISessionRepository sessionRepository, IInstructionRepository instructionRepository, IProductRepository productRepository, IPresentationRepository presentationtRepository, IPublicationRepository publicationtRepository, IPanelistRepository panelistRepository, IPwaRepository pwaRepository)
         {
             this._sessionRepository = sessionRepository;
             this._instructionRepository = instructionRepository;
@@ -30,6 +31,7 @@
             this._presentationtRepository = presentationtRepository;
             this._publicationtRepository = publicationtRepository;
             this._panelistRepository = panelistRepository;
+            this._pwaRepository = pwaRepository;
         }
 
         /// <summary>
@@ -143,11 +145,11 @@
             session.Instructions = this._instructionRepository.FindAll(idSession).ToList();
             session.Products = this._productRepository.FindAll(idSession).ToList();
 
-            var pwaSession = new PwaSessionResponse(session);
+            var pwaSession = new PwaSessionResponse(session); 
             var publication = this._publicationtRepository.Find(idPanelist, idSession);
             if (publication != null)
             {
-                pwaSession.Publication = new PublicationResponse(publication);
+              //  pwaSession.Publication = new PublicationResponse(publication);
             }
 
             var presentations = this._presentationtRepository.FindByIdSessionAndIdPanelistVincent(idSession, idPanelist).ToList();
@@ -158,24 +160,8 @@
 
         public PwaSessionResponse FindSessionWithHash(string hash)
         {
-            var publication = this._publicationtRepository.Find(hash);
-            if (publication != null)
-            {
-                var session = this._sessionRepository.Find(publication.IdSession);
-                session.Instructions = this._instructionRepository.FindAll(publication.IdSession).ToList();
-                session.Products = this._productRepository.FindAll(publication.IdSession).ToList();
+            return this._pwaRepository.getPwaResponsse(hash);
 
-                var pwaSession = new PwaSessionResponse(session);
-
-                pwaSession.Publication = new PublicationResponse(publication);
-
-                var presentations = this._presentationtRepository.FindByIdSessionAndIdPanelistVincent(publication.IdSession, publication.IdPaneslist).ToList();
-                presentations.ForEach(p => pwaSession.Presentations.Add(new PwaPresentationResponse(p)));
-
-                return pwaSession;
-            }
-
-            return null;
         }
     }
 }
