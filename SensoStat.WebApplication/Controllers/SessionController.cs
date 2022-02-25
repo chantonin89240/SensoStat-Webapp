@@ -8,7 +8,6 @@
     using SensoStat.WebApplication.Services.Contracts;
     using SensoStat.WebApplication.ViewModels;
 
-    //[Authorize]
     public class SessionController : Controller
     {
         private readonly ISessionService _sessionService;
@@ -24,6 +23,7 @@
             return this.View(model);
         }
 
+        [HttpGet]
         public IActionResult Archive()
         {
             var model = this._sessionService.GetSessionsClose().ToList();
@@ -33,7 +33,8 @@
         [HttpPost]
         public IActionResult Archive(int id)
         {
-            return this.View();
+            this._sessionService.ArchiveSession(id);
+            return this.RedirectToAction("Index");
         }
 
         public IActionResult Create()

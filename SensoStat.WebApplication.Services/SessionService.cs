@@ -164,10 +164,10 @@
             var request = this._clientService.GetDataFromHttpClient($"api/Publication/{idSession}");
             var publications = JsonConvert.DeserializeObject<List<ExportViewModel>>(request);
 
-            var config = new CsvConfiguration(CultureInfo.InvariantCulture)
-            {
-                PrepareHeaderForMatch = args => args.Header.ToLower(),
-            };
+            //var config = new CsvConfiguration(CultureInfo.InvariantCulture)
+            //{
+            //    PrepareHeaderForMatch = args => args.Header.ToLower(),
+            //};
 
             var ms = new MemoryStream();
             using (var writer = new StreamWriter(ms, leaveOpen: true))
@@ -180,6 +180,12 @@
             ms.Position = 0;
 
             return ms;
-        } 
+        }
+
+        public bool ArchiveSession(int id)
+        {
+            this._clientService.PutDataFromHttpClient($"api/Sessions/close/{id}", null);
+            return true;
+        }
     }
 }

@@ -46,6 +46,12 @@
             return this._sessionRepository.FindByStatut(statut);
         }
 
+        public bool UpdateState(int id)
+        {
+            this._sessionRepository.UpdateSate(id);
+            return true;
+        }
+
         /// <summary>
         /// .
         /// </summary>

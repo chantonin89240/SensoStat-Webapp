@@ -44,5 +44,7 @@
         /// </summary>
         /// <param name="session">Campagne à modifier.</param>
         void Update(Session session);
+
+        void UpdateSate(int id);
     }
 }

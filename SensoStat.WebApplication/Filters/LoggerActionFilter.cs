@@ -15,17 +15,13 @@
 
         public void OnActionExecuted(ActionExecutedContext context)
         {
-            var action = context.Result;
             var userAuth = context.HttpContext.User.Claims;
             var controllerName = (string)context.RouteData.Values["Controller"];
             var tokenExiste = context.HttpContext.Request.Cookies.ContainsKey("Jwt");
-            // (userAuth.Count() == 0 && controllerName != "Home") || //((!tokenExiste && controllerName != "Home"))
-            if (userAuth.Count() == 0 && controllerName != "Home") 
+
+            if (userAuth.Count() == 0 && controllerName != "Home" && !tokenExiste)
             {
-                if (!tokenExiste)
-                {
-                    context.Result = new RedirectToActionResult("Index", "Home", null);
-                }
+                context.Result = new RedirectToActionResult("Index", "Home", null);
             }
 
             /*StringBuilder stringBuilder = new StringBuilder("Sortie de l'action [");
@@ -58,7 +54,10 @@
 
         public void OnException(ExceptionContext context)
         {
-            throw new NotImplementedException();
+            context.Result = new ViewResult()
+            {
+                ViewName = "404"
+            };
             this._logger.LogDebug(1, "");
         }
     }
