@@ -92,6 +92,7 @@
                     };
                     presentations.Add(presentation);
                 });
+
                 this._presentationRepository.AddRange(presentations);
 
                 return true;

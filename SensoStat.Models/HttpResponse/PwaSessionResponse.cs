@@ -13,6 +13,8 @@ namespace SensoStat.Models.HttpResponse
 
         public string MsgFinal { get; set; }
 
+        public int IdPanelist { get; set; }
+
         public List<InstructionResponse> Instructions { get; set; }
 
         public List<PwaPresentationResponse> Presentations { get; set; }
