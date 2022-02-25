@@ -48,6 +48,13 @@ namespace SensoStat.WebAPI.Controllers
             return this.CreatedAtAction(nameof(SessionsController.UpdateSession), new { id = sessionResponse.Id }, sessionResponse);
         }
 
+        [HttpPut("close/{id}")]
+        public IActionResult UpdateSessionState(int id)
+        {
+            var sessionResponse = this._sessionService.UpdateState(id);
+            return this.CreatedAtAction(nameof(SessionsController.UpdateSessionState), new { id = id });
+        }
+
         [HttpDelete("{id}")]
         public bool DeleteSession(int id)
         {

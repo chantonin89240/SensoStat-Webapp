@@ -57,5 +57,13 @@
             this._context.Update(session);
             this._context.SaveChanges();
         }
+
+        public void UpdateSate(int id)
+        {
+            var session = this._context.Sessions.First(s => s.Id == id);
+            session.Etat = "Cloturée";
+            this._context.Update(session);
+            this._context.SaveChanges();
+        }
     }
 }

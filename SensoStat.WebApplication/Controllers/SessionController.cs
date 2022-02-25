@@ -1,5 +1,6 @@
 ﻿namespace SensoStat.WebApplication.Controllers
 {
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using SensoStat.Entities;
@@ -22,6 +23,7 @@
             return this.View(model);
         }
 
+        [HttpGet]
         public IActionResult Archive()
         {
             var model = this._sessionService.GetSessionsClose().ToList();
@@ -31,7 +33,8 @@
         [HttpPost]
         public IActionResult Archive(int id)
         {
-            return this.View();
+            this._sessionService.ArchiveSession(id);
+            return this.RedirectToAction("Index");
         }
 
         public IActionResult Create()

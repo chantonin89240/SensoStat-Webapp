@@ -15,6 +15,15 @@
 
         public void OnActionExecuted(ActionExecutedContext context)
         {
+            var userAuth = context.HttpContext.User.Claims;
+            var controllerName = (string)context.RouteData.Values["Controller"];
+            var tokenExiste = context.HttpContext.Request.Cookies.ContainsKey("Jwt");
+
+            if (userAuth.Count() == 0 && controllerName != "Home" && !tokenExiste)
+            {
+                context.Result = new RedirectToActionResult("Index", "Home", null);
+            }
+
             /*StringBuilder stringBuilder = new StringBuilder("Sortie de l'action [");
             stringBuilder.Append(context.ActionDescriptor.ControllerDescriptor.ControllerType.FullName)
                 .Append(".")
@@ -27,9 +36,9 @@
 
         public void OnActionExecuting(ActionExecutingContext context)
         {
+            var tokenExiste = context.HttpContext.Request.Cookies.ContainsKey("Jwt");
             if (context.ModelState.IsValid)
             {
-                var tokenExiste = context.HttpContext.Request.Cookies.ContainsKey("Jwt");
                 if (tokenExiste)
                 {
                     var token = context.HttpContext.Request.Cookies["Jwt"];
@@ -39,13 +48,16 @@
             else
             {
                 // context.Result = new BadRequestObjectResult(context.ModelState);
-                context.ModelState.AddModelError(string.Empty, "Une erreur est survenue.");
+                context.ModelState.AddModelError(string.Empty, "Veuillez saisir tous les champs obligatoires.");
             }
         }
 
         public void OnException(ExceptionContext context)
         {
-            throw new NotImplementedException();
+            context.Result = new ViewResult()
+            {
+                ViewName = "404"
+            };
             this._logger.LogDebug(1, "");
         }
     }

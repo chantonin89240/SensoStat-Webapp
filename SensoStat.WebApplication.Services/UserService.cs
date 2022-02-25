@@ -33,7 +33,6 @@
 
             if(response.StatusCode.ToString() == "Unauthorized")
             {
-
                 return new UserViewModel() { Email = model.Email, Password = model.Password };
             }
 
