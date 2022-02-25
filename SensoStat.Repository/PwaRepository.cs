@@ -20,7 +20,7 @@
             this._context = context;
         }
 
-        public PwaSessionResponse getPwaResponsse(string hash)
+        public PwaSessionResponse getPwaResponse(string hash)
         {
             var urlCompare = $"http://localhost:8080/{hash}";
             var session = this._context.Publications.Where(p => p.Url == urlCompare)?.Select(p => new PwaSessionResponse()
@@ -36,9 +36,9 @@
                 MsgAccueil = p.Session.MsgAccueil,
                 MsgFinal = p.Session.MsgFinal,
                 Name = p.Session.Name,
+                IdPanelist = p.IdPaneslist,
                 Presentations = p.Panelist.Presentations.Select(e => new PwaPresentationResponse()
                 {
-                    IdPanelist = e.IdPanelist,
                     IdProduct = e.IdProduct,
                     CodeProduit = e.Product.CodeProduct,
                     Rank = e.Rank,

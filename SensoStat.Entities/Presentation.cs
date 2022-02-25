@@ -7,12 +7,10 @@
     {
         public int Rank { get; set; }
 
-        // [ForeignKey(nameof(IdPanelist))]
         public Panelist Panelist { get; set; }
 
         public int IdPanelist { get; set; }
 
-        // [ForeignKey(nameof(IdProduct))]
         public Product Product { get; set; }
 
         public int IdProduct { get; set; }

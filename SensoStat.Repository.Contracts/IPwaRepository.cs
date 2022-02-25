@@ -7,6 +7,6 @@
     /// </summary>
     public interface IPwaRepository
     {
-        public PwaSessionResponse getPwaResponsse(string hash);
+        public PwaSessionResponse getPwaResponse(string hash);
     }
 }

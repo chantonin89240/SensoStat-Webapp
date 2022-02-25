@@ -166,7 +166,7 @@
 
         public PwaSessionResponse FindSessionWithHash(string hash)
         {
-            return this._pwaRepository.getPwaResponsse(hash);
+            return this._pwaRepository.getPwaResponse(hash);
 
         }
     }
