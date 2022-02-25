@@ -32,7 +32,7 @@
                     Chronology = d.Chronology,
                     IsQuestion = d.IsQuestion,
                     Libelle = d.Libelle,
-                }).ToList(),
+                }).OrderBy(a => a.Chronology).ToList(),
                 MsgAccueil = p.Session.MsgAccueil,
                 MsgFinal = p.Session.MsgFinal,
                 Name = p.Session.Name,
@@ -42,7 +42,7 @@
                     IdProduct = e.IdProduct,
                     CodeProduit = e.Product.CodeProduct,
                     Rank = e.Rank,
-                }).ToList(),
+                }).OrderBy(a => a.Rank).ToList(),
             }).FirstOrDefault();
 
             return session;
