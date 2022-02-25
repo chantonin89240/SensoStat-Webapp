@@ -9,7 +9,7 @@
             <MsgAccueilComponent v-if="msgAccueilTrue" v-bind:currentText="currentText" @nextInstruction="verifMsgAccueil"></MsgAccueilComponent>
             <InstructionComponent v-if="isQuestion == 0 && msgAccueilTrue == false && msgFinalTrue == false && autoResponse == false" v-bind:currentInstruction="currentInstruction" @nextInstruction="verifInstruction"></InstructionComponent>
             <!-- <button  @click="call(1350)">Test</button> -->
-            <QuestionComponent v-if="isQuestion == 1 && msgAccueilTrue == false && msgFinalTrue == false && autoResponse == false" v-bind:currentInstruction="currentInstruction" @repeteSpeech="repeteSpeech" @nextInstruction="verifInstruction"></QuestionComponent>
+            <QuestionComponent v-if="isQuestion == 1 && msgAccueilTrue == false && msgFinalTrue == false && autoResponse == false" v-bind:currentInstruction="currentInstruction" @repeteSpeech="repeteSpeech" @envoieResponse="envoieResponse" @nextInstruction="verifInstruction"></QuestionComponent>
             <MsgFinalComponent v-if="msgFinalTrue" v-bind:msgFinal="msgFinal"></MsgFinalComponent>
         </section>
 
@@ -86,6 +86,26 @@ export default {
             this.isQuestion = this.currentInstruction.isQuestion;
             this.currentText = this.currentInstruction.libelle;
         },
+        callInstru() {
+            this.presentationService.getSession(this.token).then((response) => {
+                console.log(response);
+                this.idSession = response.idSession;
+                this.instructions = response.instructions;
+                this.nbChronology = this.instructions.length;
+                this.instructionCodeProduit = JSON.parse(JSON.stringify(this.instructions));
+                this.currentInstruction = this.instructionCodeProduit[0];
+                this.currentText = response.msgAccueil;
+                this.msgFinal = response.msgFinal;
+
+                this.presentations = response.presentations;
+                this.nbPresentation = this.presentations.length;
+                this.currentPresentation = this.presentations[0];
+                this.instructionCodeProduit.forEach(instruction => {
+                    instruction.libelle = instruction.libelle.replace('#codeProduit', this.currentPresentation.codeProduit);
+                })
+
+            });
+        },
         verifInstruction() {
             if (this.currentInstruction.chronology == this.nbChronology) {
                 if (this.currentPresentation.rank == this.nbPresentation) {
@@ -112,26 +132,9 @@ export default {
             //this.SpeechService.pause();
             this.SpeechService.synthesizeSpeech(this.currentText);
         },
-        callInstru() {
-            this.presentationService.getSession(this.token).then((response) => {
-                console.log(response);
-                this.idSession = response.idSession;
-                this.instructions = response.instructions;
-                this.nbChronology = this.instructions.length;
-                this.instructionCodeProduit = JSON.parse(JSON.stringify(this.instructions));
-                this.currentInstruction = this.instructionCodeProduit[0];
-                this.currentText = response.msgAccueil;
-                this.msgFinal = response.msgFinal;
-
-                this.presentations = response.presentations;
-                this.nbPresentation = this.presentations.length;
-                this.currentPresentation = this.presentations[0];
-                this.instructionCodeProduit.forEach(instruction => {
-                    instruction.libelle = instruction.libelle.replace('#codeProduit', this.currentPresentation.codeProduit);
-                })
-
-            });
-        }
+        envoieResponse(response) {
+            this.presentationService.postResponse(this.token, this.currentInstruction.id, this.currentPresentation.idProduct, this.currentPresentation.idPanelist, response);
+        },        
     },
 }
 

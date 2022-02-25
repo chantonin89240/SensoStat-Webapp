@@ -2,7 +2,7 @@
     <div>
         <QuestionInstructionComponent v-if="questionInstru" @questionResponse="questionResponse" v-bind:currentInstruction="currentInstruction" @repeteSpeech="repeteSpeech"/>
         <QuestionReponseComponent v-if="questionReponse" @questionValide="questionValide"/>
-        <QuestionValidationComponent v-if="questionValidation" @nextInstruction="nextInstruction" v-bind:response="response" />
+        <QuestionValidationComponent v-if="questionValidation" @nextInstruction="nextInstruction" v-bind:response="response" @envoieResponse="envoieResponse"/>
     </div>
 </template>
 
@@ -50,6 +50,9 @@ export default {
         },
         repeteSpeech() {
             this.$emit('repeteSpeech')
+        },
+        envoieResponse(response) {
+            this.$emit('envoieResponse', response);
         }
     }
 

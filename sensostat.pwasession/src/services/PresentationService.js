@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export default class PresentationService {
-    async postResponse(token ,idInstruction, idProduct, idPanelist, response) {
+    async postResponse(token, idInstruction, idProduct, idPanelist, response) {
         return new Promise((resolve) => {
             axios.post("https://localhost:5001/api/Pwa", {
                 headers: {
@@ -9,11 +9,13 @@ export default class PresentationService {
                 }
             },
             {
+                token: token,
                 idInstruction: idInstruction,
                 idProduct: idProduct,
                 idPanelist: idPanelist,
                 commentResponse: response
-            })
+                })
+            console.log(resolve);
         })
     }
 
