@@ -153,10 +153,10 @@
                 {
                     var context = services.GetRequiredService<SensoStatDbContext>();
 
-                    //context.Database.EnsureDeleted();
-                    //context.Database.EnsureCreated();
+                    context.Database.EnsureDeleted();
+                    context.Database.EnsureCreated();
 
-                    //SeedData.Initialize(services);
+                    SeedData.Initialize(services);
 
                 }
                 catch (Exception ex)
