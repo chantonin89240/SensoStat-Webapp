@@ -34,7 +34,9 @@
                 <td class="d-flex justify-content-center">
                     <a class="ms-1 me-1" asp-controller="Session" asp-action="Edit" asp-route-id="@session.Id"><i class="fas fa-edit"></i></a>
                     <a class="ms-1 me-1" asp-controller="Session" asp-action="ExportData" asp-route-id="@session.Id"><i class="fas fa-download me-1"></i></a>
-                    <a class="ms-1 me-1" asp-controller="Session" asp-action="CloneSession"  data-bs-toggle="modal" data-bs-target="#CloneSeance" asp-route-id="@session.Id"><i class="far fa-clone"></i></a>
+                    <form method="post" asp-controller="Session" asp-action="Clone" asp-route-id="@session.Id"> 
+                        <button class="ms-1 me-1 btn btn-outline-primary bg-transparent btn-sm border-0" type="submit"><i class="far fa-clone"></i></button>
+                    </form>
                     <form method="post" asp-controller="session" asp-action="archive" asp-route-id="@session.Id">
                         <button class="ms-1 me-1 btn btn-outline-primary btn-sm" type="submit"><i class="fas fa-archive"></i></button>
                     </form>

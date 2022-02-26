@@ -187,5 +187,10 @@
             this._clientService.PutDataFromHttpClient($"api/Sessions/close/{id}", null);
             return true;
         }
+        public bool CloneSession(int id)
+        {
+            this._clientService.PostDataFromHttpClient($"api/sessions/clone/{id}", null);
+            return true;
+        }
     }
 }

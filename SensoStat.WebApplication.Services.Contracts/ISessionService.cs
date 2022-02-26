@@ -27,6 +27,9 @@
         bool Publish(int idSession);
 
         Stream Export(int idSession);
+
         bool ArchiveSession(int id);
+
+        bool CloneSession(int id);
     }
 }

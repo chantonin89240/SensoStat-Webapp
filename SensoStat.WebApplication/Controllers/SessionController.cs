@@ -96,13 +96,15 @@
             }
 
             this.ModelState.AddModelError(string.Empty, "Un problème est survenue, le fichier n'a pas été enregistré, veuillez réessayer.");
-            return RedirectToAction("edit", new { id = id });
+            return this.RedirectToAction("edit", new { id = id });
         }
 
         [HttpPost]
-        public async Task<IActionResult> CloneSession(int id)
+        public IActionResult Clone(int id)
         {
-            return RedirectToAction("index");
+            var session = this._sessionService.CloneSession(id);
+
+            return this.RedirectToAction("Index");
         }
 
         [HttpPost("{id}")]
@@ -125,7 +127,7 @@
 
             var filename = this.Request.Form["filename"];
 
-            return File(stream, "application/octet-stream", filename);
+            return this.File(stream, "application/octet-stream", filename);
         }
     }
 }

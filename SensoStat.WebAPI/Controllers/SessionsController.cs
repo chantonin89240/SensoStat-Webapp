@@ -55,6 +55,14 @@ namespace SensoStat.WebAPI.Controllers
             return this.CreatedAtAction(nameof(SessionsController.UpdateSessionState), new { id = id });
         }
 
+        [HttpPost("clone/{id}")]
+        public IActionResult CloneSession(int id)
+        {
+            var sessionResponse = this._sessionService.Clone(id);
+            return this.CreatedAtAction(nameof(SessionsController.GetById), sessionResponse);
+        }
+
+
         [HttpDelete("{id}")]
         public bool DeleteSession(int id)
         {
