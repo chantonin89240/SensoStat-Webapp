@@ -12,6 +12,8 @@
 
         SessionResponse Create(SessionRequest sessionRequest);
 
+        SessionResponse Clone(int id);
+
         SessionResponse Find(int id);
 
         SessionResponse Update(SessionRequest session);

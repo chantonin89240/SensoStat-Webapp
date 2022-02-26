@@ -54,6 +54,40 @@
             return true;
         }
 
+        public SessionResponse Clone(int id)
+        {
+            var session = this._sessionRepository.Find(id);
+
+            var sessionToAdd = new Session()
+            {
+                DateCreate = DateTime.Now,
+                DateUpdate = DateTime.Now,
+                MsgAccueil = session.MsgAccueil,
+                MsgFinal = session.MsgFinal,
+                Etat = "Non-publiée",
+                Name = $"Clone - {session.Name}",
+                IdPerson = session.IdPerson,
+            };
+
+            session.Instructions = this._instructionRepository.FindAll(id).ToList();
+
+            session.Instructions.ForEach(s =>
+            {
+                sessionToAdd.Instructions.Add(new Instruction()
+                {
+                    Libelle = s.Libelle,
+                    Chronology = s.Chronology,
+                    IsQuestion = s.IsQuestion,
+                });
+            });
+
+            this._sessionRepository.Add(sessionToAdd);
+
+            var newsession = new SessionResponse(sessionToAdd);
+
+            return newsession;
+        }
+
         /// <summary>
         /// .
         /// </summary>
