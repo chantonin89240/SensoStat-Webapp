@@ -203,5 +203,10 @@
             return this._pwaRepository.getPwaResponsse(hash);
 
         }
+
+        public Session GetSessionReponse(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

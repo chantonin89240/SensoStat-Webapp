@@ -192,5 +192,23 @@
             this._clientService.PostDataFromHttpClient($"api/sessions/clone/{id}", null);
             return true;
         }
+
+        public Stream ExportSessionResponse(int idSession)
+        {
+            var request = this._clientService.GetDataFromHttpClient($"api/Sessions/{idSession}/Response");
+            var responses = JsonConvert.DeserializeObject<List<ExportResponseViewModel>>(request);
+
+            var ms = new MemoryStream();
+            using (var writer = new StreamWriter(ms, leaveOpen: true))
+            using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
+            {
+                csv.WriteRecords(responses);
+                writer.Flush();
+            }
+
+            ms.Position = 0;
+
+            return ms;
+        }
     }
 }

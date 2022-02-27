@@ -31,5 +31,7 @@
         bool ArchiveSession(int id);
 
         bool CloneSession(int id);
+
+        Stream ExportSessionResponse(int idSession);
     }
 }

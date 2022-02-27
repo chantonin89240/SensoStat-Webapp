@@ -129,5 +129,13 @@
 
             return this.File(stream, "application/octet-stream", filename);
         }
+        public IActionResult ExportSessionReponse(int id)
+        {
+            Stream? stream = this._sessionService.ExportSessionResponse(id);
+
+            var filename = this.Request.Form["filename"];
+
+            return this.File(stream, "application/octet-stream", filename);
+        }
     }
 }
