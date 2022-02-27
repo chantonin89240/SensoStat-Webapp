@@ -1,6 +1,7 @@
 ﻿namespace SensoStat.WebAPI.Controllers
 {
     using System;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using SensoStat.Models.HttpRequest;
     using SensoStat.Services;
@@ -8,6 +9,7 @@
 
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class PresentationController : ControllerBase
     {
         private IPresentationService _presentationService;

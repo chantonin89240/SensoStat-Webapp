@@ -1,11 +1,13 @@
 ﻿namespace SensoStat.WebAPI.Controllers
 {
     using System;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using SensoStat.Services.Contracts;
 
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class RolesController : ControllerBase
     {
         private readonly IUserService _userService;

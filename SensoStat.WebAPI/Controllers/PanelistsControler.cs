@@ -3,9 +3,11 @@ namespace SensoStat.WebAPI.Controllers
     using Microsoft.AspNetCore.Mvc;
     using SensoStat.Services.Contracts;
     using SensoStat.Entities;
+    using Microsoft.AspNetCore.Authorization;
 
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class PanelistsController : ControllerBase
     {
         private readonly IPanelistService _panelistService;

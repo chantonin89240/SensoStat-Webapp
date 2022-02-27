@@ -1,12 +1,14 @@
 ﻿namespace SensoStat.WebAPI.Controllers
 {
     using System;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using SensoStat.Models.HttpResponse;
     using SensoStat.Services.Contracts;
 
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class PublicationController : ControllerBase
     {
         private readonly IPublicationService _publicationService;

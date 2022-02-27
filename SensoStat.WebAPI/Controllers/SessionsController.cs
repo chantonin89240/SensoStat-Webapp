@@ -3,12 +3,14 @@
 namespace SensoStat.WebAPI.Controllers
 {
     using System;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using SensoStat.Models.HttpRequest;
     using SensoStat.Services;
 
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class SessionsController : ControllerBase
     {
         private SessionService _sessionService;
@@ -29,6 +31,12 @@ namespace SensoStat.WebAPI.Controllers
 
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
+        {
+            return this.Ok(this._sessionService.Find(id));
+        }
+
+        [HttpGet("{id}/response")]
+        public IActionResult GetSessionReponse(int id)
         {
             return this.Ok(this._sessionService.Find(id));
         }
