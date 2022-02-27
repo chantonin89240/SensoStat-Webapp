@@ -1,6 +1,5 @@
 ﻿namespace SensoStat.WebApplication
 {
-    using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.IdentityModel.Tokens;
     using SensoStat.WebApplication.Filters;
     using SensoStat.WebApplication.Services;
@@ -43,33 +42,6 @@
                 e.BaseAddress = new Uri(apiAdress);
                 //e.DefaultRequestHeaders.Authorization = token;
             });
-
-            var JwtSecret = "THIS IS USED TO SIGN AND VERIFY JWT TOKENS, REPLACE IT WITH YOUR OWN SECRET, IT CAN BE ANY STRING";
-            var JwtIssuer = "https://localhost:5001";
-            var JwtAudience = "https://localhost:7083";
-
-            //services.AddAuthentication(auth =>
-            //{
-            //    auth.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-            //    auth.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            //})
-            //.AddJwtBearer(options =>
-            //{
-            //    options.SaveToken = true;
-            //    options.TokenValidationParameters = new TokenValidationParameters
-            //    {
-            //        ValidateIssuer = true,
-            //        ValidIssuer = JwtIssuer,
-            //        ValidateAudience = true,
-            //        ValidAudience = JwtAudience,
-            //        ValidateIssuerSigningKey = true,
-            //        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(JwtSecret))
-            //    };
-            //});
-
-            services.AddScoped<ISessionService, SessionService>();
-            services.AddScoped<IUserService, UserService>();
-        }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
