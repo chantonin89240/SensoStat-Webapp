@@ -2,25 +2,19 @@
 {
     using Microsoft.AspNetCore.Mvc;
     using SensoStat.Models.HttpRequest;
-    using SensoStat.Services;
+    using SensoStat.Services.Contracts;
 
     [Route("api/[controller]")]
     [ApiController]
     public class PwaController : ControllerBase
     {
-        private readonly SessionService _sessionService;
-        private readonly ResponseService _responseService;
+        private readonly ISessionService _sessionService;
+        private readonly IResponseService _responseService;
 
-        public PwaController(SessionService sessionService, ResponseService responseService)
+        public PwaController(ISessionService sessionService, IResponseService responseService)
         {
             this._sessionService = sessionService;
             this._responseService = responseService;
-        }
-
-        [HttpGet("{idSession, idPanelist}")]
-        public IActionResult GetById(int idSession, int idPanelist)
-        {
-            return this.Ok(this._sessionService.FindSession(idSession, idPanelist));
         }
 
         [HttpGet]
@@ -39,11 +33,10 @@
         }
 
         [HttpPost]
-        public IActionResult PostResponse(ResponseRequest responseResquest)
+        public IActionResult PostResponse(ResponseRequest response)
         {
-            this._responseService.PostResponse(responseResquest);
-
-            return this.CreatedAtAction(nameof(PwaController), responseResquest);
+            this._responseService.PostResponse(response);
+            return this.CreatedAtAction(nameof(PwaController), response);
         }
     }
 }

@@ -1,10 +1,12 @@
 ﻿namespace SensoStat.Models.HttpRequest
 {
-    using System;
     using System.ComponentModel.DataAnnotations;
 
     public class ResponseRequest
     {
+        [Required]
+        public string Token { get; set; }
+
         [Required]
         public int IdInstruction { get; set; }
 

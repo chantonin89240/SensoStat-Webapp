@@ -179,25 +179,6 @@
             }
         }
 
-        public PwaSessionResponse FindSession(int idSession, int idPanelist)
-        {
-            var session = this._sessionRepository.Find(idSession);
-            session.Instructions = this._instructionRepository.FindAll(idSession).ToList();
-            session.Products = this._productRepository.FindAll(idSession).ToList();
-
-            var pwaSession = new PwaSessionResponse(session); 
-            var publication = this._publicationtRepository.Find(idPanelist, idSession);
-            if (publication != null)
-            {
-              //  pwaSession.Publication = new PublicationResponse(publication);
-            }
-
-            var presentations = this._presentationtRepository.FindByIdSessionAndIdPanelistVincent(idSession, idPanelist).ToList();
-            presentations.ForEach(p => pwaSession.Presentations.Add(new PwaPresentationResponse(p)));
-
-            return pwaSession;
-        }
-
         public PwaSessionResponse FindSessionWithHash(string hash)
         {
             return this._pwaRepository.getPwaResponse(hash);
