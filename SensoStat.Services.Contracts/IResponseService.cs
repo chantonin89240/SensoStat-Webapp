@@ -1,9 +1,9 @@
-﻿namespace SensoStat.Services.Contracts
-{
-    using SensoStat.Models.HttpRequest;
+﻿using SensoStat.Models.HttpRequest;
 
+namespace SensoStat.Services.Contracts
+{
     public interface IResponseService
     {
-        void PostResponse(ResponseRequest responseRequest);
+        void PostResponse(ResponseRequest response);
     }
 }

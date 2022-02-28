@@ -17,5 +17,6 @@
         SessionResponse Update(SessionRequest session);
 
         PwaSessionResponse FindSessionWithHash(string hash);
+
     }
 }

@@ -21,6 +21,7 @@
         public void Add(Response response)
         {
             this._context.Responses.Add(response);
+            this._context.SaveChanges();
         }
 
         public void Delete(Response response)

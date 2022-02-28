@@ -14,18 +14,18 @@
             this._responseRepository = responseRepository;
         }
 
-        public void PostResponse(ResponseRequest responseRequest)
+        public void PostResponse(ResponseRequest response)
         {
-            Response response = new Response()
+            Response laReponse = new Response()
             {
-                IdPanelist = responseRequest.IdPanelist,
-                IdInstruction = responseRequest.IdInstruction,
-                CommentResponse = responseRequest.CommentResponse,
-                IdProduct = responseRequest.IdProduct,
+                IdPanelist = response.IdPanelist,
+                IdInstruction = response.IdInstruction,
+                CommentResponse = response.CommentResponse,
+                IdProduct = response.IdProduct,
                 DateResponse = DateTime.Now,
             };
 
-            this._responseRepository.Add(response);
+            this._responseRepository.Add(laReponse);
         }
     }
 }

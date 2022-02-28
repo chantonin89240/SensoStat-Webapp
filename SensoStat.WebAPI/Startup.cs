@@ -131,6 +131,9 @@
 
             services.AddScoped<IPwaRepository, PwaRepository>();
 
+            services.AddScoped<IResponseService, ResponseService>();
+            services.AddScoped<IResponseRepository, ResponseRepository>();
+
             services.AddScoped<SessionService>();
         }
 
