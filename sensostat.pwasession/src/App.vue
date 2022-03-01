@@ -60,6 +60,7 @@ export default {
             msgAccueilTrue: false,
             msgFinalTrue: false,
             msgFinal: null,
+            idPanelist: null,
         };
     },
     mounted(){
@@ -96,6 +97,7 @@ export default {
                 this.currentInstruction = this.instructionCodeProduit[0];
                 this.currentText = response.msgAccueil;
                 this.msgFinal = response.msgFinal;
+                this.idPanelist = response.idPanelist
 
                 this.presentations = response.presentations;
                 this.nbPresentation = this.presentations.length;
@@ -110,6 +112,7 @@ export default {
             if (this.currentInstruction.chronology == this.nbChronology) {
                 if (this.currentPresentation.rank == this.nbPresentation) {
                     this.msgFinalTrue = true;
+                    this.currentText = this.msgFinal;
                 }
                 else{
                     this.instructionCodeProduit = JSON.parse(JSON.stringify(this.instructions));
@@ -133,7 +136,7 @@ export default {
             this.SpeechService.synthesizeSpeech(this.currentText);
         },
         envoieResponse(response) {
-            this.presentationService.postResponse(this.token, this.currentInstruction.id, this.currentPresentation.idProduct, this.currentPresentation.idPanelist, response);
+            this.presentationService.postResponse(this.token, this.currentInstruction.id, this.currentPresentation.idProduct, this.idPanelist, response);
         },        
     },
 }

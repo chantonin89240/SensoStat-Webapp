@@ -28,14 +28,11 @@ export default {
     methods:{
         nextInstruction() {
             this.$emit('envoieResponse', this.response)
-            //this.$emit('nextInstruction')
+            this.$emit('nextInstruction')
         },
         reformuler() {
             this.$emit('questionResponse')
         },
-        envoieData() {
-
-        }
     }
 
 }
