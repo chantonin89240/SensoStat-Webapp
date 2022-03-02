@@ -2,8 +2,7 @@
     <div>
         <p>Autorisez vous l'utilisation de votre micro</p>
 
-        <a class="btn btn-warning" @click="autorisation('oui')">Oui</a>
-        <br/>
+        <a class="btn btn-warning" style="margin-right: 20px" @click="autorisation('oui')">Oui</a>
         <a class="btn btn-warning" @click="autorisation('non')">Non</a>
 
     </div>
