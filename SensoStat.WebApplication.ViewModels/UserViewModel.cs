@@ -16,16 +16,17 @@ namespace SensoStat.WebApplication.ViewModels
         public string? RoleLibelle { get; set; }
 
         [Required]
-        [RegularExpression("^((?!^Last Name$)[a-zA-Z '])+$", ErrorMessage = "Votre nom doit contenir uniquement des lettres")]
+        [RegularExpression(@"^((?!^Last Name$)[a-zA-Z '])+$", ErrorMessage = "Votre nom doit contenir uniquement des lettres")]
         public string LastName { get; set; }
 
         [StringLength(60, MinimumLength = 3)]
         [Required]
-        [RegularExpression("^((?!^First Name$)[a-zA-Z '])+$", ErrorMessage = "Votre nom doit contenir uniquement des lettres")]
+        [RegularExpression(@"^((?!^First Name$)[a-zA-Z '])+$", ErrorMessage = "Votre nom doit contenir uniquement des lettres")]
         public string FirstName { get; set; }
 
         [Required]
-        [RegularExpression("^[A-Za-z0-9._%+-]*@[A-Za-z0-9.-]*\\.[A-Za-z0-9-]{2,}$", ErrorMessage = "Votre email n'est pas correcte")]
+        //[RegularExpression(@"^[A-Za-z0-9._%+-]*@[A-Za-z0-9.-]*\.[A-Za-z0-9-]{2,}$", ErrorMessage = "Votre email n'est pas correcte")]
+        [RegularExpression(@"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z")]
         public string Email { get; set; }
 
         public string? Token { get; set; }
@@ -34,7 +35,7 @@ namespace SensoStat.WebApplication.ViewModels
         // public string Login { get; set; }
 
         [Required]
-        [RegularExpression("^(?=.*/d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$", ErrorMessage = "Le mot de passe doit contenir au moins 8 caractères, dont une majuscule, une minuscule, un caractère spéciale et un chiffre")]
+        [RegularExpression(@"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$", ErrorMessage = "Le mot de passe doit contenir au moins 8 caractères, dont une majuscule, une minuscule, un caractère spéciale et un chiffre")]
         public string Password { get; set; }
         
         public List<SessionViewModel>? Sessions { get; set; }

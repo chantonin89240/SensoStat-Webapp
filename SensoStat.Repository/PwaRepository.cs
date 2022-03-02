@@ -22,7 +22,7 @@
 
         public PwaSessionResponse getPwaResponse(string hash)
         {
-            var urlCompare = $"http://localhost:8080/{hash}";
+            var urlCompare = $"https://localhost:8080/?hash={hash}";
             var session = this._context.Publications.Where(p => p.Url == urlCompare)?.Select(p => new PwaSessionResponse()
             {
                 Id = p.IdSession,

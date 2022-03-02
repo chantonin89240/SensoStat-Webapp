@@ -48,7 +48,7 @@ namespace SensoStat.Services
                         IdSession = idSession,
                         IdPaneslist = p.Id,
                         DateStart = DateTime.Now,
-                        Url = $"http://localhost:8080/{hashUrl}",
+                        Url = $"https://localhost:8080/?hash={hashUrl}",
                         Salt = Convert.ToBase64String(salt),
                     });
                 });

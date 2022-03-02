@@ -6,8 +6,8 @@ export default class SpeechService {
 
     // text to speech
     synthesizeSpeech(textSpeech) {
-        speechConfig.speechSynthesisLanguage = "fr-CA";
-        speechConfig.speechSynthesisVoiceName = "fr-CA-JeanNeural";
+        speechConfig.speechSynthesisLanguage = "fr-FR";
+        speechConfig.speechSynthesisVoiceName = "fr-FR-HenriNeural";
         const audioConfig = sdk.AudioConfig.fromDefaultSpeakerOutput();
         const synthesizer = new sdk.SpeechSynthesizer(speechConfig, audioConfig);
         synthesizer.speakTextAsync(

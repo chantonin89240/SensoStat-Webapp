@@ -40,7 +40,7 @@
 
         public Publication? Find(string hash)
         {
-            var urlCompare = $"http://localhost:8080/{hash}";
+            var urlCompare = $"https://localhost:8080/?hash={hash}";
             return this._context.Publications.FirstOrDefault(pub => pub.Url == urlCompare);
         }
 
