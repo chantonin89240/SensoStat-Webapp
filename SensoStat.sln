@@ -40,6 +40,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Rapport", "Rapport", "{EF979087-9B89-48B6-8DD4-64AA031662A7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Production", "Production", "{DC1FF119-6461-4755-AFB2-94614D7BAFBC}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\..\Downloads\équipe 1 - Nommage entité.md = ..\..\..\..\Downloads\équipe 1 - Nommage entité.md
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AppMobile", "AppMobile", "{566228AB-0A82-4B46-AF9C-93803A72A575}"
 EndProject
@@ -53,7 +56,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SensoStat.WebApplication.Vi
 EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "sensostat.pwasession", "sensostat.pwasession\sensostat.pwasession.esproj", "{391AC0C7-6BC4-4A6C-987A-AEC2DEB5C5EA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SensoStat.Models", "SensoStat.Models\SensoStat.Models.csproj", "{B118EB6C-7863-4B82-BCD1-F9D31EFDCA0A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SensoStat.Models", "SensoStat.Models\SensoStat.Models.csproj", "{B118EB6C-7863-4B82-BCD1-F9D31EFDCA0A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -319,11 +322,10 @@ Global
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		Policies = $0
-		$0.TextStylePolicy = $1
+		$0.TextStylePolicy = $2
 		$1.FileWidth = 80
 		$1.TabsToSpaces = True
 		$1.scope = text/x-javascript
-		$0.TextStylePolicy = $2
 		$2.FileWidth = 80
 		$2.TabsToSpaces = True
 		$2.scope = text/x-jsts
