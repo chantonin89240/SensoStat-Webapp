@@ -37,12 +37,14 @@
                 MsgFinal = p.Session.MsgFinal,
                 Name = p.Session.Name,
                 IdPanelist = p.IdPaneslist,
-                Presentations = p.Panelist.Presentations.Select(e => new PwaPresentationResponse()
-                {
-                    IdProduct = e.IdProduct,
-                    CodeProduit = e.Product.CodeProduct,
-                    Rank = e.Rank,
-                }).OrderBy(a => a.Rank).ToList(),
+                Presentations = p.Panelist.Presentations
+                    .Where(pre => pre.Product.IdSession == p.IdSession)
+                    .Select(e => new PwaPresentationResponse()
+                    {
+                        IdProduct = e.IdProduct,
+                        CodeProduit = e.Product.CodeProduct,
+                        Rank = e.Rank,
+                    }).OrderBy(a => a.Rank).ToList(),
             }).FirstOrDefault();
 
             return session;

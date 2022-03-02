@@ -116,7 +116,9 @@ export default {
                 }
                 else{
                     this.instructionCodeProduit = JSON.parse(JSON.stringify(this.instructions));
+                    console.log(this.currentPresentation)
                     this.currentPresentation = this.presentations[this.currentPresentation.rank];
+                    console.log(this.currentPresentation)
                     this.instructionCodeProduit.forEach(instruction => {
                         instruction.libelle = instruction.libelle.replace('#codeProduit', this.currentPresentation.codeProduit);
                     });
@@ -125,7 +127,7 @@ export default {
                     this.isQuestion = this.currentInstruction.isQuestion;
                 }     
             }
-            else{
+            else {
                 this.currentInstruction = this.instructionCodeProduit[this.currentInstruction.chronology];
                 this.currentText = this.currentInstruction.libelle;
                 this.isQuestion = this.currentInstruction.isQuestion;

@@ -83,7 +83,8 @@
                         if (@item.value.IsQuestion == 0)
                         {
                             <section class="mb-3 row SectionInstru" id="@item.index">
-                                <div class="col col-lg-2">
+                                <div class="col col-lg-2 m-auto">
+                                    <i class="fas fa-indent h-100 w-5 me-3"></i>
                                     <label for="Instruction">Instruction</label>
                                 </div>
                                 <div class="col-10 d-inline-flex">
@@ -96,7 +97,8 @@
                         else
                         {
                             <section class="mb-3 row SectionInstru" id="@item.index">
-                                <div class="col col-lg-2">
+                                <div class="col col-lg-2 m-auto">
+                                    <i class="fas fa-indent h-100 w-5 me-3"></i>
                                     <label for="Question">Question</label>
                                 </div>
                                 <div class="col-10 d-inline-flex">
@@ -160,6 +162,12 @@
                 <button class="btn btn-warning mb-2" type="button" data-bs-toggle="modal" data-bs-target="#SuppPublication">Annuler la publication</button>
             }
             <button class="btn btn-warning mb-2" type="button" data-bs-toggle="modal" data-bs-target="#SuppSeance">Supprimer la séance</button>
+
+            <p>liste des tags : </p>
+
+            <ul>
+                <li>#codeProduit = pour ajouter le numéro du produit </li>
+            </ul>
         </div>
     </section>
 
